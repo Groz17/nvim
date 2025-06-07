@@ -1,0 +1,15 @@
+:Xidelplay	xidelplay.txt	/*:Xidelplay*
+:XidelplayClose	xidelplay.txt	/*:XidelplayClose*
+:XidelplayScratch	xidelplay.txt	/*:XidelplayScratch*
+:Xidelrun	xidelplay.txt	/*:Xidelrun*
+:Xidelstop	xidelplay.txt	/*:Xidelstop*
+g:xidelplay	xidelplay.txt	/*g:xidelplay*
+g:xidelplay.autocmds	xidelplay.txt	/*g:xidelplay.autocmds*
+g:xidelplay.delay	xidelplay.txt	/*g:xidelplay.delay*
+g:xidelplay.exe	xidelplay.txt	/*g:xidelplay.exe*
+g:xidelplay.opts	xidelplay.txt	/*g:xidelplay.opts*
+xidelplay	xidelplay.txt	/*xidelplay*
+xidelplay-config	xidelplay.txt	/*xidelplay-config*
+xidelplay-faq	xidelplay.txt	/*xidelplay-faq*
+xidelplay-usage	xidelplay.txt	/*xidelplay-usage*
+xidelplay.txt	xidelplay.txt	/*xidelplay.txt*

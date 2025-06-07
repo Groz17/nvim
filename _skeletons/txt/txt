@@ -1,0 +1,7 @@
+${filename}
+
+:Author: ${gh-user}
+:Email: ${gh-email}
+:Date: ${lua:os.date('"+%F +%H:%M"')}
+
+${cursor}

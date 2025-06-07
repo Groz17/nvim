@@ -1,0 +1,58 @@
+-- TODO: vedi conceal come opposto di snippets... (magari usa gli stessi caratteri, recuperando gli snippets personali e di altri (magari con vim.fn.system)
+-- TODO: see if there are functions like fn("R", &ft?) = "return" that return the original text from the conceal and viceversa, and same for snippets
+
+return {
+}
+
+
+--   -- maybe useful for verbose languages like Java?
+--   'Jxstxs/conceal.nvim',
+--   cond = false,
+--   -- cond = vim.wo.conceallevel > 0,
+--   dependencies = 'nvim-treesitter/nvim-treesitter',
+--   opts = {
+--     -- should be run before .generate_conceals to use user Configuration
+--     --[[ ["language"] = {
+--         enabled = bool,
+--         keywords = {
+--           ["keyword"] = {
+--               enabled     = biol,
+--               conceal     = string,
+--               highlight   = string
+--           }
+--         }
+--     } ]]
+--     -- ['lua'] = {
+--     --   enabled = true,
+--     --   keywords = {
+--     --     ['local'] = {
+--     --       enabled = true, -- to disable concealing for "local"
+--     --     },
+--     --     ['return'] = {
+--     --       conceal = 'R', -- to set the concealing to "R"
+--     --     },
+--     --     ['for'] = {
+--     --       highlight = 'keyword', -- to set the Highlight group to "@keyword"
+--     --     },
+--     --   },
+--     -- },
+--     -- ['language'] = {
+--     --   enabled = false, -- to disable the whole language
+--     -- },
+--   },
+--   config = function(_, opts)
+--     local conceal = require('conceal')
+--
+--     -- should be run before .generate_conceals to use user Configuration
+--     conceal.setup(opts)
+--
+--     -- generate the scm queries
+--     -- only need to be run when the Configuration changes
+--     -- conceal.generate_conceals()
+--
+--     -- bind a <leader>tc to toggle the concealing level
+--     -- vim.keymap.set("n", "<leader>tc", function()
+--     --   require("conceal").toggle_conceal()
+--     -- end, { silent = true})
+--   end,
+-- }

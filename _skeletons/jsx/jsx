@@ -1,0 +1,21 @@
+/*
+ * ${filename}
+ * Copyright (C) ${year} ${gh-user} <${gh-email}>
+ *
+ * Distributed under terms of the ${lua:"MIT"} license.
+ */
+import React, { Component } from 'react'
+
+
+class ${lua:vim.fn.expand('%:t:r')} extends Component {
+  constructor(props: any) {
+    super(props)
+
+  }
+
+  render() {
+    return (
+      ${cursor}
+    )
+  }
+}

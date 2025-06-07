@@ -1,0 +1,6 @@
+{
+    "workspace.library": [
+        "~/.local/share/nvim/lazy/lazy.nvim",
+        "${3rd}/luassert/library",
+    ]
+}

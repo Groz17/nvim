@@ -1,0 +1,12 @@
+<?php
+/**
+ * Short description for ${filename}
+ *
+ * @package ${lua:vim.fn.expand('%:t:r')}
+ * @gh-user ${gh-user} <${gh-email}>
+ * @version 0.1
+ * @copyright (C) ${year} ${gh-user} <${gh-email}>
+ * @license ${lua:"MIT"}
+ */
+
+${cursor}

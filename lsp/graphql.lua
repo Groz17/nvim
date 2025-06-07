@@ -1,0 +1,11 @@
+return{}
+   --  -- harper-ls harper_ls: ignore comments? use the same vim keybindings like [s, etc...? does it support code actions?
+   -- --     "cssmodules-language-server",
+   -- -- "fixjson",
+   -- --  require 'lspconfig.util'
+   -- -- "htmx-lsp",
+   -- ['graphql'] = function()
+   --   lspconfig['graphql'].setup({
+   --   -- root_dir = function() return vim.fn.expand("%:p:h") end,
+   --   })
+   -- end,

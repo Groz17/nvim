@@ -1,0 +1,13 @@
+/*
+ * ${filename}
+ * Copyright (C) ${year} ${gh-user} <${gh-email}>
+ *
+ * Distributed under terms of the ${lua:"MIT"} license.
+ */
+
+#ifndef ${lua:vim.fn.toupper(substitute(expand("%:t"), "[^a-zA-Z0-9]", "_", "g"))}
+#define ${lua:vim.fn.toupper(substitute(expand("%:t"), "[^a-zA-Z0-9]", "_", "g"))}
+
+${cursor}
+
+#endif /* !${lua:vim.fn.toupper(substitute(expand("%:t"), "[^a-zA-Z0-9]", "_", "g"))} */

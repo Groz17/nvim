@@ -1,0 +1,77 @@
+return {}
+-- return {
+-- 'ggandor/leap.nvim',
+--     config = function()
+-- require('leap').add_default_mappings()
+--     end,
+-- opts =  {
+-- case_sensitive=true,
+-- -- " https://github.com/ggandor/leap.nvim/issues/117
+-- equivalence_classes = { " \r\t\n", "aäàáâãā", "dḍ", "eëéèêē", "gǧğ", "hḥḫ", "iïīíìîı", "nñ", "oō", "sṣšß", "tṭ", "uúûüűū", "zẓ" }
+-- }
+-- },
+-- -- no-leap alternative
+-- -- " map s / 
+-- -- map S ?
+-- -- map g/ gs
+--
+-- -- leap è tanto più utile tanto quando un alfabeto basato su quello latino ha lettere (meno ambiguità dopo il primo carattere), a meno di regole stran della lingua.
+-- -- how to make leap matc virtual-text as well (like lsp stuff)
+-- -- usa zj e zk al posto di s/S (reddit comment) (e zJ e zK al posto di x e X)
+-- --
+-- -- add mappings to only target the start of words... (first 2 letters of a word)
+-- --
+-- -- how to have only lowercase labels?
+-- -- do n and N work with leap?
+-- -- problema di mapping: S in visual mode triggera surround (anche ds...)
+-- --
+-- --
+-- -- Empty lines can also be targeted, by pressing the newline alias twice (<space><space> by default).
+-- -- Pressing <enter> after invoking any of Leap's motions sets the search pattern to the previous one 
+-- -- multiselect (what's that?)
+-- --
+-- -- accomodate nvim-surround
+-- --ua vim.keymap.set('o', 'z', '<Plug>(leap-forward)')
+-- --ua vim.keymap.set('o', 'Z', '<Plug>(leap-backward)')
+-- --
+-- -- gs non serve funzionare in operator mode (in visual è per surround {ys,yS and gs,gS make sense)
+-- --
+--
+--
+-- {
+-- 'ggandor/leap-spooky.nvim',
+-- -- dependencies = 'ggandor/leap.nvim',
+-- -- would be cool to use spooky to copy lines without moving cursor...
+-- -- also mappings like crb to change INSIDE [ala vim-surround where ysib = ysi), where whitespace doesn't matter] parenthesis
+-- -- make this work with all text objects you've defined, like q for all quotes
+-- -- idea: al posto di usare {c,d,y}{i,a}r<text-obj> usa {c,d,y}r{i,a}<text-obj>, coì puoi usare il mapping delle parentesi quadre (e il {c,d,y}r keybindings è disponibile)
+-- -- what's nice is that you can use both r and m after the operators (not with coerce mappings :()
+-- -- sembra un pò ridondante questo plugin no, visto che c'è già gs mapping
+-- -- cool trick: dvvh1
+-- -- premere u (undo) dopo comando r move il cursure lì (fixa)
+-- -- i mapping r ed m vanno bene, ma non M (metà screen); in realtà le versioni uppercase sono inconsistenti con leap visto che in quest'ultimo la cross window è realizzata usando g come prefisso.
+-- config = function()
+-- require('leap-spooky').setup {
+--   affixes = {
+--     -- These will generate mappings for all native text objects, like:
+--     -- (ir|ar|iR|aR|im|am|iM|aM){obj}.
+--     -- Special line objects will also be added, by repeating the affixes.
+--     -- E.g. `yrr<leap>` and `ymm<leap>` will yank a line in the current
+--     -- window.
+--     -- r - cursor doesn't move to the targeted position
+--     -- m - cursor moves to the targeted position
+--     -- You can also use 'rest' & 'move' as mnemonics.
+--     -- sucks because r is alias for [...
+--     -- aggiungi autocmd per cui quando modifichi un buffer remoto, questo viene salvato automaticamente... (magari setting)
+--     remote   = { window = 'r', cross_window = 'R' },
+--     -- remote   = { window = 'v', cross_window = 'V' },
+--     magnetic = { window = 'm', cross_window = 'M' },
+--   },
+--   -- If this option is set to true, the yanked text will automatically be pasted
+--   -- at the cursor position if the unnamed register is in use.
+--   paste_on_remote_yank = false,
+--   op = true,
+-- }
+-- end
+--
+-- }

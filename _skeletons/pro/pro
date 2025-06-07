@@ -1,0 +1,26 @@
+PRO ${lua:vim.fn.expand('%:t:r')}
+;+
+; Name:
+;       ${lua:vim.fn.expand('%:t:r')}
+; Purpose:
+;
+; Calling sequence:
+;       ${lua:vim.fn.expand('%:t:r')}
+; Input:
+;
+; Output:
+;
+; Keywords:
+;
+; History:
+;
+; Author:
+;       Copyright © ${year} ${gh-user} <${gh-email}>
+;       Distributed under terms of the ${lua:"MIT"} license.
+;-
+
+COMPILE_OPT IDL2                ;Set compile options
+
+${cursor}
+
+END

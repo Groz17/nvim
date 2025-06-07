@@ -1,0 +1,156 @@
+*xidelplay.txt*  Run xidel (the command-line XML processor) interactively in Vim
+
+Author:     Groz17 <http://github.com/Groz17>
+Website:    https://github.com/Groz17/vim-xidelplay
+License:    Same terms as Vim itself (see |license|)
+
+==============================================================================
+INTRODUCTION                                                          *xidelplay*
+
+Run xidel <https://github.com/benibela/xidel> on a XML buffer, and interactively
+update the output window whenever the input buffer or the xidel filter buffer are
+modified, similar to https://xidelplay.org.
+
+==============================================================================
+USAGE                                                           *xidelplay-usage*
+
+Commands ~
+
+:Xidelplay [{args}]                                                     *:Xidelplay*
+            Open a new xidel scratch buffer and apply the entered xidel filter to
+            the current XML buffer. The xidel output is displayed in a new
+            |:split| window, and updated interactively when both the xidel
+            scratch buffer or the input buffer are modified.
+
+            {args} can be any xidel command-line arguments as you would write
+            them in the shell. Xidel is always invoked with the options specified
+            in {args}. These can be changed at any time during the session
+            through |:Xidelrun| (see below).
+
+            The name of the output buffer is prefixed with "xidel-output://" to
+            distinguish it from the input buffer.
+
+            The command can be preceded by a command modifier. For example, to
+            open the output buffer in a new |:vertical| split, run: >
+                :vertical Xidelplay {args}
+<
+            Possible modifiers:
+                |:vertical|
+                |:topleft|
+                |:botright|
+                |:leftabove|  (same as |:aboveleft|)
+                |:rightbelow| (same as |:belowright|)
+
+            By default xidel is invoked automatically when the |InsertLeave| or
+            the |TextChanged| event is triggered. The list of autocommands can
+            be changed with the "autocmds" entry, see |xidelplay.autocmds|
+            below.
+
+:XidelplayClose[!]                                                 *:XidelplayClose*
+            Close the interactive xidelplay session. This will delete all
+            autocommands that are invoking xidel on buffer change.
+
+            Without the "!" all buffers are kept open. Adding "!" will also
+            |:bwipeout| the xidel filter and output buffers. If the input buffer
+            is a scratch buffer ('buftype' is "nofile") it will be deleted as
+            well. Think of ":XidelplayClose!" as "I am done, close everything".
+
+:Xidelrun[!] [{args}]                                                    *:Xidelrun*
+            Invoke xidel manually with the xidel command-line arguments {args}. This
+            will temporarily override the xidel options previously set with
+            ":Xidelplay {args}". Adding a [!] will permanently set the xidel options
+            of the current xidel scratch buffer to {args}.
+
+            This command is useful to quickly run the same xidel filter with
+            different set of xidel options, without closing the session.
+
+            Alternatively, if you don't like to run xidel interactively on every
+            buffer change, disable all |xidelplay.autocmds| and run ":Xidelrun" on
+            demand.
+
+            Note: The command is available only after running |:Xidelplay| or
+            |:XidelplayScratch|.
+
+:Xidelstop [{how}]                                                      *:Xidelstop*
+            Stop any running xidel process that was previously started with
+            |:Xidelplay| or |:Xidelrun|. When {how} is omitted, the job will be
+            terminated. See |job_stop()| for more details on the {how} values.
+
+:XidelplayScratch[!] [{args}]                                    *:XidelplayScratch*
+            Like |:Xidelplay| but start an interactive session in a new |:tab|
+            page using a new scratch buffer as input for xidel.
+
+            The scratch buffer is always passed to xidel as stdin, even when the
+            -n/--null-input options have been specified in {args}.
+
+            Adding "!" will create an interactive session without any input
+            buffer and force the --null-input option.
+
+==============================================================================
+CONFIGURATION                                                  *xidelplay-config*
+                                                                    *g:xidelplay*
+All configuration is done through the |Dictionary| variable g:xidelplay. The
+following entries are supported:
+
+    exe                                                         *g:xidelplay.exe*
+            Path to xidel executable.
+            Default: value found in $PATH
+
+    opts                                                       *g:xidelplay.opts*
+            Default options that are always passed to xidel, like "--tab". The
+            arguments {args} passed to |:Xidelplay| are appended to "opts".
+            Default: ""
+
+    autocmds                                               *g:xidelplay.autocmds*
+            List of |autocmd-events| when to invoke xidel. The autocommands are
+            set for both the input buffer and the xidel scratch buffer. If you
+            don't want to run xidel interactively on every buffer change, set
+            this entry to an empty list and run |:Xidelrun| manually.
+            Default: ["|InsertLeave|", "|TextChanged|"]
+
+    delay                                                     *g:xidelplay.delay*
+            Time in ms after which xidel is invoked when one of the events in
+            |g:xidelplay.autocmds| is triggered.
+            Default: 500
+
+Examples ~
+
+    1. Use the local xidel executable and tabs for indentation. Invoke xidel
+       whenever insert mode is left, or text is changed in insert or normal
+       mode: >
+
+       let g:xidelplay = {
+               \ 'exe': '~/.local/bin/xidel',
+               \ 'opts': '--tab',
+               \ 'autocmds': ['TextChanged', 'TextChangedI', 'InsertLeave']
+               \ }
+<
+    2. Use tabs for indentation, don't run xidel automatically on buffer change.
+       Instead invoke xidel manually with |:Xidelrun|: >
+
+       let g:xidelplay = {'opts': '--tab', 'autocmds': []}
+<
+==============================================================================
+FAQ                                                               *xidelplay-faq*
+
+How can I override buffer settings of xidel-output:// buffers? ~
+
+Option 1, use |autocommands|:
+>
+    " in your vimrc or somewhere in ~/.vim/plugin/
+    augroup xidel-output
+        autocmd!
+        autocmd FileType XML
+            \ if bufname('%')[:11] ==# 'xidel-output://' |
+            \   setlocal wincolor=NormalNC            |
+            \ endif
+    augroup END
+<
+Option 2, use a |ftplugin| file:
+>
+    " in after/ftplugin/XML.vim
+    if bufname('%')[:11] ==# 'xidel-output://'
+        setlocal wincolor=NormalNC
+    endif
+<
+ vim:tw=78:et:ft=help:norl:

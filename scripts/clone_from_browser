@@ -1,0 +1,64 @@
+#!/bin/bash
+
+clipboard="$(xclip -selection clipboard -o)"
+
+if [[ -z "$clipboard" ]]; then
+  dunstify "Empty clipboard, exiting..."
+  exit 1
+fi
+
+# pwd_dir="$(nvim --headless -u NONE -c ':echo stdpath("config")|q!')""/lua/plugins"
+plugin_dir=~/.config/nvim/lua/plugins
+
+plugin="$(printf '%s' "$1" | awk -F/ '{print $NF}')"
+
+# plugin="$(sed -E 's/[-_.]?n?vim[-_.]?//' <<< "$plugin")"
+plugin="$(sed -E -e 's/^n?vim[-_.]//' -e 's/[-_.]n?vim$//' <<< "$plugin")"
+grep -q "\.lua$" <<< "$plugin" || plugin="${plugin}".lua
+
+# plugin_spec="$(find "$plugin_dir" -mindepth 1 -maxdepth 1 -type d -print0 | rofi -sep '\0' -dmenu)"
+# c for curly braces
+# plugin_spec="$(fd --base-directory "$plugin_dir" --exact-depth 1 --type d --strip-cwd-prefix --print0 | rofi -sep '\0' -dmenu -p '' -mesg "<b>Alt+r</b>: add return|<b>Alt+c</b>: add return {...}" -kb-custom-1 "Alt+r" -kb-custom-2 "Alt+c" -no-custom -no-fixed-num-lines -theme-str 'element-text  { horizontal-align: 0.5; }' -theme-str 'window {width: 10%;}')"
+# plugin_spec="$(fd --base-directory "$plugin_dir" --exact-depth 1 --type d --strip-cwd-prefix --print0 | rofi -sep '\0' -dmenu -p '' -mesg "<b>Alt+r</b>: add return          |  <b>Alt+c</b>: add return {...}" -kb-custom-1 "Alt+r" -kb-custom-2 "Alt+c" -no-custom -no-fixed-num-lines -theme-str 'element-text  { horizontal-align: 0.5; }' -theme-str 'window {width: 30%;}')"
+plugin_spec="$(fd --base-directory "$plugin_dir" --exact-depth 1 --type d --strip-cwd-prefix --print0 | rofi -sep '\0' -dmenu -p '' -mesg "<small>Alt+r</small>: add return           |      <small>Alt+c</small>: add return {...}" -kb-custom-1 "Alt+r" -kb-custom-2 "Alt+c" -no-custom -no-fixed-num-lines -theme-str 'element-text  { horizontal-align: 0.5; }' -theme-str 'window {width: 30%;}')"
+
+return=$?
+
+# pressed esc after rofi window appeared
+if [[ $return -ne 0 && $return -ne 10 && $return -ne 11 ]]; then exit 1; fi
+
+path="$plugin_dir"/"$plugin_spec"/"$plugin"
+
+if [[ -f "$path" ]]; then
+  dunstify -u critical "Plugin's config already exists"
+  exit 1
+fi
+
+# one-liner install for lazy, packer, plug...
+if [[ "$(wc -l <<< "$clipboard")" -eq 1 ]]; then
+    clipboard="$(sed "s/[^'\"]*//" <<< "$clipboard")"
+fi
+
+# if [[ $return -eq 0 ]]; then
+#   printf '%s' "$clipboard" | nvim -c '%p'
+# elif [[ $return -eq 10 ]]; then
+#   printf 'return\n%s\n' "$clipboard" | nvim -c '%p'
+#     else
+#   printf 'return {\n%s\n}' "$clipboard" | nvim -c '%p'
+# fi
+
+if [[ $return -eq 0 ]]; then
+    content="$(printf '%s' "$clipboard")"
+elif [[ $return -eq 10 ]]; then
+    content="$(printf 'return\n%s\n' "$clipboard")"
+else
+    content="$(printf 'return {\n%s\n}' "$clipboard")"
+fi
+
+# st -c floatingSt -e bash -c "printf '%s' \"\$clipboard\" | nvim -c 'file '\"\$path\"'|%p'"
+# st -c floatingSt -e bash -c 'nvim -c "file \"$0\"' "$path"
+# st -c floatingSt -e bash -c 'nvim -c "file ""$0""|%p" <<< "$1"' "$path" "$content"
+st -c floatingSt -e bash -c 'nvim -c "file ""$0""|set ft=lua" <<< "$1"' "$path" "$content"
+
+# would be cool if dunstify could display images (on the top right corner), would look better than opening a terminal I think
+# st -c floatingSt -e nvim "$path"

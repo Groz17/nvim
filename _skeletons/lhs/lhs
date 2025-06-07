@@ -1,0 +1,4 @@
+${lua:vim.fn.expand('%:t:r')} by ${gh-user}
+${lua:os.date('"+%F +%H:%M"')}
+
+${cursor}

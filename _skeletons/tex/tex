@@ -1,0 +1,17 @@
+% vim:ft=tex:
+%
+\documentclass[12pt]{article}
+
+\title{
+	${lua:vim.fn.expand('%:t:r')}
+}
+\gh-user{
+	${gh-user} --- \texttt${{gh-email}}
+}
+
+\begin{document}
+\maketitle
+
+${cursor}
+
+\end{document}

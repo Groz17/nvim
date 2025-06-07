@@ -1,0 +1,6 @@
+// Copyright © ${year} ${gh-user} <${gh-email}>
+//
+// Distributed under terms of the ${lua:"MIT"} license.
+
+pragma solidity ^0.4.4;
+

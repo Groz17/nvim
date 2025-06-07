@@ -1,0 +1,12 @@
+#! /usr/bin/env runhugs +l
+--
+-- ${filename}
+-- Copyright (C) ${year} ${gh-user} <${gh-email}>
+--
+-- Distributed under terms of the ${lua:"MIT"} license.
+--
+
+module ${lua:vim.fn.expand('%:t:r')} where
+
+
+${cursor}

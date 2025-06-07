@@ -1,0 +1,12 @@
+/*
+ * ${filename}
+ * Copyright (C) ${year} ${gh-user}
+ *
+ * Distributed under terms of the ${lua:"MIT"} license.
+ */
+
+body {
+	${cursor}background: white;
+	color: black;
+}
+

@@ -1,0 +1,8 @@
+---@type vim.lsp.Config
+-- return {
+--   -- name = 'bash-language-server',
+--   -- autostart = false,
+--   cmd = {  require('mason-registry').get_package('bash-language-server'):get_install_path() .. '/node_modules/.bin/bash-language-server', 'start' },
+--   filetypes = { 'bash','sh' },
+--   single_file_support=true
+-- }

@@ -1,0 +1,3 @@
+let g:detect_clip = systemlist("clipnotify -s clipboard")[0]
+" call dictwatcheradd(g:, 'detect_clip',{-> execute('let @"=@+')})
+call dictwatcheradd(g:, 'detect_clip',{-> execute('echo "Clip cambiata!"')})

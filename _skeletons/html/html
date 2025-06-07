@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta charset="utf-8" />
+		<title>${lua:vim.fn.substitute(expand("%:t:r:r:r"), "\([a-zA-Z]\+\)", "\u\1\e", "g")}</title>
+	</head>
+	<body>
+		${cursor}
+	</body>
+</html>

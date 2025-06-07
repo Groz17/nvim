@@ -1,0 +1,17 @@
+//
+// ${filename}
+// Copyright (C) ${year} ${gh-user} <${gh-email}>
+// Distributed under terms of the ${lua:"MIT"} license.
+//
+
+${cursor}
+
+
+#[cfg(test)]
+mod tests {
+	use super::*;
+
+	#[test]
+	fn it_works() {
+	}
+}

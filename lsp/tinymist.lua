@@ -1,0 +1,14 @@
+return{}
+-- lspconfig.tinymist.setup({
+--   -- single_file_support = false,
+--   settings={
+--     tinymist = {
+--       settings = {
+--         exportPdf = "onType",
+--         -- outputPath = "$root/target/$dir/$name",
+--         outputPath = "$dir/name.pdf",
+--         -- rootPath = '-'
+--       }
+--     },
+--   }
+-- })
