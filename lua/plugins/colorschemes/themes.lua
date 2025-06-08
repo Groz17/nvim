@@ -74,9 +74,6 @@ return {
     'thallada/farout.nvim',--[[  lazy = true ]]
   },
 {
-    'water-sucks/darkrose.nvim',
-  },
-{
     "water-sucks/darkrose.nvim",
 },
   { "rose-pine/neovim", name = "rose-pine" },
