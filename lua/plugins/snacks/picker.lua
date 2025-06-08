@@ -131,7 +131,7 @@ return {
     { '<f17>j', function() Snacks.picker.jumps() end, desc = 'Jumps' ,mode={'n','i'}},
     -- use v:count to target mods
     { '<f18>b', function() Snacks.picker.keymaps() end, desc = 'Keymaps' ,mode={'n','i'}},
-    { '<f17>l', function() Snacks.picker.loclist() end, desc = 'Location List' ,mode={'n','i'}},
+    -- { '<c-o>', function() Snacks.picker.loclist() end, desc = 'Location List' ,mode={'n','i'}},
     -- what about info pages?
     { '<f17>m', function() Snacks.picker.man() end, desc = 'Man Pages' ,mode={'n','i'}},
     -- not sure
@@ -139,7 +139,7 @@ return {
     -- { '<f17><BS>', function() Snacks.picker.resume() end, desc = 'Resume' },
     -- also create insert mode mapping <f17>D
     { '<c-m-bs>', function() Snacks.picker.resume() end, desc = 'Resume' ,mode={'n','i'}},
-    { '<f17>q', function() Snacks.picker.qflist() end, desc = 'Quickfix List' ,mode={'n','i'}},
+    -- { '<c-s-o>', function() Snacks.picker.qflist() end, desc = 'Quickfix List' ,mode={'n','i'}},
     -- <f17>C for all colorschemes, <space><space>c for plugin's colorschemes?
     -- how to preview the current buffer? 
     -- { '<f17>C', function() Snacks.picker.colorschemes() end, desc = 'Colorschemes' },
@@ -297,9 +297,9 @@ return {
             -- ['jk'] = { 'confirm', mode = { 'i' } },
             -- to use after selecting since you're already using ctrl to select stuff
             -- maybe use v for vim prefix? also works because vim doesn't use alt keybindings
-            ["<f17>l"] = { "loclist", mode = { "i", "n" } },
+            ["<c-o>"] = { "loclist", mode = { "i", "n" } },
             -- first disable all keybindings?
-            ["<f17>q"] = { "qflist", mode = { "i", "n" } },
+            ["<c-s-o>"] = { "qflist", mode = { "i", "n" } },
             ['<c-l>'] = { 'confirm', mode = { 'i' } },
             -- ["<c-g>"] = { "close", mode = { "i" } },
             -- ["<f17>"] = {"confirm",mode="i"},

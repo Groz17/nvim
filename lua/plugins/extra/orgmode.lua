@@ -39,7 +39,7 @@ return{{
         around_subtree = 'aR',
         }
     },
-  }
+  },
 },
 {
   "chipsenkbeil/org-roam.nvim",

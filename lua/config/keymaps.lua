@@ -809,6 +809,7 @@ vim.keymap.set('i','<c-l>',"<c-o>zz")
 --
 vim.keymap.set('n','<space>E',function() vim.fn.system('emacsclient -a emacs -c +'..vim.fn.line('.')..' '..vim.fn.expand('%:p'))end)
 
+-- how TO map in all modes?
 vim.keymap.set({'n','i','x','o'},'<c-m-a>',function() vim.cmd("TSTextobjectGotoPreviousStart @function.outer")end)
 vim.keymap.set({'n','i','x','o'},'<c-m-e>',function() vim.cmd("TSTextobjectGotoNextEnd @function.outer")end)
 vim.keymap.set({'n','i'},'<c-m-h>', [[<c-\><c-n><cmd>norm vaf<cr>]])
@@ -821,3 +822,4 @@ vim.keymap.set({'i'},'<m--><m-l>', [[<esc>2bgue2ea]])
 vim.keymap.set({'n',},'<m--><m-u>', [[<c-\><c-n><cmd>norm 2bgUe2ea<cr>]])
 vim.keymap.set({'i'},'<m--><m-u>', [[<esc>2bgUe2ea]])
 
+-- K for man, <c-h>o for :help? what about lsp?
