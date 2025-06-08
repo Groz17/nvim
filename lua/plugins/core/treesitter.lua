@@ -65,7 +65,7 @@ return
         -- disable = { "c", "ruby" }, -- optional, list of language that will be disabled
         -- [options]
       },
-      ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+      ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
       ignore_install = { 'org' },
       highlight = {
         enable = true,          -- false will disable the whole extension
