@@ -16,13 +16,11 @@ return {
   --         │                     MAIN COLORSCHEME                     │
   --         ╰──────────────────────────────────────────────────────────╯
 {
-    "zenbones-theme/zenbones.nvim",
-    dependencies = "rktjmp/lush.nvim",
+    "comfysage/cuddlefish.nvim",
     lazy = false,
     priority = 1000,
     config = function()
-        vim.g.zenbones_darken_comments = 45
-        vim.cmd.colorscheme('kanagawabones')
+        vim.cmd.colorscheme('cuddlefish')
     end
 },
   --         ╭──────────────────────────────────────────────────────────╮
@@ -113,9 +111,11 @@ return {
 {
   "rebelot/kanagawa.nvim",
 },
-{
-  "comfysage/cuddlefish.nvim",
-},
+-- {
+  -- "zenbones-theme/zenbones.nvim",
+    -- dependencies = "rktjmp/lush.nvim",
+        -- vim.g.zenbones_darken_comments = 45
+-- },
   {
     'yassinebridi/vim-purpura', lazy = true
   },

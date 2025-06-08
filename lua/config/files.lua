@@ -1,5 +1,6 @@
 -- usalo per grep, todo, edit, etc...
 -- magari usa picker projects?
+-- check for equivalent emacs mappings?
 local files = {
   config = {
     mapping = 'c',
