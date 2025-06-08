@@ -24,8 +24,8 @@ return{{
 
       -- NOTE: Have to manually re-specify the globals as they were using the prefix
       global = {
-        org_agenda  = '<leader>W',
-        org_capture = '<leader>w',
+        -- org_agenda  = '<leader>W',
+        -- org_capture = '<leader>w',
       },
 
       -- NOTE: This isn't using the prefix, but instead <Leader>, so we change it explicitly
