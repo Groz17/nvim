@@ -349,3 +349,15 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         end
     end
 })
+
+vim.api.nvim_create_autocmd('BufRead', {
+    desc = "Zen",
+    pattern = '*',
+    group = vim.api.nvim_create_augroup("Zen", {clear=true}),
+    callback = function()
+        if vim.bo.filetype ~= "org" then
+            return
+        end
+        Snacks.zen()
+    end,
+})
