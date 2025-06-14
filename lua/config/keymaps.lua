@@ -28,21 +28,6 @@ vim.keymap.set('c', '<c-l>', '<cr>')
 -- vim.keymap.set('n', '<c-s-cr>', "<Cmd>call append(line('.') - 1, repeat([''], v:count1))<CR>")
 -- vim.keymap.set('n', '<c-cr>', "<Cmd>call append(line('.'),     repeat([''], v:count1))<CR>")
 
--- ┣ using cr/etc... in normal mode
--- vim.keymap.set('n', '<cr>', "o<esc>o")
--- vim.keymap.set('n', '<leader>o', "o<esc>o")
--- TODO: do this in one go?
--- vim.keymap.set('n', function() vim.bo.filetype == 'c' and return '<cr>' end, "o<esc>o")
--- https://stackoverflow.com/questions/24599217/remap-enter-in-normal-mode-but-not-in-command-line
--- do this also for <c-c> and <esc>?
-vim.cmd[[
-    augroup disable_enter
-      autocmd!
-      autocmd CmdwinEnter * nnoremap <buffer> <CR> <CR>
-      autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
-    augroup END
-]]
-
 -- add mapping in visual mode for commenting and adding todo, etc... (using v:count and gc), like 4gc for HACK or something
 
 -- vim.keymap.set('n','<leader>N','<cmd>tabnew|e /tmp/notes.anki|set ft=anki<cr>')
@@ -714,7 +699,6 @@ vim.keymap.set('i', '<c-m-e>', "<cmd>call setline('.',expand(getline('.'),v:fals
 
 -- ─ for these check if buffer is modifiable
 -- vim.keymap.set('n', '<s-cr>', "O<esc>O")
--- vim.keymap.set('n', '<leader>O', "O<esc>O")
 -- vim.keymap.set('n', '<space><space>', "]]zz", {remap=true})
 -- vim.keymap.set('n', '<space><space>', "]]")
 -- vim.keymap.set('n', '<space><s-space>', "[[zz", {remap=true})
@@ -730,7 +714,7 @@ vim.keymap.set({'n','x','i','t','c'},'<f16>',[[<c-\><c-n><c-w>]])
 vim.keymap.set({'n','i'},'<f12><c-e>',[["<cmd>lua "..getline('.')..'<cr>']], {expr=true})
 -- like in readline
 vim.keymap.set({'c'},'<f12><c-e>','<c-f>')
-vim.keymap.set({'n','i'},'<f12>h',"<cmd>norm! ggVG<cr>")
+vim.keymap.set({'n','i'},'<f12>h',"<cmd>norm! GVgg0<cr>")
 
 vim.keymap.set({'n','i'},'<f12><c-o>','<cmd>norm! cip<cr>')
 
