@@ -87,7 +87,7 @@ return {
 
       -- extras (https://github.com/linty-org/readline.nvim/issues/2)
       -- Maybe you could use the + register in insert mode
-      { mode = "!", "<C-y>", '<C-r>+' },
+      { mode = "!", "<C-y>", '<C-r>"' },
       -- { mode = "!", "<C-y>", "<C-r>-" },
       { mode = "i", "<C-_>", "<C-Bslash><C-o>u" },
       -- { mode = "i", "<C-/>", "<C-Bslash><C-o>u" },

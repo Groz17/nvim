@@ -18,10 +18,8 @@ return
     },
     keys = {
         -- Lists available tags in your Notmuch database in a buffer.
-        -- { "<leader>@", "<CMD>Notmuch<CR>", desc = "Launch notmuch landing page"},
-        -- { "<leader>mm", "<CMD>Notmuch<CR>", desc = "Launch notmuch landing page"},
         -- for plugins with jut a mapping, use symbols
-        { "<leader>@", "<CMD>Notmuch<CR>", desc = "Launch notmuch landing page"},
+        { "<f12>m", "<CMD>Notmuch<CR>", desc = "Launch notmuch landing page"},
         -- { "<leader>n", ":NmSearch<space>", desc = "Notmuch query"},
         { "<space><space>", ":NmSearch<space>", desc = "Notmuch query", ft = {"notmuch-hello","notmuch-threads","mail"}},
 

@@ -287,6 +287,7 @@ return {
       -- for keymap, all values may be string | string[]
       -- use an empty table to disable a keymap
       keymap = {
+        preset='none',
         -- how to specify modes?
         -- remember unix philosophy: one thing well
         -- ['<C-space>'] = { 'show' },

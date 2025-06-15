@@ -56,7 +56,8 @@ return {
 
       -- 			dmacro_key = '<Leader>.' --  you need to set the dmacro_key dmacro_key = "<C-.>", dmacro_key = '<C-q>'
       config = function()
-        vim.keymap.set({ "i", "n" }, '<C-.>', '<Plug>(dmacro-play-macro)')
+        -- vim.keymap.set({ "i", "n" }, '<C-.>', '<Plug>(dmacro-play-macro)')
+        vim.keymap.set({ "i", "n" }, '<f12>z', '<Plug>(dmacro-play-macro)') --repeat
       end
     },
   }

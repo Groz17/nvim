@@ -131,14 +131,15 @@ return
             navigation = {
               enable = false,
               keymaps = {
-		 -- use emacs keymaps
+                -- use emacs keymaps
                 -- goto_definition = "gnd",
                 -- list_definitions = "gnD",
                 goto_definition = false,
                 list_definitions = false,
                 -- list_definitions_toc = "gO",
-                goto_next_usage = "<a-*>",
-                goto_previous_usage = "<a-#>",
+                -- emacs?
+                -- goto_next_usage = "<a-*>",
+                -- goto_previous_usage = "<a-#>",
               },
             },
           },

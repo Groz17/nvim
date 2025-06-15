@@ -15,11 +15,12 @@ return {
   -- add formatter-agnostic keybindings to disable format? like stylua:ignore and sql-formatter-disable (gcd (start) and gcD (end))
   -- lazy-loads: press gq (formatxpr) to load
   cmd = { 'ConformInfo' },
-  keys = 'gq',
   -- for dadbod-ui buffer (acts as bufwritepre)
   -- TODO: format only if sql executed succesfully
   ft = 'sql',
-  -- keys = { { '<leader>ff', function() require('conform').format({ async = true, lsp_fallback = true }) end, mode = '', desc = 'Format buffer', }, },
+  -- https://youtu.be/E-NAM9U5JYE?t=1725
+  -- also c-xh gq is cool
+  keys = { 'gq', { 'gr=', function() require('conform').format({ async = true, lsp_fallback = true }) end, mode = '', desc = 'Format buffer', }, },
   -- This will provide type hinting with LuaLS
   ---@module "conform"
   ---@type conform.setupOpts
@@ -80,7 +81,7 @@ return {
     -- Customize formatters
     formatters = {
       shfmt = { prepend_args = { '-i', '2' } },
-      perltidy = { prepend_args = { '-i', '2', '-st', '-pt=2',--[[ ,'-nsak=while' ]] }, },
+      perltidy = { prepend_args = { '-i', '2', '-st', '-pt=2', --[[ ,'-nsak=while' ]] }, },
       sql_formatter = { prepend_args = { '--config', '{"keywordCase": "upper"}' }, },
       -- prepend_args = { '--config-path=' .. vim.env.HOME .. '/.config/stylua.toml' }
       stylua = { prepend_args = { '--config-path=' .. vim.env.HOME .. '/.config/nvim/stylua.toml', },

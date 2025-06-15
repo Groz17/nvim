@@ -14,8 +14,8 @@ return{{
   end,
   opts={
     --   org_agenda_files = {'~/Dropbox/org/*', '~/my-orgs/**/*'},
-    org_agenda_files = '~/orgfiles/**/*',
-    org_default_notes_file = '~/orgfiles/refile.org',
+    org_agenda_files = '~/notes/**/*',
+    org_default_notes_file = '~/notes/Task.org',
     ---@see https://github.com/nvim-orgmode/orgmode/discussions/643
     mappings = {
       -- Change everything (but globals) to use local leader for org files

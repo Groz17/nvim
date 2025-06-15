@@ -157,6 +157,7 @@ return
           -- i -> if then (conditional)
           -- indentation?
           -- can you use dsi to remove surrounding if?
+          -- doesn't work w/ case in Bash...
           i = ai.treesitter({ a = { "@conditional.outer" }, i = { "@conditional.inner" }, }, {}),
           -- a judge
           -- j = ai.gen_spec.treesitter({ a = { "@conditional.outer" }, i = { "@conditional.inner" }, }, {}),
