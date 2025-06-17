@@ -276,6 +276,7 @@ return
           -- non usare separatori (per bash)
           -- m = ai.argument({}),
           I = extra_ai.indent(),
+          ['\t'] = extra_ai.indent(),
           -- ["<space>"] = extra_ai.indent(),
           -- G = extra_ai.buffer(),
           -- BUG: doesn't work
