@@ -6,43 +6,6 @@
 -- how to know which of your LSP support a certain capability like inlay hint? fzf display???
 return {
  {
-   'williamboman/mason-lspconfig.nvim',
-   dependencies = {
-     -- how to list everything you've installed?
-     'williamboman/mason.nvim',
-   },
-   lazy = true,
-   opts = {
-     -- Install these LSPs automatically
-     ensure_installed = {
-       'basedpyright',
-       'rust_analyzer',
-       'clangd',
-       -- usa gx on MDN reference
-       'cssls',
-       'vimls',
-       -- 'pst_ls',
-       'taplo',
-       'bashls',
-       'perlnavigator',
-       -- 'denols',
-       --     ◍ postgrestools (keywords: postgres, sql)
-       'sqlls',
-       -- 'bashls', -- requires npm to be installed
-       -- 'cssls', -- requires npm to be installed
-       -- 'html', -- requires npm to be installed
-       'lua_ls',
-       -- 'jsonls', -- requires npm to be installed
-       -- 'lemminx',
-       -- 'marksman',
-       -- 'quick_lint_js',
-       -- 'tsserver', -- requires npm to be installed
-       -- 'yamlls', -- requires npm to be installed
-       'jdtls',
-     },
-   },
- },
- {
    -- can you make program config act like LSP? like .stylua.toml should show live diagnostics...
    -- LSP Configuration
    -- https://github.com/neovim/nvim-lspconfig
@@ -53,7 +16,7 @@ return {
    -- event = { 'BufReadPre', 'BufNewFile' },
    dependencies = {
      -- LSP Management
-     { 'williamboman/mason-lspconfig.nvim', 'saghen/blink.cmp' },
+     { 'saghen/blink.cmp' },
 
    },
    config = function()
@@ -87,8 +50,6 @@ return {
      local lspconfig = require('lspconfig')
      -- TODO: https://github.com/Saghen/blink.cmp/issues/13
 
-     -- preview_location({location}, {opts})         *vim.lsp.util.preview_location()*
-
      vim.api.nvim_create_autocmd('LspAttach', {
        callback = function(args)
        local client = vim.lsp.get_client_by_id(args.data.client_id)
@@ -103,27 +64,7 @@ return {
        --  " from https://github.com/VSCodeVim/Vim/blob/master/ROADMAP.md
        --      " gh - show the hover tooltip.
        --      " gb - add an additional cursor at the next place that matches *.
-       --  " K -> documentation, gK -> hover
-       -- how to go up and down? you could use ^ww to go to the floating window, but still
-       --  " tooltip e hover sono sinonimi?
-       -- make it so when no results open man/help (or maybe open man if v:count!=0)
-       -- vim.keymap.set("n", "<c-w>gi","<cmd>split | lua vim.lsp.buf.implementation()<CR>", { buffer = bufnr ,desc = "Goto implementation" })
-       -- idea: usa ^w o altro prefisso per cambiare modalita di visualizzazione comando lsp (window/floating window/go to buffer (edit)/etc...)
 
-       -- vim.keymap.set('n', '<c-w>gi', function()
-       --   -- local client = vim.lsp.get_client_by_id(ev.data.client_id)
-       --   if client.supports_method('textDocument/implementation') then
-       --     vim.cmd([[lua vim.lsp.buf.implementation()]])
-       --   end
-       -- end, { buffer = args.buf, desc = 'Goto implementation' })
-
-       -- for multicursor
-       -- vim.keymap.set("n", "<c-s>", vim.lsp.buf.signature_help, { buffer = bufnr ,desc = "Signature help" })
-
-       -- { '<C-g>h', vim.lsp.buf.signature_help, mode = 'i', desc = 'Signature Help', has = 'signatureHelp' },
-       -- buf_maps("i", { ["<M-s>"] = function() lsp.buf.signature_help() end })
-       -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<c-\\>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-       --  " nnoremap <silent> 1gD           <cmd>lua vim.lsp.buf.type_definition()<CR>
        vim.keymap.set('n', 'gy', vim.lsp.buf.type_definition, { buffer = args.buf, desc = 'Goto type definition' })
        vim.keymap.set('n', 'gY', vim.lsp.buf.typehierarchy, { buffer = args.buf, desc = 'Subtypes or supertypes' })
        --  " nnoremap <silent> <F2>          <cmd>lua vim.lsp.buf.rename()<CR>
@@ -196,23 +137,6 @@ return {
 
      })
 
-     -- TODO: probably not necessary
-     local capabilities = require('blink.cmp').get_lsp_capabilities(vim.lsp.protocol.make_client_capabilities())
-     capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-     require('mason-lspconfig').setup_handlers({
-       function(server_name)
-         if server_name ~= 'jdtls' then
-           lspconfig[server_name].setup({
-             -- usa on_attach per lsp-server specifici, LspAttach per config globale
-             capabilities = capabilities
-             -- TODO: funge? also blink icons?
-             -- capabilities = require('blink.cmp').get_lsp_capabilities(server_name.capabilities)
-           })
-         end
-       end,
-
-     })
 
      -- -- Globally configure all LSP floating preview popups (like hover, signature help, etc)
      -- local open_floating_preview = vim.lsp.util.open_floating_preview
@@ -279,27 +203,7 @@ return {
 --     },
 --   },
 -- },
--- {
---   "kevinhwang91/nvim-ufo", -- enable LSP-based folds
--- }
--- dependencies = {
---   'saghen/blink.cmp',
--- },
--- from cssls help?
--- --Enable (broadcasting) snippet capability for completion
--- local capabilities = vim.lsp.protocol.make_client_capabilities()
--- capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-
--- lspconfig.ast_grep.setup{}
-
--- install sed :))
---  -- https://github.com/Beaglefoot/awk-language-server/
--- lspconfig.awk_ls.setup({})
-
-   -- how to disable when virtual_text is on? like in lazy.nvim's update window
-   -- TODO: put this in diagnostics.lua? also don't attach only on lspattach (diagnostics could be triggered by CLI command as well/others?) maybe just use keys
-{ 'Issafalcon/lsp-overloads.nvim',event='LspAttach'},
 --
 --   {
 --     -- would be nice to have a mapping like <leader>{J,K} to go to next/prev bulb
@@ -322,27 +226,6 @@ return {
        -- priority
      },
  },
---   {
---     "smjonas/inc-rename.nvim",
---     event = "LspAttach",
---     config = function()
---       require("inc_rename").setup()
---       vim.keymap.set("n", "<leader>lr", function() return ":IncRename " .. vim.fn.expand("<cword>") end, { expr = true,  desc = "󰑕 Rename word under cursor"  })
---       vim.keymap.set("n", "<leader>lR", ":IncRename<space>", { desc = "󰑕 Rename" })
---     end,
---   },
---   {
---     'SmiteshP/nvim-navic',
---     cond = false,
---     dependencies = 'neovim/nvim-lspconfig',
---     opts = {
---       lsp = { auto_attach = true },
---       separator = " > ",
---       highlight = true,
---       depth_limit = 5,
---     },
---     event = 'LspAttach'
---   },
 --   {
 --     'Wansmer/symbol-usage.nvim',
 --     event = 'LspAttach', -- need run before LspAttach if you use nvim 0.9. On 0.10 use 'LspAttach'
@@ -373,8 +256,6 @@ return {
 
 -- live render workspace diagnostics in quickfix with current buf errors on top, buffer diagnostics in loclist
 -- https://github.com/onsails/diaglist.nvim
-
--- compila ensure_installed
 
 -- https://github.com/joechrisellis/lsp-format-modifications.nvim
 -- https://github.com/joechrisellis/lsp-format-modifications.nvim/issues/1#issuecomment-1275302811

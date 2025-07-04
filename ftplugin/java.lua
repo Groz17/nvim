@@ -22,15 +22,14 @@ local config = {
     -- https://github.com/mfussenegger/nvim-jdtls/issues/487
   end,
   ---@see https://www.reddit.com/r/neovim/comments/1cg1liu/comment/l1tt8m0/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
-  cmd = { require('mason-registry').get_package('jdtls'):get_install_path() .. '/bin/jdtls', },
+  cmd = { vim.fn.exepath'/bin/jdtls', },
   -- root_dir = require('jdtls.setup').find_root({'build.gradle', 'pom.xml', '.git'}),
   root_dir = vim.fs.dirname(
     vim.fs.find({ 'gradlew', '.git', 'mvnw' }, { upward = true })[1]
   ),
   init_options = {
     bundles = {
-      vim.fn.glob(require('mason-registry').get_package('java-debug-adapter'):get_install_path() .. '/extension/server/com.microsoft.java.debug.plugin-*.jar', true),
-      vim.fn.glob(require('mason-registry').get_package('java-test'):get_install_path() .. '/extension/server/*.jar', 1),
+      vim.fn.globpath("$MASON/share/java-debug-adapter", "*.jar", true, true)
     },
   },
 }

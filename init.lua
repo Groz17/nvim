@@ -35,8 +35,6 @@ vim.api.nvim_create_autocmd("User", {
     require("config.commands")
     require("config.keymaps")
     require("config.files")
+    require("config.lsp")
   end,
 })
-
--- useless for now
--- require("config.lsp")
