@@ -1,0 +1,11 @@
+return{}
+-- ['jsonls'] = function()
+--   require('lspconfig').jsonls.setup {
+--     settings = {
+--       json = {
+--         schemas = function() require('schemastore').json.schemas() end,
+--         validate = { enable = true },
+--       },
+--     },
+--   }
+-- end,
