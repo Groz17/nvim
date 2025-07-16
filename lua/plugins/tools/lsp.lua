@@ -58,7 +58,6 @@ return {
 
        -- TODO: substitute all this mappings with fzf: se 1->default LSP mapping behaviour, se n->apri fzf (ed eventualmente metti in quickfix/loclist)
        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = args.buf, desc = 'Goto definition' })
-       vim.keymap.set('n', '<c-]>', vim.lsp.buf.definition, { buffer = args.buf, desc = 'Goto definition' })
        -- vim.keymap.set("n", "gd", function() vim.lsp.buf.definition { on_list = on_list } end, opts)
        vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { buffer = args.buf, desc = 'Goto declaration' })
        --  " from https://github.com/VSCodeVim/Vim/blob/master/ROADMAP.md
