@@ -101,7 +101,7 @@ return {
     -- Snacks.picker.grep({rtp = true, pattern="file:md$"})
 
     -- problema dei simboli con kanata: <f17>F e <space><space>fl for <space><space>=?
-    { '<f17>=', function() Snacks.picker.cliphist() end, desc = 'Clipboard history' ,mode={'n','i'}},
+    { '<f17>+', function() Snacks.picker.cliphist() end, desc = 'Clipboard history' ,mode={'n','i'}},
     { "<f17>'", function() Snacks.picker.registers() end, desc = 'Registers' ,mode={'n','i'}},
     { '<f17>A', function() Snacks.picker.autocmds() end, desc = 'Autocmds' ,mode={'n','i'}},
     -- { '<f17>#', function() Snacks.picker.autocmds() end, desc = 'Autocmds' },
@@ -138,7 +138,7 @@ return {
     { "<f12>rl", function() Snacks.picker.marks() end, desc = 'Marks' ,mode={'n','i'}},
     -- { '<f17><BS>', function() Snacks.picker.resume() end, desc = 'Resume' },
     -- also create insert mode mapping <f17>D
-    { '<c-m-bs>', function() Snacks.picker.resume() end, desc = 'Resume' ,mode={'n','i'}},
+    { '<bs>', function() Snacks.picker.resume() end, desc = 'Resume' ,mode={'n','i'}},
     -- { '<c-s-o>', function() Snacks.picker.qflist() end, desc = 'Quickfix List' ,mode={'n','i'}},
     -- <f17>C for all colorschemes, <space><space>c for plugin's colorschemes?
     -- how to preview the current buffer? 
@@ -181,24 +181,11 @@ return {
     -- add action to go to file lazy share?
     -- { '<f17>L', function() Snacks.picker.lazy() end, desc = 'Lazy' },
     -- use v:count
-    -- {mode={"n","i"},'<f17>I', function() Snacks.picker.icons({icon_sources={'emoji'}}) end, desc = 'Icons' },
-    -- how to copy w yank?
-    -- is it possible to dynamically change opts? like remove icon_sources table
-    -- {mode={"n"},'<f17>I', function() Snacks.picker.icons({icon_sources={'emoji'},confirm={'yank','close'}}) end, desc = 'Icons' },
-    -- {mode={"n"},'<f17><c-i>', function() Snacks.picker.icons({search="Smileys",icon_sources={'emoji'},confirm={'yank','close'}}) end, desc = 'Icons' },
-    -- how to use search?
-    -- {mode={"n"},'<f17><c-i>', function() Snacks.picker.icons({pattern="Smileys ",icon_sources={'emoji'},confirm={'yank','close'}}) end, desc = 'Icons' },
-    -- {mode={"i"},'<f17>I', function() Snacks.picker.icons({icon_sources={'emoji'},confirm='put'}) end, desc = 'Icons' },
-    -- {mode={"n","i"},'<f17>I', function() Snacks.picker.icons() end, desc = 'Icons' },
-    -- maybe sort with emoji first?
-    -- {'<f17>i', function() Snacks.picker.icons() end, desc = 'Icons' },
+    {mode={"n","i"},'<f12>8es', function() Snacks.picker.icons({icon_sources={'emoji'}}) end, desc = 'Emojis' },
     -- {mode={"i"},'<f17>i', function() Snacks.picker.icons({layout = {preset = "cursor"}}) end, desc = 'Icons' },
     -- cursor doesn't exist?
     -- {mode={"n","i"},'<f17>i', function() Snacks.picker.icons(--[[{layout = {preset = "dropdown"}]]) end, desc = 'Icons' },
     {mode={"n"},'<f17>i', function() Snacks.picker.icons(--[[{layout = {preset = "dropdown"}]]) end, desc = 'Icons' },
-    -- startinsert doesN't work
-    -- {mode={"i"},'<f17>i', function() Snacks.picker.icons(--[[{layout = {preset = "dropdown"}]]) vim.cmd.startinsert()end , desc = 'Icons' },
-    -- {mode={"i"},'<f17>i', '<cmd>lua Snacks.picker.icons()<cr><cmd>startinsert<cr>' , desc = 'Icons' },
 
     { '<f17>z', function() Snacks.picker.zoxide() end, desc = 'Zoxide' ,mode={'n','i'}},
     -- like for z=
@@ -222,6 +209,21 @@ return {
           pattern=""
 
         },
+        -- https://github.com/folke/snacks.nvim/discussions/2018
+        commands = {
+        actions = {
+          accept = function(picker, item)
+            vim.cmd(item.cmd)
+            picker:close()
+          end,
+        },
+        win = {
+          input = {
+            keys = {
+              -- like ivy?
+              ['<C-a-j>'] = { 'accept', mode = { 'i', 'n' } }, -- Execute
+              ['<CR>'] = { 'confirm', mode = { 'i', 'n' } }, -- Choose
+            }}}},
         explorer = {
           -- why two times for layout?
           -- maybe floating window?
@@ -276,11 +278,11 @@ return {
             ["<m-g>g"] = { "flash", mode = { "n", "i" } },
             ["s"] = { "flash" },
             -- magari usa <c-c> qui?
-            ["<s-Esc>"] = { "close", mode = { "n", "i" } },
+            -- ["<s-Esc>"] = { "close", mode = { "n", "i" } },
             -- like emacs
             ["<c-g>"] = { "close", mode = { "i" } },
 	    -- maybe better
-            ["<c-[>"] = { "close", mode = { "i" } },
+            -- ["<c-[>"] = { "close", mode = { "i" } },
 
             -- like fzf-lua (in eventuale attesa di emacs keybinding)
             ["<c-space>"] = { "toggle_live", mode = { "i" } },
@@ -320,7 +322,7 @@ return {
             -- usa ctrl-Alt cosi si puo usare in insert&normal mode
             -- stessi mapping del picker
             -- emacs
-            ["<f17>h"] = { "select_all", mode = { "i", "n" } },
+            ["<f12>h"] = { "select_all", mode = { "i", "n" } },
             ["<f13>i"] = { "toggle_ignored", mode = { "i", "n" } },
             -- per il momento usa tab... fixa w/ ghostty
             ["<a-tab>"] = { "toggle_ignored", mode = { "i", "n" } },
@@ -335,6 +337,7 @@ return {
             -- floating keymap? define standard as for explorer, debug, etc...
 
             ['<f12>o'] = { 'cycle_win', mode = { 'i', --[['n']] } },
+            -- TODO: doesn't yank all selected lines?
             ['<a-w>'] = { {'yank','close'}, mode = { 'i', --[['n']] } },
             -- ╭─────────────────────────────────────────────────────────╮
             -- │ preview                                                 │
