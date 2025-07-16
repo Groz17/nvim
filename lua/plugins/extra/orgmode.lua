@@ -32,6 +32,8 @@ return{{
       -- in insert mode though?
       org = {
         org_meta_return = '<LocalLeader><CR>',
+        org_next_visible_heading = false,
+        org_previous_visible_heading = false,
       },
 
         text_objects = {

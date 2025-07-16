@@ -57,13 +57,13 @@ return {
       -- { "<C-a>", function() require("readline").beginning_of_line() end, mode = "!" },
       { "<C-e>", function() require("readline").end_of_line() end, mode = "!" },
       -- blink.cmp bug?
-      -- { "<C-k>", function()
-      --   if vim.fn.getcmdpos() > vim.fn.getcmdline():len() then
-      --     return [[<c-k>]]
-      --   else
-      --     return require("readline").kill_line()
-      --   end
-      -- end, mode = "!", expr =true },
+      { "<C-k>", function()
+        -- if vim.fn.getcmdpos() > vim.fn.getcmdline():len() then
+        --   return [[<c-k>]]
+        -- else
+          require("readline").kill_line()
+        -- end
+      end, mode = "!",},
       -- seems buggy (sometimes goes into normal mode)
       -- { "<C-u>", function() require("readline").backward_kill_line() end, mode = "!" },
 

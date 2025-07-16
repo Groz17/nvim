@@ -3,6 +3,7 @@ return
 {
   -- support hot reloading + don't focus window when running? (maybe configure with WM...)
   "S1M0N38/love2d.nvim",
+  cond=false,
   -- maybe make it run only on a directory called Lua? for your projects? or files with .love extension? so it doesn't mess up with lua_ls? it does tho
   cmd = "LoveRun",
   opts = { restart_on_save = true },

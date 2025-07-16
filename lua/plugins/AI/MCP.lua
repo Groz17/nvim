@@ -9,7 +9,6 @@ return {
   },
   init = function()
     vim.keymap.set('n', '<leader>eM', [[<CMD>tab drop ]] .. vim.fn.expand('~/.config/mcphub/servers.json') .. '<CR>', { desc = 'MCP Servers' })
-    -- would be nice if all plugins use same highlighting group for same things, like tabs...
   end,
   cmd = 'MCPHub',
   build = 'bundled_build.lua', -- Bundles mcp-hub locally
@@ -19,6 +18,7 @@ return {
     extensions = {
       avante = {
         auto_approve_mcp_tool_calls = false, -- Auto approves mcp tool calls
+            make_slash_commands = true, -- make /slash commands from MCP server prompts
       },
     },
     --             log = {

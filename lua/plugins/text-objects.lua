@@ -4,7 +4,7 @@ return
   {
     -- use N and L to select last and first text object on line (buffer)
     "echasnovski/mini.ai",
-    -- dependencies = "nvim-treesitter/nvim-treesitter-textobjects",
+    dependencies = { "nvim-treesitter/nvim-treesitter-textobjects", cmd = {'TSTextobjectGotoPreviousStart','TSTextObjectGotoNextEnd'}, },
     --    event = "ModeChanged",
     keys = {
       { "a", mode = { "x", "o" } },
@@ -20,7 +20,6 @@ return
       { "g[", mode = { "x", "o" }},
       -- { "<space>k", mode = { "n", "x", "o" }},
     },
-    dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
     opts = function()
       local extra_ai = require('mini.extra').gen_ai_spec
       local ai = require("mini.ai").gen_spec
@@ -314,7 +313,7 @@ return
           },
 
 
-          -- TODO: WTF? how many numbers
+          -- TODO: how many numbers
           -- N = gen_ai_spec.number(),
           -- D = require('mini.extra').gen_ai_spec.diagnostic(vim.v.count),
           -- D = extra_ai.diagnostic(),

@@ -55,6 +55,7 @@ return {
         -- multiple cursors. This lets you have overlapping mappings.
         mc.addKeymapLayer(function(layerSet)
 
+            -- they support v:count
             layerSet({"n", "x"}, "n", function() require("multicursor-nvim").matchAddCursor(1) end)
             layerSet({"n", "x"}, "N", function() require("multicursor-nvim").matchAddCursor(-1) end)
 
@@ -63,7 +64,7 @@ return {
             layerSet({"n", "x"}, "Q", function() mc.matchSkipCursor(-1) end)
 
             -- Clone every cursor and disable the originals.
-            layerSet({"n", "x"}, "<a-y>", mc.duplicateCursors)
+            layerSet({"n", "x"}, "<a-w>", mc.duplicateCursors)
 
 
 

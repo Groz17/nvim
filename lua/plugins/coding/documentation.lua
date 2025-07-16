@@ -20,7 +20,7 @@
 return {
     {
      "maskudo/devdocs.nvim",
-    -- lazy = false,
+    cond = false,
     dependencies = {
       "folke/snacks.nvim",
     },

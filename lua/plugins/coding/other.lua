@@ -2,6 +2,7 @@
 -- nnoremap <silent> <A-o> :FSHere<cr>
 return {
   'rgroli/other.nvim',
+  cond=false,
   main = 'other-nvim',
   keys = {
     -- <s-bs>?

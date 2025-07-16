@@ -15,7 +15,7 @@ return {
 
         -- basically unbounded vim/emacs keymaps could become kanata's modifiers
         -- what about visual mode? just operate on that region
-        Snacks.toggle.animate():map("<f13>a", { mode = {"n","i"} })
+        -- Snacks.toggle.animate():map("<f13>a", { mode = {"n","i"} })
         Snacks.toggle.line_number():map("<f13>n", { mode = {"n","i"} })
         -- maybe use uppercase for lsp-related toggle mappings?
         -- Snacks.toggle.diagnostics():map([[\D]], { mode = {"n","i"} })
@@ -29,6 +29,7 @@ return {
         Snacks.toggle.dim():map("<f13>D", { mode = {"n","i"} })
         Snacks.toggle.zoom():map("<f13>o", { mode = {"n","i"} }) -- like ^wo vim mapping
         Snacks.toggle.zen():map("<f13>z", { mode = {"n","i"} })
+
         Snacks.toggle.words():map("<f13>R", { mode = {"n","i"} })
         -- ╭─────────────────────────────────────────────────────────╮
         -- │ options                                                 │
@@ -48,11 +49,11 @@ return {
         Snacks.toggle.option("virtualedit", { name = "Virtualedit" }):map("<f13>v", { mode = {"n","i"} })
         Snacks.toggle.option("wrap", { name = "Wrap" }):map("<f13>w", { mode = {"n","i"} })
         Snacks.toggle.option("wrap", { name = "Wrap" }):map("<f12>xt", { mode = {"n","i"} }) -- toggle-truncate-lines
-        -- Snacks.toggle.option("cursorline cursorcolumn", { name = "Crosshairs" }):map("<f13>x", {mode={"n","i"}})
-
         Snacks.toggle.option("modifiable", { name = "Modifiable" }):map("<f13>m", { mode = {"n","i"} })
+
+        Snacks.toggle.option("modifiable", { name = "Modifiable" }):map("<f12><c-q>", { mode = {"n","i"} })
         -- like emacs c-x c-q
-        Snacks.toggle.option("readonly", { name = "Readonly" }):map("<f12><c-q>", { mode = {"n","i"} })
+        -- Snacks.toggle.option("readonly", { name = "Readonly" }):map("<f12><c-q>", { mode = {"n","i"} })
         -- yoL?
         -- yoc?
         Snacks.toggle.option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 }):map("<f13>e", { mode = {"n","i"} })

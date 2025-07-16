@@ -23,16 +23,8 @@ return {
   },
     build = 'make install_jsregexp',
     init = function()
-      vim.keymap.set(
-        'n',
-        '<leader><tab>l',function() return
-        '<CMD>e ' .. vim.fn.stdpath('config') .. '/snippets/LuaSnip/' .. vim.bo.filetype .. '.lua<CR>'end, { desc = "(LuaSnip) Edit &ft", expr = true }
-      )
-      vim.keymap.set(
-        'n',
-        '<leader><tab>L',
-        '<CMD>e ' .. vim.fn.stdpath('config') .. '/snippets/LuaSnip/all.lua<CR>', { desc = "(LuaSnip) Edit All" }
-      )
+      -- vim.keymap.set( 'n', '<leader><tab>l',function() return '<CMD>e ' .. vim.fn.stdpath('config') .. '/snippets/LuaSnip/' .. vim.bo.filetype .. '.lua<CR>'end, { desc = "(LuaSnip) Edit &ft", expr = true })
+      -- vim.keymap.set( 'n', '<leader><tab>L', '<CMD>e ' .. vim.fn.stdpath('config') .. '/snippets/LuaSnip/all.lua<CR>', { desc = "(LuaSnip) Edit All" })
     end,
     opts = function()
       return {
@@ -80,7 +72,7 @@ return {
       vim.api.nvim_create_user_command( 'LuaSnipEdit', function() require('luasnip.loaders.').edit_snippet_files() end, {})
       -- require("luasnip.loaders").edit_snippet_files( { ft_filter = function(ft) return ft ~= "all" end })
       -- added spaces to align in which-key
-      vim.keymap.set('n', '<leader><tab>g', '<CMD>LuaSnipEdit<CR>', { desc = "  (All)   Edit" })
+      -- vim.keymap.set('n', '<leader><tab>g', '<CMD>LuaSnipEdit<CR>', { desc = "  (All)   Edit" })
 
       -- vim.keymap.set({"i","s"}, "<leader><Tab>", "<Plug>luasnip-next-choice", {})
       -- vim.keymap.set({"i","s"}, "<s-Tab>", "<Plug>luasnip-prev-choice", {})
@@ -89,17 +81,11 @@ return {
       -- vim.keymap.set({"i", "s"}, "jk", function() ls.jump( 1) end, {silent = true})
       -- magari usa tab?
       -- make this dinamycally confiurable, like if you have :: like in orgmode enter pattern aNd use it...
-      -- vim.keymap.set({"i", "s"}, "<space><space>", function() ls.jump( 1) end, {silent = true})
-      -- using home row mods
-      -- vim.keymap.set({"i", "s"}, "<a-k>", function() ls.jump( 1) end)
       -- vim.keymap.set({"i", "s"}, "kj", function() ls.jump(-1) end, {silent = true})
-      -- vim.keymap.set({"i", "s"}, "<space><s-space>", function() ls.jump(-1) end, {silent = true})
-      -- vim.keymap.set({"i", "s"}, "<c-j>", function() ls.jump(-1) end)
-      -- vim.keymap.set({"i", "s"}, "<c-j>", function() ls.jump(-1) end)
       -- jj to mean <c-h>???
 
           -- ls.change_choice(1)
-      vim.keymap.set({"i", "s"}, "<C-s>", function() return ls.choice_active() and '<cmd>lua require("luasnip.extras.select_choice")()<cr>' or "<C-s>" end, {expr = true})
+      -- vim.keymap.set({"i", "s"}, "<C-s>", function() return ls.choice_active() and '<cmd>lua require("luasnip.extras.select_choice")()<cr>' or "<C-s>" end, {expr = true})
       vim.keymap.set({"i", "s"}, "<C-i>", function() return ls.choice_active() and "<Plug>luasnip-next-choice" or "<C-i>" end, {expr = true})
       vim.keymap.set({"s"}, "<C-j>", function() return ls.choice_active() and "<Plug>luasnip-next-choice" or "<C-j>" end, {expr = true})
       -- alla fine choice next/prev si puo fare solo in select mode? no!
@@ -174,16 +160,14 @@ return {
     -- does it support nlua?
     -- support saving with ZZ et al? (don't save with ZQ...)
     'chrisgrieser/nvim-scissors',
-    -- dependencies = 'nvim-telescope/telescope.nvim', -- optional
     init = function()
       vim.keymap.set('n', '<leader><tab>p', '<CMD>e ' .. vim.fn.stdpath('config') .. '/snippets/vscode/package.json<CR>', { desc = "(VS Code) Project" })
-      vim.keymap.set( 'n', '<leader><tab>v',function() return '<CMD>e ' .. vim.fn.stdpath('config') .. '/snippets/vscode/' .. vim.bo.filetype .. '.json<CR>'end, { desc = "(VS Code) Edit &ft", expr = true })
+      vim.keymap.set( 'n', '<leader><tab><tab>',function() return '<CMD>e ' .. vim.fn.stdpath('config') .. '/snippets/vscode/' .. vim.bo.filetype .. '.json<CR>'end, { desc = "(VS Code) Edit &ft", expr = true })
       -- add icon/text to blink for personal snippets...
-      vim.keymap.set( 'n', '<leader><tab>V', '<CMD>e ' .. vim.fn.stdpath('config') .. '/snippets/vscode/all.json<CR>', { desc = "(VS Code) Edit All" })
+      vim.keymap.set( 'n', '<leader><tab><s-tab>', '<CMD>e ' .. vim.fn.stdpath('config') .. '/snippets/vscode/all.json<CR>', { desc = "(VS Code) Edit All" })
     end,
     -- edits only my snips
     keys = {
-      -- use <s-tab> as mapping
       -- these should work even if filetype not set (maybe edit all.lua/json?)
       -- add snippets that correspond to comment-todo keywords... (with regex?)
       { '<leader><tab>e', function() require('scissors').editSnippet() end, desc = "(VS Code) Edit" },
@@ -192,17 +176,26 @@ return {
       -- PERF: use all.json if not filetype (send PR)
       -- Snippets files are written in JSON, support C-style comments,??? doesn't seem that way
       -- what happens when you define same prefix as friendly-snippets? can you disable a specific friendly-snippets' snippet?
-      { mode = { 'n', 'x' }, '<leader><tab>a', function() require('scissors').addNewSnippet() end, desc = "(VS Code) Add" },
+      { mode = { 'n', 'x' }, '<leader><tab>n', function() require('scissors').addNewSnippet() end, desc = "(VS Code) Add" },
+      -- { mode = { 'n', 'x' }, '<leader><tab>N', function() require('scissors').addNewSnippet() end, desc = "(VS Code) Add" }, -- all.json?
     },
 
     opts = {
       snippetDir = vim.fn.stdpath('config') .. '/snippets/vscode',
+      snippetSelection = {
+      picker = 'snacks',
       telescope = {
         -- By default, the query only searches snippet prefixes. Set this to
         -- `true` to also search the body of the snippets.
         alsoSearchSnippetBody = true,
       },
-      jsonFormatter = 'jq', -- "yq"|"jq"|"none"
     },
+      jsonFormatter = 'jq', -- "yq"|"jq"|"none"
+      editSnippetPopup = {
+        keymaps = {
+          insertNextPlaceholder = "<f24>"
+        },
+      }
   },
+}
 }

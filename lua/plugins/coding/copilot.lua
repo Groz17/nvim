@@ -2,7 +2,8 @@
 return {{
   -- how does the plugin integrate with avante.nvim?
   "zbirenbaum/copilot.lua",
-  cond=false, -- attach it buffer by buffer with a keymap?
+  cond=false,
+  -- cond=false, -- attach it buffer by buffer with a keymap?
   -- https://github.com/zbirenbaum/copilot.lua/issues/302
   dependencies = { 'AndreM222/copilot-lualine',
   config=function ()
@@ -14,9 +15,6 @@ return {{
     lualine.setup(opts)
   end
 },
-  -- dependencies = "giuxtaposition/blink-cmp-copilot",
-  -- cond = false,
-  -- lazy = true,
   cmd = "Copilot",
   build = ":Copilot auth",
   event = "InsertEnter",

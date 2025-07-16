@@ -1,5 +1,6 @@
 -- https://github.com/stevearc/resession.nvim
 --Use <a-s> to save session (mimics <c-s> for file...)
+--Use <c-x<c-s-s> to save session (mimics <c-x><c-s> for file...)
 
 -- https://github.com/rmagatti/auto-session
 -- how to have multiple sessions for same dir in same git branch?

@@ -1,4 +1,5 @@
 --https://github.com/lucobellic/edgy-group.nvim
+-- would be cool to separate windows/buffers based on extension or even group them, like group them by Front End (HTML, CSS), etc...
 return {
   'folke/edgy.nvim',
   -- event = 'VeryLazy',

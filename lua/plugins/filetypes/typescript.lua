@@ -1,6 +1,7 @@
 -- stable version
 return {
   "OlegGulevskyy/better-ts-errors.nvim",
+  cond=false,
   dependencies = { "MunifTanjim/nui.nvim" },
   ft = {'typescript','typescriptreact'},
   config = {

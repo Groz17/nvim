@@ -72,7 +72,8 @@ return
       --         │                         ADAPTERS                         │
       --         ╰──────────────────────────────────────────────────────────╯
 
-      dap.adapters.bashdb = { type = "executable", command = require('mason-registry').get_package('bash-debug-adapter'):get_install_path() .."/bash-debug-adapter", name = "bashdb" }
+dap.adapters.bashdb = { type = 'executable'; command = vim.fn.stdpath("data") .. '/mason/packages/bash-debug-adapter/bash-debug-adapter'; name = 'bashdb';
+}
       -- dap.adapters.firefox = { type = "executable", command = "node", args = { require('mason-registry').get_package('firefox-debug-adapter'):get_install_path() .. "/dist/adapter.bundle.js" } }
       -- dap.adapters.node2 = { type = "executable", command = "node", args = { require('mason-registry').get_package('node-debug2-adapter'):get_install_path() .. "/out/src/nodeDebug.js" } }
       -- dap.adapters.cppdbg = { id = "cppdbg", type = "executable", command = vim.fn.stdpath("data") .. "/mason/bin/OpenDebugAD7" }
@@ -109,39 +110,28 @@ return
       --         │                      CONFIGURATIONS                      │
       --         ╰──────────────────────────────────────────────────────────╯
       -- TODO: metti in filetype configs...
-      dap.configurations.sh = {
-        {
-          type = "bashdb",
-          request = "launch",
-          name = "Launch file",
-          showDebugOutput = true,
-          pathBashdb =require('mason-registry').get_package('bash-debug-adapter'):get_install_path() ..'/extension/bashdb_dir/bashdb',
-          pathBashdbLib =require('mason-registry').get_package('bash-debug-adapter'):get_install_path() ..'/extension/bashdb_dir',
-          trace = true,
-          file = "${file}",
-          program = "${file}",
-          cwd = "${workspaceFolder}",
-          pathCat = "cat",
-          pathBash = "/bin/bash",
-          pathMkfifo = "mkfifo",
-          pathPkill = "pkill",
-          -- args={},
-          -- https://github.com/mfussenegger/nvim-dap/issues/629
-          -- would be nice if dap provided a args() function that did smth like this:
-          -- Maybe only use args if you have vim.v.count?
-      args = function()
-        return coroutine.create(function(dap_run_co)
-          vim.ui.input({ prompt = 'Args >'}, function(choice)
-            choice = choice or ''
-            local arg = require("dap.utils").splitstr(choice)
-            coroutine.resume(dap_run_co, arg)
-          end)
-        end)
-      end,
-          env = {},
-          terminalKind = "integrated",
-        },
-      }
+dap.configurations.sh = {
+  {
+    type = 'bashdb',
+    request = 'launch',
+    name = "Launch file",
+    showDebugOutput = true,
+    pathBashdb = vim.fn.stdpath("data") .. '/mason/packages/bash-debug-adapter/extension/bashdb_dir/bashdb',
+    pathBashdbLib = vim.fn.stdpath("data") .. '/mason/packages/bash-debug-adapter/extension/bashdb_dir',
+    trace = true,
+    file = "${file}",
+    program = "${file}",
+    cwd = '${workspaceFolder}',
+    pathCat = "cat",
+    pathBash = "/bin/bash",
+    pathMkfifo = "mkfifo",
+    pathPkill = "pkill",
+    args = {},
+    argsString = '',
+    env = {},
+    terminalKind = "integrated",
+  }
+}
 
       dap.configurations.bash = dap.configurations.sh
 

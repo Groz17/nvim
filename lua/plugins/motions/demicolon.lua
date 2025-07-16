@@ -1,6 +1,7 @@
 -- also make this work for stuff like zj, zk
   return{
     'mawkler/demicolon.nvim',
+    cond=false,
     dependencies = {
       'nvim-treesitter/nvim-treesitter',
       'nvim-treesitter/nvim-treesitter-textobjects',

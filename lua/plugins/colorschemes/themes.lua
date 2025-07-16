@@ -15,13 +15,14 @@ return {
   --         ╭──────────────────────────────────────────────────────────╮
   --         │                     MAIN COLORSCHEME                     │
   --         ╰──────────────────────────────────────────────────────────╯
-{
-    "comfysage/cuddlefish.nvim",
+  {
+    "rose-pine/neovim", name = "rose-pine",
     lazy = false,
     priority = 1000,
     config = function()
-        vim.cmd.colorscheme('cuddlefish')
-    end
+      vim.cmd[[colorscheme rose-pine|hi Normal guibg=#0a0a0a]]
+      -- vim.api.nvim_set_hl(0, "Normal", { fg = "#0a0a0a" })
+    end,
 },
   --         ╭──────────────────────────────────────────────────────────╮
   --         │              COLORSCHEME-AFFECTING PLUGINS               │
@@ -30,9 +31,8 @@ return {
   {
     "xiyaowong/transparent.nvim",
     -- doesn't work
-    -- cond = false,
-    lazy = false,
-    -- cmd = {'TransparentToggle','TransparentEnable','TransparentDisable'},
+    cond = false,
+    cmd = {'TransparentToggle','TransparentEnable','TransparentDisable'},
     keys = {{'<f13>0','<cmd>TransparentToggle<cr>'},},
     opts = {
       extra_groups = {
@@ -44,10 +44,10 @@ return {
     },
     config = function()
       local transparent = require("transparent")
-      transparent.clear_prefix("lualine")
+      -- transparent.clear_prefix("lualine")
       -- transparent.clear_prefix("Bufferline")
       -- if config.transparent then
-        vim.cmd("TransparentEnable")
+        -- vim.cmd("TransparentEnable")
       -- end
     end,
   },
@@ -74,7 +74,14 @@ return {
 {
     "water-sucks/darkrose.nvim",
 },
-  { "rose-pine/neovim", name = "rose-pine" },
+-- {
+--     "comfysage/cuddlefish.nvim",
+--     lazy = false,
+--     priority = 1000,
+--     config = function()
+--         vim.cmd.colorscheme('cuddlefish')
+--     end
+-- },
   {
     'numToStr/Sakura.nvim',--[[  lazy = true ]]
   },

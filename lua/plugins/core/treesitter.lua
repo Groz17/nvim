@@ -181,6 +181,7 @@ return
 --https://github.com/ruicsh/nvim-config/blob/main/lua/plugins/treewalker.lua
 {
 	"aaronik/treewalker.nvim",
+  cond=false,
 	keys = function()
 		local tw = require("treewalker")
 

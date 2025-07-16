@@ -2,7 +2,7 @@
 return {
   -- TODO: add ranges as well
   'nacro90/numb.nvim',
-  -- doesn't work (WTF?)
+  -- doesn't work
   -- do I need to use ; or : if I mapped ; to :?
   -- keys = ':',
   event = 'CmdLineEnter',

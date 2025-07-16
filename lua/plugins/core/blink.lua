@@ -25,11 +25,8 @@ return {
   -- mapping to show possible completion with fzf-lua? or just API to show completions with their source? for git commit snippets
   -- deduplicate entries if lsp and snippets, choose lsp
   'saghen/blink.cmp',
-  cond=true,
   -- wait for completion update...
   event = { 'InsertEnter', 'CmdlineEnter' },
-  -- lazy = false, -- lazy loading handled internally
-  -- optional: provides snippets for the snippet source
   dependencies = {
     'readline.nvim',
     'L3MON4D3/LuaSnip',
@@ -44,10 +41,6 @@ return {
 
   -- use a release tag to download pre-built binaries
   version = '*',
-  -- OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
-  build = 'cargo build --release',
-  -- On musl libc based systems you need to add this flag
-  -- build = 'RUSTFLAGS="-C target-feature=-crt-static" cargo build --release',
 
   opts = function()
     -- local ls = require("luasnip")
@@ -364,6 +357,7 @@ return {
           -- ['<space><space>'] = { 'select_accept_and_enter' },
           -- multiple keys don't work...
           ['<s-space>'] = { 'select_accept_and_enter' },
+          -- ['<cr>'] = { 'select_accept_and_enter' },
           ['<c-c><c-c>'] = { 'select_accept_and_enter' },
           -- ['<C-l>'] = { 'select_and_accept' },
           ['<C-l>'] = { 'accept','fallback' },
@@ -384,14 +378,6 @@ return {
     }
   end,
 }
-
--- vim.g is not necessary reddit thread
--- "nvim-cmp",
--- path
--- function(_,opts)
---   opt.source...
-
--- how to dynamically include sources?
 
 -- omni Completion
 -- inoremap <C-Space> <C-x><C-o>

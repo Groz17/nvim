@@ -14,7 +14,7 @@
 
 -- considera telescope non come un plugin ma come un comando in core
 
----@see https://github.com/echasnovski/mini.nvim/blob/91f7a680fe5765b68456ab6e7b910d478da083b9/lua/mini/basics.lua#L548-L549
+---see https://github.com/echasnovski/mini.nvim/blob/91f7a680fe5765b68456ab6e7b910d478da083b9/lua/mini/basics.lua#L548-L549
 
  -- scriptease mapping? fallback to that/syntax if no treesitter...
  -- works with right click too
@@ -23,7 +23,7 @@ vim.keymap.set('n', 'zS', '<cmd>Inspect<CR>')
 vim.keymap.set('c', '<c-l>', '<cr>')
 
 
----@see [How to insert newline without entering insert mode? : r/neovim](https://www.reddit.com/r/neovim/comments/10kah18/how_to_insert_newline_without_entering_insert_mode/)
+---see [How to insert newline without entering insert mode? : r/neovim](https://www.reddit.com/r/neovim/comments/10kah18/how_to_insert_newline_without_entering_insert_mode/)
 -- Add empty lines before and after cursor line
 -- vim.keymap.set('n', '<c-s-cr>', "<Cmd>call append(line('.') - 1, repeat([''], v:count1))<CR>")
 -- vim.keymap.set('n', '<c-cr>', "<Cmd>call append(line('.'),     repeat([''], v:count1))<CR>")
@@ -705,16 +705,21 @@ vim.keymap.set('i', '<c-m-e>', "<cmd>call setline('.',expand(getline('.'),v:fals
 
 -- ┣ Kanata
 -- return to previous mode?
-vim.keymap.set({'n','x','i','t','c'},'<f16>',[[<c-\><c-n><c-w>]])
+
+-- https://gist.github.com/kawarimidoll/496cb16b40af33e8d84daff6dde8a16f
+local all = vim.fn.split('nvsxoilct', [[.\zs]])
+-- how to go previos mode? like one shot norm command like ^o but for all modes?
+vim.keymap.set(all,'<f16>',[[<c-\><c-n><c-w>]])
 
 -- ┣ EMACS PARITY
 -- pseudo keys like in emacs for function keys (kanata?)
 -- ─ <c-x>
 -- doesn't work?
+-- rinomina in ctl-x-map? like in emacs
 vim.keymap.set({'n','i'},'<f12><c-e>',[["<cmd>lua "..getline('.')..'<cr>']], {expr=true})
 -- like in readline
 vim.keymap.set({'c'},'<f12><c-e>','<c-f>')
-vim.keymap.set({'n','i'},'<f12>h',"<cmd>norm! GVgg0<cr>")
+vim.keymap.set({'n','i'},'<f12>h',"<cmd>norm! G$Vgg0<cr>")
 
 vim.keymap.set({'n','i'},'<f12><c-o>','<cmd>norm! cip<cr>')
 
@@ -749,6 +754,7 @@ vim.keymap.set('i','<m-s>.','<c-o>*') -- add c-s/c-r
 -- vim.keymap.set({'n','i'},'<f18>k',[[<c-\><c-n>:h ]]) -- add c-s/c-r
 -- TODO: usa snacks
 vim.keymap.set({'n','x','i','t','c'},'<f18>k',[["<c-\><c-n>:h "..(mode()=='n'?'':mode()->tolower()..'_')]], {expr=true})
+-- how to escape single quote for fzf?
 vim.keymap.set({'n','x','i','t','c'},'<f18>v',[[<c-\><c-n>:h ']] )
 -- ─ others
 -- org mode
@@ -766,11 +772,11 @@ vim.keymap.set('i','<m-tab>','<c-g>u<Esc>[s1z=`]a<c-g>u')
 vim.keymap.set('i','<m-tab>','<c-g>u<Esc>[s1z=`]a<c-g>u')
 
 vim.keymap.set({'n','i'},'<c-/>',"<cmd>norm! u<cr>")
-vim.keymap.set({'n','i'},'<m-s-,>',"<cmd>norm! gg<cr>")
-vim.keymap.set({'n','i'},'<m-s-.>',"<cmd>norm! Go<cr>")
+vim.keymap.set({'n','i'},'<m-s-,>',"<cmd>norm! gg0<cr>")
+vim.keymap.set({'n','i'},'<m-s-.>',"<cmd>norm! G$<cr>")
 
 vim.keymap.set('i','<tab>',"<c-f>")
-vim.keymap.set('i','<c-l>',"<c-o>zz")
+-- vim.keymap.set('i','<c-l>',"<c-o>zz")
 
 -- https://www.reddit.com/r/vim/comments/112e8ne/vim_function_to_move_following_word_into/
 -- slurp
@@ -798,7 +804,10 @@ vim.keymap.set({'n','i','x','o'},'<c-m-a>',function() vim.cmd("TSTextobjectGotoP
 vim.keymap.set({'n','i','x','o'},'<c-m-e>',function() vim.cmd("TSTextobjectGotoNextEnd @function.outer")end)
 vim.keymap.set({'n','i'},'<c-m-h>', [[<c-\><c-n><cmd>norm vaf<cr>]])
 -- fixa terminal mapping M-^?
-vim.keymap.set({'n','i'},'<m-s-6>', [[<cmd>norm kJ<cr>]])
+vim.keymap.set({'n','i'},'<m-s-6>', [[<cmd>norm! kJ<cr>]])
+
+vim.keymap.set({'n','i'},'<m-s-[>', [[<cmd>norm! {<cr>]])
+vim.keymap.set({'n','i'},'<m-s-]>', [[<cmd>norm! }<cr>]])
 
 -- do these for cmdline, coward!
 vim.keymap.set({'n',},'<m--><m-l>', [[<c-\><c-n><cmd>norm 2bgue2ea<cr>]])
@@ -806,4 +815,51 @@ vim.keymap.set({'i'},'<m--><m-l>', [[<esc>2bgue2ea]])
 vim.keymap.set({'n',},'<m--><m-u>', [[<c-\><c-n><cmd>norm 2bgUe2ea<cr>]])
 vim.keymap.set({'i'},'<m--><m-u>', [[<esc>2bgUe2ea]])
 
+vim.keymap.set({'n','i','x','o'},'<f12>1',[[<c-\><c-n><cmd>wincmd o<cr>]])
+vim.keymap.set({'n','i','x','o'},'<f12>0',[[<c-\><c-n><cmd>wincmd c<cr>]])
+
+vim.keymap.set({'c'},'<c-m-j>', [[<cr>]]) -- like ivy
+
+-- vim.keymap.set({'i'},'<c-g>', [[<esc>]])
+
+-- to use for example in multicursors mode
+vim.keymap.set({'n','i','x','o'},'<f12>(',[[<c-\><c-n><cmd>norm! qqqqq<cr>]])
+vim.keymap.set({'n','i','x','o'},'<f12>)',[[<c-\><c-n><cmd>norm! q<cr>]])
+vim.keymap.set({'n','i','x','o'},'<f12>e',[[<c-\><c-n><cmd>norm! Q<cr>]])
+
 -- K for man, <c-h>o for :help? what about lsp?
+-- https://github.com/janpeterd/dotfiles/blob/a89868aa31a4d7ea66f325cda38d3522a5891dfe/dot_config/nvim/plugin/remap.lua#L16
+-----------
+-- Center
+------------
+local last_press_time = 0
+local press_count = 0
+
+vim.keymap.set("i", "<C-l>", function()
+  -- function that does the following:
+  -- keymap is pressed once: center current line in the view
+  -- keymap is pressed twice: set currentl line at the top of the view
+  -- keymap is pressed for a third time: set currentl line at the bottom of the view
+  local current_time = vim.loop.now()
+
+  -- Reset count if more than 500ms have passed since last keypress
+  if current_time - last_press_time > 500 then
+    press_count = 0
+  end
+
+  press_count = press_count + 1
+  last_press_time = current_time
+
+  if press_count == 1 then
+    -- Center current line in the view
+    vim.cmd "normal! zz"
+  elseif press_count == 2 then
+    -- Set current line at the top of the view
+    vim.cmd "normal! zt"
+  elseif press_count == 3 then
+    -- Set current line at the bottom of the view
+    vim.cmd "normal! zb"
+    -- Reset count after third press
+    press_count = 0
+  end
+end)

@@ -89,7 +89,7 @@ return {
       -- { '<leader>mD', '<cmd>tabnew|DBUIToggle<cr>', desc = 'Toggle DBUI' },
       -- { '<space>D', '<cmd>tabnew|DBUIToggle<cr>', desc = 'Toggle DBUI' },
       -- use s/l (f12) for emacs-inspired mappings and use c/m (f15) for one shot mappings (no groups)
-      { '<f15>D', '<cmd>tabnew|DBUIToggle<cr>', desc = 'Toggle DBUI' },
+      { '<c-c>D', '<cmd>tabnew|DBUIToggle<cr>', desc = 'Toggle DBUI' },
       -- { '<localleader>qu', '<cmd>tabnew|DBUIToggle<cr>', desc = 'Toggle UI' }, -- https://github.com/Melting-Face/mynvim/blob/907d469f1abfa812aea2a5dd3d8efd8bcaba66c7/lua/plugins.lua#L313
       -- TODO: better aesthetically
       -- {

@@ -34,12 +34,4 @@ return
    -- vim.api.nvim_create_user_command("MasonInstallAll", function()
    --   vim.cmd("MasonInstall " .. table.concat(options.ensure_installed, " "))
    -- end, {})
-
-   -- keys = {
-   --   { "<leader>ma", "<CMD>Mason<CR>" },
-   -- P for package manager? also it combines pretty well with the p in plugin mappings
-   -- { "<leader>Pa", "<CMD>Mason<CR>" },
-   -- { "<leader>ml", ":MasonLog<CR>" },
-   -- { "<leader>mu", "<CMD>MasonUpdate<CR>" },
-   -- },
  }

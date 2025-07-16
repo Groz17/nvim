@@ -14,6 +14,7 @@ return
     -- make which-key use the colorscheme?
     -- fix initial white flash
     'folke/styler.nvim',
+    cond=false,
     -- FIX: https://github.com/folke/styler.nvim/issues/7
     opts = {
       -- interessante che se usi colo theme in uno di questi il colorscheme non cambia

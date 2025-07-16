@@ -19,8 +19,8 @@ return {
   -- TODO: format only if sql executed succesfully
   ft = 'sql',
   -- https://youtu.be/E-NAM9U5JYE?t=1725
-  -- also c-xh gq is cool
-  keys = { 'gq', { 'gr=', function() require('conform').format({ async = true, lsp_fallback = true }) end, mode = '', desc = 'Format buffer', }, },
+  -- c-xh gq is also cool
+  keys = { 'gq' },
   -- This will provide type hinting with LuaLS
   ---@module "conform"
   ---@type conform.setupOpts

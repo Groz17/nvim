@@ -99,12 +99,12 @@ return {
         -- { '+', function() require('todo-comments').jump_next({ keywords = vcount2keywords() }) end, desc = 'Next todo comment' },
         -- cosi come se fosse j and k
         -- { '_', function() require('todo-comments').jump_next({ keywords = vcount2keywords() }) end, desc = 'Next todo comment' },
-        { '<space><space>', function() require('todo-comments').jump_next({ keywords = vcount2keywords() }) end, desc = 'Next todo comment' },
+        -- { '<space><space>', function() require('todo-comments').jump_next({ keywords = vcount2keywords() }) end, desc = 'Next todo comment' },
         -- { ']<space>', function() require('todo-comments').jump_next({ keywords = vcount2keywords() }) end, desc = 'Next todo comment' },
         -- { '<leader>tk', function() require('todo-comments').jump_prev({ keywords = vcount2keywords() }) end, desc = 'Previous todo comment' },
         -- { '<leader>)', function() require('todo-comments').jump_prev({ keywords = vcount2keywords() and vim.split(vcount2keywords(), ',') or nil }) end, desc = 'Previous todo comment' },
         -- { '+', function() require('todo-comments').jump_prev({ keywords = vcount2keywords() and vim.split(vcount2keywords(), ',') or nil }) end, desc = 'Previous todo comment' },
-        { '<space><s-space>', function() require('todo-comments').jump_prev({}) end, desc = 'Previous todo comment' },
+        -- { '<space><s-space>', function() require('todo-comments').jump_prev({}) end, desc = 'Previous todo comment' },
         -- { '[<space>', function() require('todo-comments').jump_prev({}) end, desc = 'Previous todo comment' },
 
         -- { "<leader>tq", "<cmd>TodoQuickFix<CR>", desc = "List all project todos [QuickFix]" },

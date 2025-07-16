@@ -36,15 +36,12 @@ return {
   ---@see https://www.reddit.com/r/neovim/comments/1gkac88/comment/lvko4tq/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
   -- keys = {{ "dd", function() require'dap'.set_breakpoint() end, desc = "ﴫ Set Breakpoint", }},
   keys = {
-    -- {'<space>d', desc = "Debug"},
-    -- {'<f5>', desc = "Debug"},
     -- {'<f15>d', desc = "Debug"},
     -- like for macro debugging in emacs
     {'<f15><space>', desc = "Debug"},
     -- { 'dU', ':RunScriptWithArgs ', desc = "Debug (args)" }
- }, -- dap-ui mnemonic
+ },
   dependencies = { 'mfussenegger/nvim-dap' },
-  -- opts = {},
   opts = {
     -- magari crea window per tenere hint della hydra?
     layouts = {

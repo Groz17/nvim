@@ -17,9 +17,9 @@ vim.g.mapleader = vim.keycode"<space>"
 -- f keys also useful so u can use them in insert/visual mode whichkey mappings
 -- not too sure about this
 -- vim.g.maplocalleader = vim.keycode[[<f15>]]
--- vim.g.maplocalleader = vim.keycode[[\]]
+vim.g.maplocalleader = vim.keycode[[\]]
 -- not sure
-vim.g.maplocalleader = vim.keycode[[<c-c>]]
+-- vim.g.maplocalleader = vim.keycode[[<c-c>]]
 
 vim.opt.mouse:remove('a') -- Not use mouse
 vim.opt.mousescroll  = 'ver:25,hor:6' -- Customize mouse scroll

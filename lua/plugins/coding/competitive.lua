@@ -3,16 +3,18 @@ return {{
 -- https://github.com/p00f/cphelper.nvim?tab=readme-ov-file
   'kawre/leetcode.nvim',
   lazy = leet_arg ~= vim.fn.argv()[1],
+  cmd = 'Leet',
   opts = {
     arg = leet_arg,
-    image_support = true,
+    image_support = false,
     lang = "java",
+    plugins = {
+      non_standalone = true,
+    },
   },
   build = ':TSUpdate html',
   dependencies = {
-    -- per il momento
-    "nvim-telescope/telescope.nvim",
-    -- 'snacks.nvim',
+    'snacks.nvim',
     'MunifTanjim/nui.nvim',
 
     -- optional
@@ -40,7 +42,7 @@ return {{
         vim.keymap.set('n', '<localleader>o', '<CMD>Leet open<CR>', { buffer = ev.buf, desc = "Open" })
         -- vim.keymap.set('n', '<localleader>r', '<CMD>Leet reset<CR>', { buffer = ev.buf, desc = "Reset" })
         vim.keymap.set('n', '<localleader>l', '<CMD>Leet last_submit<CR>', { buffer = ev.buf, desc = "Last_submit" })
-        vim.keymap.set('n', '<localleader>r', '<CMD>Leet restore<CR>', { buffer = ev.buf, desc = "Restore" })
+        -- vim.keymap.set('n', '<localleader>r', '<CMD>Leet restore<CR>', { buffer = ev.buf, desc = "Restore" })
         -- vim.keymap.set('n', '<localleader>i', '<CMD>Leet inject<CR>', { buffer = ev.buf, desc = "Inject" })
         -- vim.keymap.set('n', '<localleader>s', '<CMD>Leet session<CR>', { buffer = ev.buf, desc = "Session" })
         vim.keymap.set('n', '<localleader>q', '<CMD>Leet list<CR>', { buffer = ev.buf, desc = "List" })

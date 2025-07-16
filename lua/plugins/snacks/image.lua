@@ -4,6 +4,7 @@ return {
   opts = {
     image = {
       doc = {
+        -- toggle inline?
         inline=false,
       }
     },

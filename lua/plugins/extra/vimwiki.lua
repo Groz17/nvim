@@ -27,9 +27,9 @@ local actions = {
   -- crea opearatore send_clipboard (è un'azione che usi molto)
   -- check if clipboard already sent (at least check first line...)
   -- send_text = '<space>V',
-  send_clipboard = '<space>V',
+  send_clipboard = '<S-space>',
   search = 'vs',
-  -- input = 'vS',
+  -- input = '<space>?',
 }
 
 -- TODO: fzf-opts per non fare vedere il filename
@@ -42,7 +42,10 @@ return {
     local mappings = {}
     table.insert(mappings, '<leader>w')
     -- table.insert(mappings, '<leader>V')
-    table.insert(mappings, '<leader>v')
+    table.insert(mappings, '<space><space>')
+    table.insert(mappings, '<space>?')
+    table.insert(mappings, '<leader>Qd')
+    table.insert(mappings, '<leader>Qy')
     table.insert(mappings, 'vs')
 
     for _, mnemoaction in pairs(actions) do
@@ -296,11 +299,6 @@ return {
       })
     end
 
-    local input = function(f)
-      -- Snacks.picker.files({ cwd = wikipath, cmd = 'fd --strip-cwd-prefix ^' .. f  .. [[\\.md$]], file_icons=false})
-      -- vim.fn.input('String to send': )
-    end
-
     local send_clipboard = function(--[[space, importanceopts]]f)
       local clipboard = vim.fn.getreg(vim.v.register, 1, true)
       if vim.tbl_isempty(clipboard) then
@@ -342,12 +340,58 @@ return {
             vim.notify(
               -- TODO: don't send first empty lines
               -- TODO: use highlighting?
-              'Sent clipboard to ' .. path .. '\n' .. vim.trim(clipboard[1]),
+              'Sent clipboard to ' .. vim.fn.fnamemodify(path,[[:~:s?\~/vimwiki/??]]) .. '\n' .. vim.trim(clipboard[1]),
               vim.log.levels.INFO
             )
           end,
        })
 
+    end
+
+    -- local input = function(f)
+    --   -- Snacks.picker.files({ cwd = wikipath, cmd = 'fd --strip-cwd-prefix ^' .. f  .. [[\\.md$]], file_icons=false})
+    --   vim.fn.setreg(vim.v.register,vim.fn.input('String to send' ))
+    --   send_clipboard(f)
+    -- end
+
+
+    local send_outside = function(--[[space, importanceopts]]f)
+      local clipboard = vim.fn.getreg("+", 1, true)
+      if vim.tbl_isempty(clipboard) then
+        vim.notify('Empty clipboard, aborting...', vim.log.levels.ERROR)
+        return
+      end
+      -- local importance = vim.v.count
+      -- if vim.fn.assert_inrange(0, 5, importance) == 0 and importance ~= 0 then
+      --   for k,v in ipairs(clipboard) do
+      --     clipboard[k] = string.rep('THIS ->>> ', importance) .. v
+      --   end
+      -- end
+     Snacks.picker.--[[git]]files ({
+          cwd = wikipath,
+          layout = { fullscreen = true,preview=false },
+          -- preview = function()return false end,
+          title = "Send clipboard to "..f,
+        cmd = 'fd',
+        args = { "--type", "f", '-E', 'resources.md',"--strip-cwd-prefix", '^' .. f .. [[(\.md|\.txt)$]], },
+        on_close = function() vim.schedule(function()
+            -- vim.fn.system('dunstify "Sent clipboard to "' .. wikipath ..  '"\n"' .. vim.trim(clipboard[1]))
+          vim.cmd'q'
+        end) end,
+        -- dunno why it's needed
+        on_show = function() vim.cmd'startinsert' end,
+        -- on_close = function() vim.defer_fn(function()vim.cmd'q' end,100) end,
+        confirm = function(picker, item)
+            local path = wikipath .. item.file
+            vim.fn.writefile(vim.list_extend({ '' }, clipboard), path, 'a')
+            vim.fn.system('notify-send "Sent clipboard to "' .. vim.fn.shellescape(vim.fn.fnamemodify(path,[[:~:s?\~/vimwiki/??]])) .. '"\n"' .. vim.fn.shellescape(clipboard[1]))
+            picker:close()
+          end,
+          -- 
+       })
+       -- vim.api.nvim_exec2([[
+       -- defer execute('q')
+       -- ]],{})
     end
 
     function _G.__sendtextop(type)
@@ -410,7 +454,10 @@ return {
       end
     end
 
-    vim.keymap.set('n', '<leader>v', function() send_clipboard('todo') end, { desc = "Go to Wiki file" })
+    vim.keymap.set('n', '<space><space>', function() send_clipboard('todo') end, { desc = "Go to Wiki file" })
+    vim.keymap.set('n', '<leader>Qd', function() send_outside('todo') end, { desc = "Go to Wiki file" })
+    vim.keymap.set('n', '<leader>Qy', function() send_outside('data') end, { desc = "Go to Wiki file" })
+    vim.keymap.set('n', '<leader>?', function()vim.fn.setreg(vim.v.register,vim.fn.input('String to send' )) send_clipboard('todo') end, { desc = "Go to Wiki file" })
     vim.keymap.set('n', 'vv', function() Snacks.picker.files { cwd = "~/vimwiki"} end, { desc = "Go to Wiki file" })
     -- vim.keymap.set('n', ',ww', function() send_clipboard(true, vim.v.count, static_telescope_options_global) end)
     -- vim.keymap.set('n', ',wW', function() send_clipboard(false, vim.v.count, static_telescope_options_global) end)
