@@ -20,9 +20,6 @@
  -- works with right click too
 vim.keymap.set('n', 'zS', '<cmd>Inspect<CR>')
 
-vim.keymap.set('c', '<c-l>', '<cr>')
-
-
 ---see [How to insert newline without entering insert mode? : r/neovim](https://www.reddit.com/r/neovim/comments/10kah18/how_to_insert_newline_without_entering_insert_mode/)
 -- Add empty lines before and after cursor line
 -- vim.keymap.set('n', '<c-s-cr>', "<Cmd>call append(line('.') - 1, repeat([''], v:count1))<CR>")
@@ -207,11 +204,6 @@ vim.keymap.set('t','<s-esc>',[[<c-\><c-n>]])
 -- for snippets mappings
 -- vim.keymap.set('n','<tab>','<nop>')
 
--- useful for git commit fugitive/magit...
--- blink doesn't make this work...
--- like for git commit buffer
-vim.keymap.set('i','<c-c><c-c>','<cmd>up|q<cr>')
-vim.keymap.set('i','<c-c><c-k>','<cmd>q!<cr>')
 -- magari go to right after (l?)
 -- vim.keymap.set('i','<space><space><space>','<space><cmd>up<cr><esc>l')
 -- vim.keymap.set('i','<space><space><space>','<space><cmd>up<cr><esc>')
@@ -304,7 +296,8 @@ vim.keymap.set('c','<M-C-e>',[[<c-\>eexpandcmd(getcmdline())<CR>]])
 -- kanata k: also mnemonic for keyboard
 vim.api.nvim_exec2([[
 for f in readdir(expand('~/dotfiles'),{f->f=~'^[^_].\+.org$'})
-    exe "nnoremap <leader>e".f[0] "<cmd>tab drop ~/dotfiles/".f.."<cr>"
+    "exe "nnoremap <leader>e".f[0] "<cmd>tab drop ~/dotfiles/".f.."<cr>"
+    call v:lua.vim.keymap.set('n','<leader>e'.f[0],"<cmd>tab drop ~/dotfiles/".f.."<cr>",#{desc: f[:-5]})
 endfor
 ]],{})
 
@@ -840,7 +833,7 @@ vim.keymap.set("i", "<C-l>", function()
   -- keymap is pressed once: center current line in the view
   -- keymap is pressed twice: set currentl line at the top of the view
   -- keymap is pressed for a third time: set currentl line at the bottom of the view
-  local current_time = vim.loop.now()
+  local current_time = vim.uv.now()
 
   -- Reset count if more than 500ms have passed since last keypress
   if current_time - last_press_time > 500 then
@@ -863,3 +856,12 @@ vim.keymap.set("i", "<C-l>", function()
     press_count = 0
   end
 end)
+
+vim.keymap.set({'n','i','x','o'},'<c-m-v>',[[<cmd>call win_execute(bufwinid(bufname(0)),'noautocmd exe "norm! '..v:count..'\<c-d>"')<cr>]])
+vim.keymap.set({'n','i','x','o'},'<c-m-s-v>',[[<cmd>call win_execute(bufwinid(bufname(0)),'noautocmd exe "norm! '..v:count..'\<c-u>"')<cr>]])
+
+vim.keymap.set({'n','i','x','o'},'<m-r>',[[<c-\><c-n><cmd>norm! M<cr>i]])
+
+vim.keymap.set({'n','i','x','o'},'<f12>2',[[<c-\><c-n><cmd>exe "norm! ]]..vim.v.count..[[\<c-w>s\<c-w>\<c-p>"<cr>]])
+vim.keymap.set({'n','i','x','o'},'<f12>3',[[<c-\><c-n><cmd>exe "norm! ]]..vim.v.count..[[\<c-w>v\<c-w>\<c-p>"<cr>]])
+
