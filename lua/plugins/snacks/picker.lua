@@ -24,6 +24,9 @@ return {
     -- queste opzioni le puoi togglare tanto...
     -- usa stesso modello di usare shift per cwd
     { '<c-s-p>', function() Snacks.picker.files({}) end, desc = 'Find Config File' ,mode={'n','i'}},
+
+    { '<f18>P', function() Snacks.picker.files({rtp = true, pattern="file:md$ "}) end, desc = "Plugins' docs",mode={'n','i'}},
+
     -- ╭─────────────────────────────────────────────────────────╮
     -- │ SEARCH                                                  │
     -- ╰─────────────────────────────────────────────────────────╯
@@ -32,6 +35,9 @@ return {
     -- oppure C-q? magari solo x qwerty
     { '<c-q>', function() Snacks.picker.grep({ cwd = vim.fn.expand('%:p:h') }) end, desc = 'Grep' ,mode={'n','i'}},
     { '<c-s-q>', function() Snacks.picker.grep({}) end, desc = 'Grep' ,mode={'n','i'}},
+
+    -- Snacks.picker.grep({rtp = true, pattern="file:md$"})
+
     -- win is winnr-1? or is it always -1?
     -- HACK (would be cool to show light version of current theme)
     { '<f17>/', function() Snacks.picker.lines({ on_show = function() vim.fn.win_execute(vim.fn.win_getid(vim.fn.winnr()-1)--[[snacks_picker_list]],"Styler kanagawa-lotus") end }) end, desc = 'Buffer Lines' ,mode={'n','i'}},
@@ -77,8 +83,8 @@ return {
     -- execute on current selection?
     -- { mode = { 'x' }, 'q:', function() Snacks.picker.command_history() end, desc = 'Command History' },
     -- { mode = { 'x' }, '<c-r>', function() Snacks.picker.command_history() end, desc = 'Command History' },
-    -- Snacks.picker.files({rtp = true, pattern="file:md$"})
-    -- Snacks.picker.grep({rtp = true, pattern="file:md$"})
+
+    { '<m-p>', function() Snacks.picker.command_history() end, desc = 'Command history' ,mode={'n','i'}},
 
     -- problema dei simboli con kanata: <f17>F e <space><space>fl for <space><space>=?
     { '<f17>+', function() Snacks.picker.cliphist() end, desc = 'Clipboard history' ,mode={'n','i'}},
@@ -174,26 +180,9 @@ return {
     -- like for z=
     { '<M-S-4>', function() Snacks.picker.spelling() end, desc = 'Spelling' ,mode={'n','i'}},
   },
-  -- opts = function(_,opts) table.insert(opts,{
-    -- opts = function(_,opts) vim.tbl_deep_extend('error',opts,{
-      opts = {
-        picker = {
-          -- layout = {preset = "telescope"},
-          sources = {
-            -- incremental <c-g>???
-            -- use <c-space> instead and <c-g> for ignore like fzf-lua? or maybe <c-s-g>?
-            grep = {
-              need_search = false,
-            },
-            git_grep = {
-              need_search = false,
-            },
-            lazy = {
-              pattern=""
-
-            },
+      opts = function()
             -- https://github.com/folke/snacks.nvim/discussions/2018
-            commands = {
+            local commands = {
               actions = {
                 accept = function(picker, item)
                   vim.cmd(item.cmd)
@@ -209,7 +198,25 @@ return {
                     -- like atuin (tab doesn't make sense here, does it?)
                     ['<cr>'] = { 'accept', mode = { 'i', 'n' } }, -- Execute
                     ['<tab>'] = { 'confirm', mode = { 'i', 'n' } }, -- Choose
-                  }}}},
+                  }}}}
+        return{
+        picker = {
+          -- layout = {preset = "telescope"},
+          sources = {
+            -- incremental <c-g>???
+            -- use <c-space> instead and <c-g> for ignore like fzf-lua? or maybe <c-s-g>?
+            grep = {
+              need_search = false,
+            },
+            git_grep = {
+              need_search = false,
+            },
+            lazy = {
+              pattern=""
+
+            },
+            commands = commands,
+            command_history = commands,
                   explorer = {
                     -- why two times for layout?
                     -- maybe floating window?
@@ -406,5 +413,5 @@ return {
                     end}
                     -- )
                   },
-                },
+                }end,
               }
