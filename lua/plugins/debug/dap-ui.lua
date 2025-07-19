@@ -328,7 +328,8 @@ out _h_   _l_ into
     { "<c-c>", function() dap.terminate() end, desc = "Terminate", },
     -- Lo posso comunque usare in visual mode (e anche negli elements possibilmente)
     -- put terminate here insteaf on on_exit? is there difference?
-    { "<esc>", nil, { exit = true, nowait = true, desc = "Exit" } },
+    -- { "<esc>", nil, { exit = true, nowait = true, desc = "Exit" } },
+    { "q", nil, { exit = true, nowait = true, desc = "Exit" } },
   },
     })
   end,
