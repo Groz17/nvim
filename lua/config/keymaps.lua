@@ -324,18 +324,10 @@ vim.keymap.set('n','<space>e<cr>', [[<CMD>tab drop ~/dotfiles/_ghostty.org<cr>``
 -- -- rg -o --vimgrep --pcre2 '^\s*[^-]['\''"][a-zA-Z0-9]+([-_][a-zA-Z0-9]+)*/\K[a-zA-Z0-9]+([-_\.][a-zA-Z0-9]+)*[-_\.]?[a-zA-Z0-9]+(?=['\''"])' | sort -t: -k4 -u
 -- -- ev.? dove . e o/k/... per options, keymaps, etc...? neovim api menu?
 
--- Implementazione sofisticata: prima di S/s ci va una lettera!
--- inoremap <c-+> <c-k>S
--- inoremap <c--> <c-k>s
-
 -- wait for these to get into neovim core
 -- operator mapping?
 vim.keymap.set({'n', 'x'}, 'g}', "<CMD>'}-<CR>")
 vim.keymap.set({'n', 'x'}, 'g{', "<CMD>'{+<CR>")
-
--- lascia lo spazio finale
--- noremap <leader>sg :SortGroup 
--- nnoremap <leader>sl :LogiPat 
 
 -- Centering :substitute matches
 -- would be cool to have presubstitute autocommand to use this option...
@@ -359,29 +351,7 @@ vim.keymap.set('x','<S-BS>',[[:g/^$/d_<CR>]])
 vim.keymap.set('x','<a-BS>',[[:g/^\s*$/d_<CR>]])
 vim.keymap.set('x','<c-BS>',[[:s/\s\+$<CR>]])
 
-
--- links
--- vim.keymap.set('n','<leader><leader>lk','<CMD>w !xidel --extract "//a/resolve-uri(@href,base-uri())" -<CR>')
--- nnoremap <leader>lk :%!pup a[href] attr{href}<cr>
--- uso urlview.nvim
--- vim.keymap.set('n','<leader>lk',[[:%!pup a[href] attr{href} <bar> grep -P "^https?:\/\/.*\/" <bar> awk '\!x[$0]++'<cr>]])
--- youtube-titles
--- nnoremap <silent> <leader>yt :exe "w !youtube-dl -e ".expand('<cWORD>')<cr>
--- get-title
--- nnoremap <silent> <leader>gt :exe "w !youtube-dl -e ".expand('<cWORD>')<cr>
--- noremap <silent> <leader>ti :<c-u>exe "w !youtube-dl -e ".expand('<cWORD>')<cr>
--- nnoremap <silent> <leader>ti :echo systemlist("youtube-dl -e ".expand('<cWORD>'))[0]<cr>
--- xnoremap <silent> <leader>ti :<c-u>echo join(systemlist("youtube-dl -e ".join(getline("'<","'>"))," "),"\n")<cr>
--- get title of URL under the cursor (generalized from youtube-dl)
--- show preview window instead, or even better floating ;)
--- open popup window?
--- show title (st)
 -- use substitute to delete everything that's not an url in lines before passing to curl...
--- vim.keymap.set('n','<leader>st',[[:echo trim(systemlist("htmlq meta[property=\"og\\:title\"] --attribute content -f <(curl -Ls " .string(shellescape(matchstr(getline("."),'https\=:\/\/[^ ]*'))).")")[0])<cr>]])
--- <leader>s only for sessions sennò impazzisco coi mapping
--- vim.keymap.set('n','<leader>ti',[[:echo trim(systemlist("htmlq meta[property=\"og\\:title\"] --attribute content -f <(curl -Ls " .string(shellescape(matchstr(getline("."),'https\=:\/\/[^ ]*'))).")")[0])<cr>]], {silent=true})
--- vim.keymap.set('n','<leader>T',[[<CMD>echo trim(systemlist("xidel --input-format html -e //title " .string(shellescape(matchstr(getline("."),'https\=:\/\/[^ ]*'))))[0])<cr>]], {desc="Show URL title"})
--- vim.keymap.set('n','<leader>@',[[<CMD>echo (systemlist("xidel --input-format html -e 'normalize-space(//title)' " .string(shellescape(matchstr(getline("."),'https\=:\/\/[^ ]*'))))[0])<cr>]], {desc="Show URL title"})
 vim.keymap.set('n','<space>#',[[<CMD>echo (systemlist("xidel --input-format html -e 'normalize-space(//title)' " .string(shellescape(matchstr(getline("."),'https\=:\/\/[^ ]*'))))[0])<cr>]], {desc="Show URL title"})
 -- how to display title like dunstify? so for ex you could do it for youtube links: YT\nTITLE
 -- vim.keymap.set('n','<leader>ti',[[<CMD>echo luaeval('vim.notify(_A)',trim(systemlist("xidel --input-format html -e //title " .string(shellescape(matchstr(getline("."),'https\=:\/\/[^ ]*'))))[0]))<cr>]], {silent=true})
@@ -586,6 +556,9 @@ vim.keymap.set("n", "ycc", '"yy" . v:count1 . "gcc\']p"', { remap = true, expr =
 vim.keymap.set('x', 'z/', '<C-\\><C-n>`</\\%V', { desc = 'Search forward within visual selection' })
 vim.keymap.set('x', 'z?', '<C-\\><C-n>`>?\\%V', { desc = 'Search backward within visual selection' })
 vim.keymap.set('n', 'z/', '/\\%><C-r>=line("w0")-1<CR>l\\%<<C-r>=line("w$")+1<CR>l', { desc = 'Search in viewport' })
+
+-- similar to hyprland mapping
+vim.keymap.set('n', '<space><bs>', '<cmd>restart<cr>', { desc = 'Restart Neovim' })
 
 -- ─ comments
 --local labels=vim.json.decode(vim.fn.system([[ast-grep run --pattern 'local defaults = { $$$B }' ]] .. vim.fn.stdpath('data') .. [['/lazy/todo-comments.nvim/lua/todo-comments/config.lua']] .. [[| sed 's/^[^:]\+:[0-9]\+://' | sed '1s/local defaults =/return/' | yq -pl -oj | jq '[.keywords|to_entries[]|[.key,((.value.alt) // empty)]|flatten]|map(first)']]))
@@ -814,6 +787,8 @@ vim.keymap.set({'n','i','x','o'},'<f12>0',[[<c-\><c-n><cmd>wincmd c<cr>]])
 vim.keymap.set({'c'},'<c-m-j>', [[<cr>]]) -- like ivy
 
 -- vim.keymap.set({'i'},'<c-g>', [[<esc>]])
+vim.keymap.set({'c'},'<c-g>', [[<c-c>]])
+vim.keymap.set({'x'},'<c-g>', [[<esc>]])
 
 -- to use for example in multicursors mode
 vim.keymap.set({'n','i','x','o'},'<f12>(',[[<c-\><c-n><cmd>norm! qqqqq<cr>]])
@@ -857,11 +832,15 @@ vim.keymap.set("i", "<C-l>", function()
   end
 end)
 
+-- TODO: not really previous, just alternate
 vim.keymap.set({'n','i','x','o'},'<c-m-v>',[[<cmd>call win_execute(bufwinid(bufname(0)),'noautocmd exe "norm! '..v:count..'\<c-d>"')<cr>]])
 vim.keymap.set({'n','i','x','o'},'<c-m-s-v>',[[<cmd>call win_execute(bufwinid(bufname(0)),'noautocmd exe "norm! '..v:count..'\<c-u>"')<cr>]])
 
 vim.keymap.set({'n','i','x','o'},'<m-r>',[[<c-\><c-n><cmd>norm! M<cr>i]])
 
+vim.keymap.set({'n','i','x','o'},'<f12>o',[[<c-\><c-n><cmd>wincmd w<cr>]])
 vim.keymap.set({'n','i','x','o'},'<f12>2',[[<c-\><c-n><cmd>exe "norm! ]]..vim.v.count..[[\<c-w>s\<c-w>\<c-p>"<cr>]])
 vim.keymap.set({'n','i','x','o'},'<f12>3',[[<c-\><c-n><cmd>exe "norm! ]]..vim.v.count..[[\<c-w>v\<c-w>\<c-p>"<cr>]])
 
+-- commands
+-- vim.api.nvim_create_user_command('Sort_paragraphs','emacsclient -e sort-paragraphs?')
