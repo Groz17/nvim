@@ -135,12 +135,3 @@ system_prompt = function()
     }
     },
 }
---https://dev.to/ottercyborg/neovim-my-setup-for-developer-assistant-with-local-language-models-2nim
--- map("n", "“<A-m>", function()
--- require("gen").select_model()
--- end, { desc = "Select gen.nvim model" })
---
--- magari usa vim.ui.select
--- vim.fn.systemlist("curl --silent --no-buffer http://" .. options.host .. ":" .. options.port .. "/v1/models")
-      -- local list = vim.fn.json_decode(response)
-      -- 

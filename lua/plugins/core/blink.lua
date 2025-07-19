@@ -9,23 +9,15 @@
 -- how to suggest based on context? like in plugin config inside opts={} when writing keys I don't want to write for loops
 -- immediate suggestions? when you don't even type one char?
 -- how to show suggestions in select mode?
--- show preview of suggestion?
--- I need async path source like in nvim-cmp
 -- add treesitter highlight?
--- BlinkInfo command?
 -- 2 problems: first it shows documentation only when i accept a suggestion, the second is shows two documentation windows
 -- TODO: prioritize most chosen selection (maybe in a session or persistenly???)??? like più should appear before piu when writing Italian (or when writing comments show up spell-fixed words)
 -- don't show for snacks input?
 -- in comments sources: dictionary/git+lsp harper
--- disable c-n/p so i can use emacs
 return {
-  -- please support luasnip... (for https://github.com/chrisgrieser/nvim-scissors)
-  -- TODO: icons?
   -- maybe color the line depending on source?
   -- mapping to show possible completion with fzf-lua? or just API to show completions with their source? for git commit snippets
-  -- deduplicate entries if lsp and snippets, choose lsp
   'saghen/blink.cmp',
-  -- wait for completion update...
   event = { 'InsertEnter', 'CmdlineEnter' },
   dependencies = {
     'readline.nvim',
@@ -107,6 +99,7 @@ return {
           -- would be nice if it expanded env vars
           -- how to disable for large files?
           path = {
+            async=true,
             score_offset = 2,
           -- opts = {
           --   -- This also makes it easy to `:cwd` to the desired base directory for path completion.
@@ -171,14 +164,6 @@ return {
       },
       snippets = {
         preset = 'luasnip',
-        expand = function(snippet) require('luasnip').lsp_expand(snippet) end,
-        active = function(filter)
-          if filter and filter.direction then
-            return require('luasnip').jumpable(filter.direction)
-          end
-          return require('luasnip').in_snippet()
-        end,
-        jump = function(direction) require('luasnip').jump(direction) end,
       },
       -- Disable for some filetypes
       -- enabled = function()
@@ -284,7 +269,6 @@ return {
         -- how to specify modes?
         -- remember unix philosophy: one thing well
         -- ['<C-space>'] = { 'show' },
-        -- copilot?
         -- ['<C-space>'] = { function(cmp) cmp.show({ providers = { 'snippets' } }) end },
         -- TODO: usa stessi mapping nativi di vim tipo ctrl-x ctrl-f per filenames
         ['<C-space>'] = { function(cmp) cmp.show({ providers = { 'copilot' } }) end },
@@ -294,12 +278,9 @@ return {
         ['<m-/>'] = { function(cmp) cmp.show({ providers = { 'buffer' } }) end },
         -- what about jl and al?
         ['<C-e>'] = { 'fallback_to_mappings' },
-        ---           ['<C-y>'] = cmp.mapping(function(fallback)
         -- accept = '<C-i>', -- or maybe <c-l>? (create table?)
         -- ['<C-l>'] = { 'accept' }, -- or maybe <c-l>? (create table?)
         ['<C-l>'] = { 'select_and_accept','fallback' }, -- or maybe <c-l>? (create table?)
-        -- ['jl'] = { 'select_and_accept' },
-        -- what about <space><space>?
         -- ['<C-i>'] = { 'snippet_forward' }, -- or maybe <c-l>? (create table?)
         -- ['jk'] = { 'snippet_forward' }, -- or maybe <c-l>? (create table?)
         -- ['<a-k>'] = { 'snippet_forward', 'fallback' }, -- or maybe <c-l>? (create table?)
@@ -346,19 +327,13 @@ return {
           keymap=
           {preset = 'none',
           -- ['<C-k>'] = { 'select_prev', 'fallback_to_mappings' },
-          ['<C-k>'] = { 'select_prev' },
+          ['<C-k>'] = { 'select_prev', 'fallback' },
           ['<C-j>'] = { 'select_next', 'fallback' },
           -- TODO: add keymap to execute as well (maybe <a-l>)
           -- ['<c-s-l>'] = { 'select_accept_and_enter' },
           -- ['<c-s-m>'] = { 'select_accept_and_enter' },
-          -- ['<a-l>'] = { 'select_accept_and_enter' },
-          -- basically like ble.sh
-          -- ['<c-cr>'] = { 'select_accept_and_enter' },
-          -- ['<space><space>'] = { 'select_accept_and_enter' },
-          -- multiple keys don't work...
-          ['<s-space>'] = { 'select_accept_and_enter' },
           -- ['<cr>'] = { 'select_accept_and_enter' },
-          ['<c-c><c-c>'] = { 'select_accept_and_enter' },
+          -- ['<c-c><c-c>'] = { 'select_accept_and_enter' },
           -- ['<C-l>'] = { 'select_and_accept' },
           ['<C-l>'] = { 'accept','fallback' },
           ['<C-e>'] = { 'fallback_to_mappings' },
@@ -369,16 +344,10 @@ return {
         menu = { auto_show=true },
         -- ghost_text = { enabled=true }
         -- so u can use c-l To enter and accept
-      list={selection={preselect=false}},
+      list={selection={preselect=true}},
       },
         },
-      -- allows extending the enabled_providers array elsewhere in your config
-      -- without having to redefining it
-      -- opts_extend = { 'sources.completion.enabled_providers' },
     }
   end,
 }
 
--- omni Completion
--- inoremap <C-Space> <C-x><C-o>
--- disable<c-y>?
