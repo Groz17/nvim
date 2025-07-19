@@ -14,7 +14,7 @@ return {
     },
     keys = {
       {
-        "<f17>m",
+        "<f17>M",
         function()
           Snacks.picker.files {
             ft = { "jpg", "jpeg", "png", "webp" },
