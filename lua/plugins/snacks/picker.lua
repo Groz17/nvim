@@ -92,7 +92,7 @@ return {
     -- { '<f17><cr>', function() Snacks.picker.commands() end, desc = 'Commands' },
     -- like emacs C-h x?
     -- { '<f17>x', function() Snacks.picker.commands() end, desc = 'Commands' },
-    { '<m-x>', function() Snacks.picker.commands() end, desc = 'Commands' ,mode={'n','i'}},
+    { '<m-x>', function() Snacks.picker.commands() end, desc = 'Commands' ,mode={'n','i','x'}},
     { '<f17>D', function() Snacks.picker.diagnostics() end, desc = 'Diagnostics' ,mode={'n','i'}},
     { '<f17>d', function() Snacks.picker.diagnostics_buffer() end, desc = 'Diagnostics buffer' ,mode={'n','i'}},
     -- mapping to seach only in neovim docs?
@@ -204,8 +204,11 @@ return {
                 input = {
                   keys = {
                     -- like ivy?
-                    ['<C-a-j>'] = { 'accept', mode = { 'i', 'n' } }, -- Execute
-                    ['<CR>'] = { 'confirm', mode = { 'i', 'n' } }, -- Choose
+                    -- ['<C-a-j>'] = { 'accept', mode = { 'i', 'n' } }, -- Execute
+                    -- ['<CR>'] = { 'confirm', mode = { 'i', 'n' } }, -- Choose
+                    -- like atuin (tab doesn't make sense here, does it?)
+                    ['<cr>'] = { 'accept', mode = { 'i', 'n' } }, -- Execute
+                    ['<tab>'] = { 'confirm', mode = { 'i', 'n' } }, -- Choose
                   }}}},
                   explorer = {
                     -- why two times for layout?
