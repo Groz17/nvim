@@ -140,8 +140,11 @@ vim.opt.cursorline = true -- Highlight current line
 vim.opt.showmatch = true        -- Highlight matching parenthesis
 vim.opt.matchtime = 1
 -- vim.opt.colorcolumn = '80'      -- Line lenght marker at 80 columns
+
+-- like emacs
 vim.opt.splitright = true       -- Vertical split to the right
-vim.opt.splitbelow = false       -- Horizontal split to the bottom
+vim.opt.splitbelow = true       -- Horizontal split to the bottom
+
 vim.opt.ignorecase = true       -- Ignore case letters when search
 vim.opt.smartcase = true        -- Ignore lowercase for the whole pattern
 vim.opt.linebreak = true        -- Wrap on word boundary
@@ -177,8 +180,6 @@ vim.cmd('hi Visual guibg=peru guifg=Black')
 vim.opt.infercase = true                       -- Adjust completions to match case
 
 -- vim.opt.more = false
-
--- Diff
 
 -- silent! setglobal dictionary+=/usr/share/dict/words
 
