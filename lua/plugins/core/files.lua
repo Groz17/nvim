@@ -58,7 +58,8 @@ return {
   },
   config = function(_, opts)
     require('mini.files').setup(opts)
-    vim.api.nvim_create_user_command("Dired-jump",[[exe "norm \<f12>\<c-j>"]],{})
+    -- emacs to vim: capitalize commands and camel case
+    vim.api.nvim_create_user_command("DiredJump",[[exe "norm \<f12>\<c-j>"]],{})
     local map_split = function(buf_id, lhs, direction)
       local rhs = function()
         -- Make new window and set it as target
