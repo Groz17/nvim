@@ -131,7 +131,10 @@ return {
     { '<f17>j', function() Snacks.picker.jumps() end, desc = 'Jumps' ,mode={'n','i'}},
     -- use v:count to target mods
     { '<f18>b', function() Snacks.picker.keymaps() end, desc = 'Keymaps' ,mode={'n','i'}},
-    -- { '<c-o>', function() Snacks.picker.loclist() end, desc = 'Location List' ,mode={'n','i'}},
+
+    { '<f17>o', function() Snacks.picker.loclist() end, desc = 'Location List' ,mode={'n','i'}},
+    { '<f17>O', function() Snacks.picker.qflist() end, desc = 'Quickfix List' ,mode={'n','i'}},
+
     -- what about info pages?
     { '<f17>m', function() Snacks.picker.man() end, desc = 'Man Pages' ,mode={'n','i'}},
     -- not sure
@@ -139,7 +142,6 @@ return {
     -- { '<f17><BS>', function() Snacks.picker.resume() end, desc = 'Resume' },
     -- also create insert mode mapping <f17>D
     { '<bs>', function() Snacks.picker.resume() end, desc = 'Resume' ,mode={'n','i'}},
-    -- { '<c-s-o>', function() Snacks.picker.qflist() end, desc = 'Quickfix List' ,mode={'n','i'}},
     -- <f17>C for all colorschemes, <space><space>c for plugin's colorschemes?
     -- how to preview the current buffer? 
     -- { '<f17>C', function() Snacks.picker.colorschemes() end, desc = 'Colorschemes' },
@@ -179,6 +181,7 @@ return {
     -- doesnt show all plugins? maybe y and Y mappings?
     -- would be cool if it added tags like for colorschemes, etc... help files...
     -- add action to go to file lazy share?
+    -- <f18>P for plugin docs
     -- { '<f17>L', function() Snacks.picker.lazy() end, desc = 'Lazy' },
     -- use v:count
     {mode={"n","i"},'<f12>8es', function() Snacks.picker.icons({icon_sources={'emoji'}}) end, desc = 'Emojis' },
@@ -189,7 +192,7 @@ return {
 
     { '<f17>z', function() Snacks.picker.zoxide() end, desc = 'Zoxide' ,mode={'n','i'}},
     -- like for z=
-    { '<f17>=', function() Snacks.picker.spelling() end, desc = 'Spelling' ,mode={'n','i'}},
+    { '<M-S-4>', function() Snacks.picker.spelling() end, desc = 'Spelling' ,mode={'n','i'}},
   },
   -- opts = function(_,opts) table.insert(opts,{
   -- opts = function(_,opts) vim.tbl_deep_extend('error',opts,{
@@ -356,10 +359,14 @@ return {
             -- ['<m-h>'] = { 'preview_scroll_left', mode = { 'i', 'n' } },
             -- ['<m-l>'] = { 'preview_scroll_right', mode = { 'i', 'n' } },
 
-        ["<f17>H"] = "layout_left",
-        ["<f17>J"] = "layout_bottom",
-        ["<f17>K"] = "layout_top",
-        ["<f17>L"] = "layout_right",
+
+            -- center like in emacs
+            ['<m-r>'] = { '<esc>/M/', expr = true, mode = 'i', remap=true },
+
+            ["<f17>H"] = "layout_left",
+            ["<f17>J"] = "layout_bottom",
+            ["<f17>K"] = "layout_top",
+            ["<f17>L"] = "layout_right",
 -- ╭─────────────────────────────────────────────────────────╮
 -- │ toggles                                                 │
 -- ╰─────────────────────────────────────────────────────────╯
@@ -382,9 +389,8 @@ return {
             -- wanna usa c/a-v like emacs tho
             -- ['<c-s-j>'] = { 'list_scroll_down', mode = { 'i' } },
             -- ['<c-s-k>'] = { 'list_scroll_up', mode = { 'i' } },
-            -- BUG: doesn't work...
-            ['<M-S-.>'] = { 'move_to_top', mode = { 'i' } },
-            ['<M-S-,>'] = { 'move_to_bottom', mode = { 'i' } },
+            ['<M-S-,>'] = { 'list_top', mode = { 'i' } },
+            ['<M-S-.>'] = { 'list_bottom', mode = { 'i' } },
             -- ["<f17>"] ={ ".*",mode={"i"},expr=true},
             -- word
             ['<M-f>'] = { function() require('readline').forward_word() end, mode = 'i' },
