@@ -2,19 +2,20 @@
 -- https://github.com/gbprod/stay-in-place.nvim how to do for all operators?
 -- "christoomey/vim-sort-motion"
 -- use kanata symbol layer for non-conflicting keymaps...
-return {{
+return { {
   'echasnovski/mini.operators',
-  keys = function(_,keys)
-      local opts = require("lazy.core.plugin").values(require("lazy.core.config").spec.plugins["mini.operators"], "opts", false)
-      local mappings = {}
-      -- TODO: find more elegant way (it should read, not map values)
-      mappings = vim.iter(opts):filter(function(_,v) return v.prefix ~= '' end):map(function(_,v) return {mode={"n","x"},v.prefix} end):totable()
-      table.insert(mappings,"cx")
-      table.insert(mappings,"cX")
-      table.insert(mappings,"S")
-      table.insert(mappings,{mode="x","X"})
-      return mappings
-
+  keys = function(_, keys)
+    local opts = require("lazy.core.plugin").values(require("lazy.core.config").spec.plugins["mini.operators"], "opts",
+      false)
+    local mappings = {}
+    -- TODO: find more elegant way (it should read, not map values)
+    mappings = vim.iter(opts):filter(function(_, v) return v.prefix ~= '' end):map(function(_, v) return { mode = { "n", "x" },
+        v.prefix } end):totable()
+    table.insert(mappings, "cx")
+    table.insert(mappings, "cX")
+    table.insert(mappings, "S")
+    table.insert(mappings, { mode = "x", "X" })
+    return mappings
   end,
   version = false,
   -- create new operator (execute lua), with gl mapping to execute lua commands (and gL to execute viml wrapping w/ vim.cmd?)
@@ -75,10 +76,10 @@ return {{
     -- vim.keymap.set('n', 'cX', 'cx$', { remap = true })
   end,
 },
-{
-  "gbprod/stay-in-place.nvim",
-  cond=false,
-  opts = {}
-}
+  {
+    "gbprod/stay-in-place.nvim",
+    cond = false,
+    opts = {}
+  }
 }
 -- ]6 and [6 for base64 like in evil-collection-unimpaired.el
