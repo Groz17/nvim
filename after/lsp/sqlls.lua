@@ -2,7 +2,6 @@ return {
   -- nix one day...
   cmd = { vim.fn.exepath'sql-language-server', 'up','--method','stdio' },
   filetypes = {'sql'},
-  -- root_dir = function() return vim.loop.cwd() end,
   -- how to ignore sqlite lines? ones that start with . basically
   -- single_file_support = true,
   ---@see https://github.com/Lasagnanator/neovim/blob/02c8255a7b4469b34d24901be92c50c4ad629042/lua/langs/sql.lua#L19 (eroeee)
