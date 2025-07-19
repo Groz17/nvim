@@ -40,7 +40,8 @@ return { {
 
     -- Multiply (duplicate) text
     multiply = {
-      prefix = '<space>m',
+      -- prefix = 'gy',
+      prefix = '',
       -- Function which can modify text before multiplying
       func = nil,
     },
