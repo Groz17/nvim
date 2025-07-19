@@ -1,32 +1,14 @@
 -- usa ctrl+m per <cr> (confirm)
--- native version like fzf for fast?
--- terminal action?
--- you can now use <f17> as leader prefix since u use autshift
 -- how to grep on files found with files? (or in general switch to another picker inside picker? 3 pickers)
 -- order/sort each picker by frecency? (by default)
--- TODO:  add box to title like for telescope? I guess depends on the colorscheme support
 -- check if some need visual mode mappings (like grep lines ig)
 -- filter list w/ regex?
+-- close picker when c-h and empty input?
+-- rotate preview as in fzf-lua?
 return {
   -- "folke/snacks.nvim",
   'snacks.nvim',
-  init = function()
-    -- how to get rid of the first semicolon in the popup window? also for all leader-type mappings...
-    -- name or group dont do nothing
-    -- esc and ctrl-alt are the opposite on my kanata config beautiful
-    -- maybe ret though? for git mappings?
-    -- can use <c-m...> in insert and visual modes as well (also command with command history ig)
-    -- would be cool if which-key supported modifiers...
-    -- require('which-key').add({ '<c-m>', name = 'Picker' })
-    -- require('which-key').add({ '  ', name = 'Picker' })
-    -- require('which-key').add({ '<f17>g', group = 'Git' })
-  end,
   -- crea mapping con which-key delle keybindings specifiche del picker
-  -- maybe kanata weird mappings like chords?
-  -- use desc as title in picker?
-  -- take vscode keymaps as inspiration? <c-s...>
-  -- gioca sul tap dance, dunno (o magari right half left shift for iso keyboards...)
-  -- what if you're using function key like C-c in emacs?
   -- basically in insert popup near cursor, otherwise auto
   -- add c-x 4,5 mappings?
   keys = {
@@ -35,8 +17,8 @@ return {
     -- ╰─────────────────────────────────────────────────────────╯
     -- you've got 4 variations for every mapping: {c,s,a}?<symbol>
     -- crea if not exist like emacs
-    { "<f12>b", function() Snacks.picker.buffers() end, desc = "Buffers" ,mode={'n','i'}}, -- maybe add <f17> for other opts (maybe hidden)? + grep version
     -- what about unlisted?
+    { "<f12>b", function() Snacks.picker.buffers() end, desc = "Buffers" ,mode={'n','i'}},
     -- show which-key when ctrl (d/k) held
     { '<c-p>', function() Snacks.picker.files({ cwd = vim.fn.expand('%:p:h') }) end, desc = 'Find Files relative to open buffer' ,mode={'n','i'}},
     -- queste opzioni le puoi togglare tanto...
@@ -53,7 +35,6 @@ return {
     -- win is winnr-1? or is it always -1?
     -- HACK (would be cool to show light version of current theme)
     { '<f17>/', function() Snacks.picker.lines({ on_show = function() vim.fn.win_execute(vim.fn.win_getid(vim.fn.winnr()-1)--[[snacks_picker_list]],"Styler kanagawa-lotus") end }) end, desc = 'Buffer Lines' ,mode={'n','i'}},
-    -- { '<f17>/', function() Snacks.picker.lines({}) end, desc = 'Buffer Lines' },
     -- TODO: fix (magari usa edgy.nvim)
     -- { '<f17>/', function() Snacks.picker.lines({ on_show = function() require("styler").set_theme(vim.fn.win_getid(vim.fn.winnr()-1), { background = Snacks.toggle.get('background'):toggle() }) end }) end, desc = 'Buffer Lines' },
     -- same as swiper-all
@@ -67,7 +48,6 @@ return {
     -- { '<f17>W', function() Snacks.picker.grep_word({live=true}) end, desc = 'Visual selection or word', mode = { 'n', 'x' } },
     { '<f17>3', function() Snacks.picker.grep_word({live=true}) end, desc = 'Visual selection or word', mode = { 'n', 'x' } },
     { '<m-s>.', function() Snacks.picker.grep_word({live=true}) end, desc = 'Visual selection or word', mode = { 'n', 'x' } },
-    -- { '<m-s>s-.', function() Snacks.picker.grep_word({live=true}) end, desc = 'Visual selection or word', mode = { 'n', 'x' } },
     -- ╭─────────────────────────────────────────────────────────╮
     -- │ GIT                                                     │
     -- ╰─────────────────────────────────────────────────────────╯
@@ -195,278 +175,233 @@ return {
     { '<M-S-4>', function() Snacks.picker.spelling() end, desc = 'Spelling' ,mode={'n','i'}},
   },
   -- opts = function(_,opts) table.insert(opts,{
-  -- opts = function(_,opts) vim.tbl_deep_extend('error',opts,{
-  opts = {
-    picker = {
-      -- layout = {preset = "telescope"},
-      sources = {
-        -- incremental <c-g>???
-        -- use <c-space> instead and <c-g> for ignore like fzf-lua? or maybe <c-s-g>?
-        grep = {
-          need_search = false,
-        },
-        git_grep = {
-          need_search = false,
-        },
-        lazy = {
-          pattern=""
+    -- opts = function(_,opts) vim.tbl_deep_extend('error',opts,{
+      opts = {
+        picker = {
+          -- layout = {preset = "telescope"},
+          sources = {
+            -- incremental <c-g>???
+            -- use <c-space> instead and <c-g> for ignore like fzf-lua? or maybe <c-s-g>?
+            grep = {
+              need_search = false,
+            },
+            git_grep = {
+              need_search = false,
+            },
+            lazy = {
+              pattern=""
 
-        },
-        -- https://github.com/folke/snacks.nvim/discussions/2018
-        commands = {
-        actions = {
-          accept = function(picker, item)
-            vim.cmd(item.cmd)
-            picker:close()
-          end,
-        },
-        win = {
-          input = {
-            keys = {
-              -- like ivy?
-              ['<C-a-j>'] = { 'accept', mode = { 'i', 'n' } }, -- Execute
-              ['<CR>'] = { 'confirm', mode = { 'i', 'n' } }, -- Choose
-            }}}},
-        explorer = {
-          -- why two times for layout?
-          -- maybe floating window?
-          layout={layout = { position = "right" }} ,
-          win = {
-            list = {
-              keys = {
-                ['h'] = 'explorer_up',
-                -- ['<c-h>'] = 'explorer_close',
-                -- w/ kanata chord
-                -- ['ZQ'] = 'explorer_close',
+            },
+            -- https://github.com/folke/snacks.nvim/discussions/2018
+            commands = {
+              actions = {
+                accept = function(picker, item)
+                  vim.cmd(item.cmd)
+                  picker:close()
+                end,
               },
-            },
-          },
-        },
-      },
-      previewers = {
-        diff = {
-          builtin = false,
-          cmd = { "delta" },
-        },
-        git = {
-          builtin = true,
-        },
-      },
-      -- how to adapt size to max string length?
-      ui_select = true,
-      formatters = {
-        file = {
-          filename_first = true, -- display filename before the file path
-        },
-      },
-      
-      win = {
-        preview = {
-          keys = {
-            ["<f12>o"] = "cycle_win",
-          },
-        },
-        -- input window
-        input = {
-          -- strategy: use ctrl/alt for readline mappings, f17 (c-x/s&l) for vim/snacks-related mappings
-          keys = {
+              win = {
+                input = {
+                  keys = {
+                    -- like ivy?
+                    ['<C-a-j>'] = { 'accept', mode = { 'i', 'n' } }, -- Execute
+                    ['<CR>'] = { 'confirm', mode = { 'i', 'n' } }, -- Choose
+                  }}}},
+                  explorer = {
+                    -- why two times for layout?
+                    -- maybe floating window?
+                    layout={layout = { position = "right" }} ,
+                    win = {
+                      list = {
+                        keys = {
+                          ['h'] = 'explorer_up',
+                          -- ['<c-h>'] = 'explorer_close',
+                          -- w/ kanata chord
+                          -- ['ZQ'] = 'explorer_close',
+                        },
+                      },
+                    },
+                  },
+                },
+                previewers = {
+                  diff = {
+                    builtin = false,
+                    cmd = { "delta" },
+                  },
+                  git = {
+                    builtin = true,
+                  },
+                },
+                -- how to adapt size to max string length?
+                ui_select = true,
+                formatters = {
+                  file = {
+                    filename_first = true, -- display filename before the file path
+                  },
+                },
+                
+                win = {
+                  preview = {
+                    keys = {
+                      ["<f12>o"] = "cycle_win",
+                    },
+                  },
+                  -- input window
+                  input = {
+                    -- strategy: use ctrl/alt for readline mappings, f17 (c-x/s&l) for vim/snacks-related mappings
+                    keys = {
 
-            ["<f17>t>"] = {
-              "trouble_open",
-              mode = { "n", "i" },
-            },
-            -- ["<f17>s"] = { "flash", mode = { "n", "i" } },
-	    -- avy-goto-line (maybe better built-in functions/keymaps?)
-            ["<m-g><m-g>"] = { "flash", mode = { "n", "i" } },
-            ["<m-g>g"] = { "flash", mode = { "n", "i" } },
-            ["s"] = { "flash" },
-            -- magari usa <c-c> qui?
-            -- ["<s-Esc>"] = { "close", mode = { "n", "i" } },
-            -- like emacs
-            ["<c-g>"] = { "close", mode = { "i" } },
-	    -- maybe better
-            -- ["<c-[>"] = { "close", mode = { "i" } },
+                      ["<f17>t>"] = { "trouble_open", mode = { "n", "i" }, },
+                      -- ["<f17>s"] = { "flash", mode = { "n", "i" } },
+                      -- avy-goto-line (maybe better built-in functions/keymaps?)
+                      ["<m-g><m-g>"] = { "flash", mode = { "n", "i" } },
+                      ["<m-g>g"] = { "flash", mode = { "n", "i" } },
+                      ["s"] = { "flash" },
+                      -- like emacs
+                      ["<c-g>"] = { "close", mode = { "i" } },
 
-            -- like fzf-lua (in eventuale attesa di emacs keybinding)
-            ["<c-space>"] = { "toggle_live", mode = { "i" } },
+                      -- like fzf-lua (in eventuale attesa di emacs keybinding)
+                      ["<c-space>"] = { "toggle_live", mode = { "i" } },
 
-            -- to use if you don't have to select anything
-            -- ["jj"] = { "confirm", mode = { "i" } },
-            -- ["jl"] = { "confirm", mode = { "i" } },
-            -- q = nil,
-            q = "",
-            -- ['jk'] = { 'confirm', mode = { 'i' } },
-            -- ['kj'] = { 'close', mode = { 'i' } },
-            -- ['l'] = { 'confirm', mode = { 'n' } },
-            -- fallo anche per tridactyl
-            -- ['jk'] = { 'confirm', mode = { 'i' } },
-            -- to use after selecting since you're already using ctrl to select stuff
-            -- maybe use v for vim prefix? also works because vim doesn't use alt keybindings
-            ["<c-o>"] = { "loclist", mode = { "i", "n" } },
-            -- first disable all keybindings?
-            ["<c-s-o>"] = { "qflist", mode = { "i", "n" } },
-            ['<c-l>'] = { 'confirm', mode = { 'i' } },
-            -- ["<c-g>"] = { "close", mode = { "i" } },
-            -- ["<f17>"] = {"confirm",mode="i"},
-            -- ['<f17>'] = { 'toggle_maximize', mode = { 'i', 'n' } },
-            -- kanata hold space
-            -- ['<f17>'] = { 'toggle_maximize', mode = { 'i', 'n' } },
-            ['<s-space>'] = { 'toggle_maximize', mode = { 'i', 'n' } },
-            -- I want glob though...
-            -- what are those fields? docs?
-            -- ['<f17>'] = { 'file:',expr=true, mode= { 'i', 'n' } },
-            -- TODO: don't add space if no input...
-            -- ['<f17>'] = { tostring(vim.fn.len(vim.fn.line('.'))),expr=true, mode= { 'i', 'n' } },
-            -- ['<f17>'] = { ' file:',expr=true, mode= { 'i', 'n' } },
-            -- make a hydra with alt for all these toggle and exit when alt is released?
-            -- toggle show path?
-            -- toggle ignorecase?
-            -- in attesa di toggle...
-            -- usa ctrl-Alt cosi si puo usare in insert&normal mode
-            -- stessi mapping del picker
-            -- emacs
-            ["<f12>h"] = { "select_all", mode = { "i", "n" } },
-            ["<f13>i"] = { "toggle_ignored", mode = { "i", "n" } },
-            -- per il momento usa tab... fixa w/ ghostty
-            ["<a-tab>"] = { "toggle_ignored", mode = { "i", "n" } },
-            ["<f13>h"] = { "toggle_hidden", mode = { "i", "n" } },
-            ["<f13>f"] = { "toggle_follow", mode = { "i", "n" } },
-            ["<f13>p"] = { "toggle_preview", mode = { "i", "n" } },
-            -- also add action for picker-specific bindings
-            ['<f18>m'] = 'toggle_help',
-            -- ["."] = "toggle_focus",
-            -- c-s-g to append searches?
-            -- do <c-{v,s,t} work with multiple selections?
-            -- floating keymap? define standard as for explorer, debug, etc...
+                      q = "",
+                      ['l'] = { 'confirm', mode = { 'n' } },
+                      ["<c-o>"] = { "loclist", mode = { "i", "n" } },
+                      -- first disable all keybindings?
+                      ["<c-s-o>"] = { "qflist", mode = { "i", "n" } },
+                      ['<c-l>'] = { 'confirm', mode = { 'i' } },
+                      ['<s-space>'] = { 'toggle_maximize', mode = { 'i', 'n' } },
+                      -- I want glob though...
+                      -- what are those fields? docs?
+                      -- ['<f17>'] = { 'file:',expr=true, mode= { 'i', 'n' } },
+                      -- TODO: don't add space if no input...
+                      -- ['<f17>'] = { tostring(vim.fn.len(vim.fn.line('.'))),expr=true, mode= { 'i', 'n' } },
+                      -- ['<f17>'] = { ' file:',expr=true, mode= { 'i', 'n' } },
+                      -- make a hydra with alt for all these toggle and exit when alt is released?
+                      -- toggle show path?
+                      -- toggle ignorecase?
+                      -- in attesa di toggle...
+                      -- usa ctrl-Alt cosi si puo usare in insert&normal mode
+                      -- stessi mapping del picker
+                      -- emacs
+                      ["<f12>h"] = { "select_all", mode = { "i", "n" } },
+                      ["<f13>i"] = { "toggle_ignored", mode = { "i", "n" } },
+                      -- per il momento usa tab... fixa w/ ghostty
+                      ["<a-tab>"] = { "toggle_ignored", mode = { "i", "n" } },
+                      ["<f13>h"] = { "toggle_hidden", mode = { "i", "n" } },
+                      ["<f13>f"] = { "toggle_follow", mode = { "i", "n" } },
+                      ["<f13>p"] = { "toggle_preview", mode = { "i", "n" } },
+                      -- also add action for picker-specific bindings
+                      ['<f18>m'] = 'toggle_help',
+                      -- ["."] = "toggle_focus",
+                      -- c-s-g to append searches?
+                      -- do <c-{v,s,t} work with multiple selections?
+                      -- floating keymap? define standard as for explorer, debug, etc...
 
-            ['<f12>o'] = { 'cycle_win', mode = { 'i', --[['n']] } },
-            -- TODO: doesn't yank all selected lines?
-            ['<a-w>'] = { {'yank','close'}, mode = { 'i', --[['n']] } },
-            -- ╭─────────────────────────────────────────────────────────╮
-            -- │ preview                                                 │
-            -- ╰─────────────────────────────────────────────────────────╯
-            -- add mapping to go to preview...
-            -- rotate as in fzf-lua?
-            -- maybe these should scroll just 1 line
-            -- ['<m-j>'] = { 'preview_scroll_down', mode = { 'i', 'n' } },
-            -- ['<m-k>'] = { 'preview_scroll_up', mode = { 'i', 'n' } },
-            -- emacs
-            ['<c-m-v>'] = { 'preview_scroll_down', mode = { 'i', --[['n']] } },
-            ['<c-m-s-v>'] = { 'preview_scroll_up', mode = { 'i', --[['n']] } },
-            ['v'] = { 'preview_scroll_down', mode = {  'n' } },
-            ['V'] = { 'preview_scroll_up', mode = {  'n' } },
-            -- BUG: doesn't merge with default?
-            -- ['<m-h>'] = { 'preview_scroll_left', mode = { 'i', 'n' } },
-            -- ['<m-l>'] = { 'preview_scroll_right', mode = { 'i', 'n' } },
+                      ['<f12>o'] = { 'cycle_win', mode = { 'i', --[['n']] } },
+                      -- TODO: doesn't yank all selected lines?
+                      ['<a-w>'] = { {'yank','close'}, mode = { 'i', --[['n']] } },
+                      -- ╭─────────────────────────────────────────────────────────╮
+                      -- │ preview                                                 │
+                      -- ╰─────────────────────────────────────────────────────────╯
+                      ['<c-m-v>'] = { 'preview_scroll_down', mode = { 'i', --[['n']] } },
+                      ['<c-m-s-v>'] = { 'preview_scroll_up', mode = { 'i', --[['n']] } },
+                      -- BUG: doesn't merge with default?
+                      -- ['<m-h>'] = { 'preview_scroll_left', mode = { 'i', 'n' } },
+                      -- ['<m-l>'] = { 'preview_scroll_right', mode = { 'i', 'n' } },
 
 
-            -- center like in emacs
-            ['<m-r>'] = { '<esc>/M/', expr = true, mode = 'i', remap=true },
+                      -- center like in emacs
+                      ['<m-r>'] = { '<esc>/M/', expr = true, mode = 'i', remap=true },
 
-            ["<f17>H"] = "layout_left",
-            ["<f17>J"] = "layout_bottom",
-            ["<f17>K"] = "layout_top",
-            ["<f17>L"] = "layout_right",
--- ╭─────────────────────────────────────────────────────────╮
--- │ toggles                                                 │
--- ╰─────────────────────────────────────────────────────────╯
--- follow = "f",
--- hidden = "h",
--- ignored = "i",
--- modified = "m",
--- regex = { icon = "R", value = false },
--- c-d in normal mode non funge?
+                      ["<f17>H"] = "layout_left",
+                      ["<f17>J"] = "layout_bottom",
+                      ["<f17>K"] = "layout_top",
+                      ["<f17>L"] = "layout_right",
+                      -- ╭─────────────────────────────────────────────────────────╮
+                      -- │ toggles                                                 │
+                      -- ╰─────────────────────────────────────────────────────────╯
+                      -- follow = "f",
+                      -- hidden = "h",
+                      -- ignored = "i",
+                      -- modified = "m",
+                      -- regex = { icon = "R", value = false },
+                      -- c-d in normal mode non funge?
 
-            -- ╭─────────────────────────────────────────────────────────╮
-            -- │ emacs/readline                                                │
-            -- ╰─────────────────────────────────────────────────────────╯
-            -- ["<C-n>"] = false,
-            -- emacs uses m-{n,p} in the minibuffer btw
-            ["<C-p>"] = { "history_back", mode = { "i"  } },
-            ["<C-n>"] = { "history_forward", mode = { "i"  } },
-            -- ['<a->>'] = "move_to_bottom",
-            -- cool w/ autoshift
-            -- wanna usa c/a-v like emacs tho
-            -- ['<c-s-j>'] = { 'list_scroll_down', mode = { 'i' } },
-            -- ['<c-s-k>'] = { 'list_scroll_up', mode = { 'i' } },
-            ['<M-S-,>'] = { 'list_top', mode = { 'i' } },
-            ['<M-S-.>'] = { 'list_bottom', mode = { 'i' } },
-            -- ["<f17>"] ={ ".*",mode={"i"},expr=true},
-            -- word
-            ['<M-f>'] = { function() require('readline').forward_word() end, mode = 'i' },
-            ['<M-b>'] = { function() require('readline').backward_word() end, mode = 'i' },
-            ['<M-d>'] = { function() require('readline').kill_word() end, mode = 'i' },
-            ['<M-BS>'] = { function() require('readline').backward_kill_word() end, mode = 'i' },
-            ['<c-w>'] = { function() require('readline').unix_word_rubout() end, mode = 'i' },
-            -- ["<M-d>"] = require("readline").kill_word,
-            -- ["<M-BS>"] = require("readline").backward_kill_word,
-            -- ["<C-w>"] = require("readline").unix_word_rubout,
+                      -- ╭─────────────────────────────────────────────────────────╮
+                      -- │ emacs/readline                                                │
+                      -- ╰─────────────────────────────────────────────────────────╯
+                      -- emacs uses m-{n,p} in the minibuffer btw
+                      ["<C-p>"] = { "history_back", mode = { "i"  } },
+                      ["<C-n>"] = { "history_forward", mode = { "i"  } },
+                      ['<M-S-,>'] = { 'list_top', mode = { 'i' } },
+                      ['<M-S-.>'] = { 'list_bottom', mode = { 'i' } },
+                      -- ["<f17>"] ={ ".*",mode={"i"},expr=true},
+                      -- word
+                      ['<M-f>'] = { function() require('readline').forward_word() end, mode = 'i' },
+                      ['<M-b>'] = { function() require('readline').backward_word() end, mode = 'i' },
+                      ['<M-d>'] = { function() require('readline').kill_word() end, mode = 'i' },
+                      ['<M-BS>'] = { function() require('readline').backward_kill_word() end, mode = 'i' },
+                      ['<c-w>'] = { function() require('readline').unix_word_rubout() end, mode = 'i' },
 
-            -- split/tab (like emacs C-x{2,3}) (magari usa C-x?)
-            -- ["<c-3>"] = { "edit_vsplit", mode = { "i", "n" } },
-            -- ["<c-2>"] = { "edit_split", mode = { "i", "n" } },
-            -- check if emacs has already a keybinding
-            ["<f17>v"] = { "edit_vsplit", mode = { "i", "n" } },
-            -- ["<f17>s"] = { "edit_split", mode = { "i", "n" } },
-            ["<f17>x"] = { "edit_split", mode = { "i", "n" } },
+                      -- split/tab (like emacs C-x{2,3}) (magari usa C-x?)
+                      -- ["<c-3>"] = { "edit_vsplit", mode = { "i", "n" } },
+                      -- ["<c-2>"] = { "edit_split", mode = { "i", "n" } },
+                      -- check if emacs has already a keybinding
+                      ["<f17>v"] = { "edit_vsplit", mode = { "i", "n" } },
+                      -- ["<f17>s"] = { "edit_split", mode = { "i", "n" } },
+                      ["<f17>x"] = { "edit_split", mode = { "i", "n" } },
 
-            ["<a-v>"] = { "list_scroll_up", mode = { "i" } },
-            ["<c-v>"] = { "list_scroll_down", mode = { "i" } },
+                      ["<a-v>"] = { "list_scroll_up", mode = { "i" } },
+                      ["<c-v>"] = { "list_scroll_down", mode = { "i" } },
 
-            -- line
-            -- ["<C-k>"] = require("readline").kill_line,
-            ['<C-a>'] = { function() require('readline').beginning_of_line() end, mode = 'i' },
-            ['<C-e>'] = { function() require('readline').end_of_line() end, mode = 'i' },
-            ['<C-u>'] = { function() require('readline').backward_kill_line() end, mode = 'i' },
-            -- char
-            ['<C-d>'] = { '<Delete>', expr = true, mode = 'i' },
-            ['<C-b>'] = { '<Left>', expr = true, mode = 'i' },
-            ['<C-f>'] = { '<Right>', expr = true, mode = 'i' },
-            -- mapping to hide/make transparent? to peek current buffer's content
-          },
-        },
+                      -- line
+                      -- ["<C-k>"] = require("readline").kill_line,
+                      ['<C-a>'] = { function() require('readline').beginning_of_line() end, mode = 'i' },
+                      ['<C-e>'] = { function() require('readline').end_of_line() end, mode = 'i' },
+                      ['<C-u>'] = { function() require('readline').backward_kill_line() end, mode = 'i' },
+                      -- char
+                      ['<C-d>'] = { '<Delete>', expr = true, mode = 'i' },
+                      ['<C-b>'] = { '<Left>', expr = true, mode = 'i' },
+                      ['<C-f>'] = { '<Right>', expr = true, mode = 'i' },
+                      -- mapping to hide/make transparent? to peek current buffer's content
+                    },
+                  },
 
-        list = {
-          -- use d to delete entries?
-          keys = {
-            ['<f12>o'] = { 'cycle_win', mode = { 'i', 'n' } }, -- like ^w^w
-            ['l'] = { 'confirm', mode = { 'n' } },
-            -- todo: visual mode + :global command confirm? or mulitcursors
-          },
-        },
+                  list = {
+                    -- use d to delete entries?
+                    keys = {
+                      ['<f12>o'] = { 'cycle_win', mode = { 'i', 'n' } }, -- like ^w^w
+                      ['l'] = { 'confirm', mode = { 'n' } },
+                      -- todo: visual mode + :global command confirm? or mulitcursors
+                    },
+                  },
 
-      },
+                },
 
-          actions =
---           table.concat(
--- require("trouble.sources.snacks").actions,
--- does emacs have flash like keymaps/plugin?
-{
-          flash = function(picker)
-                     require("flash").jump({
-                       pattern = "^",
-                       label = { after = { 0, 0 } },
-                       search = {
-                         mode = "search",
-                         exclude = {
-                           function(win)
-                             return vim.bo[vim.api.nvim_win_get_buf(win)].filetype ~= "snacks_picker_list"
-                           end,
-                         },
-                       },
-                       action = function(match)
-                         local idx = picker.list:row2idx(match.pos[1])
-                         picker.list:_move(idx, true, true)
-                       end,
-                     })
-                   end}
-                 -- )
-    },
-  },
-  -- )end
-  -- close picker when c-h and empty input?
-}
--- diff between toggle_help_input and toggle_help_list
--- 
---
--- in realta kl; funge come c-c (puoi rimappare c-c)
+                actions =
+                --           table.concat(
+                  -- require("trouble.sources.snacks").actions,
+                  -- does emacs have flash like keymaps/plugin?
+                  {
+                    flash = function(picker)
+                      require("flash").jump({
+                        pattern = "^",
+                        label = { after = { 0, 0 } },
+                        search = {
+                          mode = "search",
+                          exclude = {
+                            function(win)
+                              return vim.bo[vim.api.nvim_win_get_buf(win)].filetype ~= "snacks_picker_list"
+                            end,
+                          },
+                        },
+                        action = function(match)
+                          local idx = picker.list:row2idx(match.pos[1])
+                          picker.list:_move(idx, true, true)
+                        end,
+                      })
+                    end}
+                    -- )
+                  },
+                },
+              }
