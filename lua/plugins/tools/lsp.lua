@@ -64,7 +64,6 @@ return {
        --      " gh - show the hover tooltip.
        --      " gb - add an additional cursor at the next place that matches *.
 
-       vim.keymap.set('n', 'gy', vim.lsp.buf.type_definition, { buffer = args.buf, desc = 'Goto type definition' })
        vim.keymap.set('n', 'gY', vim.lsp.buf.typehierarchy, { buffer = args.buf, desc = 'Subtypes or supertypes' })
        --  " nnoremap <silent> <F2>          <cmd>lua vim.lsp.buf.rename()<CR>
        ---@see https://www.reddit.com/r/neovim/comments/1gryk36/comment/lxbkwaa/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
