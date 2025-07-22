@@ -19,9 +19,7 @@ return {
   dependencies = {
     'folke/snacks.nvim',
     --- The below dependencies are optional
-    -- "catppuccin/nvim",
     -- mini.files???
-    -- "nvim-tree/nvim-tree.lua",
   },
   config = true,
 }

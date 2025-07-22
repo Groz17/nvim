@@ -494,7 +494,7 @@ vim.cmd[[
 "nnoremap g: :lua<space>
 ]]
 
-vim.keymap.set({'i','n'}, '<M-S-;>',':lua<space>') -- like M-: for elisp in emacs
+vim.keymap.set({'i','n'}, '<M-S-;>',[[<c-\><c-n>:lua<space>]]) -- like M-: for elisp in emacs
 
 -- https://www.reddit.com/r/neovim/comments/1k27y0t/go_back_to_the_start_of_a_search_for_the_current/
 -- All the ways to start a search, with a description
@@ -653,8 +653,6 @@ vim.keymap.set('i','<c-]>','<esc>')
 -- https://www.reddit.com/r/vim/comments/3y2mgt/
 vim.keymap.set("x", ".", "<cmd>norm! .<cr>")
 
--- ─  readline
-vim.keymap.set('i', '<c-m-e>', "<cmd>call setline('.',expand(getline('.'),v:false,v:true))<cr>", {desc = "Like vim-expand"})
 
 -- ─ for these check if buffer is modifiable
 -- vim.keymap.set('n', '<s-cr>', "O<esc>O")
@@ -714,10 +712,10 @@ vim.keymap.set('i','<m-s>.','<c-o>*') -- add c-s/c-r
 -- ─ <c-h>
 -- vim.keymap.set({'n','i'},'<f18>k',[[<c-\><c-n>:h ]]) -- add c-s/c-r
 -- TODO: usa snacks
-vim.keymap.set({'n','x','i','t','c'},'<f18>k',[["<c-\><c-n>:h "..(mode()=='n'?'':mode()->tolower()..'_')]], {expr=true})
+vim.keymap.set({'n','x','i','t','c'},'<f18>K',[["<c-\><c-n>:FloatingHelp "..(mode()=='n'?'':mode()->tolower()..'_')]], {expr=true})
 -- how to escape single quote for fzf?
 vim.keymap.set({'n','x','i','t','c'},'<f18>v',[[<c-\><c-n>:h ']] )
-vim.keymap.set({'n','x','i','t','c'},'<f18>m',[[<c-\><c-n><cmd>FloatingHelp user-manual<cr>]] )
+vim.keymap.set({'n','x','i','t','c'},'<f18>r',[[<c-\><c-n><cmd>FloatingHelp user-manual<cr>]] )
 -- ─ others
 -- org mode
 -- insert mode in visual mode like emacs?
@@ -738,7 +736,7 @@ vim.keymap.set({'n','i'},'<c-/>',"<cmd>norm! u<cr>")
 vim.keymap.set({'n','i'},'<m-s-,>',"<cmd>norm! gg0<cr>")
 vim.keymap.set({'n','i'},'<m-s-.>',"<cmd>norm! G$<cr>")
 
-vim.keymap.set('i','<tab>',"<c-f>")
+-- vim.keymap.set('i','<tab>',"<c-f>")
 -- vim.keymap.set('i','<c-l>',"<c-o>zz")
 
 -- https://www.reddit.com/r/vim/comments/112e8ne/vim_function_to_move_following_word_into/
@@ -835,12 +833,21 @@ vim.keymap.set({'n','i','x','o'},'<c-m-s-v>',[[<cmd>call win_execute(bufwinid(bu
 
 vim.keymap.set({'n','i','x','o'},'<m-r>',[[<c-\><c-n><cmd>norm! M<cr>i]])
 
+vim.keymap.set({'n','i','x','o'},'<f12>t0',[[<c-\><c-n><cmd>tabclose<cr>]])
+vim.keymap.set({'n','i','x','o'},'<f12>t1',[[<c-\><c-n><cmd>tabonly<cr>]])
+vim.keymap.set({'n','i','x','o'},'<f12>t2',[[<c-\><c-n><cmd>tabnew<cr>]])
+vim.keymap.set({'n','i','x','o'},'<f12>to',[[<c-\><c-n><cmd>tabnext<cr>]])
+vim.keymap.set({'n','i','x','o'},'<f12>tO',[[<c-\><c-n><cmd>tabprevious<cr>]])
+-- noremap <silent> <c-x>5 <cmd>echo "Frames are only in Emacs/GNU Emacs"<cr>
+
 vim.keymap.set({'n','i','x','o'},'<f12>o',[[<c-\><c-n><cmd>wincmd w<cr>]])
 vim.keymap.set({'n','i','x','o'},'<f12>2',[[<c-\><c-n><cmd>exe "norm! ]]..vim.v.count..[[\<c-w>s\<c-w>\<c-p>"<cr>]])
 vim.keymap.set({'n','i','x','o'},'<f12>3',[[<c-\><c-n><cmd>exe "norm! ]]..vim.v.count..[[\<c-w>v\<c-w>\<c-p>"<cr>]])
 
--- distinguish visual mode from insert? select mode!
-vim.keymap.set('x','<c-w>','c')
+-- distinguish visual mode coming from and insert? select mode!
+vim.keymap.set('s','<c-w>','<bs>')
+vim.keymap.set('x','<a-w>','<c-o>y')
+vim.keymap.set('x','<c-w>','d')
 vim.keymap.set('x','<a-w>','y')
 
 ---@see https://github.com/echasnovski/mini.nvim/discussions/1042

@@ -9,28 +9,10 @@ return {{
     'nvim-lua/plenary.nvim',
     'antoinemadec/FixCursorHold.nvim',
     'nvim-treesitter/nvim-treesitter',
-    'nvim-neotest/neotest-jest',
   },
   -- GOAT STUFF: https://github.com/nvim-neotest/neotest-python/issues/52#issuecomment-1676568667
   opts = function()
     return {
-      adapters = {
-        -- TODO: put in java.lua
-        -- require('neotest-java'),
-        -- ['neotest-java'] = {
-        --   -- config here
-        -- },
-        require('neotest-python'),
-        -- ['neotest-python'] = {},
-require('neotest-jest')({
-          jestCommand = "npm test --",
-          jestConfigFile = "custom.jest.config.ts",
-          env = { CI = true },
-          cwd = function(path)
-            return vim.fn.getcwd()
-          end,
-        }),
-      },
     }
   end,
   -- ["T"] = {
@@ -48,23 +30,6 @@ require('neotest-jest')({
     { '<leader>tO', function() require('neotest').output_panel.toggle() end, desc = 'Toggle output panel' },
     { '<leader>tA', function() require('neotest').run.attach() end, desc = 'Attach' },
   },
-  config = function(_, opts)
-    -- get neotest namespace (api call creates or returns namespace)
-    local neotest_ns = vim.api.nvim_create_namespace('neotest')
-    vim.diagnostic.config({
-      virtual_text = {
-        format = function(diagnostic)
-          local message = diagnostic.message
-            :gsub('\n', ' ')
-            :gsub('\t', ' ')
-            :gsub('%s+', ' ')
-            :gsub('^%s+', '')
-          return message
-        end,
-      },
-    }, neotest_ns)
-    require('neotest').setup(opts)
-  end,
 },
 
 {

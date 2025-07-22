@@ -1,23 +1,5 @@
 -- Packer
 return {
-  {
-    -- usa OS command (for firefox as well)
-    'jackMort/pommodoro-clock.nvim',
-    cond = false,
-    dependenceis = {
-      'MunifTanjim/nui.nvim',
-    },
-    opts = {},
-    -- stylua: ignore
-    keys = {
-      {'<leader>Pw', function() require'pommodoro-clock'.start("work") end, desc = "Start Pommodoro" },
-      {'<leader>Ps', function() require'pommodoro-clock'.start("short_break") end, desc = "Short Break" },
-      {'<leader>Pl', function() require'pommodoro-clock'.start("long_break") end, desc = "Long Break" },
-      {'<leader>Pp', function() require'pommodoro-clock'.toggle_pause() end, desc = "Toggle Pause" },
-      {'<leader>Pc', function() require'pommodoro-clock'.close() end, desc = "Close" },
-    }
-,
-  },
   -- useful for leetcode (competitive programming)
   -- would be cool to use j and k to up and down and h and l to switch to seconds/minutes
   {

@@ -2,29 +2,7 @@
 -- https://gitlab.com/mcepl/vim-diff_navigator
 -- http://www.vim.org/scripts/script.php?script_id=2361
 
--- magari mettila nella setup?
-local dirs = {}
 return {
-  {
-    -- would be cool to use a preprocess command, like gcc -E
-    'will133/vim-dirdiff',
-    cmd = 'DirDiff',
-    keys = {
-      -- d.. no option (full stop); d.x -> option mapping, like d.w -> don't consider whitespace
-      { 'd.', ':DirDiff<space>' },
-      -- m for mark
-      {
-        'dm',
-        function()
-          table.insert(dirs, vim.fn.expand('%:p:h'))
-          if #dirs == 2 then
-            vim.cmd('DirDiff', dirs)
-            dirs = {}
-          end
-        end,
-      },
-    },
-  },
   {
     -- use in combination with diff -r or git diff --no-index
     'junkblocker/patchreview-vim',

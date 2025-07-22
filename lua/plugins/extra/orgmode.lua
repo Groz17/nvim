@@ -24,14 +24,14 @@ return{{
 
       -- NOTE: Have to manually re-specify the globals as they were using the prefix
       global = {
-        -- org_agenda  = '<leader>W',
-        -- org_capture = '<leader>w',
+        org_agenda  = '<f15>a',
+        org_capture = '<f15>c',
       },
 
       -- NOTE: This isn't using the prefix, but instead <Leader>, so we change it explicitly
       -- in insert mode though?
       org = {
-        org_meta_return = '<LocalLeader><CR>',
+        org_meta_return = '<m-cr>',
         org_next_visible_heading = false,
         org_previous_visible_heading = false,
       },
@@ -70,6 +70,7 @@ return{{
   dependencies = {
     "tpope/vim-repeat",  -- for repeatable actions with '.'
   },
+  keys = {{ '<localleader>-', ft = 'org' }},
   opts = {
     mapping = {
       -- same as c-c - in emacs

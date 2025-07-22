@@ -1,9 +1,9 @@
 -- lua require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
 return {
-  {
-    'nvim-neotest/neotest-python',
-    ft = 'python',
-  },
+  -- {
+  --   'nvim-neotest/neotest-python',
+  --   ft = 'python',
+  -- },
   {
     'mfussenegger/nvim-dap-python',
     ft = 'python',

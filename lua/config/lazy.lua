@@ -34,22 +34,6 @@ vim.opt.rtp:prepend(lazypath)
 
 -- require("lazy").setup("plugins", {
 require("lazy").setup({
-
-    defaults = {
-        cond = function(plugin)
-            if os.getenv('NVIM') ~= nil then
-      -- https://github.com/willothy/flatten.nvim/issues/7
-      -- https://github.com/willothy/flatten.nvim/pull/29
-      -- https://github.com/willothy/flatten.nvim/discussions/27
-                if plugin[1] ~= 'willothy/flatten.nvim' then
-                    return false
-                end
-                return true
-            end
-            return true
-        end,
-    } ,
-    --
     -- rocks = {
     --   hererocks = true,  -- recommended if you do not have global installation of Lua 5.1.
     -- },

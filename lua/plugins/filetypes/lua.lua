@@ -18,31 +18,3 @@ return {
     },
   },
 }
-
--- {
---   "jbyuki/one-small-step-for-vimkind",
---   cond = false,
---   keys = {
---     { "<F5>", function() require("osv").launch({ port = 8086 }) end, desc = "Adapter Lua Server" },
---     { "<F6>", function() require("osv").run_this() end, desc = "Adapter Lua" },
---   },
---   config = function()
---     local dap = require("dap")
---     dap.configurations.lua = {
---       {
---         type = "nlua",
---         request = "attach",
---         name = "Attach to running Neovim instance",
---       },
---     }
---
---     dap.adapters.nlua = function(callback, config)
---       callback({ type = "server", host = config.host or "127.0.0.1", port = config.port or 8086 })
---     end
---   end,
---   -- event = "BufEnter " .. vim.fn.stdpath('config') .. "**/*.lua"
---   -- ft = "lua",
--- },
-
--- { '<leader>e<Cr>', function() require 'osv'.run_this() end,             desc = 'Start To Debug' },
--- { '<leader>en',    function() require 'osv'.launch { port = 8086 } end, desc = 'Start To Debug' },

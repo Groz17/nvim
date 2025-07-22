@@ -3,14 +3,6 @@
 -- add which-key conf here
 -- how to change to which-key window? maybe just to copy
 return {
-  -- maybe for hydra? like for debugging purposes
-{ "nvzone/menu" , cond=false,
-keys = {
-  -- single alt like for browsers/gui? or maybe menu key? kanata?
-  -- map l to <cr>
-{ "<C-t>", function() require("menu").open("default") end,},
-},
-},
   { "meznaric/key-analyzer.nvim",
   cmd="KeyAnalyzer",
   opts = {}
@@ -194,7 +186,6 @@ keys = {
       --     q = 'quickfix list',
       --     l = 'location list',
       --   },
-      --   {"/",group = 'URLs' },
       -- }
       -- magari non crearli per plugin con pochi mappings...
       -- a = art?
@@ -205,13 +196,12 @@ keys = {
       -- NOTE: magari mettigrouppi specifici nei singoli plugin (tipo todo, chatgpt)
       -- how to not show space key in which-key buffer?
       local groups = {
-        {"/", group = "URL"},
         -- {"a", group = "AI"},
         {"A", group = "Auto-preview"},
         -- {"B", group = "Buffers"},
         {"b", group = "Comment-box [line]"}, {"B", group = "Comment-box [box]"},
         -- {"c", group = "ChatGPT"},
-        {"P", group = "Pommodoro"},
+        -- {"P", group = "Pommodoro"},
         --     c = { name = "Code" },
         -- debugging is done with hydra
         {"d", group = "Diagnostics"},
@@ -288,7 +278,6 @@ keys = {
         -- to select with telescope
         -- v = { name = "VimWiki" },
         {"w", group = "Wiki"},
-        {"m", group = "Mode"}, -- for hydra kinda thingy
         -- {"u", group = "UI"},
         -- {"q", group = "Macros"},
         {'"', group = "Registers"},

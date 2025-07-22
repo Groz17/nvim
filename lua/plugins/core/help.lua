@@ -4,6 +4,7 @@ return {
     -- would be nice to have telescope use it for help_tags and man_pages...
     -- tbl_islist add pr deprecated...
     'Tyler-Barham/floating-help.nvim',
+    cmd = 'FloatingHelp',
     pin = true, -- vim.tbl_islist deprecated (fai PR)
     event = 'CmdlineEnter',
     -- only if not a LSP-powered buffer?

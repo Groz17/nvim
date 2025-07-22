@@ -16,14 +16,6 @@ return {
     end,
   },
   {
-    -- Changed mapping to gO (like go mapping for bytes in vim); nvmd, used in treesitter telescope mapping
-    -- Maybe gA is better...
-    'https://github.com/mellowcandle/vim-bitwise',
-    -- When updating all plugins with U it updates this...
-    pin = true,
-    cond = false,
-  },
-  {
     -- FIX: slow
     'glts/vim-radical',
     dependencies = {

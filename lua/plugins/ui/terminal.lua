@@ -1,16 +1,5 @@
 return {
   {
-    -- nvim * doesn't work
-    'willothy/flatten.nvim',
-    opts = {
-      -- Allow a nested session to open if Neovim is opened without arguments
-      nest_if_no_args = false,
-    },
-    -- Ensure that it runs first to minimize delay when opening file from terminal
-    lazy = false,
-    priority = 1001,
-  },
-  {
     -- https://github.com/nikvdp/neomux
   },
   -- {

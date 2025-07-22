@@ -1,17 +1,3 @@
--- BUG: doesn't work with :browse
--- make cmdline wider with mapping?
-
--- can you save messages for the last 5 sessions (or all sessions) for ex? with sqlite.lua maybe (maybe VimLeave :redir?)
-
--- api to get the last message? in a table?
-
--- how to make current notification last a little longer
-
--- seems slow, sometimes it types the commands
-
--- https://www.google.com/search?client=firefox-b-lm&q=msg_scroll_flush+assertion
--- https://github.com/folke/noice.nvim/issues/191
-
 -- usa ctrl-j o ctrl-m per premere return (comodo con caps lock)
 --
 -- how to impose over other windows, like lazy's (top priority/z-index iirc)
@@ -20,13 +6,9 @@ return {
   -- how to automatically trigger autocmpletion when pressing the first space?
   'folke/noice.nvim',
   dependencies = {
-    -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
     'MunifTanjim/nui.nvim',
   },
   event = 'VeryLazy',
-  -- todo: can't see title of confirm...
-  cond=true,
-  -- cond = (not vim.g.neovide) and not vim.g.goneovim,
   opts = {
     notify = {
       enabled = false
@@ -225,15 +207,4 @@ return {
     { "<S-Enter>", function() require("noice").redirect(vim.fn.getcmdline()) end, mode = "c", desc = "Redirect Cmdline" },
 
   },
-
-  config = function(_, opts)
-    require('noice').setup(opts)
-    -- magari metti questo mapping nella spec di Noice?
-    -- use ; for noice and : for regular vim's :
-    -- how to toggle back after? (one-shot)
-    -- one-shot command?
-    -- vim.keymap.set('n', ':', '<CMD>NoiceDisable<CR>:')
-    -- quit
-    -- vim.keymap.set('n', 'g:', function() require('noice').cmd('disable') end, { desc = 'Disable' })
-  end,
 }

@@ -26,6 +26,7 @@ return {
     -- hint???
     -- history in chat with ^n, ^p???
     "yetone/avante.nvim",
+    keys = { "<leader>a" },
     -- commit = 'd5a4db8',
     -- visual mode doesn't really matter to avante?
     init = function ()
@@ -85,7 +86,7 @@ return {
       },
 
       -- MCP ---
-system_prompt = function()
+      system_prompt = function()
         local hub = require("mcphub").get_hub_instance()
         return hub and hub:get_active_servers_prompt() or ""
     end,

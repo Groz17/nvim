@@ -4,7 +4,7 @@ return{
   "mistricky/codesnap.nvim",
   init = function()
     -- TODO: maybe use absolute path?
-  vim.keymap.set('n', '<leader>cp', [[<CMD>TOhtml | execute '!wkhtmltopdf ' . expand('%:S') . ' ' . expand('#:r:S') . '.pdf' | bwipeout!<CR>]], { desc = 'Buffer to pdf' })
+  -- vim.keymap.set('n', '<leader>cp', [[<CMD>TOhtml | execute '!wkhtmltopdf ' . expand('%:S') . ' ' . expand('#:r:S') . '.pdf' | bwipeout!<CR>]], { desc = 'Buffer to pdf' })
   end,
   build='make',
   -- build = "make build_generator",

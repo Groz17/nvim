@@ -6,7 +6,6 @@
 -- close picker when c-h and empty input?
 -- rotate preview as in fzf-lua?
 return {
-  -- "folke/snacks.nvim",
   'snacks.nvim',
   -- crea mapping con which-key delle keybindings specifiche del picker
   -- basically in insert popup near cursor, otherwise auto
@@ -72,19 +71,11 @@ return {
     -- ╭─────────────────────────────────────────────────────────╮
     -- │ NEOVIM                                                  │
     -- ╰─────────────────────────────────────────────────────────╯
-    -- would be cool to just insert and not execute
     -- { mode = { 'c' }, '<a-r>', function() if cmdmode="/"Snacks.picker.search_history() end, desc = 'Command History' },
     -- fits kinda nice with default keybinding c-r
-    -- use same keybindings as commands()
-    -- { mode = { 'c' }, '<c-a-r>', function() Snacks.picker.command_history() end, desc = 'Command History' },
-    -- use c-y for that
-    -- tab insert, enter executes like atuin?
     -- { mode = { 'c' }, '<c-r>', function() Snacks.picker.command_history() end, desc = 'Command History' },
-    -- execute on current selection?
-    -- { mode = { 'x' }, 'q:', function() Snacks.picker.command_history() end, desc = 'Command History' },
-    -- { mode = { 'x' }, '<c-r>', function() Snacks.picker.command_history() end, desc = 'Command History' },
-
-    { '<m-p>', function() Snacks.picker.command_history() end, desc = 'Command history' ,mode={'n','i'}},
+    -- incremental in command mode? add range if called in visual mode?
+    -- { '<m-p>', function() Snacks.picker.command_history() end, desc = 'Command history' ,mode={'n','i','x'}},
 
     -- problema dei simboli con kanata: <f17>F e <space><space>fl for <space><space>=?
     { '<f17>+', function() Snacks.picker.cliphist() end, desc = 'Clipboard history' ,mode={'n','i'}},
@@ -98,6 +89,7 @@ return {
     -- { '<f17><cr>', function() Snacks.picker.commands() end, desc = 'Commands' },
     -- like emacs C-h x?
     -- { '<f17>x', function() Snacks.picker.commands() end, desc = 'Commands' },
+    -- also include completions (subcommands)? so u don't have to use mappings... (use ^<name of command> as pattern), or maybe press enter and list subcommands?
     { '<m-x>', function() Snacks.picker.commands() end, desc = 'Commands' ,mode={'n','i','x'}},
     { '<f17>D', function() Snacks.picker.diagnostics() end, desc = 'Diagnostics' ,mode={'n','i'}},
     { '<f17>d', function() Snacks.picker.diagnostics_buffer() end, desc = 'Diagnostics buffer' ,mode={'n','i'}},
@@ -134,7 +126,7 @@ return {
     { '<f17>c', function() Snacks.picker.colorschemes() end, desc = 'Colorschemes' ,mode={'n','i'}},
     -- go back w/ C-h if first char?
     -- define your dirs?
-    { '<f12>p', function() Snacks.picker.projects() end, desc = 'Projects' ,mode={'n','i'}},
+    { '<f12>pp', function() Snacks.picker.projects() end, desc = 'Projects' ,mode={'n','i'}},
     -- ╭─────────────────────────────────────────────────────────╮
     -- │ LSP                                                     │
     -- ╰─────────────────────────────────────────────────────────╯
@@ -148,8 +140,9 @@ return {
     { '<m-s-/>', function() Snacks.picker.lsp_references() end, nowait = true, desc = 'References' ,mode={'n','i'}},
     -- { [[gri]], function() Snacks.picker.lsp_implementations() end, desc = 'Goto Implementation' ,mode={'n','i'}},
     -- { [[gy]], function() Snacks.picker.lsp_type_definitions() end, desc = 'Goto T[y]pe Definition' ,mode={'n','i'}},
-    -- { [[gro]], function() Snacks.picker.lsp_symbols() end, desc = 'LSP Symbols' },
-    -- { [[gro]], function() Snacks.picker.lsp_symbols({layout = {preset = "vscode", preview = "main"}}) end, desc = 'LSP Symbols' ,mode={'n','i'}},
+    -- { '<m-g>i', function() Snacks.picker.lsp_symbols() end, desc = 'LSP Symbols' }, -- imenu
+    -- counsel-semantic-or-imenu
+    -- { '<m-g>i', function() Snacks.picker.lsp_symbols({layout = {preset = "vscode", preview = "main"}}) end, desc = 'LSP Symbols' ,mode={'n','i'}},
     -- { [[grO]], function() Snacks.picker.lsp_workspace_symbols() end, desc = 'LSP Workspace Symbols' ,mode={'n','i'}},
     -- ╭─────────────────────────────────────────────────────────╮
     -- │ MISC                                                    │
@@ -176,7 +169,7 @@ return {
     -- {mode={"n","i"},'<f17>i', function() Snacks.picker.icons(--[[{layout = {preset = "dropdown"}]]) end, desc = 'Icons' },
     {mode={"n"},'<f17>i', function() Snacks.picker.icons(--[[{layout = {preset = "dropdown"}]]) end, desc = 'Icons' },
 
-    { '<f17>z', function() Snacks.picker.zoxide() end, desc = 'Zoxide' ,mode={'n','i'}},
+    { '<f17>z', function() Snacks.picker.zoxide() end, desc = 'Zoxide' ,mode={'n','i'}}, --crea file if no match?
     -- like for z=
     { '<M-S-4>', function() Snacks.picker.spelling() end, desc = 'Spelling' ,mode={'n','i'}},
   },

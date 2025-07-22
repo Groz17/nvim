@@ -132,14 +132,12 @@ return
         end
       end
 
-        -- TODO: fai che se pigi \gd fa Git diff?
-        -- local diff = 'd' ()
         -- add v:count?
           table.insert(git_mappings, {
             -- how to go to the last diff that modify the line?
             { '<leader>gd', '<CMD>Gvdiffsplit<CR>', desc = "Diffsplit", buffer = true },
             { '<leader>gD', ':Gvdiffsplit<space>', desc = "Diffsplit [args]", buffer = true },
-            { '<f12>g', '<cmd>G<bar>wincmd T<cr>', desc = "Git status", buffer = true },
+            { '<f12>g', '<cmd>tab G<cr>', desc = "Git status", buffer = true },
             -- { [[\gd]], '<CMD>Git diff<CR>', desc = "Diff", buffer = true },
             -- { [[\gD]], ':Git diff<space>', desc = "Diff [args]", buffer = true },
             { mode="x",[[<leader>ga]], ':Git blame<cr>', desc = "Diff [args]", buffer = true },

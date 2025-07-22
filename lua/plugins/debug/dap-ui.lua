@@ -135,9 +135,7 @@ out _h_   _l_ into
       },
 
       mode = 'n',
-      -- body = vim.g.hleader .. "d",
       -- TODO: usa lazy's keys spec
-      -- body = '<f15>d',
       body = '<f15><space>',
       -- body = '<space>d',
   -- stylua: ignore

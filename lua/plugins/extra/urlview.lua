@@ -10,19 +10,13 @@ return {
     -- how to configure telescope here? add options to telescope extension?
     { "[U", desc = "Previous URL" },
     { "]U", desc = "Next URL" },
-    -- use emacs-like keybindings (info) maybe they conflict though...
-    -- { "<s-tab>", desc = "Previous URL" },
-    -- { "<tab>", desc = "Next URL" },
     -- slash perché fa parte di un url (ed anche mapping comodo)
     -- Here it should open multiple links in multiple tabs right? set browser = qutebrowser/lynx/w3m? that opens in vertical split? nxwm
-    -- { "<LEADER>//", [[<Cmd>UrlView buffer sorted=false<CR>]],  desc = "Buffers"  },
-    { "<LEADER>Ub", [[<Cmd>UrlView buffer sorted=false<CR>]],  desc = "Buffers"  },
-    { "<LEADER>Up", [[<Cmd>UrlView lazy<CR>]], desc = "Plugins" },
+    { "<f15>/", [[<Cmd>UrlView buffer sorted=false<CR>]],  desc = "Buffers"  },
+    -- { "<f18>P", [[<Cmd>UrlView lazy<CR>]], desc = "Plugins" },
     -- Doesn't support multiple selection... FIX:
-    -- todo: shouldn't need another keybinding for this, but yank (global) action
-    { "<LEADER>Uc", [[<cmd>UrlView buffer action=clipboard<cr>]], desc="Copy" },
     -- Here you can use %<, etc...
-    { "<LEADER>Uf", [[:UrlView file filepath=]], desc="File" },
+    -- { "<LEADER>Uf", [[:UrlView file filepath=]], desc="File" },
   },
   opts = {
     -- For some reason the plugin works but shows errors...

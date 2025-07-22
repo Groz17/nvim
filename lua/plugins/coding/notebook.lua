@@ -31,21 +31,4 @@ return {
       require('mini.ai').setup({ custom_textobjects = { c = nn.miniai_spec } })
     end,
   },
-  {
-    'GCBallesteros/jupytext.nvim',
-    cond=false,
-    -- config = true,
-    opts = {
-      custom_language_formatting = {
-        python = {
-          extension = 'md',
-          style = 'markdown',
-          force_ft = 'markdown', -- you can set whatever filetype you want here
-        },
-      },
-    },
-    -- cond = vim.fn.executable('jupytext') == 1,
-    -- Depending on your nvim distro or config you may need to make the loading not lazy
-    -- lazy=false,
-  },
 }

@@ -59,7 +59,7 @@ return
       -- how to use drr to delete line? or 3drr for ex? yrr would yank remote lines, but also break yrr to yank remote square brackets (leap-spooky behaviour to mean r=ir); alternative -> use yr_
       -- useful to quickly comment out stuff...
       -- would be nice to do yriq and it highlight all text inside quotes...
-      { "r", mode = { "o" }, function() require("flash").remote({ restore = true, motion = true }) end, desc = "Remote flash" },
+      -- { "r", mode = { "o" }, function() require("flash").remote({ restore = true, motion = true }) end, desc = "Remote flash" },
       -- don't return back? ala vim-spooky
 
       -- require("flash").remote({ restore = false, motion = true })

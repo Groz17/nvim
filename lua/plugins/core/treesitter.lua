@@ -1,20 +1,4 @@
--- integra con unimpaired
---local ts_repeat_move = require "nvim-treesitter.textobjects.repeatable_move"
--- vim way: ; goes to the direction you were moving.
--- vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move)
--- vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_opposite)
--- Furthermore, you can make any custom movements (e.g. from another plugin) repeatable with the same keys. This doesn't need to be treesitter-related.
---
--- -- example: make gitsigns.nvim movement repeatable with ; and , keys.
--- local gs = require("gitsigns")
--- make this also work with unimpaired
---
--- -- make sure forward function comes first
--- local next_hunk_repeat, prev_hunk_repeat = ts_repeat_move.make_repeatable_move_pair(gs.next_hunk, gs.prev_hunk)
--- -- Or, use `make_repeatable_move` or `set_last_move` functions for more control. See the code for instructions.
-
 return
--- recommend updating the parsers on update
 {
   {
     'nvim-treesitter/nvim-treesitter',
@@ -29,7 +13,6 @@ return
       main = 'rainbow-delimiters.setup',
       opts = {},
     },
-      { 'nvim-treesitter/nvim-treesitter-refactor' },
       -- Usage: <div></div>    ciwspan<esc>   <span></span>
       -- these two should be part of autopairs tbh
       -- { 'brianhuster/nvim-treesitter-endwise',lazy=false,},
@@ -85,64 +68,19 @@ return
         -- would be cool if it showed (maybe as a notification) nvim-treesitter-textobjects name like @function.outer or smth or just InspectTree output
         enable = true,
         keymaps = {
-          -- visual mode buffata
-	   --like expand-region emacs?
-        -- init_selection = '<c-=>',
         init_selection = '<a-v>',
-        -- init_selection = '<space><space>',
         -- does it work like an hydra? like only after init_selection?
         -- could be interesting for macros
-        -- magari usa ; e ,? (https://github.com/folke/flash.nvim)
         -- node_incremental = '.',
         -- ; as in next (increment)
         -- node_incremental = ';',
-        -- scope_incremental = 'grc',
         -- node_decremental = ',',
-          -- init_selection = "gnn",
-          -- node_incremental = "grn",
-          -- scope_incremental = "grc",
-          -- node_decremental = "grm",
-          -- init_selection = "<CR>",
-          -- scope_incremental = "<CR>",
-          -- node_incremental = "<TAB>",
-          -- node_decremental = "<S-TAB>",
 
           -- how to make vim.g.count work here?
           -- maybe use v in visual mode?
-          -- init_selection = '<c-space>',
-          -- node_incremental = '<c-space>',
-          -- scope_incremental = '<c-s>',
-          -- node_decremental = '<M-space>',
-          -- { "<bs>", desc = "decrement selection", mode = "x" },
         },
       },
 
-      refactor = {
-        highlight_definitions = { enable = true },
-        -- sostituisce il block box neovim plugin
-        highlight_current_scope = { enable = false },
-        -- smart_rename = {
-          --   enable = true,
-          --   keymaps = {
-            --     -- smart_rename = "grr",
-            --   },
-            -- },
-
-            navigation = {
-              enable = false,
-              keymaps = {
-                -- use emacs keymaps
-                -- goto_definition = "gnd",
-                -- list_definitions = "gnD",
-                goto_definition = false,
-                list_definitions = false,
-                -- list_definitions_toc = "gO",
-                -- emacs?
-                -- goto_next_usage = "<a-*>",
-                -- goto_previous_usage = "<a-#>",
-              },
-            },
-          },
             textobjects = {
               lsp_interop = {
                 enable = true,
@@ -176,63 +114,6 @@ return
         },
 
       },
--- Navigation around the AST tree.
--- https://github.com/aaronik/treewalker.nvim
---https://github.com/ruicsh/nvim-config/blob/main/lua/plugins/treewalker.lua
-{
-	"aaronik/treewalker.nvim",
-  cond=false,
-	keys = function()
-		local tw = require("treewalker")
-
-		return{
-      -- similar to orgmode ig
-			{ "<c-j>", tw.move_down, "Jump to next sibling node", { mode = { "n", "x" } } },
-			{ "<c-k>", tw.move_up, "Jump to previous sibling node", { mode = { "n", "x" } } },
-			{ "<c-h>", tw.move_out, "Jump to parent", { mode = { "n", "x" } } },
-			{ "<c-l>", tw.move_in, "Jump to child", { mode = { "n", "x" } } },
-			{ "<m-k>", tw.swap_up, "Swap up" },
-			{ "<m-j>", tw.swap_down, "Swap down" },
-			{ "<m-h>", tw.swap_left, "Swap left" },
-			{ "<m-l>", tw.swap_right, "Swap right" },
-    }
-	end,
-
-	enabled = not vim.g.vscode,
-},
-
-
-      -- -- --    "" lua << EOF
-      -- -- --    "" local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
-      -- -- --
-      -- -- --    "" parser_configs.markdown = {
-        -- -- --    ""   install_info = {
-          -- -- --    ""     url = "https://github.com/ikatyang/tree-sitter-markdown",
-          -- -- --    ""     files = { "src/parser.c", "src/scanner.cc" },
-          -- -- --    ""   },
-          -- -- --    ""   filetype = "markdown",
-          -- -- --    "" }
-          -- -- --    "" EOF
-          -- -- --
-          -- -- --    " nnoremap cof :set foldmethod=expr<cr>:set foldexpr=nvim_treesitter#foldexpr()<cr>
-          -- -- --    " treesitter foldexpr
-          -- -- --    " nnoremap <leader>tf :set foldmethod=expr<cr>:set foldexpr=nvim_treesitter#foldexpr()<cr>
-          -- -- --    " nnoremap <leader>ff :set foldmethod=expr<cr>:set foldexpr=nvim_treesitter#foldexpr()<cr>
-          -- -- --    " fo -> fold, easy peasy
-          -- -- --    " nnoremap <leader>fo :set foldmethod=expr<cr>:set foldexpr=nvim_treesitter#foldexpr()<cr>
-          -- -- --    " e like fx (json) mapping, it's also easier to type
-          -- -- --    nnoremap <leader>fe :set foldmethod=expr<cr>:set foldexpr=nvim_treesitter#foldexpr()<cr>
-          -- -- --
-          -- -- --    " tree_sitter fold
-          -- -- --    " nnoremap <leader>tf :set foldmethod=expr<cr>:set foldexpr=nvim_treesitter#foldexpr()<cr>
-          -- -- --    " nnoremap <bar> <leader>h :if set foldmethod=expr | set foldexpr=nvim_treesitter#foldexpr() | else | set foldmethod=expr | set foldexpr=nvim_treesitter#foldexpr() | endif<cr>
-          -- -- --
-          -- -- --    " echo nvim_treesitter#statusline(90)  " 90 can be any length
-          -- -- --    " module->expression_statement->call->identifier
-          -- -- --
-          -- -- --    " I WANT TARGETS.VIM EVERYWHERE
-          -- -- --    "nnoremap if goto functionif
-          -- -- --
 
 
           -- make this work w/ styler.nvim?
@@ -287,21 +168,6 @@ return
                 },
                 enable_close_on_slash = true -- Auto close on trailing </
               }}
-            },
-            {
-              -- would be cool if I could use operator & texobjects... like f for function_definition?
-              -- complete with only treesitter nodes existing in current buffer?
-              -- If `nvim-treesitter-textobjects` is installed, you can directly use treesitter captures instead of types in your sort groups, i.e:
-              -- would be cool to expand (in cmdline) ad esempio af to @function.outer (maybe query mini.ai opts?), ofc only when you're already inserted :\s*TSort\s*
-              "maxbol/treesorter.nvim",
-              dependencies = "nvim-treesitter/nvim-treesitter-textobjects",
-              -- require("treesorter").sort({"function_definition+declaration", "method"})
-              cmd = "TSort",
-              opts = {},
-              -- keys={
-                -- TODO: usa stessi mapping di nvim-treesitter-textobjects
-                -- { "<leader>sf", ":TSort @function.outer<CR>", noremap = true, silent = true },
-              -- }
             },
           }
 

@@ -12,20 +12,6 @@
 
 -- usa S per questi plugin di sostituzione...
 return {
-  {
-    -- https://github.com/AckslD/muren.nvim/issues/26
-    'AckslD/muren.nvim',
-    cmd = { "MurenToggle", "MurenOpen", "MurenUnique" },
-    keys = {
-      -- {mode={"n","x"},"Sr", [[<Cmd>MurenToggle<CR>]]},
-      -- {mode={"n","x"},"Sf", [[<Cmd>MurenFresh<CR>]]},
-      -- {mode={"n","x"},"Su", [[<Cmd>MurenUnique<CR>]]},
-      -- {"cu", function() vim.fn.setreg('/', vim.fn.expand('<cword>')) require'muren.api'.open_unique_ui({ }) end, desc = "MurenWord" },
-      -- {"cU", function() require'muren.api'.open_unique_ui({ }) end, desc = "MurenWord" },
-    },
-    config = true,
-    cond=false,
-  },
 
   {
 

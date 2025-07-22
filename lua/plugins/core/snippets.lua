@@ -79,9 +79,13 @@ return {
       local ls = require("luasnip")
       -- TODO: rendi mapping <expr>
       -- vim.keymap.set({"i", "s"}, "jk", function() ls.jump( 1) end, {silent = true})
+      vim.keymap.set({"i", "s"}, "<tab>", function() ls.jump( 1) end, {silent = true})
+      -- vim.keymap.set({"i", "s"}, "<c-i>", function() ls.jump( 1) end, {silent = true})
       -- magari usa tab?
       -- make this dinamycally confiurable, like if you have :: like in orgmode enter pattern aNd use it...
       -- vim.keymap.set({"i", "s"}, "kj", function() ls.jump(-1) end, {silent = true})
+      -- vim.keymap.set({"i", "s"}, "<s-tab>", function() ls.jump(-1) end, {silent = true})
+      vim.keymap.set({"i", "s"}, "<c-s-i>", function() ls.jump(-1) end, {silent = true})
       -- jj to mean <c-h>???
 
           -- ls.change_choice(1)

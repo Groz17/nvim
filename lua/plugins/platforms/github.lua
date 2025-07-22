@@ -6,7 +6,7 @@ return {
     -- in cache tieni repo a cui tieni tipo kernel e neovim (per imparare un po' dai pro)
     -- make it clone private repositories as well
     'moyiz/git-dev.nvim',
-    cmd = { 'GitDevRecents', 'GitDevCleanAll' },
+    cmd = {'GitDevOpen', 'GitDevRecents', 'GitDevCleanAll' },
     opts = {
       -- maybe delete after 10 repos? config option?
       ephemeral = false,

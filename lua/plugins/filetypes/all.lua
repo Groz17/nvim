@@ -1,19 +1,4 @@
 return {
-  -- how to evaluate/print only <cword> and <cWORD>?
-  -- add operator like scriptease?
-  'yarospace/lua-console.nvim',
-  -- keys = {{"<localleader>e", ft = 'lua', buffer = true}}, -- evaluate
-  opts = {
-    mappings = {
-      -- TODO: usa keys value?
-      toggle = '<leader>``',
-      attach = '<leader>`a',
-    },
-
-    window = {
-      border = 'rounded', -- single|double|rounded
-    },
-  },
   {
     -- https://practical.li/clojure/clojure-cli/practicalli-config/#performance-testing
     'Olical/conjure',
@@ -43,8 +28,4 @@ return {
   -- │ JVM                                                     │
   -- ╰─────────────────────────────────────────────────────────╯
 
-  {
-    'tpope/vim-classpath',
-    ft = { 'java', 'kotlin', 'scala', 'groovy', 'clojure', 'jruby', 'jython', 'ceylon', 'fantomas', 'gosu' },
-  },
 }

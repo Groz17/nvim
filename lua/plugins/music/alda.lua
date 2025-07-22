@@ -1,17 +1,5 @@
 -- lilypond?
 return {
-  {
-    -- 'KadoBOT/nvim-spotify',
-    -- dependencies = 'nvim-telescope/telescope.nvim',
-    -- opts = {
-    --   -- default opts
-    --   status = {
-    --     update_interval = 10000, -- the interval (ms) to check for what's currently playing
-    --     format = '%s %t by %a' -- spotify-tui --format argument
-    --   }
-    -- },
-    -- build = 'make'
-  },
   --     {"madskjeldgaard/reaper-nvim", cond = false,
   --     dependencies = {'davidgranstrom/osc.nvim',
   --     {'junegunn/fzf.vim',dependencies='junegunn/fzf'},
