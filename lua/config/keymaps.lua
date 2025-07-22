@@ -40,9 +40,6 @@ vim.keymap.set('n', 'zS', '<cmd>Inspect<CR>')
 -- /usr/local/share/nvim/runtime/doc/cmdline.txt
 -- how to never make it quit? like a repl
 vim.cmd([[autocmd CmdwinEnter * map <buffer> <C-CR> <CR>q:]])
--- basically use <s-esc> for exiting vim windows and for all programs when esc doesn't exit (snacks picker, lazygit...)
--- not sure still
--- vim.keymap.set('n', '<s-esc>','ZQ')
 
 -- vim-for-php-programmers.pdf
 -- map CTRL-L to piece-wise copying of the line above the current one
@@ -65,9 +62,6 @@ vim.cmd([[autocmd CmdwinEnter * map <buffer> <C-CR> <CR>q:]])
 -- kinda cool: mappings similar to the one with <++> as placeholder
 -- vim.keymap.set('n', '<space><space>', "<CMD>bmod<CR>")
 
----@see https://github.com/echasnovski/mini.nvim/discussions/1042
-vim.keymap.set({"i", "n"}, "<A-Space>", "<Cmd>normal! ciw <CR>", { desc = "Just one space" })
-
 --select whatever's just been pasted, or read into the buffer via :r! etc, respecting line/char visual mode. (https://www.reddit.com/r/vim/comments/4aab93/weekly_vim_tips_and_tricks_thread_1/)
 -- vim.keymap.set('n', 'gV', function() return '`[' .. vim.fn.strpart(vim.fn.getregtype(), 0, 1) .. '`]' end, { expr = true })
 vim.keymap.set('n', 'gV', function() vim.api.nvim_feedkeys("`[" .. vim.fn.strpart(vim.fn.getregtype(), 0, 1) .. "`]", "n", false) end, { desc =  "Switch to VISUAL using last paste/change" })
@@ -76,8 +70,6 @@ vim.keymap.set('n', 'gV', function() vim.api.nvim_feedkeys("`[" .. vim.fn.strpar
 
 -- TODO: control
 vim.keymap.set('!',[[<M-\>]], [[<CMD>s/\(^.*\zs\(\s*\)\)\%#\s*/\=cursor(0,strlen(submatch(1))-strlen(submatch(2)))<CR>]])
-
--- vim.keymap.set('c','jj', '<CR>')
 
 -- vim.keymap.set('n', '<C-S-R>', "<CMD>exec 'undo' undotree()['seq_last']<CR>")
 
@@ -227,7 +219,7 @@ execute w . 'wincmd w'
 endif
 endfor
 endfunction
-noremap <c-w><space> :<c-u>call <sid>GotoFirstFloat()<cr>]])
+noremap <f16><space> :<c-u>call <sid>GotoFirstFloat()<cr>]])
 
 -- vim.cmd[[cmap <M-C-e> <c-\>eexpandcmd(getcmdline())<CR>]]
 vim.keymap.set('c','<M-C-e>',[[<c-\>eexpandcmd(getcmdline())<CR>]])
@@ -485,7 +477,7 @@ nnoremap z/  exe 'spellrare!' expand('<cWORD>')<CR>
 -- c-: -> misto fra : e <c-p>
 -- vim.keymap.set('n',--[[<c-:>]]'<c-s-;>',':<C-p>')
 -- like emacs (anche se quella era per eval, vabbe)
-vim.keymap.set('n',--[[<c-:>]]'<a-s-;>',':<C-p>')
+vim.keymap.set('n',--[[<c-:>]]'<f12><a-s-;>',':<C-p>')
 
 -- Insert system() (maybe inspired by zsh?)
 -- magari usa ! o $?
@@ -499,10 +491,11 @@ vim.keymap.set('i', '<C-r>(',[[<C-r>=system('')<Left><Left>]])
 vim.cmd[[
 " copy current (relative) filename (to gui-clipboard if available)
 "nnoremap "%y <cmd>let @+=fnamemodify(@%, ':.')<cr>
-
-nnoremap g: :lua<space>
-
+"nnoremap g: :lua<space>
 ]]
+
+vim.keymap.set({'i','n'}, '<M-S-;>',':lua<space>') -- like M-: for elisp in emacs
+
 -- https://www.reddit.com/r/neovim/comments/1k27y0t/go_back_to_the_start_of_a_search_for_the_current/
 -- All the ways to start a search, with a description
 local mark_search_keys = {
@@ -685,7 +678,9 @@ vim.keymap.set(all,'<f16>',[[<c-\><c-n><c-w>]])
 vim.keymap.set({'n','i'},'<f12><c-e>',[["<cmd>lua "..getline('.')..'<cr>']], {expr=true})
 -- like in readline
 vim.keymap.set({'c'},'<f12><c-e>','<c-f>')
-vim.keymap.set({'n','i'},'<f12>h',"<cmd>norm! G$Vgg0<cr>")
+-- vim.keymap.set({'n','i'},'<f12>h',"<cmd>norm! G$Vgg0<cr>")
+vim.keymap.set('n','<f12>h',"<cmd>norm! G$Vgg0<cr>")
+vim.keymap.set('i','<f12>h',"<esc>gg0VG$<C-g>")
 
 vim.keymap.set({'n','i'},'<f12><c-o>','<cmd>norm! cip<cr>')
 
@@ -722,6 +717,7 @@ vim.keymap.set('i','<m-s>.','<c-o>*') -- add c-s/c-r
 vim.keymap.set({'n','x','i','t','c'},'<f18>k',[["<c-\><c-n>:h "..(mode()=='n'?'':mode()->tolower()..'_')]], {expr=true})
 -- how to escape single quote for fzf?
 vim.keymap.set({'n','x','i','t','c'},'<f18>v',[[<c-\><c-n>:h ']] )
+vim.keymap.set({'n','x','i','t','c'},'<f18>m',[[<c-\><c-n><cmd>FloatingHelp user-manual<cr>]] )
 -- ─ others
 -- org mode
 -- insert mode in visual mode like emacs?
@@ -782,8 +778,8 @@ vim.keymap.set({'i'},'<m--><m-l>', [[<esc>2bgue2ea]])
 vim.keymap.set({'n',},'<m--><m-u>', [[<c-\><c-n><cmd>norm 2bgUe2ea<cr>]])
 vim.keymap.set({'i'},'<m--><m-u>', [[<esc>2bgUe2ea]])
 
-vim.keymap.set({'n','i','x','o'},'<f12>1',[[<c-\><c-n><cmd>wincmd o<cr>]])
-vim.keymap.set({'n','i','x','o'},'<f12>0',[[<c-\><c-n><cmd>wincmd c<cr>]])
+vim.keymap.set({'n','i','x','o','t'},'<f12>1',[[<c-\><c-n><cmd>wincmd o<cr>]])
+vim.keymap.set({'n','i','x','o','t'},'<f12>0',[[<c-\><c-n><cmd>wincmd c<cr>]])
 
 vim.keymap.set({'c'},'<c-m-j>', [[<cr>]]) -- like ivy
 
@@ -842,6 +838,14 @@ vim.keymap.set({'n','i','x','o'},'<m-r>',[[<c-\><c-n><cmd>norm! M<cr>i]])
 vim.keymap.set({'n','i','x','o'},'<f12>o',[[<c-\><c-n><cmd>wincmd w<cr>]])
 vim.keymap.set({'n','i','x','o'},'<f12>2',[[<c-\><c-n><cmd>exe "norm! ]]..vim.v.count..[[\<c-w>s\<c-w>\<c-p>"<cr>]])
 vim.keymap.set({'n','i','x','o'},'<f12>3',[[<c-\><c-n><cmd>exe "norm! ]]..vim.v.count..[[\<c-w>v\<c-w>\<c-p>"<cr>]])
+
+-- distinguish visual mode from insert? select mode!
+vim.keymap.set('x','<c-w>','c')
+vim.keymap.set('x','<a-w>','y')
+
+---@see https://github.com/echasnovski/mini.nvim/discussions/1042
+vim.keymap.set({"i", "n"}, "<A-Space>", "<Cmd>normal! ciw <CR>", { desc = "Just one space" })
+
 
 -- commands
 -- vim.api.nvim_create_user_command('Sort_paragraphs','emacsclient -e sort-paragraphs?')
