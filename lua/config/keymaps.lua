@@ -760,6 +760,7 @@ vim.keymap.set({'n','i'},'<m-s-.>',"<cmd>norm! G$<cr>")
 -- vim.keymap.set('n','<space>oe',function() return '<cmd>!emacsclient -c -nw %:S +'..vim.fn.line('.')..'<cr>'end, {expr=true})
 --
 
+-- would be cool to return to cursor left by emacs (maybe went to another buffer as well) (also would be nice if it worked in visual mode as well)
 vim.keymap.set('n','<space>&', function()
     if vim.bo.filetype == '' then return end
     local line_nr = tostring(vim.fn.line('.'))
@@ -769,7 +770,9 @@ vim.keymap.set('n','<space>&', function()
     Snacks.terminal.open({"emacsclient","-a",'',"-t","+"..line_nr..":"..column_nr,path})
 end
 )
-vim.keymap.set('n','<space>u<space>&',function() vim.fn.system('emacsclient -a "" -c +'..vim.fn.line('.')..' '..vim.fn.expand('%:p'))end)
+
+-- argument prefix for GUI
+vim.keymap.set('n','<space>u<space>&',function() vim.fn.system('emacsclient -a "" -c +'..vim.fn.line('.')..':'..vim.fn.col('.')..' '..vim.fn.expand('%:p'))end)
 
 -- how TO map in all modes?
 vim.keymap.set({'n','i','x','o'},'<c-m-a>',function() vim.cmd("TSTextobjectGotoPreviousStart @function.outer")end)
