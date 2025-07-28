@@ -83,7 +83,7 @@ vim.keymap.set("i", ";", ";<c-g>u")
 -- INFO: "<C-R>=expand("%:t")<CR>" -> expands the current filename in the command line
 
 -- from https://yazi-rs.github.io/docs/quick-start
--- what about g<c-y>?
+-- what about g<c-y>? y and then modifier?
 vim.keymap.set('n', [[<space>yy]], [[<cmd>let @" = expand("%:p")   | echo 'cb> ' . @"<CR>]])
 vim.keymap.set('n', [[<space>yd]], [[<cmd>let @" = expand("%:p:h") | echo 'cb> ' . @"<CR>]])
 vim.keymap.set('n', [[<space>yf]], [[<cmd>let @" = expand("%:p:t") | echo 'cb> ' . @"<CR>]])
@@ -716,6 +716,7 @@ vim.keymap.set({'n','x','i','t','c'},'<f18>K',[["<c-\><c-n>:FloatingHelp "..(mod
 -- how to escape single quote for fzf?
 vim.keymap.set({'n','x','i','t','c'},'<f18>v',[[<c-\><c-n>:h ']] )
 vim.keymap.set({'n','x','i','t','c'},'<f18>r',[[<c-\><c-n><cmd>FloatingHelp user-manual<cr>]] )
+vim.keymap.set({'n','x','i','t','c'},'<f18><c-f>',[[<c-\><c-n><cmd>FloatingHelp faq<cr>]] )
 -- ─ others
 -- org mode
 -- insert mode in visual mode like emacs?
@@ -758,7 +759,17 @@ vim.keymap.set({'n','i'},'<m-s-.>',"<cmd>norm! G$<cr>")
 -- replace or create new terminal tab?
 -- vim.keymap.set('n','<space>oe',function() return '<cmd>!emacsclient -c -nw %:S +'..vim.fn.line('.')..'<cr>'end, {expr=true})
 --
-vim.keymap.set('n','<space>E',function() vim.fn.system('emacsclient -a emacs -c +'..vim.fn.line('.')..' '..vim.fn.expand('%:p'))end)
+
+vim.keymap.set('n','<space>&', function()
+    if vim.bo.filetype == '' then return end
+    local line_nr = tostring(vim.fn.line('.'))
+    local path = vim.fn.expand('%:p')
+    local column_nr = tostring(vim.fn.col('.'))
+
+    Snacks.terminal.open({"emacsclient","-a",'',"-t","+"..line_nr..":"..column_nr,path})
+end
+)
+vim.keymap.set('n','<space>u<space>&',function() vim.fn.system('emacsclient -a "" -c +'..vim.fn.line('.')..' '..vim.fn.expand('%:p'))end)
 
 -- how TO map in all modes?
 vim.keymap.set({'n','i','x','o'},'<c-m-a>',function() vim.cmd("TSTextobjectGotoPreviousStart @function.outer")end)
@@ -852,6 +863,11 @@ vim.keymap.set('x','<a-w>','y')
 
 ---@see https://github.com/echasnovski/mini.nvim/discussions/1042
 vim.keymap.set({"i", "n"}, "<A-Space>", "<Cmd>normal! ciw <CR>", { desc = "Just one space" })
+
+vim.keymap.set("i" , "<c-]>", "<c-o>f", { desc = "readline: character-search" })
+vim.keymap.set("i" , "<c-m-]>", "<c-o>F", { desc = "readline: character-search-backward" })
+
+vim.keymap.set({"n","i"} , "<a-h>", [[<c-\><c-n><cmd>norm! vipok<cr>]], { desc = "readline: character-search-backward" })
 
 
 -- commands
