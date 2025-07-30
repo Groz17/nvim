@@ -32,6 +32,7 @@ return {
     -- on how repetedly apply search?
     -- grep operator?
     -- oppure C-q? magari solo x qwerty
+    -- Make it work for current file as well
     { '<c-q>', function() Snacks.picker.grep({ cwd = vim.fn.expand('%:p:h') }) end, desc = 'Grep' ,mode={'n','i'}},
     { '<c-s-q>', function() Snacks.picker.grep({}) end, desc = 'Grep' ,mode={'n','i'}},
 
@@ -39,11 +40,12 @@ return {
 
     -- win is winnr-1? or is it always -1?
     -- HACK (would be cool to show light version of current theme)
-    { '<f17>/', function() Snacks.picker.lines({ on_show = function() vim.fn.win_execute(vim.fn.win_getid(vim.fn.winnr()-1)--[[snacks_picker_list]],"Styler kanagawa-lotus") end }) end, desc = 'Buffer Lines' ,mode={'n','i'}},
+    { '<f17>/', function() Snacks.picker.lines({ on_show = function() vim.fn.win_execute(vim.fn.win_getid(vim.fn.winnr()-1)--[[snacks_picker_list]],"Styler kanagawa-paper-canvas") end }) end, desc = 'Buffer Lines' ,mode={'n','i'}},
     -- TODO: fix (magari usa edgy.nvim)
     -- { '<f17>/', function() Snacks.picker.lines({ on_show = function() require("styler").set_theme(vim.fn.win_getid(vim.fn.winnr()-1), { background = Snacks.toggle.get('background'):toggle() }) end }) end, desc = 'Buffer Lines' },
     -- same as swiper-all
-    { [[<f17>/]], function() Snacks.picker.grep_buffers() end, desc = 'Grep Open Buffers' ,mode={'n','i'}}, -- same mapping as Snacks.picker.buffers()
+    -- make it work for special buffers like man pages
+    -- { [[<f17>/]], function() Snacks.picker.grep_buffers() end, desc = 'Grep Open Buffers' ,mode={'n','i'}}, -- same mapping as Snacks.picker.buffers()
     -- how to grep only in current buffer?
     -- { '<f17>W', function() Snacks.picker.grep_word({live=true, dirs = {vim.uv.cwd()}}) end, desc = 'Visual selection or word', mode = { 'n', 'x' } },
     -- escape regex?
@@ -117,10 +119,10 @@ return {
     { '<f17>m', function() Snacks.picker.man() end, desc = 'Man Pages' ,mode={'n','i'}},
     -- not sure
     { "<f12>rl", function() Snacks.picker.marks() end, desc = 'Marks' ,mode={'n','i'}},
-    -- { '<f17><BS>', function() Snacks.picker.resume() end, desc = 'Resume' },
     -- also create insert mode mapping <f17>D
-    { '<bs>', function() Snacks.picker.resume() end, desc = 'Resume' ,mode={'n','i'}},
-    -- <f17>C for all colorschemes, <space><space>c for plugin's colorschemes?
+    -- { '<bs>', function() Snacks.picker.resume() end, desc = 'Resume' ,mode={'n','i'}},
+    { '<c-c><c-r>', function() Snacks.picker.resume() end, desc = 'Resume' ,mode={'n','i'}},
+    -- <f17>C for all colorschemes, <space><space>c for plugin's colorschemes? use univeral argument
     -- how to preview the current buffer? 
     -- { '<f17>C', function() Snacks.picker.colorschemes() end, desc = 'Colorschemes' },
     { '<f17>c', function() Snacks.picker.colorschemes() end, desc = 'Colorschemes' ,mode={'n','i'}},
@@ -201,6 +203,10 @@ return {
             grep = {
               need_search = false,
             },
+            projects = {
+              recent = false,
+              -- projects = { "" },
+            },
             git_grep = {
               need_search = false,
             },
@@ -251,10 +257,9 @@ return {
                   },
                   -- input window
                   input = {
-                    -- strategy: use ctrl/alt for readline mappings, f17 (c-x/s&l) for vim/snacks-related mappings
                     keys = {
 
-                      ["<f17>t>"] = { "trouble_open", mode = { "n", "i" }, },
+                      ["<f17>t"] = { "trouble_open", mode = { "n", "i" }, },
                       -- ["<f17>s"] = { "flash", mode = { "n", "i" } },
                       -- avy-goto-line (maybe better built-in functions/keymaps?)
                       ["<m-g><m-g>"] = { "flash", mode = { "n", "i" } },
@@ -263,8 +268,8 @@ return {
                       -- like emacs
                       ["<c-g>"] = { "close", mode = { "i" } },
 
-                      -- like fzf-lua (in eventuale attesa di emacs keybinding)
-                      ["<c-space>"] = { "toggle_live", mode = { "i" } },
+                      -- ivy-restrict-to-matches
+                      ["<s-space>"] = { "toggle_live", mode = { "i" } },
 
                       q = "",
                       ['l'] = { 'confirm', mode = { 'n' } },
@@ -272,7 +277,7 @@ return {
                       -- first disable all keybindings?
                       ["<c-s-o>"] = { "qflist", mode = { "i", "n" } },
                       ['<c-l>'] = { 'confirm', mode = { 'i' } },
-                      ['<s-space>'] = { 'toggle_maximize', mode = { 'i', 'n' } },
+                      -- ['<s-space>'] = { 'toggle_maximize', mode = { 'i', 'n' } },
                       -- I want glob though...
                       -- what are those fields? docs?
                       -- ['<f17>'] = { 'file:',expr=true, mode= { 'i', 'n' } },
