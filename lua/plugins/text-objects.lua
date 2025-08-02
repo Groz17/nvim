@@ -380,15 +380,6 @@ return
           --   local to_col = math.max(vim.fn.getline(end_line):len(), 1)
           --   return { from = { line = start_line, col = 1 }, to = { line = end_line, col = to_col } }
           -- end,
-          -- -- textobj-entire
-          --  e = function()
-          --    local from = { line = 1, col = 1 }
-          --    local to = {
-          --      line = vim.fn.line('$'),
-          --      col = math.max(vim.fn.getline('$'):len(), 1),
-          --    }
-          --    return { from = from, to = to }
-          --  end,
 
 
           -- -- https://github.com/IndianBoy42/dot.nvim/blob/89d6d6e70fd9869c36fe4633f69345bd9dbcbe94/lua/editor/nav.lua#L106
