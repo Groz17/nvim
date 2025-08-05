@@ -677,7 +677,7 @@ vim.keymap.set({'n','i'},'<f12><c-e>',[["<cmd>lua "..getline('.')..'<cr>']], {ex
 -- like in readline
 vim.keymap.set({'c'},'<f12><c-e>','<c-f>')
 -- vim.keymap.set({'n','i'},'<f12>h',"<cmd>norm! G$Vgg0<cr>")
-vim.keymap.set('n','<f12>h',"<cmd>norm! G$Vgg0<cr>")
+vim.keymap.set({'n','o'},'<f12>h',"<cmd>norm! G$Vgg0<cr>")
 vim.keymap.set('i','<f12>h',"<esc>gg0VG$<C-g>")
 
 vim.keymap.set({'n','i'},'<f12><c-o>','<cmd>norm! cip<cr>')
