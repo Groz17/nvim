@@ -1,6 +1,3 @@
--- https://github.com/laytan/cloak.nvim
--- todo = hi_words({ 'TODO', 'Todo', 'todo' }, 'MiniHipatternsTodo'),
--- ○ nvim-highlight-colors
 -- does it work with snacks preview as well, etc...?
 -- https://github.com/echasnovski/mini.nvim/issues/878
 -- TODO: Tailwind: https://github.com/philosofonusus/nvim/blob/f45582c22a17f5ed7ee67fbae40c37e8e3694c13/lua/custom/plugins/colorizer.lua#L11
@@ -64,7 +61,7 @@ return {
   end,
   keys = {
     {
-      '<leader>1h',
+      '<leader>1h', --z/ prefix mapping?
       function()
         require('mini.hipatterns').toggle()
       end,

@@ -4,8 +4,8 @@ return{
     -- create operator? maybe with boxes cli command...
     -- support block/multiline comments like --[[]] in lua?
     -- make it support dot repeat
-    'LudoPinelli/comment-box.nvim',
-    cond=false,
+    -- magari usa hex trick
+    'LudoPinelli/comment-box.nvim', -- same command as emacs
     opts = {
       doc_width = vim.opt.columns:get(),
       -- doesn't work?
@@ -31,32 +31,32 @@ return{
       -- You can imagine o as a circular box
       -- sk -> surround with bo[k]s
       -- Would be nice to intergrate with surround plugin (surround with box/line) and which-key that shows the name of the styles like inn the catalog...
-      { mode = { "n", "x" }, "<m-;>jj", function() require("comment-box").llbox(vim.v.count1) end, desc = "Left aligned box of fixed size with Left aligned text" },
-      { mode = { "n", "x" }, "<m-;>jk", function() require("comment-box").lcbox(vim.v.count1) end, desc = "Left aligned box of fixed size with Centered text" },
-      { mode = { "n", "x" }, "<m-;>jl", function() require("comment-box").lrbox(vim.v.count1) end, desc = "Left aligned box of fixed size with Right aligned text" },
-      { mode = { "n", "x" }, "<m-;>kj", function() require("comment-box").clbox(vim.v.count1) end, desc = "Centered box of fixed size with Left aligned text" },
-      { mode = { "n", "x" }, "<m-;>kk", function() require("comment-box").ccbox(vim.v.count1) end, desc = "Centered box of fixed size with Centered text" },
-      { mode = { "n", "x" }, "<m-;>kl", function() require("comment-box").crbox(vim.v.count1) end, desc = "Centered box of fixed size with Right aligned text" },
-      { mode = { "n", "x" }, "<m-;>lj", function() require("comment-box").rlbox(vim.v.count1) end, desc = "Right aligned box of fixed size with Left aligned text" },
-      { mode = { "n", "x" }, "<m-;>lk", function() require("comment-box").rcbox(vim.v.count1) end, desc = "Right aligned box of fixed size with Centered text" },
-      { mode = { "n", "x" }, "<m-;>ll", function() require("comment-box").rrbox(vim.v.count1) end, desc = "Right aligned box of fixed size with Right aligned text" },
-      { mode = { "n", "x" }, "<m-;>ja", function() require("comment-box").labox(vim.v.count1) end, desc = "Left aligned adapted box" },
-      { mode = { "n", "x" }, "<m-;>ka", function() require("comment-box").cabox(vim.v.count1) end, desc = "Centered adapted box" },
-      { mode = { "n", "x" }, "<m-;>la", function() require("comment-box").rabox(vim.v.count1) end, desc = "Right aligned adapted box" },
+      { mode = { "n", "x" }, "<f15>;jj", function() require("comment-box").llbox(vim.v.count1) end, desc = "Left aligned box of fixed size with Left aligned text" },
+      { mode = { "n", "x" }, "<f15>;jk", function() require("comment-box").lcbox(vim.v.count1) end, desc = "Left aligned box of fixed size with Centered text" },
+      { mode = { "n", "x" }, "<f15>;jl", function() require("comment-box").lrbox(vim.v.count1) end, desc = "Left aligned box of fixed size with Right aligned text" },
+      { mode = { "n", "x" }, "<f15>;kj", function() require("comment-box").clbox(vim.v.count1) end, desc = "Centered box of fixed size with Left aligned text" },
+      { mode = { "n", "x" }, "<f15>;kk", function() require("comment-box").ccbox(vim.v.count1) end, desc = "Centered box of fixed size with Centered text" },
+      { mode = { "n", "x" }, "<f15>;kl", function() require("comment-box").crbox(vim.v.count1) end, desc = "Centered box of fixed size with Right aligned text" },
+      { mode = { "n", "x" }, "<f15>;lj", function() require("comment-box").rlbox(vim.v.count1) end, desc = "Right aligned box of fixed size with Left aligned text" },
+      { mode = { "n", "x" }, "<f15>;lk", function() require("comment-box").rcbox(vim.v.count1) end, desc = "Right aligned box of fixed size with Centered text" },
+      { mode = { "n", "x" }, "<f15>;ll", function() require("comment-box").rrbox(vim.v.count1) end, desc = "Right aligned box of fixed size with Right aligned text" },
+      { mode = { "n", "x" }, "<f15>;ja", function() require("comment-box").labox(vim.v.count1) end, desc = "Left aligned adapted box" },
+      { mode = { "n", "x" }, "<f15>;ka", function() require("comment-box").cabox(vim.v.count1) end, desc = "Centered adapted box" },
+      { mode = { "n", "x" }, "<f15>;la", function() require("comment-box").rabox(vim.v.count1) end, desc = "Right aligned adapted box" },
 
       -- Titled lines
       -- l in <c-l> sta per line
       -- sl -> surround with line
       -- stylua: ignore start
-      { mode = { "n", "x" }, "<c-;>jj", function() require("comment-box").llline(vim.v.count1) end, desc = "Left aligned titled line with Left aligned text" },
-      { mode = { "n", "x" }, "<c-;>jk", function() require("comment-box").lcline(vim.v.count1) end, desc = "Left aligned titled line with Centered text" },
-      { mode = { "n", "x" }, "<c-;>jl", function() require("comment-box").lrline(vim.v.count1) end, desc = "Left aligned titled line with Right aligned text" },
-      { mode = { "n", "x" }, "<c-;>kj", function() require("comment-box").clline(vim.v.count1) end, desc = "Centered title line with Left aligned text" },
-      { mode = { "n", "x" }, "<c-;>kk", function() require("comment-box").ccline(vim.v.count1) end, desc = "Centered titled line with Centered text" },
-      { mode = { "n", "x" }, "<c-;>kl", function() require("comment-box").crline(vim.v.count1) end, desc = "Centered titled line with Right aligned text" },
-      { mode = { "n", "x" }, "<c-;>lj", function() require("comment-box").rlline(vim.v.count1) end, desc = "Right aligned titled line with Left aligned text" },
-      { mode = { "n", "x" }, "<c-;>lk", function() require("comment-box").rcline(vim.v.count1) end, desc = "Right aligned titled line with Centered text" },
-      { mode = { "n", "x" }, "<c-;>ll", function() require("comment-box").rrline(vim.v.count1) end, desc = "Right aligned titled line with Right aligned text" },
+      -- { mode = { "n", "x" }, "<c-;>jj", function() require("comment-box").llline(vim.v.count1) end, desc = "Left aligned titled line with Left aligned text" },
+      -- { mode = { "n", "x" }, "<c-;>jk", function() require("comment-box").lcline(vim.v.count1) end, desc = "Left aligned titled line with Centered text" },
+      -- { mode = { "n", "x" }, "<c-;>jl", function() require("comment-box").lrline(vim.v.count1) end, desc = "Left aligned titled line with Right aligned text" },
+      -- { mode = { "n", "x" }, "<c-;>kj", function() require("comment-box").clline(vim.v.count1) end, desc = "Centered title line with Left aligned text" },
+      -- { mode = { "n", "x" }, "<c-;>kk", function() require("comment-box").ccline(vim.v.count1) end, desc = "Centered titled line with Centered text" },
+      -- { mode = { "n", "x" }, "<c-;>kl", function() require("comment-box").crline(vim.v.count1) end, desc = "Centered titled line with Right aligned text" },
+      -- { mode = { "n", "x" }, "<c-;>lj", function() require("comment-box").rlline(vim.v.count1) end, desc = "Right aligned titled line with Left aligned text" },
+      -- { mode = { "n", "x" }, "<c-;>lk", function() require("comment-box").rcline(vim.v.count1) end, desc = "Right aligned titled line with Centered text" },
+      -- { mode = { "n", "x" }, "<c-;>ll", function() require("comment-box").rrline(vim.v.count1) end, desc = "Right aligned titled line with Right aligned text" },
       -- stylua: ignore end
 
       -- Lines

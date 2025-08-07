@@ -7,6 +7,8 @@
 
 -- <c-v> does not work...
 
+-- use c-c c-f for current Lang like emacs
+
 -- does it makes sense to use vim.g.tleader here? dunno
 
 -- usa glow as previewer?

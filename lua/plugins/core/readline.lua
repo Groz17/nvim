@@ -96,7 +96,7 @@ return {
       --  │                 Supported Emacs commands                 │
       --  ╰──────────────────────────────────────────────────────────╯
       -- https://www.gnu.org/software/emacs/manual/html_node/emacs/Indentation-Commands.html
-      { "<M-m>", function() require("readline").back_to_indentation() end, mode = "i" },
+      { "<M-m>", function() require("readline").back_to_indentation() end, mode = {"i","n" }},
 
       --  ╭──────────────────────────────────────────────────────────╮
       --  │                 Do-what-I-mean commands                  │

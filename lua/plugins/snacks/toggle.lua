@@ -50,6 +50,7 @@ return {
         Snacks.toggle.option("wrap", { name = "Wrap" }):map("<f13>w", { mode = {"n","i"} })
         Snacks.toggle.option("wrap", { name = "Wrap" }):map("<f12>xt", { mode = {"n","i"} }) -- toggle-truncate-lines
         Snacks.toggle.option("modifiable", { name = "Modifiable" }):map("<f13>m", { mode = {"n","i"} })
+        Snacks.toggle.option("modified", { name = "Modified" }):map("<m-s-`>", { mode = {"n","i"} })
 
         Snacks.toggle.option("modifiable", { name = "Modifiable" }):map("<f12><c-q>", { mode = {"n","i"} })
         -- like emacs c-x c-q

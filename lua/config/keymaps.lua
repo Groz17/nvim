@@ -71,6 +71,8 @@ vim.keymap.set('n', 'gV', function() vim.api.nvim_feedkeys("`[" .. vim.fn.strpar
 -- TODO: control
 vim.keymap.set('!',[[<M-\>]], [[<CMD>s/\(^.*\zs\(\s*\)\)\%#\s*/\=cursor(0,strlen(submatch(1))-strlen(submatch(2)))<CR>]])
 
+vim.keymap.set('n', '<bs>', '<cmd>restart<cr>', { desc =  "Restart" })
+
 -- vim.keymap.set('n', '<C-S-R>', "<CMD>exec 'undo' undotree()['seq_last']<CR>")
 
 -- https://github.com/LazyVim/LazyVim/blob/13a4a84e3485a36e64055365665a45dc82b6bf71/lua/lazyvim/config/keymaps.lua#L64
@@ -577,6 +579,7 @@ vim.keymap.set('n', 'gcs', [[<Cmd>call append(line('.'), repeat(' ', indent('.')
 -- vim.keymap.set('i', '<m-;>', '<c-r>=&l:commentstring<cr><bs><bs>')
 -- vim.keymap.set('i', '<m-;>', '&l:commentstring->substitute(" %s"," ","")', {expr=true})
 vim.keymap.set('i', '<m-;>', '<end> <c-r>=&l:commentstring<cr><bs><bs>')
+vim.keymap.set('n', '<m-;>', 'A <c-r>=&l:commentstring<cr><bs><bs>')
 -- vim.keymap.set('i', '<m-s-3>', '<esc>m`I<c-r>=&commentstring<cr><bs><bs><c-o>``')
 -- FIX: doesnt work
 -- vim.keymap.set('i', '<m-s-3>',
@@ -592,9 +595,6 @@ vim.keymap.set('i', '<m-;>', '<end> <c-r>=&l:commentstring<cr><bs><bs>')
 -- )
 -- end)
 -- delete comment
--- vim.keymap.set('i', '<c-m-o>', '<a-o><c-o>cc') -- doesn't work for some reason?
--- vim.keymap.set('i', '<c-m-o>', '<esc>o<c-o>cc')
--- vim.keymap.set('i', '<c-m-o>', '<esc>o<c-o>cc')
 -- maybe `] at the end? doesn't work tho
 
 
@@ -646,9 +646,6 @@ vim.keymap.set('i','<c-]>','<esc>')
 -- end
 -- )
 
--- ─ miscellaneous
--- make shift esc for terminal escape
-
 -- Make the dot command work as expected in visual mode
 -- https://www.reddit.com/r/vim/comments/3y2mgt/
 vim.keymap.set("x", ".", "<cmd>norm! .<cr>")
@@ -665,6 +662,7 @@ vim.keymap.set("x", ".", "<cmd>norm! .<cr>")
 
 -- https://gist.github.com/kawarimidoll/496cb16b40af33e8d84daff6dde8a16f
 local all = vim.fn.split('nvsxoilct', [[.\zs]])
+      -- modes = { "n", "v", "x", "s", "o", "i", "c", "t" },
 -- how to go previos mode? like one shot norm command like ^o but for all modes?
 vim.keymap.set(all,'<f16>',[[<c-\><c-n><c-w>]])
 
@@ -714,7 +712,6 @@ vim.keymap.set('i','<m-s>.','<c-o>*') -- add c-s/c-r
 -- TODO: usa snacks
 vim.keymap.set({'n','x','i','t','c'},'<f18>K',[["<c-\><c-n>:FloatingHelp "..(mode()=='n'?'':mode()->tolower()..'_')]], {expr=true})
 -- how to escape single quote for fzf?
-vim.keymap.set({'n','x','i','t','c'},'<f18>v',[[<c-\><c-n>:h ']] )
 vim.keymap.set({'n','x','i','t','c'},'<f18>r',[[<c-\><c-n><cmd>FloatingHelp user-manual<cr>]] )
 vim.keymap.set({'n','x','i','t','c'},'<f18><c-f>',[[<c-\><c-n><cmd>FloatingHelp faq<cr>]] )
 -- ─ others
@@ -761,6 +758,7 @@ vim.keymap.set({'n','i'},'<m-s-.>',"<cmd>norm! G$<cr>")
 --
 
 -- would be cool to return to cursor left by emacs (maybe went to another buffer as well) (also would be nice if it worked in visual mode as well)
+-- f15 to move between neovim windows, ^w for emacs
 vim.keymap.set('n','<space>&', function()
     if vim.bo.filetype == '' then return end
     local line_nr = tostring(vim.fn.line('.'))
@@ -812,7 +810,7 @@ vim.keymap.set({'n','i','x','o'},'<f12>e',[[<c-\><c-n><cmd>norm! Q<cr>]])
 local last_press_time = 0
 local press_count = 0
 
-vim.keymap.set("i", "<C-l>", function()
+vim.keymap.set({"n","i"}, "<C-l>", function()
   -- function that does the following:
   -- keymap is pressed once: center current line in the view
   -- keymap is pressed twice: set currentl line at the top of the view
@@ -875,3 +873,6 @@ vim.keymap.set({"n","i"} , "<a-h>", [[<c-\><c-n><cmd>norm! vipok<cr>]], { desc =
 
 -- commands
 -- vim.api.nvim_create_user_command('Sort_paragraphs','emacsclient -e sort-paragraphs?')
+
+-- for mappings that don't have an equivalent plugin in neovim, open emacs and keyfeed those
+-- vim.keymap.set('n','<c-c>m','emacsclient --eval keypress <C-c>m', {desc = 'emms'})

@@ -1,4 +1,5 @@
 -- stable version
+--{ 'dmmulroy/ts-error-translator.nvim' }
 return {
   "OlegGulevskyy/better-ts-errors.nvim",
   cond=false,

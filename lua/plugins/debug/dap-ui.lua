@@ -38,7 +38,7 @@ return {
   keys = {
     -- {'<f15>d', desc = "Debug"},
     -- like for macro debugging in emacs
-    {'<f15><space>', desc = "Debug"},
+    {'<f15>>', desc = "Debug"},
     -- { 'dU', ':RunScriptWithArgs ', desc = "Debug (args)" }
  },
   dependencies = { 'mfussenegger/nvim-dap' },
@@ -136,7 +136,7 @@ out _h_   _l_ into
 
       mode = 'n',
       -- TODO: usa lazy's keys spec
-      body = '<f15><space>',
+      body = '<f15>>',
       -- body = '<space>d',
   -- stylua: ignore
   -- maybe make this buffer = true mappings? so you can use default mappings in the elements
@@ -323,11 +323,11 @@ out _h_   _l_ into
     { "Q", function() dap.close() end, desc = "Quit", },
     -- use this for macros
     -- { "q", function() dap.disconnect() end, desc = "Disconnect", },
-    { "<c-c>", function() dap.terminate() end, desc = "Terminate", },
+    { "<c-g>", function() dap.terminate() end, desc = "Terminate", },
     -- Lo posso comunque usare in visual mode (e anche negli elements possibilmente)
     -- put terminate here insteaf on on_exit? is there difference?
     -- { "<esc>", nil, { exit = true, nowait = true, desc = "Exit" } },
-    { "q", nil, { exit = true, nowait = true, desc = "Exit" } },
+    { "<c-g>", nil, { exit = true, nowait = true, desc = "Exit" } },
   },
     })
   end,

@@ -2,6 +2,7 @@
 augroup auto_tangle
 autocmd!
 " src block doesn't contain elisp code
+" usa emacsclient eval...
 autocmd BufWritePost <buffer> if
       \ expand("<afile>:p")=~'^'..$HOME..'/\%(dotfiles/\|\.config/emacs/config\.org$\)' &&
       \ (search('^#+begin_src .\+:tangle ','n') || search('^#+property: .*header-args\s\+:tangle ','n')) &&

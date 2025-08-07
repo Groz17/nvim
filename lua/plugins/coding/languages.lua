@@ -140,7 +140,6 @@ return {
 {
   -- does this work with markdown/vimwiki?
     'jmbuhr/otter.nvim',
-    cond = false,
     -- event = 'LspAttach',
     dependencies = {
       'nvim-treesitter/nvim-treesitter',

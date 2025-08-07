@@ -14,10 +14,11 @@ return
     -- nnoremap <Leader>idf :DiffviewFileHistory %<CR>
     init = function() vim.opt.fillchars:append({ diff = '╱' }) end,
     keys = {
-      { '<leader>dd', '<cmd>DiffviewOpen<cr>', desc = 'Open Diffview' },
+      { '<f14>=', '<cmd>DiffviewOpen -- %<cr>', desc = 'Open Diffview' },
+      { '<f14>D', '<cmd>DiffviewOpen<cr>', desc = 'Open Diffview' },
 
-      { '<leader>dl', '<cmd>DiffviewFileHistory %<cr>', desc = 'Git log' },
-      { '<leader>dL', '<cmd>DiffviewFileHistory<cr>', desc = 'Git log (args)' },
+      -- { '<f14>=', '<cmd>DiffviewFileHistory %<cr>', desc = 'Git log' },
+      -- { '<f14>D', '<cmd>DiffviewFileHistory<cr>', desc = 'Git log (args)' },
       { '<leader>dl', ':DiffviewFileHistory<CR>', mode="x", desc = 'Git log' },
 
       { 'q', '<cmd>DiffviewClose<cr>', ft = {"DiffviewFiles", "DiffviewFileHistory"}, desc = 'Close Diffview' },

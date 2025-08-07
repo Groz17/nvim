@@ -37,42 +37,42 @@ return {
       -- Most actions can be repeated with `.` if you have |vim-repeat| installed.
 
       -- maybe use <leader>{h,H}?
-      { '<localleader>g', '<nop>', desc='Gitsigns' },
+      { '<leader>g', '<nop>', desc='Gitsigns' },
 
       -- would be cool if lazy's keys spec supported which-key's style
-      -- { '<localleader>gu', gitsigns.undo_stage_hunk, 'Undo Stage Hunk' } W Deprecated.(use |gitsigns.stage_hunk()| on staged signs)
-      { '<localleader>gS', gitsigns.stage_hunk, desc='Stage Hunk' },
-      {mode='x', '<localleader>gs', function() gitsigns.stage_hunk({ vim.fn.line('.'), vim.fn.line('v') }) end, desc='Stage Hunk'},
-      { '<localleader>gS', gitsigns.reset_hunk, desc='Reset Hunk' },
-      {mode='x', '<localleader>gr', function() gitsigns.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') }) end,desc='Reset Hunk'},
+      -- { '<leader>gu', gitsigns.undo_stage_hunk, 'Undo Stage Hunk' } W Deprecated.(use |gitsigns.stage_hunk()| on staged signs)
+      { '<leader>gS', gitsigns.stage_hunk, desc='Stage Hunk' },
+      {mode='x', '<leader>gs', function() gitsigns.stage_hunk({ vim.fn.line('.'), vim.fn.line('v') }) end, desc='Stage Hunk'},
+      { '<leader>gS', gitsigns.reset_hunk, desc='Reset Hunk' },
+      {mode='x', '<leader>gr', function() gitsigns.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') }) end,desc='Reset Hunk'},
 
       -- TODO: magari usa <leader>gw come fugitive???
-      { '<localleader>gS', gitsigns.stage_buffer, desc='Stage Buffer' },
-      { '<localleader>gR', gitsigns.reset_buffer, desc='Reset Buffer' },
+      { '<leader>gS', gitsigns.stage_buffer, desc='Stage Buffer' },
+      { '<leader>gR', gitsigns.reset_buffer, desc='Reset Buffer' },
       -- gK for hover would have been nice as well
-      { '<localleader>gp', gitsigns.preview_hunk, desc='Preview Hunk' },
+      { '<leader>gp', gitsigns.preview_hunk, desc='Preview Hunk' },
       -- { '<leader>gi',  function() require("gitsigns").preview_hunk_inline({ inline = true }) end }
-      { '<localleader>gP', function() gitsigns.preview_hunk_inline() end, desc='Preview Hunk Inline' },
+      { '<leader>gP', function() gitsigns.preview_hunk_inline() end, desc='Preview Hunk Inline' },
 
       -- If already open, calling this will cause the window to get focus.
-      { '<localleader>gb', function() gitsigns.blame_line() end, desc='Blame Hunk' },
-      { '<localleader>gB', function() gitsigns.blame_line({ full = true, ignore_whitespace = true }) end, desc='Blame Hunk (full commit message + ignore whitespaces)' },
+      { '<leader>gb', function() gitsigns.blame_line() end, desc='Blame Hunk' },
+      { '<leader>gB', function() gitsigns.blame_line({ full = true, ignore_whitespace = true }) end, desc='Blame Hunk (full commit message + ignore whitespaces)' },
 
-      { '<localleader>gd', gitsigns.diffthis, desc='Diff This' },
-      { '<localleader>gD', function() gitsigns.diffthis('~') end, desc='Diff this against last commit' },
+      -- { '<leader>gd', gitsigns.diffthis, desc='Diff This' },
+      -- { '<leader>gD', function() gitsigns.diffthis('~') end, desc='Diff this against last commit' },
       -- { "<leader>gD", function() gitsigns.diffthis("~") end, "Diff this against parent" },
 
       -- will open Trouble
       -- how to do for all files? use uppercase
-      { '<localleader>gl', function() gitsigns.setloclist(0,0) end, desc='Populate the location list with hunks.' },
-      { '<localleader>gq', function() gitsigns.setqflist(0) end, desc='Populate the quickfix list with hunks.' },
-      { '<localleader>gL', function() gitsigns.setloclist(0,'all') end, desc='Populate the location list with all hunks.' },
-      { '<localleader>gQ', function() gitsigns.setqflist('all') end, desc='Populate the quickfix list with all hunks.' },
+      { '<leader>gl', function() gitsigns.setloclist(0,0) end, desc='Populate the location list with hunks.' },
+      { '<leader>gq', function() gitsigns.setqflist(0) end, desc='Populate the quickfix list with hunks.' },
+      { '<leader>gL', function() gitsigns.setloclist(0,'all') end, desc='Populate the location list with all hunks.' },
+      { '<leader>gQ', function() gitsigns.setqflist('all') end, desc='Populate the quickfix list with all hunks.' },
 
       -- ╭─────────────────────────────────────────────────────────╮
       -- │ Toggles                                                 │
       -- ╰─────────────────────────────────────────────────────────╯
-      { '<localleader>g', '<nop>', desc='Gitsigns' },
+      -- { '<leader>g', '<nop>', desc='Gitsigns' },
       { [[<f13>gb]], function() gitsigns.toggle_current_line_blame() end, desc='Current line blame' },
       { [[<f13>gl]], function() gitsigns.toggle_linehl() end, desc='Line highlight' },
       { [[<f13>gn]], function() gitsigns.toggle_numhl() end, desc='Number highlight' },

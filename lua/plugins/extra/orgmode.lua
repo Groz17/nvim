@@ -2,8 +2,11 @@
 -- snacks integration?
 -- local ORG_HOME = vim.fn.expand('$XDG_DATA_HOME/org')
 -- orgmode.setup_ts_grammar()
-return{{
+return{
+  {
   'nvim-orgmode/orgmode',
+  dependencies = {'akinsho/org-bullets.nvim', opts={},},
+
   init = function()
     vim.keymap.set('n','<space>eo', [[<CMD>tab drop ~/orgfiles/refile.org<cr>]],{desc="Orgfile"})
   end,
@@ -42,6 +45,10 @@ return{{
         }
     },
   },
+  config = function(_, opts)
+    require'orgmode'.setup(opts)
+    vim.keymap.set({"n","o"},"<f15>@",'<cmd>lua require("orgmode.org.text_objects").around_subtree()<cr>')
+  end
 },
 {
   "chipsenkbeil/org-roam.nvim",

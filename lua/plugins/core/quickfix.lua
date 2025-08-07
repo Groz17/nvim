@@ -28,6 +28,7 @@ return {
   {
     -- possible to use telescope instead of fzf using zf?
     'kevinhwang91/nvim-bqf',
+    cond=false,
     init = function()
 --  ╭──────────────────────────────────────────────────────────╮
 --  │ Format new quickfix                                      │

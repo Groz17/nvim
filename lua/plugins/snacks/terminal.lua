@@ -9,32 +9,16 @@ return {
     -- TODO: vertical terminal?
     -- realdine non funge, like <alt-number> to insert number volte lo stesso char
     -- bottom split perche voglio usarlo tante volte (non one shot)->pipeline
-    -- { '<c-|>', function() Snacks.terminal(nil, { cwd = vim.fn.expand('%:p:h') }) end, desc = 'Toggle Terminal' },
-    -- { [[<c-s-\>]], function() Snacks.terminal(nil, { cwd = vim.fn.expand('%:p:h') }) end, desc = 'Toggle Terminal' },
-    -- { '<leader>"', function() Snacks.terminal() end, desc = 'Toggle Terminal (Root)' },
-    -- { '<leader><s-cr>', function() Snacks.terminal() end, desc = 'Toggle Terminal (Root)' },
-    -- { "<leader>%", function() Snacks.terminal(nil,{win={position='right'}}) end, desc = 'Toggle Terminal (Root)' },
     -- { "<leader><cr>", function() Snacks.terminal(nil,{win={position='right'}}) end, desc = 'Toggle Terminal (Root)' },
-    { "<leader><cr>", function() Snacks.terminal(nil,{cwd = vim.fn.expand('%:p:h'),win={position='right'}}) end, desc = 'Toggle Terminal (Root)' },
+    { "<leader><cr>", function() Snacks.terminal(nil,{cwd = vim.fn.expand('%:p:h'),win={position='right'}}) end, desc = 'Terminal (cwd)' },
+    { "<f12>ps", function() Snacks.terminal(nil,{cwd = Snacks.git.get_root(),win={position='right'}}) end, desc = 'Terminal (Root)' },
+    { "<f12>pe", function() Snacks.terminal({cmd = "lua"},{cwd = Snacks.git.get_root(),win={position='right'}}) end, desc = 'Terminal (Root)' }, -- lua=elisp (concettualmente)
     -- { "<leader><a-cr>", function() Snacks.terminal(nil,{cwd = vim.fn.expand('%:p:h'),win={position='right'}}) end, desc = 'Toggle Terminal (Root)' },
 
-    -- usa stessi binding di termina/ghostty?
-    -- { "<space>v", function() Snacks.terminal(nil,{cwd = vim.fn.expand('%:p:h'),win={position='right'}}) end, desc = 'Toggle Terminal (Root)' },
-    -- { '<space>V', function() Snacks.terminal(nil,{win={position='right'}}) end, desc = 'Toggle Terminal (Root)' },
-    -- { "<space>s", function() Snacks.terminal(nil,{cwd = vim.fn.expand('%:p:h')}) end, desc = 'Toggle Terminal (Root)' },
-    -- { '<space>S', function() Snacks.terminal() end, desc = 'Toggle Terminal (Root)' },
-
-    -- maybe add <c-;> for bottom/left or smth?
-    -- {
-      --   '<c-_>',
-      --   function() Snacks.terminal() end,
-      --   desc = 'which_key_ignore',
-      -- },
-      -- TermHl?
-      -- { '<c-*>', function() Snacks.terminal.colorize() end, desc = 'Colorize the current buffer' },
       -- like ansi escape codes
       -- { '<space><esc>', function() Snacks.terminal.colorize() end, desc = 'Colorize the current buffer' },
-      { '<space><c-[>', function() Snacks.terminal.colorize() end, desc = 'Colorize the current buffer' },
+      -- { '<space><c-[>', function() Snacks.terminal.colorize() end, desc = 'Colorize the current buffer' },
+      -- { '<f15><c-[>', function() Snacks.terminal.colorize() end, desc = 'Colorize the current buffer' },
       {
         '<space>/',
         function() Snacks.terminal.toggle(nil, { cwd = vim.fn.expand('%:p:h'), win = { position = 'float', border = 'rounded', height = 0.7,  width = 0.7 }, })

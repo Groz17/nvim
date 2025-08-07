@@ -84,10 +84,7 @@ return
           -- stash = 's',
           -- would be cool if difftool's quickfix list would remove entries that get committed...
 
-       -- {"<leader>grr", "<Cmd>Git rebase --continue"},
-       -- {"<leader>grs", "<Cmd>Git rebase --skip"},
-       -- {"<leader>gra", "<Cmd>Git rebase --abort"},
-       -- {"<leader>gre", "<Cmd>Git rebase --edit-todo"},
+          -- use universal argument for <space> populate?
        -- (nmap! :<Space>gr<Space> [:desc "[git] populate cmdline with `:Git rebase `"] ":<C-u>Git rebase ")
           -- rebase="r",
 
@@ -136,7 +133,7 @@ return
           table.insert(git_mappings, {
             -- how to go to the last diff that modify the line?
             { '<leader>gd', '<CMD>Gvdiffsplit<CR>', desc = "Diffsplit", buffer = true },
-            { '<leader>gD', ':Gvdiffsplit<space>', desc = "Diffsplit [args]", buffer = true },
+            { '<space>u<leader>gd', ':Gvdiffsplit<space>', desc = "Diffsplit [args]", buffer = true },
             { '<f12>g', '<cmd>tab G<cr>', desc = "Git status", buffer = true },
             -- { [[\gd]], '<CMD>Git diff<CR>', desc = "Diff", buffer = true },
             -- { [[\gD]], ':Git diff<space>', desc = "Diff [args]", buffer = true },
@@ -200,28 +197,6 @@ return
       --   { "<leader>g-", "<CMD>Git stash<CR>", desc="Stash" },
       --   -- { "<leader>g-", "<CMD>Git stash push<CR>", desc="Stash" },
       --   { "<leader>g+", "<CMD>Git stash pop<CR>", desc="Stash pop" },
-      --
-      --   -- ╭─────────────────────────────────────────────────────────╮
-      --   -- │ Log                                                     │
-      --   -- ╰─────────────────────────────────────────────────────────╯
-      --   -- l = { "<cmd>silent vertical G log --decorate<CR>", "Log" },
-      --   -- L = { "<cmd>silent vertical G log --decorate -p<CR>", "Log with differences" },
-      --   -- n = { "<cmd>silent vertical G log --stat<CR>", "Log with stats" },
-      --
-      --
-      --   -- ["["] = { "<cmd>silent G checkout HEAD^<CR>", "Checkout previous commit" },
-      --   -- ["]"] = {
-      --   --  "<cmd>silent !git checkout $(git rev-list --topo-order HEAD..$(git remote show origin | sed -n '/HEAD branch/s/.*: //p') | tail -1)<CR>",
-      --   --  "Checkout next commit",
-      --   -- { "<leader>go", "<CMD>Git checkout<cr>", desc = "Checkout" },
-      --   --  useful for ours, theirs
-      --   -- { "<leader>gO", ":Git checkout<space>", desc = "Checkout [args]" },
-      --   -- { "<leader>gB", ":Git branch<Space>", desc = "git branch" },
-      --   -- bug: <leader>gB not mapped but opens browser?
-      --   -- convenzione: lowercase per shell commands, uppercase per fugitive's
-      --   { "<leader>gb", "<CMD>Git branch<cr>", desc = "branch" },
-      --   { "<leader>gB", ":Git branch<Space>", desc = "branch [args]" },
-      --
       --
       --
       --   -- like X mapping in status window

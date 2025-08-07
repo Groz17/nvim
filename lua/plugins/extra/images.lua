@@ -36,6 +36,22 @@ return {
       },
 
     },
+{
+  "r-pletnev/pdfreader.nvim",
+  dependencies = {
+    "folke/snacks.nvim", -- image rendering
+  },
+  event = 'BufRead *.pdf',
+  cond=false,
+  lazy = true,
+  opts = {},
+  keys = {
+    { 'gg', '<cmd>PDFReader setPage ' .. vim.v.count1 ..'<cr>', buffer = true },
+    { 'j', 'n', remap = true, buffer = true },
+    { 'k', 'p', remap = true, buffer = true },
+  },
+}
+
     --   {
       -- "haydushki-fmi/exifVim"
       --   },

@@ -61,7 +61,7 @@ return {
     init = function()
       vim.g.db_ui_disable_info_notifications= 1
       vim.g.db_ui_save_location = vim.fn.stdpath('data') .. '/db_ui'
-      -- vim.keymap.set('n', '<leader>ec', [[<CMD>tab drop ]] .. vim.g.db_ui_save_location .. [[/connections.json<cr>]], { desc = 'Database connections' })
+      vim.keymap.set('n', '<leader>eD', [[<CMD>tab drop ]] .. vim.g.db_ui_save_location .. [[/connections.json<cr>]], { desc = 'Database connections' })
       vim.g.Db_ui_table_name_sorter = function(tables) return vim.fn.sort(tables)  end
 
       vim.g.db_ui_tmp_query_location = vim.fn.stdpath('data') .. '/db_ui/queries'
@@ -76,25 +76,10 @@ return {
       vim.g.db_ui_use_nvim_notify = 1
 
     end,
-    -- { "dc", "<CMD>tab DBUI<CR>", desc = "Open drawer with available connections" },
-    -- { "do", "<cmd>DBUIToggle<cr>",        desc = "Toggle UI" },
-    -- { "df", "<cmd>DBUIFindBuffer<cr>",    desc = "Find Buffer" },
-    -- { "dr", "<cmd>DBUIRenameBuffer<cr>",  desc = "Rename Buffer" },
-    -- { "dq", "<cmd>DBUILastQueryInfo<cr>", desc = "Last Query Info" },
 
     keys = {
-      -- q di query (https://github.com/pratiktri/dotfiles/blob/6085a0cffc5f21974f17bd1bd1f165ca327805cf/common/.config/nvim/lua/plugins/code-db.lua#L39)
-      -- { '<leader>mD', '<cmd>tabnew|DBUIToggle<cr>', desc = 'Toggle DBUI' },
-      -- { '<space>D', '<cmd>tabnew|DBUIToggle<cr>', desc = 'Toggle DBUI' },
       -- use s/l (f12) for emacs-inspired mappings and use c/m (f15) for one shot mappings (no groups)
-      { '<f15>d', '<cmd>tabnew|DBUIToggle<cr>', desc = 'Toggle DBUI' },
-      -- { '<localleader>qu', '<cmd>tabnew|DBUIToggle<cr>', desc = 'Toggle UI' }, -- https://github.com/Melting-Face/mynvim/blob/907d469f1abfa812aea2a5dd3d8efd8bcaba66c7/lua/plugins.lua#L313
-      -- TODO: better aesthetically
-      -- {
-      --   '<leader>uD',
-      --   ':DBUIToggle<left><left><left><left><left><left><left><left><left><left><space><left>',
-      --   desc = 'Toggle UI interactively',
-      -- },
+      { '<f15>d', '<cmd>tab DBUIToggle<cr>', desc = 'Toggle DBUI' },
       -- TODO: use vim.ui.select
       { '<localleader>f', '<cmd>DBUIFindBuffer<cr>', buffer = true, ft = 'sql',desc = 'Find Buffer' },
     },
@@ -102,8 +87,6 @@ return {
       -- vim.keymap.set('n','<C-Q>', vim.fn["db#op_exec"]())
       -- usa stesso mapping di sniprun (se necessario disable sql filetype in sniprun) {lazy api to get sniprun's keys?}
       vim.api.nvim_create_autocmd('Filetype', {
-        -- pattern = "sql",
-        -- how to put filetypes supported by a plugin/dadbod?
         pattern = { 'sql', 'mysql', 'plsql', 'jq' },
         callback = function(ev)
           -- TODO: find better mapping
@@ -175,19 +158,8 @@ return {
 
     -- maybe replace with treesitter @statement?
     'jsborjesson/vim-uppercase-sql',
-    -- ft = { 'sql' },
     ft = vim.fn.getcompletion('sql', 'filetype'),
   },
 }
 -- " sql.vim is for sqlite
 -- "autocmd BufEnter sql source ~/.vim/syntax/sqlite.vim
-
---
--- " " autocmd BufEnter db_ui* nnoremap <buffer> <leader>f :%!sqlformat -r -k upper -<cr>
--- " autocmd BufEnter db_ui* nnoremap <buffer> <leader>ff :%!sqlformat -r -k upper -<cr>
---
--- " autocmd BufEnter dbui nmap <buffer> l <Plug>(DBUI_SelectLine)
--- augroup db_ui
--- au!
---      \ exe "nmap <buffer> l <Plug>(DBUI_SelectLine)" |
---      \ exe "nnoremap <buffer> <leader>ff :%!sqlformat -r -k upper -<cr>"

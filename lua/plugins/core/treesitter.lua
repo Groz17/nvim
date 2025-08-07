@@ -66,7 +66,7 @@ return
       incremental_selection = {
         -- disable = false,
         -- would be cool if it showed (maybe as a notification) nvim-treesitter-textobjects name like @function.outer or smth or just InspectTree output
-        enable = true,
+        enable = false,
         keymaps = {
         init_selection = '<a-v>',
         -- does it work like an hydra? like only after init_selection?

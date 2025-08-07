@@ -3,14 +3,14 @@
 -- parametrized snippets? like v:count snippet (<a-3>date) put the date 3 days before? also for things like tables (3x4, etc...)
 return {
   {
-		'mireq/luasnip-snippets',
+    'mireq/luasnip-snippets',
     lazy = true,
-		dependencies = {'L3MON4D3/LuaSnip'},
-			-- require('luasnip_snippets.common.snip_utils').setup()
-      main = 'luasnip_snippets.common.snip_utils',
-      opts = {}
+    dependencies = {'L3MON4D3/LuaSnip'},
+    -- require('luasnip_snippets.common.snip_utils').setup()
+    main = 'luasnip_snippets.common.snip_utils',
+    opts = {}
 
-	},
+        },
   {
     -- := require'luasnip'.get_snippets()
     "L3MON4D3/LuaSnip",
@@ -88,7 +88,7 @@ return {
       vim.keymap.set({"i", "s"}, "<c-s-i>", function() ls.jump(-1) end, {silent = true})
       -- jj to mean <c-h>???
 
-          -- ls.change_choice(1)
+      -- ls.change_choice(1)
       -- vim.keymap.set({"i", "s"}, "<C-s>", function() return ls.choice_active() and '<cmd>lua require("luasnip.extras.select_choice")()<cr>' or "<C-s>" end, {expr = true})
       vim.keymap.set({"i", "s"}, "<C-i>", function() return ls.choice_active() and "<Plug>luasnip-next-choice" or "<C-i>" end, {expr = true})
       vim.keymap.set({"s"}, "<C-j>", function() return ls.choice_active() and "<Plug>luasnip-next-choice" or "<C-j>" end, {expr = true})

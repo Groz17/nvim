@@ -210,11 +210,11 @@ return {
                         "branch",
                         icon = {"",align='right',
 
-                        color = function()
-                            local name = vim.fn.FugitiveHead()
+                        -- color = function()
+                        --     local name = vim.fn.FugitiveHead()
                             -- return { fg = (name == "main" or name == "master") and "ff00ff" or '#'..name:sub(1,6) }
-                            return { fg = (name == "main" or name == "master") and "ff00ff" or "yellow" }
-                        end,
+                        --     return { fg = (name == "main" or name == "master") and "ff00ff" or "yellow" }
+                        -- end,
                     },
                   },
                   -- how to put in the middle?

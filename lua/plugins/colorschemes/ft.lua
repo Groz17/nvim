@@ -14,7 +14,6 @@ return
     -- make which-key use the colorscheme?
     -- fix initial white flash
     'folke/styler.nvim',
-    cond=false,
     -- FIX: https://github.com/folke/styler.nvim/issues/7
     opts = {
       -- interessante che se usi colo theme in uno di questi il colorscheme non cambia
@@ -29,7 +28,7 @@ return
         -- la cmp window rimane del theme di startup (catppuccin ad esempio)
         -- would be nice if you could specify event for vimwiki, because I want to use filetype=markdown for that but for markdown files outside wiki I want another colorscheme... (to differentiate)
         -- that's why neorg is betta
-        vimwiki = { colorscheme = 'rakis' },
+        vimwiki = { colorscheme = 'github_dark_default' },
         -- help = { colorscheme = "catppuccin-mocha" },
         -- help = { colorscheme = 'catppuccin' },
 
@@ -67,7 +66,6 @@ return
         html = { colorscheme = 'eldritch' },
         -- html = { colorscheme = 'darkrose' },
         -- css = { colorscheme = 'purpura' },
-        css = { colorscheme = 'farout-storm' },
         javascript = { colorscheme = 'kanagawa-paper' },
         java = { colorscheme = 'jellybeans' },
 

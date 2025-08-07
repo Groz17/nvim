@@ -47,8 +47,9 @@ return {
     -- https://cli.github.com/manual/gh_search_commits???
     -- integrate with lazygit? o mapping?
     'pwntester/octo.nvim',
+    -- get inspired by forge emacs plugin?
     -- BUG: list of emojis is messed up
-    -- make it support URLS as well
+    -- make it support URLS as well (to search issues)
     -- make startinsert optional...
     -- add mapping inside fzf-lua to filter by closed, open, etc...
     cmd = 'Octo',
@@ -83,7 +84,8 @@ return {
     -- use this when in a repo that has a remote
     -- { "<leader>oo", "<cmd>Octo<CR>", desc = "Open Octo" },
     -- tanto uso :w<CR> per salvare
-    { "<space><space>", "<cmd>Octo<CR>", desc = "Open Octo", ft = 'octo' },
+    -- { "<space><space>", "<cmd>Octo<CR>", desc = "Open Octo", ft = 'octo' },
+    { "<a-s-x>", "<cmd>Octo<CR>", desc = "Open Octo", ft = 'octo' },
 
     -- disable reload issue (i want redo functionality)
     -- { "<leader>oic", ":Octo issue create<space>", desc = "Create new" },

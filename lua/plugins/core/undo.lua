@@ -16,17 +16,18 @@ return {
     opts = {
     }
   },
-{
-  --https://www.reddit.com/r/neovim/comments/1ijfnm2/selectundo_undo_specific_parts_of_your_code/ 
-  "SunnyTamang/select-undo.nvim",
-  cond=false,
-  -- persistent_undo = true,  -- Enables persistent undo history
-  -- mapping = true,          -- Enables default keybindings
-  opts={},
-  -- _ mnemonic for lines?
-  -- there's also <f12>u
-  line_mapping = "<c-_>",     -- Undo for entire lines
-  partial_mapping = "<c-/>"  -- Undo for selected characters -- Note: dont use this line as gu can also handle partial undo
+  {
+    --https://www.reddit.com/r/neovim/comments/1ijfnm2/selectundo_undo_specific_parts_of_your_code/
+    "SunnyTamang/select-undo.nvim",
+    cond = false,
+    -- persistent_undo = true,  -- Enables persistent undo history
+    -- mapping = true,          -- Enables default keybindings
+    opts = {},
+    -- _ mnemonic for lines?
+    -- there's also <f12>u
+    line_mapping = "<c-_>", -- Undo for entire lines
+    partial_mapping =
+    "<c-/>"                 -- Undo for selected characters -- Note: dont use this line as gu can also handle partial undo
     -- {mode="x","gu",desc="undo change in selected portion"}
   }
 

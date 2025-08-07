@@ -25,12 +25,6 @@ return
       local ai = require("mini.ai").gen_spec
       return {
 
-        -- local spec_treesitter = ai.gen_spec.treesitter
-        --    local textobj_treesitter = {}
-        --    for key, val in pairs(build_treesitter_txtobj_ai()) do
-        --      textobj_treesitter[key] = spec_treesitter(val)
-        --    end
-
 
         mappings = {
           goto_left = 'g[',
@@ -129,17 +123,9 @@ return
           -- gc come per commentary
           -- ["agc"] = "@comment.outer",
           -- ["ac"] = "@comment.outer",
-          -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects/issues/100
-          -- ["aC"] = "@comment.outer",
-          -- ["iC"] = "@comment.inner",
-          -- k -> Komment ()
-          -- ["ak"] = "@comment.outer",
-          -- ["aS"] = "@comment.outer",
           -- u seems nice
           -- ["iu"] = "@comment.inner",
           -- ["au"] = "@comment.outer",
-          -- how to invert text objects? like go to first non-commented line
-          -- inner should be comment without commentstring right?
           -- ag?
           c = ai.treesitter({ a = "@comment.outer", i = "@comment.inner" }, {}),
           -- group of subquent lines of comments?
@@ -465,56 +451,5 @@ return
         },
       }
     end,
-    config = function(_, opts)
-      require("mini.ai").setup(opts)
-      -- for vim-matchup
-      -- vim.keymap.set('o', 'm', '%', { noremap = false })
-      -- vim.keymap.set('o', 'm', '%', { remap = true })
--- https://github.com/echasnovski/mini.nvim/discussions/33#discussioncomment-10692806
--- how to go to next/prev text object? like mimicking {[,]}{m,M}
--- local map_move_cursor = function(lhs, side, search_method)
---   local rhs = function()
---     local ok, tobj_id = pcall(vim.fn.getcharstr)
---     if not ok or tobj_id == '\27' then return '' end
---     local opts = { search_method = search_method, n_times = vim.v.count1 }
---     MiniAi.move_cursor(side, 'a', vim.fn.escape(tobj_id, '\\'), opts)
---   end
---
---   local desc = string.format('Move to %s %s side', search_method, side)
---   vim.keymap.set({ 'n', 'x', 'o' }, lhs, rhs, { desc = desc })
--- end
---
--- map_move_cursor('g{', 'left', 'prev')
--- map_move_cursor('g}', 'right', 'prev')
-    end
-    -- config = function(_, opts)
-    --   -- register all text objects with which-key
-    --   require("mini.ai").setup(opts)
-    --   local i = {
-    --   }
-    --   local a = vim.deepcopy(i)
-    --   for k, v in pairs(a) do
-    --     a[k] = v:gsub(" including.*", "")
-    --   end
-    --
-    --   local ic = vim.deepcopy(i)
-    --   local ac = vim.deepcopy(a)
-    --   for key, name in pairs({ n = "Next", l = "Last" }) do
-    --     ---@diagnostic disable-next-line: assign-type-mismatch
-    --     i[key] = vim.tbl_extend("force", { name = "Inside " .. name .. " Textobject" }, ic)
-    --     ---@diagnostic disable-next-line: assign-type-mismatch
-    --     a[key] = vim.tbl_extend("force", { name = "Around " .. name .. " Textobject" }, ac)
-    --   end
-    --   require("which-key").register({
-    --     mode = { "o", "x" },
-    --     i = i,
-    --     a = a,
-    --   })
-    -- end,
   }
 
--- using c2inr should go to the inner [] but it doesn't, it skips it...
--- vim.cmd([[exe "norm 2o\<esc>"]])
-
--- how to select between <Cmd> and <CR>? maybe create new text object iT, aT that doesn't care about the content in the "tag"
--- { '<leader>ro', "<Cmd>lua require('comment-box').rline()<CR>", desc = 'Comment Right Line', },

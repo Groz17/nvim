@@ -43,6 +43,7 @@ return {
       -- go         = { "goimports", "gofumpt" },
       python = { 'isort', 'black' },
       json = { 'jq' },
+      jsonc = { 'biome' },
       -- javascript = { { 'prettierd', 'prettier' } },
       --  Also biome is far superior to prettier.  (https://www.reddit.com/r/neovim/comments/1hbst6x/comment/m1ki7dd/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button)
       -- javascript = { 'prettier' },

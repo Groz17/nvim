@@ -197,57 +197,19 @@ return {
       -- how to not show space key in which-key buffer?
       local groups = {
         -- {"a", group = "AI"},
-        {"A", group = "Auto-preview"},
-        -- {"B", group = "Buffers"},
-        {"b", group = "Comment-box [line]"}, {"B", group = "Comment-box [box]"},
-        -- {"c", group = "ChatGPT"},
-        -- {"P", group = "Pommodoro"},
-        --     c = { name = "Code" },
-        -- debugging is done with hydra
+        {"p", group = "Auto-preview"},
         {"d", group = "Diagnostics"},
         -- TODO: add icons? with mini?
-        -- {"D", group = "Databases"},
-        -- {"e", group = "Edit single files"},
         {"e", group = "Edit config files"},
         {"f",group = 'Picker',
-          -- {"f", group = "Find Files"},
-          -- {"g", group = "Grep Files"},
 
         },
-        --     f = { name = "Find" },
-        -- would be cool if you could show only <leader>gc instead of <leader>gc and <leader>gC and add (use gC to add <space>) (to save some space in window)
-         -- {"g", group = 'Git ',
-         -- {"g", group = 'Git', icon = { 'git' },
         -- },
         -- { 'g', group = 'git', icon = { icon = '󰊢', hl = 'WhichKeyColorOrange', color = 'orange' } },
         -- TODO: come scrivere mapping a cascata come nella versione precedente?
         { 'g', group = 'Git'},
-          -- also for telescope
-          -- ['!'] = { name = 'Force (appends !)' },
-          -- c = {
-          --   name = 'Commit',
-          --   r = '--reset-author',
-          -- },
-          -- finche which-key non divide by plugins uso il nome dei plugins tra parentesi quadre...
-          -- {"h", group = "Hunks [Gitsigns]"},
-          -- {"t", group = "Tool"},
-          -- -- v (view)
-          -- {"v", group = "Diff [Diffview]"},
-          -- {"y", group = "Toggle"},
-        -- lg = { name = "Goto" },
-        {"G", group = "Fuzzy Git"},
-        {"?", group = "Help [Documentation]"},
-        -- {"o", group = "Orgmode"},
-        -- {"o", group = "Overseer"},
         {"i", group = "Images"},
         {"I", group = "Swap Nodes"},
-        {"l",
-          group = 'LSP',
-          -- v = 'document symbols',
-          -- w = 'workspace symbols',
-          -- W = 'dynamic workspace symbols',
-        },
-        {"L", group = "Fuzzy LSP"},
         -- evaluate? just cause j is nice to type? (also ctrl-j is how you send commands in the terminal) XPATH/jq...
         -- j = {
         --
@@ -259,7 +221,6 @@ return {
         -- {"n", group = "Notifications"},
         {"n", group = "Org-roam"},
         -- no = { name = "ToC" },
-        {"p", group = "Profile"},
         {"pl", group = "Load"},
         {"r", group = "Refactor"},
         {"s", group = "Sessions"},
@@ -301,23 +262,6 @@ return {
       end
       -- TODO: usa wk.Spec???
       wk.add(mappings)
-      -- For leader
-      -- { prefix = "<leader>", mode = "n" })
-      -- does this imply normal mode? I think so
-      -- [","] =leaders
-      -- ["\\"] =leaders
-      -- which-key should be loaded after telescope then?
-      -- [vim.g.tleader] = leaders
-      -- [vim.g.tleader] = vim.tbl_extend('force', leaders, {
-      --   group = 'Telescope',
-      --   -- magari usa <leader> qua, così puoi usare <leader> e vim.g.tleader per aggiungere punteggiatura ad inizio e fine della linea, e usi di meno la combo di due volte lo stesso tasto
-      --   {
-      --     [vim.g.tleader] = 'Mapping for only telescope.nvim mappings, and not for telescope mappings of external plugins, use <leader> for that, maybe only use it for those plugin named telescope-* (extensions?), like telescope-media.nvim',
-      --   },
-      --   g = {
-      --     h = "GitHub cli"
-      --   },
-      -- }),
       -- maybe use just one character like \ to start all your hydras? like \d to debug \w for windows operationsm, etc...
       -- mah, mi sa che nel caso di hydra i mapping non debbano essere consistenti con leader e tleader...
       -- FIX: Can you use \ in key for lua table?
@@ -343,6 +287,7 @@ return {
       wk.add({ 'cd', group = 'Create DocBlocks' })
       -- https://www.reddit.com/r/neovim/comments/1j4twi0/feature_idea_local_comments/
       wk.add({ 'gC', group = 'Local comments' })
+      wk.add({ '<f12>p', group = 'Projects' })
 
       -- Operators?
       -- magari sposta in plugin config?
@@ -350,31 +295,4 @@ return {
       wk.add({ 'cr', desc = 'Coerce' })
     end,
   },
-
-  --     r = { name = "Replace", w = "Replace Word To ..." },
-  --     u = { name = "Upload" },
-  --     t = {
-  --         name = "Terminal | Translate",
-  --         c = "Translate English to Chinese",
-  --         e = "Translate Chinese to English",
-
-  -- M.whichkey = {
-  --   plugin = true,
-  --
-  --   n = {
-  --     ["<leader>wK"] = {
-  --       function()
-  --         vim.cmd "WhichKey"
-  --       end,
-  --       "which-key all keymaps",
-  --     },
-  --     ["<leader>wk"] = {
-  --       function()
-  --         local input = vim.fn.input "WhichKey: "
-  --         vim.cmd("WhichKey " .. input)
-  --       end,
-  --       "which-key query lookup",
-  --     },
-  --   },
-  -- }
 }

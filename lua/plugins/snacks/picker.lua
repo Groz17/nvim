@@ -5,6 +5,8 @@
 -- filter list w/ regex?
 -- close picker when c-h and empty input?
 -- rotate preview as in fzf-lua?
+-- ivy feature parity: set the default action with C-M-a
+-- show current index (idx/tot)
 return {
   'snacks.nvim',
   -- crea mapping con which-key delle keybindings specifiche del picker
@@ -17,12 +19,18 @@ return {
     -- you've got 4 variations for every mapping: {c,s,a}?<symbol>
     -- crea if not exist like emacs
     -- what about unlisted?
+    -- should probably exclude first empty buffer?
     { "<f12>b", function() Snacks.picker.buffers() end, desc = "Buffers" ,mode={'n','i'}},
+    { "<f12>pb", function() Snacks.picker.buffers({ filter = { paths = { [Snacks.git.get_root()] = true } } }) end, desc = "Buffers (root)" ,mode={'n','i'}},
+
     -- show which-key when ctrl (d/k) held
     { '<c-p>', function() Snacks.picker.files({ cwd = vim.fn.expand('%:p:h') }) end, desc = 'Find Files relative to open buffer' ,mode={'n','i'}},
+    { '<f12><c-f>', function() Snacks.picker.files({ cwd = vim.fn.expand('%:p:h'), args = {"-d1"}, }) end, desc = 'find-files' ,mode={'n','i'}},
     -- queste opzioni le puoi togglare tanto...
     -- usa stesso modello di usare shift per cwd
-    { '<c-s-p>', function() Snacks.picker.files({}) end, desc = 'Find Config File' ,mode={'n','i'}},
+    -- should not open another picker if C-{c,g} pressed
+    { '<c-s-p>', function() Snacks.picker.files({}) end, desc = 'Find File' ,mode={'n','i'}},
+    { '<f12>pf', function() Snacks.picker.files({}) end, desc = 'Find File' ,mode={'n','i'}},
 
     { '<f18>P', function() Snacks.picker.files({rtp = true, pattern="file:md$ "}) end, desc = "Plugins' docs",mode={'n','i'}},
 
@@ -33,6 +41,7 @@ return {
     -- grep operator?
     -- oppure C-q? magari solo x qwerty
     -- Make it work for current file as well
+    -- grep functions should take v:count meaning -C (cxt)
     { '<c-q>', function() Snacks.picker.grep({ cwd = vim.fn.expand('%:p:h') }) end, desc = 'Grep' ,mode={'n','i'}},
     { '<c-s-q>', function() Snacks.picker.grep({}) end, desc = 'Grep' ,mode={'n','i'}},
 
@@ -97,20 +106,22 @@ return {
     { '<f17>d', function() Snacks.picker.diagnostics_buffer() end, desc = 'Diagnostics buffer' ,mode={'n','i'}},
     -- mapping to seach only in neovim docs?
     { '<f18>o', function() Snacks.picker.help() end, desc = 'Help Pages' ,mode={'n','i'}},
+    { '<f18>v', function() Snacks.picker.help({search="'"}) end, desc = 'Help Pages (variables)' ,mode={'n','i'}},
     -- { '<c-h>', function() Snacks.picker.help() end, desc = 'Help Pages' ,mode={'n','i'}},
     -- add PR to make mappings all work like this...
     -- C-u in Visual mode means the <cWORD> (because u concatenate C-u before the string is longer like the thing you're inputting)
     -- { mode='x','<f17>h', function() Snacks.picker.help({pattern=table.concat(vim.fn.getregion( vim.fn.getpos ".", vim.fn.getpos "v", { type = vim.fn.mode() }))}) end, desc = 'Help Pages' },
 
     -- use same binding as syoke?
-    -- { '<f17>h', function() Snacks.picker.highlights() end, desc = 'Highlights' },
+    { '<f17>h', function() Snacks.picker.highlights() end, desc = 'Highlights' },
     -- similar to zS tpope binding
     -- M-s h?
-    { '<f17>S', function() Snacks.picker.highlights() end, desc = 'Highlights' ,mode={'n','i'}},
     -- vedi se a <f17>J e <space><space>k puoi dare mapping migliori
     { '<f17>j', function() Snacks.picker.jumps() end, desc = 'Jumps' ,mode={'n','i'}},
     -- use v:count to target mods
+    -- which-keys prefix desc should get prefixed in suffixed mappings desc
     { '<f18>b', function() Snacks.picker.keymaps() end, desc = 'Keymaps' ,mode={'n','i'}},
+    -- { '<f18>B', function() Snacks.picker.keymaps({plugs=true}) end, desc = 'Keymaps' ,mode={'n','i'}},
 
     { '<f17>o', function() Snacks.picker.loclist() end, desc = 'Location List' ,mode={'n','i'}},
     { '<f17>O', function() Snacks.picker.qflist() end, desc = 'Quickfix List' ,mode={'n','i'}},
@@ -121,7 +132,7 @@ return {
     { "<f12>rl", function() Snacks.picker.marks() end, desc = 'Marks' ,mode={'n','i'}},
     -- also create insert mode mapping <f17>D
     -- { '<bs>', function() Snacks.picker.resume() end, desc = 'Resume' ,mode={'n','i'}},
-    { '<c-c><c-r>', function() Snacks.picker.resume() end, desc = 'Resume' ,mode={'n','i'}},
+    { '<f15><c-r>', function() Snacks.picker.resume() end, desc = 'Resume' ,mode={'n','i'}},
     -- <f17>C for all colorschemes, <space><space>c for plugin's colorschemes? use univeral argument
     -- how to preview the current buffer? 
     -- { '<f17>C', function() Snacks.picker.colorschemes() end, desc = 'Colorschemes' },
@@ -137,6 +148,7 @@ return {
     -- create kanata/vim leader layer for lsp mappings?
     -- { [[gD]], function() Snacks.picker.lsp_declarations() end, desc = 'Goto Declaration' ,mode={'n','i'}},
     -- { [[gd]], function() Snacks.picker.lsp_definitions() end, desc = 'Goto Definition' ,mode={'n','i'}},
+    --C-u M-.              prompt jump to definition (TAB to complete)
     { '<m-.>', function() Snacks.picker.lsp_definitions() end, desc = 'Goto Definition' ,mode={'n','i'}},
     -- { [[grr]], function() Snacks.picker.lsp_references() end, nowait = true, desc = 'References' ,mode={'n','i'}},
     { '<m-s-/>', function() Snacks.picker.lsp_references() end, nowait = true, desc = 'References' ,mode={'n','i'}},
@@ -145,7 +157,7 @@ return {
     -- { '<m-g>i', function() Snacks.picker.lsp_symbols() end, desc = 'LSP Symbols' }, -- imenu
     -- counsel-semantic-or-imenu
     -- { '<m-g>i', function() Snacks.picker.lsp_symbols({layout = {preset = "vscode", preview = "main"}}) end, desc = 'LSP Symbols' ,mode={'n','i'}},
-    -- { [[grO]], function() Snacks.picker.lsp_workspace_symbols() end, desc = 'LSP Workspace Symbols' ,mode={'n','i'}},
+    { [[<c-m-.>]], function() Snacks.picker.lsp_workspace_symbols() end, desc = 'LSP Workspace Symbols' ,mode={'n','i'}},
     -- ╭─────────────────────────────────────────────────────────╮
     -- │ MISC                                                    │
     -- ╰─────────────────────────────────────────────────────────╯
@@ -266,7 +278,7 @@ return {
                       ["<m-g>g"] = { "flash", mode = { "n", "i" } },
                       ["s"] = { "flash" },
                       -- like emacs
-                      ["<c-g>"] = { "close", mode = { "i" } },
+                      ["<c-g>"] = { "close", mode = { "n", "i" } },
 
                       -- ivy-restrict-to-matches
                       ["<s-space>"] = { "toggle_live", mode = { "i" } },
@@ -291,6 +303,7 @@ return {
                       -- usa ctrl-Alt cosi si puo usare in insert&normal mode
                       -- stessi mapping del picker
                       -- emacs
+                      -- use for all *_all actions
                       ["<f12>h"] = { "select_all", mode = { "i", "n" } },
                       ["<f13>i"] = { "toggle_ignored", mode = { "i", "n" } },
                       -- per il momento usa tab... fixa w/ ghostty

@@ -155,8 +155,9 @@ vim.opt.laststatus=3            -- Set global statusline
 -- set showtabline=2
 vim.opt.showmode = false -- Not show redundant mode line with airline
 -- Sexy Folds (https://www.reddit.com/r/neovim/comments/psl8rq/sexy_folds/)
--- vim.wo.foldmethod = "expr"
--- vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
+vim.wo.foldenable = false
+vim.wo.foldmethod = "expr"
+vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
 
 -- https://www.reddit.com/r/neovim/comments/1h34lr4/neovim_now_has_the_builtin_lsp_folding_support/
 -- vim.o.foldmethod = "expr"

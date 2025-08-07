@@ -60,7 +60,8 @@ return {
 
   init = function()
     vim.g.vimwiki_global_ext = 0
-    vim.g.vimwiki_folding = 'expr:quick'
+    -- vim.g.vimwiki_folding = 'expr:quick'
+    vim.g.vimwiki_folding = 'custom'
     vim.g.vimwiki_list = {
       -- how to set filetype markdown?
       { path = '~/vimwiki/Personal/', syntax = 'markdown', ext = '.md', links_space_char = '-' },

@@ -27,7 +27,8 @@ return {
       -- you can use macro here right?
       -- https://github.com/echasnovski/mini.nvim/issues/1309
       -- close       = {'<esc>','q'},
-      close       = '<esc>',
+      -- close       = '<esc>',
+      close       = '<c-g>',
       go_in       = 'L',
       go_in_plus  = 'l',
       go_out      = 'H',
@@ -53,7 +54,14 @@ return {
           require('mini.files').open(vim.fn.expand('%:p:h'), false)
         end
       end,
-      desc = 'Open mini.files (directory of current file)',
+      desc = 'mini.files (directory of current file)',
+    },
+    {
+      '<f12>pD',
+      function ()
+                require('mini.files').open(Snacks.git.get_root(), false)
+      end,
+      desc = 'mini.files (Root)',
     },
   },
   config = function(_, opts)

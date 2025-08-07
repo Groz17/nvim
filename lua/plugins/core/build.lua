@@ -8,7 +8,7 @@ return {
   keys = {
     {
       mode = { "i", "n" },
-      '<c-c><c-c>',
+      '<c-c><c-e>', -- slime?
       function()
         if vim.bo.filetype == "" then
           vim.notify("Buffer has no filetype", vim.log.levels.ERROR)
