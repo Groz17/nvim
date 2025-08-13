@@ -58,7 +58,7 @@ return {
       { '<leader>gb', function() gitsigns.blame_line() end, desc='Blame Hunk' },
       { '<leader>gB', function() gitsigns.blame_line({ full = true, ignore_whitespace = true }) end, desc='Blame Hunk (full commit message + ignore whitespaces)' },
 
-      -- { '<leader>gd', gitsigns.diffthis, desc='Diff This' },
+      { '<leader>gd', gitsigns.diffthis, desc='Diff This' },
       -- { '<leader>gD', function() gitsigns.diffthis('~') end, desc='Diff this against last commit' },
       -- { "<leader>gD", function() gitsigns.diffthis("~") end, "Diff this against parent" },
 
