@@ -60,11 +60,8 @@ return {
     },
     -- keys ={}, -- consider using <leader>go (o di octo)
     -- Add pr to add which-key bindings for every prefix like <localleader>{a,i}, etc...
+    -- transient window?
     keys = {
-      -- alternatives: <leader>h, <leader>o, <leader>go, ...
-      -- { "<leader>go", "<cmd>Octo<cr>", desc = "Octo" },
-      -- maybe add cabbrev like i->issue, etc...
-      -- { "<leader>gO", ":Octo<space>", desc = "Octo [args]" },
       -- imitate fugitive/telescope-github/git-dev?
       { "<leader>gX", "<cmd>Octo repo browser<cr>", desc = "Open in Browser" },
       -- { "<leader>gu", "<cmd>Octo repo url<cr>", desc = "Copy Repo Url" },
@@ -76,24 +73,8 @@ return {
       -- { "<leader>gopl", "<cmd>Octo pr list<cr>", desc = "Github Pull-request List" },
         -- maps.n[prefix .. "x"] = { "<Cmd>Octo actions<CR>", desc = "Run an action" }
 
-    -- vim.keymap.set("n", "<leader>Gpa", ":Octo pr list states=OPEN,CLOSED<CR>", { desc = "list all GitHub pull requests" })
-    --{ "<leader>omp", "<cmd>Octo pr list createdBy=@me<cr>", desc = "[O]cto [M]y [P]Rs" }
-    --vim.keymap.set("n", "<leader>Gpa", ":Octo pr list states=OPEN,CLOSED<CR>", { desc = "list all GitHub pull requests" })
-    -- Octo pr list pwntester/octo.nvim  states=MERGED
     -- TODO: find better mappings...
-    -- use this when in a repo that has a remote
-    -- { "<leader>oo", "<cmd>Octo<CR>", desc = "Open Octo" },
-    -- tanto uso :w<CR> per salvare
-    -- { "<space><space>", "<cmd>Octo<CR>", desc = "Open Octo", ft = 'octo' },
     { "<a-s-x>", "<cmd>Octo<CR>", desc = "Open Octo", ft = 'octo' },
-
-    -- disable reload issue (i want redo functionality)
-    -- { "<leader>oic", ":Octo issue create<space>", desc = "Create new" },
-    -- { "<leader>oie", ":Octo issue create<space>", desc = "Edit issue #" },
-    -- { "<leader>oil", ":Octo issue list<space>", desc = "List" },
-    -- { "<leader>opl", ":Octo pr list<space>", desc = "List" },
-    -- { "<leader>ope", ":Octo pr list<space>", desc = "Edit PR #" },
-    -- { "<leader>ogl", ":Octo gist list<space>", desc = "List" },
     },
     opts = {
       enable_builtin = true,
@@ -124,14 +105,6 @@ return {
     },
     config = function(_,opts)
       require'octo'.setup(opts)
-      -- https://github.com/AstroNvim/astrocommunity/blob/917083747a24022bac4b6feeff29ea1c5febc72f/lua/astrocommunity/git/octo-nvim/init.lua#L53
-      -- https://github.com/ldelossa/gh.nvim?tab=readme-ov-file
-      -- TODO: add in ftplugin/octo.lua
-      -- require'which-key'.add{"<leader>o", group = "Octo"}
-      -- require'which-key'.add{"<leader>i", group = "Issues"}
-      -- require'which-key'.add{"<leader>p", group = "Pull requests"}
-      -- require'which-key'.add{"<leader>p", group = "Pull requests"}
-
     end
   }
 }
