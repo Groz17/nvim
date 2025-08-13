@@ -12,7 +12,7 @@ return {
     "rule: uppercase for neovim command, lowercase for plugins
   Alias -range C  checkhealth
  "for commands w/ subcommands, type letter and enter to execute
-  Alias -range g  Git
+  Alias -range g  Neogit
   Alias -range o  Octo
   Alias -range n  Neorg
   Alias -range l  Lazy
