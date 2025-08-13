@@ -298,12 +298,10 @@ return {
                       -- ['<f17>'] = { ' file:',expr=true, mode= { 'i', 'n' } },
                       -- make a hydra with alt for all these toggle and exit when alt is released?
                       -- toggle show path?
-                      -- toggle ignorecase?
+                      -- toggle ignorecase? M-s c
                       -- in attesa di toggle...
-                      -- usa ctrl-Alt cosi si puo usare in insert&normal mode
                       -- stessi mapping del picker
                       -- emacs
-                      -- use for all *_all actions
                       ["<f12>h"] = { "select_all", mode = { "i", "n" } },
                       ["<f13>i"] = { "toggle_ignored", mode = { "i", "n" } },
                       -- per il momento usa tab... fixa w/ ghostty
