@@ -7,16 +7,17 @@ return {
     event = 'BufEnter package.json',
   -- cmd = ':Telescope package_info',
   -- stylua: ignore start
-  keys = {
+  config = function(_,opts)
+    require'which-key'.add({'<localleader>p', group = "package-info", buffer = true})
     -- CRUD
-    { '<localleader>i', "<cmd>lua require('package-info').install()<cr>", ft = 'json', buffer = true, desc ="Install New Dependency" },
-    { '<localleader>c', "<cmd>lua require('package-info').change_version()<cr>", ft = 'json', buffer = true, desc ="Install Different Version" },
-    { '<localleader>s', "<cmd>lua require('package-info').show()<cr>", ft = 'json', buffer = true, desc = "Show dependency versions" },
-    { '<localleader>S', "<cmd>lua require('package-info').show({force=true},)<cr>", ft = 'json', buffer = true, desc = "Show dependency versions(Force re-fetching)" },
-    { '<localleader>h', "<cmd>lua require('package-info').show()<cr>", ft = 'json', buffer = true, desc = "Hide dependency versions" },
-    { '<localleader>u', "<cmd>lua require('package-info').update()<cr>", ft = 'json', buffer = true, desc = "Update dependency" },
-    { '<localleader>d', "<cmd>lua require('package-info').delete()<cr>", ft = 'json', buffer = true, desc = "Delete Dependency" },
-  },
+    vim.keymap.set('n', '<localleader>pi', "<cmd>lua require('package-info').install()<cr>", {buffer = true, desc ="Install New Dependency" })
+    vim.keymap.set('n', '<localleader>pc', "<cmd>lua require('package-info').change_version()<cr>", {buffer = true, desc ="Install Different Version" })
+    vim.keymap.set('n', '<localleader>ps', "<cmd>lua require('package-info').show()<cr>", {buffer = true, desc = "Show dependency versions" })
+    vim.keymap.set('n', '<localleader>pS', "<cmd>lua require('package-info').show({force=true})<cr>", {buffer = true, desc = "Show dependency versions(Force re-fetching)" })
+    vim.keymap.set('n', '<localleader>ph', "<cmd>lua require('package-info').show()<cr>", {buffer = true, desc = "Hide dependency versions" })
+    vim.keymap.set('n', '<localleader>pu', "<cmd>lua require('package-info').update()<cr>", {buffer = true, desc = "Update dependency" })
+    vim.keymap.set('n', '<localleader>pd', "<cmd>lua require('package-info').delete()<cr>", {buffer = true, desc = "Delete Dependency" })
+  end,
     -- stylua: ignore end
     opts = {},
   },
