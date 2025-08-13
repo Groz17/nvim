@@ -1,8 +1,4 @@
-        -- ╭─────────────────────────────────────────────────────────╮
-        -- │                       unimpaired                        │
-        -- ╰─────────────────────────────────────────────────────────╯
-        -- use <s-space> to toggle, like for linux sof
-        -- no which key for modifiers sadly...
+-- This is a minor mode.  If called interactively, toggle the Read-Only mode mode.  If the prefix argument is positive, enable the mode, and if it is zero or negative, disable the mode.
 return {
   'snacks.nvim',
   opts = {
@@ -64,11 +60,6 @@ return {
   end
 }
 
--- Disable continuation of comments to the next line in Vim
--- f -> formatoptions
--- nnoremap yof :set formatoptions-=cro<cr>
--- nnoremap yoN :set relativenumber!<CR>:set number!<CR>.
---
 -- Zen : goyo + limelight + salvation
 -- nmap coz colcog:colo salvation<cr>
 
