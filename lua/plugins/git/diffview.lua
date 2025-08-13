@@ -19,7 +19,7 @@ return
 
       -- { '<f14>=', '<cmd>DiffviewFileHistory %<cr>', desc = 'Git log' },
       -- { '<f14>D', '<cmd>DiffviewFileHistory<cr>', desc = 'Git log (args)' },
-      { '<leader>dl', ':DiffviewFileHistory<CR>', mode="x", desc = 'Git log' },
+      -- { '<leader>dl', ':DiffviewFileHistory<CR>', mode="x", desc = 'Git log' },
 
       { 'q', '<cmd>DiffviewClose<cr>', ft = {"DiffviewFiles", "DiffviewFileHistory"}, desc = 'Close Diffview' },
 
@@ -28,25 +28,6 @@ return
       -- { '<leader>dr', '<cmd>DiffviewRefresh<cr>', desc = 'Refresh file list' },
       -- { '<leader>dd', '<cmd>DiffviewLog<cr>', desc = 'Debug log' },
     },
-    -- keys = {
-    --   { '<Leader>ds', '<Cmd>DiffviewOpen --staged<CR>', desc = 'Open staged' },
-    --
-    --   { '<Leader>da', ':DiffviewFileHistory % --author=', desc = 'File commits (author)' },
-    --   { '<Leader>dm', ':DiffviewFileHistory % --grep=', desc = 'File commits (log message)' },
-    --   { '<Leader>dl', '<Cmd>DiffviewFileHistory % --base=LOCAL<CR>', desc = 'File commits (compare to local)' },
-    --   { '<Leader>dr', ':DiffviewFileHistory -L,:<Left><Left>', desc = 'File commits (range)' },
-    --   -- { '<Leader>df', ':DiffviewFileHistory -L::<Left>', desc='File commits (func)' },
-    --
-    --   -- { '<leader>gf', '<cmd>DiffviewFileHistory --follow %<cr>', desc = 'Open File history' },
-    --   -- { '<leader>gf', "<Esc><Cmd>'<,'>DiffviewFileHistory --follow<CR>", desc = 'Range history', mode = 'v' },
-    --   -- { '<leader>gF', '<Cmd>.DiffviewFileHistory --follow<CR>', desc = 'Line history' },
-    --
-    --   { '<Leader>dA', ':DiffviewFileHistory --author=', desc = 'All commits (author)' },
-    --   { '<Leader>dM', ':DiffviewFileHistory --grep=', desc = 'All commits (log message)' },
-    --   { '<Leader>dL', '<Cmd>DiffviewFileHistory --base=LOCAL<CR>', desc = 'All commits (compare to local)' },
-    --   { '<Leader>dY', '<Cmd>DiffviewFileHistory --merges<CR>', desc = 'All commits (merge)' },
-    --   { '<Leader>dy', '<Cmd>DiffviewFileHistory --no-merges<CR>', desc = 'All commits (no merge)' },
-    -- },
     opts = function()
       -- local action = require 'diffview.actions'
       local actions = require('diffview.config').actions
