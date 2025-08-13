@@ -20,7 +20,6 @@
 -- for all these questions use llm git github issues/discussions as MCP
 -- use orgmode?
 return {
-  
     -- use demicolon for ]x, [x
     -- does copilot have access to my whole buffer? how to disable and only let it know visual selection/other way specified by me?
     -- hint???

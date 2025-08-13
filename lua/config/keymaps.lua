@@ -664,7 +664,7 @@ vim.keymap.set("x", ".", "<cmd>norm! .<cr>")
 local all = vim.fn.split('nvsxoilct', [[.\zs]])
       -- modes = { "n", "v", "x", "s", "o", "i", "c", "t" },
 -- how to go previos mode? like one shot norm command like ^o but for all modes?
-vim.keymap.set(all,'<f16>',[[<c-\><c-n><c-w>]])
+vim.keymap.set(all,'<f16>',function() return[[<c-\><c-n>]]..vim.v.count..[[<c-w>]] end,{expr=true})
 
 -- ┣ EMACS PARITY
 -- pseudo keys like in emacs for function keys (kanata?)
