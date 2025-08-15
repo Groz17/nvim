@@ -110,6 +110,7 @@ return {
     'Shadorain/shadotheme',
     lazy = true,
   },
+{ "oonamo/ef-themes.nvim" },
   {
   "thesimonho/kanagawa-paper.nvim",
 }
