@@ -868,11 +868,14 @@ vim.keymap.set({"i", "n"}, "<A-Space>", "<Cmd>normal! ciw <CR>", { desc = "Just 
 vim.keymap.set("i" , "<c-]>", "<c-o>f", { desc = "readline: character-search" })
 vim.keymap.set("i" , "<c-m-]>", "<c-o>F", { desc = "readline: character-search-backward" })
 
-vim.keymap.set({"n","i"} , "<a-h>", [[<c-\><c-n><cmd>norm! vipok<cr>]], { desc = "readline: character-search-backward" })
+vim.keymap.set({"n","o"} , "<a-h>", [[<cmd>norm! vipok<cr>]], { desc = "readline: character-search-backward" })
+vim.keymap.set("i" , "<a-h>", [[<esc>norm! vipok<c-g>]], { desc = "readline: character-search-backward" })
+
 vim.keymap.set({"n","i"} , "<f12>44", [[<cmd>vnew<cr>]], { desc = "Open in other window" })
 vim.keymap.set("x" , "<m-;>", [[gc]], { remap = true,desc = "Comment"})
 
-vim.api.nvim_create_user_command('Occur','lvimgrep /<args>/%|bel vert lopen',{nargs = 1})
+-- vim.api.nvim_create_user_command('Occur','lvimgrep /<args>/%|bel vert lopen',{nargs = 1}) (not sure why all the way to the right)
+vim.api.nvim_create_user_command('Occur','lvimgrep /<args>/%|lopen|wincmd L',{nargs = 1})
 vim.keymap.set({"n","i"} , "<m-s>o", [[:Occur<space>]], {desc = "Occur"})
 
 
