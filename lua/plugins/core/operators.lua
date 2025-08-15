@@ -63,7 +63,7 @@ return { {
 
     -- Sort text
     sort = {
-      prefix = '',
+      prefix = '<f15>^',
       -- Function which does the sort
       func = nil,
     },
