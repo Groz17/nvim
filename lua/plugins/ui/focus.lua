@@ -1,43 +1,4 @@
 return {
-  -- {
-  --   -- sarebbe bello se zen avesse le stesse features di nrrwrgn
-  --
-  --   -- maybe show file manager on the side and minimap on the other?
-  --   -- how to enable only if there's only one buffer?
-  --   'folke/zen-mode.nvim',
-  --   opts = {
-  --     plugins = {
-  --       -- to make this work, you need to set the following kitty options:
-  --       -- - allow_remote_control socket-only
-  --       -- - listen_on unix:/tmp/kitty
-  --       kitty = {
-  --         enabled = true,
-  --         font = '+20',
-  --       },
-  --       -- tmux = { enabled = vim.env.TMUX ~= nil },
-  --     },
-  --     on_close = function()
-  --       -- vim.cmd([[
-  --       -- bufname('')=~'^NrrwRgn' (from the plugin's source code)
-  --       --   if bufname('')=~'^NrrwRgn_diff_\d\+$' | quit | endif
-  --       -- ]])
-  --       -- vim.cmd 'q'
-  --     end,
-  --   },
-  --   cmd = 'ZenMode',
-  --   keys = {
-  --     { 'ZM', '<CMD>ZenMode<CR>', desc = 'Zen Mode' },
-  --     { '<c-w>O', '<CMD>ZenMode<CR>', desc = 'Zen Mode' },
-  --   },
-  -- },
-  -- {
-  --   -- does this work with treesitter?
-  --   'folke/twilight.nvim',
-  --   opts = {},
-  --   keys = {
-  --     { '<leader><c-l>', '<CMD>Twilight<cr>', desc = 'Dim Inactive Code' },
-  --   },
-  -- },
   {
     -- " usa VMRegionsToBuffer (vim-visual-multi) al posto di questo plugin
     -- Implementa comando linediff (https://github.com/AndrewRadev/linediff.vim)
@@ -91,7 +52,7 @@ return {
       'NRL', -- Reselect the last selected region and open it again in a narrowed window
     },
     keys = {
-      { mode = { 'x' }, '<f12>nn', '<Plug>NrrwrgnDo', desc = 'Narrowed Window' },
+      { mode = { 'x' }, '<f12>nn', '<Plug>NrrwrgnBangDo', desc = 'Narrowed Window' },
       { mode = { 'x', 'n' }, 'gz', '<Plug>NrrwrgnDo', desc = 'Narrowed Window' },
       { mode = 'n', 'gzz', '<Plug>NrrwrgnDo_', desc = 'Current line' },
       -- FIX: doesn't work
