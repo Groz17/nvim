@@ -22,6 +22,7 @@ return {
         help = { pattern = "^:%s*FloatingHelp%s+", icon = "" },
         -- Fugitive
         -- magari metti in setup() di fugitive?
+        Occur = { pattern = "^:%s*Occur%s+", icon = "" },
         Git = { pattern = "^:%s*Git%s+", icon = "󰊢" },
         -- Git = { pattern = "^:%s*Git%s+[^-]", icon = "󰊢" },
         -- i want to use \ze (vim patterns...)

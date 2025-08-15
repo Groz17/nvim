@@ -1,14 +1,9 @@
 return {
   {
-    -- packer.nvim
-    -- would be nice to have telescope use it for help_tags and man_pages...
-    -- tbl_islist add pr deprecated...
     'Tyler-Barham/floating-help.nvim',
     cmd = 'FloatingHelp',
-    pin = true, -- vim.tbl_islist deprecated (fai PR)
+    pin = true,
     event = 'CmdlineEnter',
-    -- only if not a LSP-powered buffer?
-    -- keys = {'K'},
     opts = {
       -- Defaults
       width = 100, -- Whole numbers are columns/rows
@@ -47,10 +42,7 @@ return {
     end,
   },
   {
-    -- BUG: For an in-depth setup of `snacks.nvim` with `lazy.nvim`, check the example (it shows .nvimm instead of .nvim)
     'OXY2DEV/helpview.nvim',
-    -- lazy = false, -- Recommended
-    -- In case you still want to lazy load
     ft = 'help',
     dependencies = {
       'nvim-treesitter/nvim-treesitter',
@@ -70,5 +62,4 @@ return {
     'alx741/vinfo',
     cmd = { 'Vinfo' },
   },
-  -- tldr? AI help? howdoi -c
 }

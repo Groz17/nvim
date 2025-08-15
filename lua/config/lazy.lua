@@ -38,9 +38,7 @@ require("lazy").setup({
     --   hererocks = true,  -- recommended if you do not have global installation of Lua 5.1.
     -- },
     spec = {
-        -- idea: crea cartella per ogni mapping namespace di which-key.nvim
         -- use this as reference to subdivide your plugins (https://github.com/rockerBOO/awesome-neovim#editing-supports)
-        { import = "plugins" },
         -- mason tools // delete...
         { import = "plugins.tools" },
         -- plugins that change how neovim native features behave
@@ -77,11 +75,6 @@ require("lazy").setup({
 
         { import = "plugins.git" },
 
-        -- TODO: automatically add spec when creating directory
-        { import = "plugins.projects" },
-        -- usa stessa/simile (ridotta) directory structure di wiki?
-        { import = "plugins.music" },
-        { import = "plugins.PKM" },
     },
     performance = {
         rtp = {

@@ -138,9 +138,8 @@ return {
   --   opts = {},
   -- },
 {
-  -- does this work with markdown/vimwiki?
     'jmbuhr/otter.nvim',
-    -- event = 'LspAttach',
+    event = 'LspAttach',
     dependencies = {
       'nvim-treesitter/nvim-treesitter',
     },

@@ -175,7 +175,7 @@ return {
     -- would be cool if it added tags like for colorschemes, etc... help files...
     -- add action to go to file lazy share?
     -- <f18>P for plugin docs
-    -- { '<f17>L', function() Snacks.picker.lazy() end, desc = 'Lazy' },
+    { '<f17>l', function() Snacks.picker.lazy() end, desc = 'Lazy' },
     -- use v:count
     {mode={"n","i"},'<f12>8es', function() Snacks.picker.icons({icon_sources={'emoji'}}) end, desc = 'Emojis' },
     -- {mode={"i"},'<f17>i', function() Snacks.picker.icons({layout = {preset = "cursor"}}) end, desc = 'Icons' },

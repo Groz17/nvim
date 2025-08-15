@@ -1,7 +1,5 @@
 -- https://github.com/yetone/avante.nvim/issues/1772
 -- how to specify initial (once) string? like always generate code blocks?
--- how to switch between models? i wanna use gemini
--- in chat, copilot shouldn't work when disabled?
 ---https://github.com/dlants/magenta.nvim
 ---@see https://www.reddit.com/r/neovim/comments/1hzjnz1/supercharge_your_llm_completionchatbot_plugin/
 -- <esc> to dismiss avante diffs?
@@ -11,11 +9,6 @@
 -- https://github.com/yetone/avante.nvim/blob/main/lua/avante/api.lua
 -- https://github.com/yetone/avante.nvim/wiki
 --https://github.com/yetone/avante.nvim/pull/527
--- add option to tell copilot/LLM to be more verbose and also show how many tokens you've got left
--- come sapere quali file usa come source?
--- TODO: crea mapping per copiare/yankare solo codice (tra ``` e ```)
--- TODO: after /clear the cursor should stay in the input window
--- how to put selected code window on top?
 -- stay in prompt after answer?
 -- for all these questions use llm git github issues/discussions as MCP
 -- use orgmode?
@@ -37,6 +30,7 @@ return {
     version = false, -- set this if you want to always pull the latest change
     ---@class avante.Config
     opts = {
+      mode = 'legacy',
       provider = "copilot",
       -- provider = "ollama",
       providers = {

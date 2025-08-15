@@ -63,7 +63,6 @@ return
         -- ── web ─────────────────────────────────────────────────────────────
         -- https://github.com/linkarzu/dotfiles-latest/blob/02b74813cd19ebdac8ea3999121a3c538ccedf2b/colorscheme/list/linkarzu-colors.sh
         -- html = { colorscheme = 'eldritch' },
-        html = { colorscheme = 'eldritch' },
         -- html = { colorscheme = 'darkrose' },
         -- css = { colorscheme = 'purpura' },
         javascript = { colorscheme = 'kanagawa-paper' },

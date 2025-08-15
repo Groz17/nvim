@@ -1,3 +1,4 @@
+-- dispatch(s) mappings?
 return {
   "NeogitOrg/neogit",
   dependencies = {

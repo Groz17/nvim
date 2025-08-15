@@ -228,14 +228,6 @@ return
           C = ai.treesitter({ a = "@string.documentation", i = "@string.documentation" }, {}),
           -- h = ai.treesitter({ a = "@string.documentation", i = "@string.documentation" }, {}),
 
-
-
-
-
-
-
-
-
           -----------------------------------------------------------
           -- filetype-specific text objects
           -----------------------------------------------------------
