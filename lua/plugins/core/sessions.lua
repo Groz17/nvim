@@ -23,11 +23,11 @@ return {
     { '<leader>sj', '<CMD>SessionStart<CR>', desc = 'Start' },
     -- would be cool if it notified...
     { '<leader>sk', '<CMD>SessionStop<CR>', desc = 'Stop Recording' },
-    { '<leader>sw', '<CMD>SessionSave<CR>', desc = 'Save Current' },
+    { '<f12>rw', '<CMD>SessionSave<CR>', desc = 'Save Current' },
     -- automatically select if only 1?
     { '<leader>sL', '<CMD>SessionLoad<CR>', desc = 'Load' },
     -- How to make this accept v:count?
-    { '<leader>sl', '<CMD>SessionLoadLast<CR>', desc = 'Load Last' },
+    { '<f12>rj', '<CMD>SessionLoadLast<CR>', desc = 'Load Last' },
     -- no tab completion?
     -- doesn't work?
     -- it should open mini.files/explorer/native (in the future)
