@@ -884,6 +884,9 @@ vim.keymap.set({"n","i"} , "<m-g>n", [[<cmd>lnext<cr>]], {desc = "Next Occur"})
 vim.keymap.set({"n","i"} , "<f12>`", [[<cmd>lnext<cr>]], {desc = "Next Occur"})
 vim.keymap.set({"n","i"} , "<m-g>p", [[<cmd>lprev<cr>]], {desc = "Prev Occur"})
 
+-- vim.keymap.set("!" , "<f12>z", "" , {desc = "Prev Occur", expr = true})
+vim.keymap.set("i" , "<f12>z", "<cmd>norm! ylp<cr><cmd>startinsert!<cr>" , {desc = "Repeat"})
+
 
 -- commands
 -- vim.api.nvim_create_user_command('Sort_paragraphs','emacsclient -e sort-paragraphs?')
