@@ -8,7 +8,7 @@ return{
   dependencies = {'akinsho/org-bullets.nvim', opts={},},
 
   init = function()
-    vim.keymap.set('n','<space>eo', [[<CMD>tab drop ~/orgfiles/refile.org<cr>]],{desc="Orgfile"})
+    vim.keymap.set('n','<space>eo', [[<CMD>tab drop ~/notes/refile.org<cr>]],{desc="Orgfile"})
   end,
   event = "VeryLazy",
   ft = { 'org' },

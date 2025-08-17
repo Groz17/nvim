@@ -3,7 +3,6 @@
 --  remove the console = 'integratedTerminal'; option, so that by default the output is redirected to the REPL buffer.
 -- https://github.com/Beloin/Launch.nvim
 
--- CLIENT CONFIGURATION                                             *dap.defaults*
   -- `usevisible`
 
 -- TODO: https://github.com/Weissle/persistent-breakpoints.nvim

@@ -52,6 +52,7 @@ return
         -- dbui = { colorscheme = "iceberg" },
         -- would be nice to write this more concisely
         -- would be nice if the statusline also was gruvbox-themed
+        -- ef-arbutus?
 
         -- ── db ──────────────────────────────────────────────────────────────
         dbui = { colorscheme = 'melting'  },

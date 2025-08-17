@@ -45,6 +45,7 @@ return {
           },
           i = {
             -- Similar table but for insert mode. Using 'false' disables existing keybindings.
+            -- C-u prefix for input mappings
             ["<C-g>"] = require("pantran.ui.actions").close,
             ["<M-w>"] = require("pantran.ui.actions").yank_close_translation,
             ["<M-S-5>"] = require("pantran.ui.actions").replace_close_translation,

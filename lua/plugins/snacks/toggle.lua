@@ -63,4 +63,5 @@ return {
 -- Zen : goyo + limelight + salvation
 -- nmap coz colcog:colo salvation<cr>
 
+-- cursor? https://www.reddit.com/r/neovim/comments/y7errp/hide_cursor_in_temporary_window/
 

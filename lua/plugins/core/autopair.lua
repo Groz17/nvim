@@ -1,19 +1,13 @@
 -- disable in snacks input?
 -- autopair <> in comments (actually just in strings)
--- https://github.com/AgusDOLARD/backout.nvim (kinda like using jl?)
 -- how to disable end-pair-insertion? I'd use tabout for that...
 -- The tabout mapping allows you to jump to end (or out) of pairs. (works with anything [quotes as well])
 
 -- fai in modo che quando cancelli una estremità di un commento multiline venga cancellata anche l'altra
 return {
   -- you could use a mapping like m-( like in emacs?
-  -- how to use with nvim-cmp?
-  -- how to disable in macros/vertical-block?
-  -- disable in vimwiki/markdown? tipo per srivere you're è fastidioso
   -- make it so that when you press , or ; or punctuation at the start of parenthesis it goes outside... (,) -> (),
-  -- How to do a one-shot disable? <c-v> doesn't work with <bs>
   'altermo/ultimate-autopair.nvim',
-  -- cond = false,
   event = { 'InsertEnter', 'CmdlineEnter', 'TermEnter', 'CursorMoved' },
   -- branch = 'v0.6',
   opts = {
@@ -32,7 +26,6 @@ return {
     -- comment doesn't work?
     { '<', '>', ft = { 'html' } },
     -- todo: and not in bash/shell filetype?
-    -- { '<',">", cond = function(fn) return fn.in_string() or fn.in_node('comment') end },
     { '<', '>', cond = function(fn) return fn.in_string() or fn.in_node('comment') end, cmap = true, },
     { '<', '>', -- Condition for #include
       cond = function()
@@ -57,25 +50,8 @@ return {
       enable = true,
       autoclose = true,
     },
-    -- would be cool that after inserting some character(s), you could type a mapping that inserts the corrisponding ending, like for < and others...
     -- https://github.com/abecodes/tabout.nvim/issues/19
     -- would be cool if this worked with endwise (like tags)
-    -- tabkey = "<c-l>",           -- key to trigger tabout, set to an empty string to disable
-    -- tabkey = 'kk',                -- key to trigger tabout, set to an empty string to disable
-    -- enable_backwards = true, -- well ...
-    -- backwards_tabkey = 'jh',      -- key to trigger backwards tabout, set to an empty string to disable
-    -- usa jj per andare a sinistra e jk per andare a destra
-    -- backwards_tabkey = 'jj',      -- key to trigger backwards tabout, set to an empty string to disable
-    -- what about inverse mapping? (lj)
-    -- fallo fungere anche per tutti i simboli tipo due punti
-    tabout = { -- *ultimate-autopair-map-tabout-config*
-      enable = true,
-      -- make it work like <right> if no paren/quote in current line?
-      -- fai in modo che funga come <esc>Ea
-      map = { 'jl' }, --string or tablel
-      cmap = { 'jl' }, --string or tablel
-      hopout = true,
-    },
     space2 = {
       -- Doesn't work well with regexes (mainly in character classes)
       enable = true,
@@ -91,13 +67,8 @@ return {
       {
         hopout = true,
         faster = true,
-        -- usa mapping migliore ora che sai autoshift/Katina...
-        -- map = 'fj',
         -- map = '<c-s-0>',
-        -- map = '<c-;>',
-        -- map = '<a-f>',
         map = '<a-k>',
-        -- lkj inward roll?
         cmap = '<a-k>',
         rmap = '<a-j>',
         rcmap = '<a-j>',
@@ -123,12 +94,3 @@ return {
     -- },
   },
 }
------------------------------------------------------------
--- auto-expanding
------------------------------------------------------------
--- inoremap (; (<CR>);<C-c>O
--- inoremap (, (<CR>),<C-c>O
--- inoremap {; {<CR>};<C-c>O
--- inoremap {, {<CR>},<C-c>O
--- inoremap [; [<CR>];<C-c>O
--- inoremap [, [<CR>],<C-c>O

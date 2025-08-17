@@ -14,7 +14,7 @@
 return {
 
   {
-
+-- grug project?
     'MagicDuck/grug-far.nvim',
     -- keys = {
     --   {

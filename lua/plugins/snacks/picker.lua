@@ -289,7 +289,7 @@ return {
                       -- first disable all keybindings?
                       ["<c-s-o>"] = { "qflist", mode = { "i", "n" } },
                       ['<c-l>'] = { 'confirm', mode = { 'i' } },
-                      -- ['<s-space>'] = { 'toggle_maximize', mode = { 'i', 'n' } },
+                      ['<f16>o'] = { 'toggle_maximize', mode = { 'i', 'n' } },
                       -- I want glob though...
                       -- what are those fields? docs?
                       -- ['<f17>'] = { 'file:',expr=true, mode= { 'i', 'n' } },
@@ -304,8 +304,6 @@ return {
                       -- emacs
                       ["<f12>h"] = { "select_all", mode = { "i", "n" } },
                       ["<f13>i"] = { "toggle_ignored", mode = { "i", "n" } },
-                      -- per il momento usa tab... fixa w/ ghostty
-                      ["<a-tab>"] = { "toggle_ignored", mode = { "i", "n" } },
                       ["<f13>h"] = { "toggle_hidden", mode = { "i", "n" } },
                       ["<f13>f"] = { "toggle_follow", mode = { "i", "n" } },
                       ["<f13>p"] = { "toggle_preview", mode = { "i", "n" } },
@@ -344,7 +342,6 @@ return {
                       -- ignored = "i",
                       -- modified = "m",
                       -- regex = { icon = "R", value = false },
-                      -- c-d in normal mode non funge?
 
                       -- ╭─────────────────────────────────────────────────────────╮
                       -- │ emacs/readline                                                │
