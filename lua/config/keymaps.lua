@@ -479,7 +479,7 @@ nnoremap z/  exe 'spellrare!' expand('<cWORD>')<CR>
 -- c-: -> misto fra : e <c-p>
 -- vim.keymap.set('n',--[[<c-:>]]'<c-s-;>',':<C-p>')
 -- like emacs (anche se quella era per eval, vabbe)
-vim.keymap.set('n',--[[<c-:>]]'<f12><a-s-;>',':<C-p>')
+vim.keymap.set('n',--[[<c-:>]]'<f12><a-s-;>',':lua <C-p>')
 
 -- Insert system() (maybe inspired by zsh?)
 -- magari usa ! o $?
@@ -496,7 +496,10 @@ vim.cmd[[
 "nnoremap g: :lua<space>
 ]]
 
+-- basically C- for vimscript, M- for lua
 vim.keymap.set({'i','n'}, '<M-S-;>',[[<c-\><c-n>:lua<space>]]) -- like M-: for elisp in emacs
+vim.keymap.set({'c'}, '<M-p>',[[<c-u>lua <c-p>]])
+vim.keymap.set({'c'}, '<M-n>',[[<c-u>lua <c-n>]])
 
 -- https://www.reddit.com/r/neovim/comments/1k27y0t/go_back_to_the_start_of_a_search_for_the_current/
 -- All the ways to start a search, with a description
@@ -877,6 +880,9 @@ vim.keymap.set("x" , "<m-;>", [[gc]], { remap = true,desc = "Comment"})
 -- vim.api.nvim_create_user_command('Occur','lvimgrep /<args>/%|bel vert lopen',{nargs = 1}) (not sure why all the way to the right)
 vim.api.nvim_create_user_command('Occur','lvimgrep /<args>/%|lopen|wincmd L',{nargs = 1})
 vim.keymap.set({"n","i"} , "<m-s>o", [[:Occur<space>]], {desc = "Occur"})
+vim.keymap.set({"n","i"} , "<m-g>n", [[<cmd>lnext<cr>]], {desc = "Next Occur"})
+vim.keymap.set({"n","i"} , "<f12>`", [[<cmd>lnext<cr>]], {desc = "Next Occur"})
+vim.keymap.set({"n","i"} , "<m-g>p", [[<cmd>lprev<cr>]], {desc = "Prev Occur"})
 
 
 -- commands
