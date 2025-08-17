@@ -41,14 +41,14 @@ return {
 
       -- would be cool if lazy's keys spec supported which-key's style
       -- { '<leader>gu', gitsigns.undo_stage_hunk, 'Undo Stage Hunk' } W Deprecated.(use |gitsigns.stage_hunk()| on staged signs)
-      { '<leader>gS', gitsigns.stage_hunk, desc='Stage Hunk' },
+      { '<leader>gs', gitsigns.stage_hunk, desc='Stage Hunk' },
       {mode='x', '<leader>gs', function() gitsigns.stage_hunk({ vim.fn.line('.'), vim.fn.line('v') }) end, desc='Stage Hunk'},
-      { '<leader>gS', gitsigns.reset_hunk, desc='Reset Hunk' },
-      {mode='x', '<leader>gr', function() gitsigns.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') }) end,desc='Reset Hunk'},
+      { '<leader>gu', gitsigns.reset_hunk, desc='Reset Hunk' },
+      {mode='x', '<leader>gu', function() gitsigns.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') }) end,desc='Reset Hunk'},
 
       -- TODO: magari usa <leader>gw come fugitive???
       { '<leader>gS', gitsigns.stage_buffer, desc='Stage Buffer' },
-      { '<leader>gR', gitsigns.reset_buffer, desc='Reset Buffer' },
+      { '<leader>gU', gitsigns.reset_buffer, desc='Reset Buffer' },
       -- gK for hover would have been nice as well
       { '<leader>gp', gitsigns.preview_hunk, desc='Preview Hunk' },
       -- { '<leader>gi',  function() require("gitsigns").preview_hunk_inline({ inline = true }) end }
