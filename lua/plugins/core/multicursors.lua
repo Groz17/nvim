@@ -78,7 +78,8 @@ return {
 
             -- Enable and clear cursors using escape.
             -- c-g?
-            layerSet("n", "<esc>", function()
+            -- layerSet("n", "<esc>", function()
+            layerSet("n", "<c-g>", function()
                 if not mc.cursorsEnabled() then
                     mc.enableCursors()
                 else
