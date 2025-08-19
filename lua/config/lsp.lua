@@ -13,5 +13,19 @@
 --
 -- -- crea comando per ottnere lspconfig per lsp? parse html webpage
 --
-vim.lsp.enable('lua_ls')
-vim.lsp.enable('jdtls')
+
+-- https://github.com/TheMikeste1/my-neovim/blob/3901b2164bb967db0eba8caa4d6fc5f3e7444712/lua/after/enable_installed_lsps.lua#L14
+local lsp_names = {}
+for _, package in ipairs(require("mason-registry").get_installed_packages()) do
+  if vim.tbl_contains(package.spec.categories, "LSP") then
+    local name = package.spec.name
+    if package.spec.neovim ~= nil and package.spec.neovim.lspconfig ~= nil then
+      name = package.spec.neovim.lspconfig
+    else
+      name = name:gsub("%-", "_")
+    end
+    table.insert(lsp_names, name)
+  end
+end
+
+vim.lsp.enable(lsp_names, true)
