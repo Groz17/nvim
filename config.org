@@ -3,19 +3,16 @@
 :header-args: :tangle  ~/.config/nvim/lua/config/keymaps.lua
 :END:
 
+*** Conventions
+- Never use literal spaces in a mapping, use <space> (formatting may take those away and it's more explicit):
+  - be explicit with final space: ={ '<leader>gC', ':Git commit -v -q<space>' }=
+- Don't use leader(s) mappings for operators (ex: surround), use them for general plugin mappings that don't define an operator (or text object of course)
+- Capitalize desc field: rg 'desc\s*=\s*\W+[a-z]' --vimgrep |v -q-
+- Take inspiration from emacs/nano mappings 
+
 #+begin_src lua
 -- find better way for comment string of multiple chars
 -- vim: foldmethod=expr foldexpr=getline(v\:lnum)=~'^--\ ┣'?'>1'\:getline(v\:lnum)=~'^--\ ─'?'>2'\:'=':
--- Rules:
--- Never use literal spaces in a mapping, use <space> (formatting may take those away and it's more explicit):
-  -- sii esplicito con lo spazio finale:
-  -- { '<leader>gC',     ':Git commit -v -q<space>' },
--- Use uppercase version of a mapping if you need to add command/function arguments, for example use lowercase for current file (%) and uppercase for other files (used in fugitive, eunuch, etc...)
-  -- Maybe instead you could add a colon after the mapping (use gc: instead)
--- Don't use leader(s) mappings for operators (ex: surround), use them for stuff like windows (undotree), or general plugin mappings that don't define an operator (or text object of course)
--- Iniziale uppercase per desc field (apparte vim-unimpaired): rg 'desc\s*=\s*\W+[a-z]' --vimgrep |v -q-
--- take inspiration from emacs/nano mappings 
--- terminal mappings should only work in shell, not within programs
 
 ---see https://github.com/echasnovski/mini.nvim/blob/91f7a680fe5765b68456ab6e7b910d478da083b9/lua/mini/basics.lua#L548-L549
 
