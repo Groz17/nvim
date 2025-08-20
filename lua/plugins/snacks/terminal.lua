@@ -10,8 +10,10 @@ return {
     -- realdine non funge, like <alt-number> to insert number volte lo stesso char
     -- bottom split perche voglio usarlo tante volte (non one shot)->pipeline
     -- { "<leader><cr>", function() Snacks.terminal(nil,{win={position='right'}}) end, desc = 'Toggle Terminal (Root)' },
+    -- TODO: check if normal file, like not fugitive or healthcheck file
     { "<leader><cr>", function() Snacks.terminal(nil, { cwd = vim.fn.expand('%:p:h'), win = { position = 'right' } }) end, desc = 'Terminal (cwd)' },
     { "<f12>ps",      function() Snacks.terminal(nil, { cwd = Snacks.git.get_root(), win = { position = 'right' } }) end, desc = 'Terminal (Root)' },
+    -- TODO: usa nlua (neovim repl?)
     { "<f12>pe",      function() Snacks.terminal({ cmd = "lua" }, { cwd = Snacks.git.get_root(), win = { position = 'right' } }) end, desc = 'Terminal (Root)' }, -- lua=elisp (concettualmente)
 
     -- like ansi escape codes
