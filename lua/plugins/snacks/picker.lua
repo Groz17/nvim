@@ -20,6 +20,7 @@ return {
     -- crea if not exist like emacs
     -- what about unlisted?
     -- should probably exclude first empty buffer?
+    -- modified=true?
     { "<f12>b", function() Snacks.picker.buffers() end, desc = "Buffers" ,mode={'n','i'}},
     { "<f12>pb", function() Snacks.picker.buffers({ filter = { paths = { [Snacks.git.get_root()] = true } } }) end, desc = "Buffers (root)" ,mode={'n','i'}},
 
@@ -101,6 +102,7 @@ return {
     -- like emacs C-h x?
     -- { '<f17>x', function() Snacks.picker.commands() end, desc = 'Commands' },
     -- also include completions (subcommands)? so u don't have to use mappings... (use ^<name of command> as pattern), or maybe press enter and list subcommands?
+    -- should respect v:count (also negative 😏)
     { '<m-x>', function() Snacks.picker.commands() end, desc = 'Commands' ,mode={'n','i','x'}},
     { '<f17>D', function() Snacks.picker.diagnostics() end, desc = 'Diagnostics' ,mode={'n','i'}},
     { '<f17>d', function() Snacks.picker.diagnostics_buffer() end, desc = 'Diagnostics buffer' ,mode={'n','i'}},
@@ -136,6 +138,7 @@ return {
     -- <f17>C for all colorschemes, <space><space>c for plugin's colorschemes? use univeral argument
     -- how to preview the current buffer? 
     -- { '<f17>C', function() Snacks.picker.colorschemes() end, desc = 'Colorschemes' },
+    -- avoid jumpscare by sorting based on similar colors?
     { '<f17>c', function() Snacks.picker.colorschemes() end, desc = 'Colorschemes' ,mode={'n','i'}},
     -- go back w/ C-h if first char?
     -- define your dirs?
