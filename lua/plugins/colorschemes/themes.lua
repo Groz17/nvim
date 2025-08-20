@@ -1,42 +1,23 @@
--- fai filter delle colorscheme (punteggio media pesata) e elimina salvando la lista qll con punteggio basso (no treesitter support, etc...)
--- TODO: https://www.reddit.com/r/neovim/comments/1em9qkl/tired_of_seeing_catppuccin_everywhere_meet_the/
-
--- would be cool if colorscheme plugins defined the same interface/function to get colors so it's easier to change stuff
-
--- Djancyp/custom-theme.nvim
--- https://github.com/tjdevries/colorbuddy.nvim
--- https://github.com/ThemerCorp/themer.lua -> nice export functions
--- https://github.com/ray-x/starry.nvim
---https://github.com/AbdelrahmanDwedar/awesome-nvim-colorschemes
---https://github.com/flazz/vim-colorschemes
-
--- would be cool to theme buffers based on extension or even group them, like group them by Front End (HTML, CSS), etc...
 return {
-  --         ╭──────────────────────────────────────────────────────────╮
-  --         │                     MAIN COLORSCHEME                     │
-  --         ╰──────────────────────────────────────────────────────────╯
   {
-    "rose-pine/neovim", name = "rose-pine",
+    'oonamo/ef-themes.nvim',
     lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd[[colorscheme rose-pine|hi Normal guibg=#0a0a0a]]
-      -- vim.api.nvim_set_hl(0, "Normal", { fg = "#0a0a0a" })
+      vim.cmd [[colorscheme ef-summer]]
     end,
-},
+  },
   --         ╭──────────────────────────────────────────────────────────╮
   --         │              COLORSCHEME-AFFECTING PLUGINS               │
   --         ╰──────────────────────────────────────────────────────────╯
--- https://github.com/skywind3000/vim-color-patch
+  -- https://github.com/skywind3000/vim-color-patch
   {
     "xiyaowong/transparent.nvim",
-    -- doesn't work
-    cond = false,
-    cmd = {'TransparentToggle','TransparentEnable','TransparentDisable'},
-    keys = {{'<f13>0','<cmd>TransparentToggle<cr>'},},
+    cmd = { 'TransparentToggle', 'TransparentEnable', 'TransparentDisable' },
+    keys = { { '<f13>0', '<cmd>TransparentToggle<cr>' }, },
     opts = {
       extra_groups = {
-        "NormalFloat", -- plugins which have float panel such as Lazy, Mason, LspInfo
+        "NormalFloat",    -- plugins which have float panel such as Lazy, Mason, LspInfo
         "NvimTreeNormal", -- NvimTree
       },
       -- lualine_style = "default",
@@ -44,75 +25,84 @@ return {
     },
     config = function()
       local transparent = require("transparent")
-      -- transparent.clear_prefix("lualine")
-      -- transparent.clear_prefix("Bufferline")
+      transparent.clear_prefix("lualine")
       -- if config.transparent then
-        -- vim.cmd("TransparentEnable")
+      -- vim.cmd("TransparentEnable")
       -- end
     end,
   },
 
-  --         ╭──────────────────────────────────────────────────────────╮
-  --         │                       COLORSCHEMES                       │
-  --         ╰──────────────────────────────────────────────────────────╯
-{
-    "water-sucks/darkrose.nvim",
-},
--- {
---     "comfysage/cuddlefish.nvim",
---     lazy = false,
---     priority = 1000,
---     config = function()
---         vim.cmd.colorscheme('cuddlefish')
---     end
--- },
-  { 'projekt0n/github-nvim-theme', name = 'github-theme' },
-  {
-    'backdround/melting',
-  },
-  -- {
-  --
-  --   'rjshkhr/shadow.nvim',
-  --   config = function()
-  --     vim.cmd[[colorscheme shadow]]
-  --     vim.api.nvim_set_hl(0, "String", { fg = "#f8a3ab" })
-  --     -- vim.api.nvim_set_hl(0, "String", { fg = "#4b2a5e" })
-  --     -- vim.api.nvim_set_hl(0, "Identifier", { fg = "#d35dae" })
-  --   end,
-  -- },
-  {
-    -- doesn't work?
-    'Shadorain/shadotheme', lazy = true
-  },
-  {
-    "nyoom-engineering/oxocarbon.nvim", lazy = true
-  },
 
   {
-    'wtfox/jellybeans.nvim',--[[  lazy = true ]] lazy = true, opts={},
-  --   config = function()
-  --     require('jellybeans').setup()
-  --   end
-  },
+    -- integrate w/ desktop? pywal? swww transition(s)?
+    -- font as well?
+    -- crea completion source for installed colorschemes
+    -- Styler! to force colorscheme change?
+    -- how to integrate w/ lualine/statusline?
+    -- would be cool to theme buffers based on extension or even group them, like group them by Front End (HTML, CSS), etc...
+    -- usa ai for colorscheme generation based on filetype (check out plugin on reddit)
+    -- :Styler without arguments should return the colorscheme of the current buffer
+    -- setlocal! bg?
+    -- TODO: does this work for statusline/snacks (preview) as well?
+    -- make which-key use the colorscheme?
+    'folke/styler.nvim',
+    -- FIX: https://github.com/folke/styler.nvim/issues/7
+    opts = {
+      -- interessante che se usi colo theme in uno di questi il colorscheme non cambia
+      themes = {
+        -- Divido i &ft by category così so all'istante di che si tratta quel buffer
+        -- maybe start letter of filetype->start letter of colorscheme? so you remember colorscheme's names
 
--- {"Scysta/pink-panic.nvim", lazy=true,dependencies="rktjmp/lush.nvim"}, 
+        -- ╭─────────────────────────────────────────────────────────╮
+        -- │ prose                                                   │
+        -- ╰─────────────────────────────────────────────────────────╯
+        -- markdown = { colorscheme = "gruvbox" },
+        -- la cmp window rimane del theme di startup (catppuccin ad esempio)
+        -- would be nice if you could specify event for vimwiki, because I want to use filetype=markdown for that but for markdown files outside wiki I want another colorscheme... (to differentiate)
+        -- that's why neorg is betta
+        vimwiki = { colorscheme = 'github_dark_default' },
+        -- help = { colorscheme = "catppuccin-mocha" },
 
+        -- Make it accept glob/regex like in vim
+        -- ["*"] = { colorscheme = "shado" },
 
-  -- https://github.com/vigoux/oak
-  -- https://github.com/rebelot/kanagawa.nvim
-  -- https://github.com/co1ncidence/bliss
-  -- https://github.com/ulwlu/abyss.vim
-  --  ╭──────────────────────────────────────────────────────────╮
-  --  │                           Vim                            │
-  --  ╰──────────────────────────────────────────────────────────╯
-  {
+        -- magari funge sul fisso
+        -- snacks_picker_list  = { colorscheme = 'kanagawa-lotus' },
+        -- ╭─────────────────────────────────────────────────────────╮
+        -- │ programming                                             │
+        -- ╰─────────────────────────────────────────────────────────╯
+        -- lua = { colorscheme = 'darkrose' },
+        -- perl = { colorscheme = 'oxocarbon' },
+        -- nice with transparent background
+        -- c = { colorscheme = 'shado' },
+        -- lua = { colorscheme = "shado" },
+        -- dbui = { colorscheme = "iceberg" },
 
-    'Shadorain/shadotheme',
-    lazy = true,
-  },
-{ "oonamo/ef-themes.nvim" },
-  {
-  "thesimonho/kanagawa-paper.nvim",
+        -- ── db ──────────────────────────────────────────────────────────────
+        -- dbui = { colorscheme = 'melting' },
+        -- dbui = { colorscheme = 'rose-pine' },
+        -- dbout = { colorscheme = 'melting' },
+        -- sql = { colorscheme = --[['melting']] 'github_light_high_contrast' },
+        -- sql = { colorscheme = 'melting' },
+
+        -- ── web ─────────────────────────────────────────────────────────────
+        -- https://github.com/linkarzu/dotfiles-latest/blob/02b74813cd19ebdac8ea3999121a3c538ccedf2b/colorscheme/list/linkarzu-colors.sh
+        -- html = { colorscheme = 'eldritch' },
+        -- html = { colorscheme = 'darkrose' },
+        -- css = { colorscheme = 'purpura' },
+        -- javascript = { colorscheme = 'kanagawa-paper' },
+        -- java = { colorscheme = 'jellybeans' },
+
+        -- lisp
+        -- clojure = { colorscheme = 'sakura' },
+      },
+    },
+    -- To programmatically set the colorscheme for a certain window, you can use:
+    --
+    -- require("styler").set_theme(0, {
+    --   colorscheme = "elflord",
+    --   background = "dark"
+    -- })
+  }
+
 }
-}
--- https://github.com/thesimonho/kanagawa-paper.nvim?tab=readme-ov-file
