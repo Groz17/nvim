@@ -85,26 +85,27 @@ vim.keymap.set("i", ".", ".<c-g>u")
 vim.keymap.set("i", ";", ";<c-g>u")
 
 #+end_src
+
 ** File Operations
 #+begin_src lua
 -- INFO: "<C-R>=expand("%:t")<CR>" -> expands the current filename in the command line
 
 -- from https://yazi-rs.github.io/docs/quick-start
 -- what about g<c-y>? y and then modifier?
-vim.keymap.set('n', [[<space>yy]], [[<cmd>let @" = expand("%:p")   | echo 'cb> ' . @"<CR>]])
-vim.keymap.set('n', [[<space>yd]], [[<cmd>let @" = expand("%:p:h") | echo 'cb> ' . @"<CR>]])
-vim.keymap.set('n', [[<space>yf]], [[<cmd>let @" = expand("%:p:t") | echo 'cb> ' . @"<CR>]])
+vim.keymap.set('n', [[<space>yy]], [[<cmd>let @" = expand("%:p")->fnamemodify(':~')   | echo 'cb> ' . @"<CR>]])
+vim.keymap.set('n', [[<space>yd]], [[<cmd>let @" = expand("%:p:h")->fnamemodify(':~') | echo 'cb> ' . @"<CR>]])
+vim.keymap.set('n', [[<space>yf]], [[<cmd>let @" = expand("%:p:t")->fnamemodify(':~') | echo 'cb> ' . @"<CR>]])
 -- n stands for name? good if so
-vim.keymap.set('n', [[<space>yn]], [[<cmd>let @" = expand("%:p:r") | echo 'cb> ' . @"<CR>]])
+vim.keymap.set('n', [[<space>yn]], [[<cmd>let @" = expand("%:p:r")->fnamemodify(':~') | echo 'cb> ' . @"<CR>]])
 -- yank filename + line [souce :))]
-vim.keymap.set('n', [[<space>yl]], [[<cmd>let @" = expand("%:p") .. ":" .. line(".")   | echo 'cb> ' . @"<CR>]])
+vim.keymap.set('n', [[<space>yl]], [[<cmd>let @" = expand("%:p")->fnamemodify(':~') .. ":" .. line(".")   | echo 'cb> ' . @"<CR>]])
 
 -- also create concatente yank
 -- create also for normal mode
 -- maybe also add last line?
 vim.keymap.set('x','<space>y',function()
 		  vim.cmd.norm('y')
-		  vim.fn.setreg(vim.v.register, vim.list_extend({vim.fn.expand('%:p') .. ":" .. vim.fn.line("'<")},vim.fn.getreg(vim.v.register,'',true)))
+        vim.fn.setreg(vim.v.register, vim.list_extend({vim.fn.fnamemodify(vim.fn.expand("%:p"),':~') .. ":" .. vim.fn.line("'<")},vim.fn.getreg(vim.v.register,'',true)))
 end)
 
 -- create one that instead insert the current block header (function, class, etc...) with its line number ofc (for context)
