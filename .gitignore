@@ -1,3 +1,5 @@
 /sessions/
 /spell/
 /snippets/
+lua/config/keymaps.lua
+lua/config/options.lua
