@@ -47,7 +47,16 @@ return {
     -- make which-key use the colorscheme?
     'folke/styler.nvim',
     -- FIX: https://github.com/folke/styler.nvim/issues/7
-    opts = {
+    opts =function()
+      local markup = "ef-summer" -- violetish
+      local system =  "ef-arbutus" -- brownish
+      local db = "ef-frost" -- whitish
+      local scripting =  "ef-dark" -- nocturnal
+      local shell = "ef-tritanopia-dark" -- reddish
+      local web = "ef-owl" -- synthwavy
+      local data = "ef-owl" -- ....
+      return
+      {
       -- interessante che se usi colo theme in uno di questi il colorscheme non cambia
       themes = {
         -- Divido i &ft by category così so all'istante di che si tratta quel buffer
@@ -56,47 +65,57 @@ return {
         -- ╭─────────────────────────────────────────────────────────╮
         -- │ prose                                                   │
         -- ╰─────────────────────────────────────────────────────────╯
-        -- markdown = { colorscheme = "gruvbox" },
         -- la cmp window rimane del theme di startup (catppuccin ad esempio)
-        -- would be nice if you could specify event for vimwiki, because I want to use filetype=markdown for that but for markdown files outside wiki I want another colorscheme... (to differentiate)
-        -- that's why neorg is betta
-        vimwiki = { colorscheme = 'github_dark_default' },
-        -- help = { colorscheme = "catppuccin-mocha" },
-
         -- Make it accept glob/regex like in vim
         -- ["*"] = { colorscheme = "shado" },
-
         -- magari funge sul fisso
         -- snacks_picker_list  = { colorscheme = 'kanagawa-lotus' },
-        -- ╭─────────────────────────────────────────────────────────╮
-        -- │ programming                                             │
-        -- ╰─────────────────────────────────────────────────────────╯
-        -- lua = { colorscheme = 'darkrose' },
-        -- perl = { colorscheme = 'oxocarbon' },
-        -- nice with transparent background
-        -- c = { colorscheme = 'shado' },
-        -- lua = { colorscheme = "shado" },
-        -- dbui = { colorscheme = "iceberg" },
 
-        -- ── db ──────────────────────────────────────────────────────────────
-        -- dbui = { colorscheme = 'melting' },
-        -- dbui = { colorscheme = 'rose-pine' },
-        -- dbout = { colorscheme = 'melting' },
-        -- sql = { colorscheme = --[['melting']] 'github_light_high_contrast' },
-        -- sql = { colorscheme = 'melting' },
+-- Web: Bright, energetic themes reflecting the interactive nature of web development.
+html        = { colorscheme = web },
+css         = { colorscheme = web },
+javascript  = { colorscheme = web },
+typescript  = { colorscheme = web },
 
-        -- ── web ─────────────────────────────────────────────────────────────
-        -- https://github.com/linkarzu/dotfiles-latest/blob/02b74813cd19ebdac8ea3999121a3c538ccedf2b/colorscheme/list/linkarzu-colors.sh
-        -- html = { colorscheme = 'eldritch' },
-        -- html = { colorscheme = 'darkrose' },
-        -- css = { colorscheme = 'purpura' },
-        -- javascript = { colorscheme = 'kanagawa-paper' },
-        -- java = { colorscheme = 'jellybeans' },
+-- Markup: Warm and pastel Ef themes for a friendly, readable documentation feel.
 
-        -- lisp
-        -- clojure = { colorscheme = 'sakura' },
+markdown    = { colorscheme = markup },
+rst         = { colorscheme = markup },
+org         = { colorscheme = markup },
+tex         = { colorscheme = markup },
+xml         = { colorscheme = markup },
+
+-- Data: Duo family (light/dark) for clean, distinct clarity typical of data formats.
+json        = { colorscheme = data },
+yaml        = { colorscheme = data },
+toml        = { colorscheme = data },
+
+-- Database: Cool, neutral color palette for formal, structured data environments.
+sql         = { colorscheme = db },
+dbui       = { colorscheme = db },
+dbout       = { colorscheme = db },
+
+-- Build: Utilitarian, frosty/wintery themes for automation/task runners.
+make        = { colorscheme = 'ef-winter' },
+-- docker
+
+-- Shell: Dark and frosty themes representing the streamlined, utilitarian nature of shells.
+sh          = { colorscheme = shell },
+bash        = { colorscheme = shell },
+zsh         = { colorscheme = shell },
+
+-- Scripting: Cool, nocturnal themes for interpreted, rapid scripting languages.
+python      = { colorscheme = scripting },
+ruby        = { colorscheme = scripting },
+perl        = { colorscheme = scripting },
+
+-- System Languages: Robust, technical themes for low-level or performance-oriented languages.
+c           = { colorscheme = system },
+cpp         = { colorscheme = system },
+rust        = { colorscheme = system },
+zig         = { colorscheme = system },
       },
-    },
+    }end,
     -- To programmatically set the colorscheme for a certain window, you can use:
     --
     -- require("styler").set_theme(0, {
