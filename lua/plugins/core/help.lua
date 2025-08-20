@@ -55,6 +55,7 @@ return {
     }
   },
 
+  --https://gitlab.com/HiPhish/info.vim
   -- https://github.com/alx741/vinfo/issues/6
   -- set ft=pinfo
   {
