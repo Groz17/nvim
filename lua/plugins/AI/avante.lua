@@ -57,7 +57,6 @@ return {
           insert = "<cr>",
         },
       },
-      hints = { enabled = false },
       windows = {
         ask = { floating=true },
         -- TODO: use dynamic size (enlarge when multiple lines)
