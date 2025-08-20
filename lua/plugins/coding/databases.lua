@@ -65,7 +65,7 @@ return {
       vim.g.Db_ui_table_name_sorter = function(tables) return vim.fn.sort(tables)  end
 
       vim.g.db_ui_tmp_query_location = vim.fn.stdpath('data') .. '/db_ui/queries'
-      -- vim.g.db_ui_execute_on_save = true
+      vim.g.db_ui_execute_on_save = true
 
       vim.g.db_ui_auto_execute_table_helpers = 1
       vim.g.db_ui_use_nerd_fonts = 1
@@ -79,7 +79,7 @@ return {
 
     keys = {
       -- use s/l (f12) for emacs-inspired mappings and use c/m (f15) for one shot mappings (no groups)
-      { '<f15>d', '<cmd>tab DBUIToggle<cr>', desc = 'Toggle DBUI' },
+      { '<f15>d', '<cmd>tabnew|DBUIToggle<cr>', desc = 'Toggle DBUI' },
       -- TODO: use vim.ui.select
       { '<localleader>f', '<cmd>DBUIFindBuffer<cr>', buffer = true, ft = 'sql',desc = 'Find Buffer' },
     },
@@ -97,8 +97,8 @@ return {
           vim.api.nvim_buf_set_keymap(ev.buf, 'n', 'gS', vim.fn['db#op_exec']() .. '$', { noremap = true, desc = 'Run SQL (EOL)' })
           vim.api.nvim_buf_set_keymap(ev.buf, 'n', 'gss', vim.fn['db#op_exec']() .. '_', { noremap = true, desc = 'Run SQL (linewise)' })
 
-          vim.keymap.set('n', '<c-c><c-c>', '<Plug>(DBUI_ExecuteQuery)', { noremap = false, desc = 'Run SQL', buffer = ev.buf  })
-          vim.keymap.set('i', '<c-c><c-c>', [[<c-\><c-n><Plug>(DBUI_ExecuteQuery)<cmd>lua vim.defer_fn(function()vim.cmd.startinsert({bang=true})  end,200)<cr>]], { noremap = false, desc = 'Run SQL', buffer = ev.buf  })
+          -- vim.keymap.set('n', '<c-c><c-c>', '<Plug>(DBUI_ExecuteQuery)', { noremap = false, desc = 'Run SQL', buffer = ev.buf  })
+          -- vim.keymap.set('i', '<c-c><c-c>', [[<c-\><c-n><Plug>(DBUI_ExecuteQuery)<cmd>lua vim.defer_fn(function()vim.cmd.startinsert({bang=true})  end,200)<cr>]], { noremap = false, desc = 'Run SQL', buffer = ev.buf  })
 
           -- vim.api.nvim_buf_set_keymap(ev.buf, 'n', 'K', '<CMD>DB SELECT*FROM ' .. vim.fn.expand('<CWORD>') .. ' LIMIT 20', { noremap = true, desc = 'Show table from cursor' })
           -- it would be better to just hover? first: scheme, second: first 3 rows or smth
@@ -118,7 +118,7 @@ return {
       })
       vim.api.nvim_create_autocmd('Filetype', {
         pattern = 'dbui',
-        group = vim.api.nvim_create_augroup('DisableQuitMapping', {}),
+        group = vim.api.nvim_create_augroup('DisableQuitMapping', {}), -- usa <C-x>(
         callback = function()
           -- vim.keymap.set('n', 'o', '<Plug>(DBUI_SelectLine)', { buffer = true })
           -- NOTE: you may want to use l for motion purposes
