@@ -14,6 +14,6 @@ return {
   keys = {
     { 'g>', function() Snacks.notifier.hide() end, desc = 'Dismiss All Notifications' },
     -- { "g<", function() Snacks.notifier.show_history() end, desc = "Notification History" },
-    { "<f18>e","<cmd>NoiceSnacks<cr>", function() Snacks.notifier.show_history() end, desc = "Notification History" },
+    -- { "<f18>e","<cmd>NoiceSnacks<cr>", function() Snacks.notifier.show_history() end, desc = "Notification History" },
   },
 }
