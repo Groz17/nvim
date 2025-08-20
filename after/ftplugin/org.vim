@@ -4,7 +4,7 @@ autocmd!
 " src block doesn't contain elisp code
 " usa emacsclient eval...
 autocmd BufWritePost <buffer> if
-      \ expand("<afile>:p")=~'^'..$HOME..'/\%(dotfiles/\|\.config/emacs/config\.org$\)' &&
+      \ expand("<afile>:p")=~'^'..$HOME..'/\%(dotfiles/\|\.config/\(emacs\|nvim\)/config\.org$\)' &&
       \ (search('^#+begin_src .\+:tangle ','n') || search('^#+property: .*header-args\s\+:tangle ','n')) &&
       \ !search('^#+begin_src .\+(','n') |
       \ exe 'lua require("orgmode").action("org_mappings.org_babel_tangle")' |

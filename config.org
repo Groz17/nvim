@@ -311,7 +311,7 @@ endfor
 -- vim.keymap.set('n','<space>eI', [[<CMD>tab drop ~/.gitignore<cr>]],{desc="Global gitignore"})
 -- vim.keymap.set('n','<space>eg', [[<CMD>exe "tab drop" systemlist('git rev-parse --show-toplevel 2> /dev/null')[0]."/.gitconfig"<cr>]],{desc="Local gitconfig"})
 -- vim.keymap.set('n','<space>eG', [[<CMD>tab drop ~/.gitconfig<cr>]],{desc="Global gitconfig"})
-vim.keymap.set('n','<space>ev', [[<CMD>tab drop ~/.config/nvim/lua/config/keymaps.lua<cr>]],{desc="Vim keymaps"})
+vim.keymap.set('n','<space>ev', [[<CMD>tab drop ~/.config/nvim/config.org<cr>]],{desc="Vim config"})
 -- vim.keymap.set('n','<space>ez', [[<CMD>tab drop ~/.config/zellij/config.kdl<cr>]],{desc="Zellij"})
 vim.keymap.set('n','<space>ee', [[<CMD>tab drop ~/.config/emacs/config.org<cr>``]],{desc="Emacs"})
 vim.keymap.set('n','<space>e<cr>', [[<CMD>tab drop ~/dotfiles/_ghostty.org<cr>``]],{desc="Ghostty"})
