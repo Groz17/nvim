@@ -1,3 +1,6 @@
+#+STARTUP: overview
+#+OPTIONS: toc:2
+
 ** Keymaps
 :PROPERTIES:
 :header-args: :tangle  ~/.config/nvim/lua/config/keymaps.lua
@@ -9,6 +12,10 @@
 - Don't use leader(s) mappings for operators (ex: surround), use them for general plugin mappings that don't define an operator (or text object of course)
 - Capitalize desc field: rg 'desc\s*=\s*\W+[a-z]' --vimgrep |v -q-
 - Take inspiration from emacs/nano mappings 
+
+*** Task list
+
+- [ ] Translation: ~ -> synonym (Google):-nnoremap <leader>~ thesanosaurus :)) (google trans command line synonym)
 
 #+begin_src lua
 -- find better way for comment string of multiple chars
@@ -150,69 +157,15 @@ endfunction
 ]])
 
 -----------------------------------------------------------
----- Change inside middle (on the screen) function
------------------------------------------------------------
-
--- ciMf
-
------------------------------------------------------------
 ---- How to apply operator to all text objects inside a region?
 -----------------------------------------------------------
 
 ---@see https://github.com/ibhagwan/fzf-lua/issues/532#issuecomment-1269523365
 vim.keymap.set('t', '<M-r>', [['<C-\><C-N>"'.nr2char(getchar()).'pi']], { expr = true })
 
--- Mirrors i3/window manager mappings
--- use similar mappings of visual-split.vim
--- Maybe open with the path of the buffer that calls it?
--- TODO: check if normal file, like not fugitive or healthcheck file
--- vim.keymap.set('n', '<c-`>', '<CMD>vert split term://%:p:h//bash<CR>')
--- vim.keymap.set('n', '<c-space>', '<CMD>split term://%:p:h//bash<CR>')
--- vim.keymap.set('n', '<leader><cr>', '<CMD>vert split term://%:p:h//bash<CR>')
--- usa right shift 😀  
--- vim.keymap.set('n', '<leader><s-cr>', '<CMD>bot 17split term://%:p:h//bash<CR>')
--- https://www.reddit.com/r/neovim/comments/138wi21/open_terminal_in_split_with_working_directory_of/
--- vim.keymap.set('n', '<leader><cr>', '<CMD>vsplit term://%:p:h//bash <CR>')
--- vim.keymap.set('n', '<leader><s-cr>', '<CMD>bot 17split term://%:p:h//bash<CR>')
--- nnoremap <silent> <leader><cr> :vert :term<cr>L
--- vim.keymap.set('t','<leader><esc>',[[<c-\><c-n>]])
-vim.keymap.set('t','<s-esc>',[[<c-\><c-n>]])
--- vim.keymap.set('t','jk',[[<c-\><c-n>]])
--- magari usali anche in insert mode (con betterescape ofc)
--- press <c-v> before j,k,l to insert them without executing mapping
--- Rarely it just says the message, but doesn't save
--- Doesn't work well with sc-im
--- vim.keymap.set('t','jj','<CR>')
--- vim.keymap.set('t','jk',[[<c-\><c-n>]])
--- vim.keymap.set('t','jl',[[<c-\><c-n>]])
--- jk seems more comfortable (magari fai mapping complesso in blink.cmp?)
--- kanata macro?
--- Seems a little harder to press (you need more mental effort), to save only when you really mean it!
--- what about tabout mappings?
--- ha senso usare <esc> qui?
--- comfortable with left hand right?
--- TODO: fai che quando è a inizio della riga fa due spazi... (^%s*)
--- maybe check if the next character is not a newline (for markdown)
--- magari non usarlo per command-line mode? troppo rischioso
--- TODO: how to insert space between string? i wanna set ttimeoutlen to 0
--- fixa bug quando devi inserire spazio prima di salvare...
--- forces u to use alt terminal trick
---
--- for snippets mappings
--- vim.keymap.set('n','<tab>','<nop>')
-
--- magari go to right after (l?)
--- vim.keymap.set('i','<space><space><space>','<space><cmd>up<cr><esc>l')
--- vim.keymap.set('i','<space><space><space>','<space><cmd>up<cr><esc>')
 -- https://github.com/rdpopov/nvim-sak
 -- TODO: just one undo block?
 vim.keymap.set('x','<space><space>', ":normal ",{desc="Execute normal mode command over visual selection"})
--- what about this without <ESC>?
--- use space for general QOL keymaps and leader (s/l,a/;) for plugins/mappings not categorized?
-
--- scratch buffer
--- non devo escapare |???
--- vim.keymap.set('n','<c-w>N','<cmd>bo new<bar>startinsert<CR>')
 
 -- https://www.reddit.com/r/neovim/comments/pibo9c/how_to_focus_an_opened_floating_window/
 -- <c-w><space> similar to i3 mapping win+space
@@ -234,11 +187,6 @@ vim.keymap.set('c','<M-C-e>',[[<c-\>eexpandcmd(getcmdline())<CR>]])
 -- vim.keymap.set('i', 'fd', '<c-o>', { desc = 'Ergonomic <C-o>' })
 -- vim.keymap.set('i', 'jd', '<c-o>', { desc = 'Ergonomic <C-o>' })
 
--- if !common#functions#HasPlug('ResizeWindow.vim')
--- nnoremap <M--> :resize +3<CR>
--- nnoremap <M-_> :resize -3<CR>
--- nnoremap <M-(> :vertical resize -3<CR>
--- nnoremap <M-)> :vertical resize +3<CR>
 -- endif
 -- doesn't seem to work in kitty
 -- vim.keymap.set('n','<c-s-k>','<CMD>exe "abo " ..  (v:count ?? "") .. "split"<cr>')
@@ -259,11 +207,6 @@ vim.keymap.set('c','<M-C-e>',[[<c-\>eexpandcmd(getcmdline())<CR>]])
 
 -- Fullscreen buffer
 -- nnoremap <leader>f :tab split<CR>
-
--- ┣ Translation
---~ -> synonym (Google).
---nnoremap <leader>~ thesanosaurus :))
--- google trans command line synonym
 
 --nnoremap <silent> <leader>t :w !trans :it ''<cr>
 -- nnoremap <silent> cot :w !trans :it ''<cr>
@@ -670,7 +613,8 @@ vim.keymap.set(all,'<f16>',function() return[[<c-\><c-n>]]..vim.v.count..[[<c-w>
 #+end_src
 
 *** EMACS PARITY
-*** <c-x>
+mapcheck keys || emacs keys
+*** <C-x>
 #+begin_src lua
 -- pseudo keys like in emacs for function keys (kanata?)
 -- doesn't work?
@@ -708,7 +652,7 @@ vim.keymap.set({"n","i"} , "<f12>44", [[<cmd>vnew<cr>]], { desc = "Open in other
 vim.keymap.set('i','<f12><c-s>','<cmd>up<cr>')
 -- magari c-x c-s-s for sudowrite?
 vim.keymap.set('n', '<f12><c-s>', '<CMD>up<CR>', {desc = "Save Current File" })
--- vim.keymap.set('n','<f12>k','<cmd>q!<cr>')
+-- vim.keymap.set('n','<f12>k<cr>','<cmd>bd<cr>')
 
 vim.keymap.set({'n','i','x','o'},'<f12>tm',[[<c-\><c-n><cmd>tabmove +]]..vim.v.count1..[[<cr>]])
 vim.keymap.set({'n','i','x','o'},'<f12>tM',[[<c-\><c-n><cmd>tabmove ]]..vim.v.count..[[<cr>]])
@@ -740,21 +684,25 @@ vim.keymap.set({'n','x','i','t','c'},'<f12><c-c>',[[<c-\><c-n><cmd>qa!<cr>]]) --
 --
 #+end_src
 
-*** <m-s>
+*** <C-h>
+#+begin_src lua
+-- vim.keymap.set({'n','i'},'<f18>k',[[<c-\><c-n>:h ]]) -- add c-s/c-r
+-- TODO: usa snacks
+vim.keymap.set({'n','x','i','t','c'},'<f18>K',[["<c-\><c-n>:FloatingHelp "..(mode()=='n'?'':mode()->tolower()..'_')]], {expr=true})
+-- how to escape single quote for fzf?
+vim.keymap.set({'n','x','i','t','c'},'<f18>r',[[<c-\><c-n><cmd>FloatingHelp user-manual<cr>]] )
+vim.keymap.set({'n','x','i','t','c'},'<f18><c-f>',[[<c-\><c-n><cmd>FloatingHelp faq<cr>]] )
+vim.keymap.set({"n","i"} , "<f18>e", "<cmd>Messages<cr><cmd>wincmd L<cr>" , {desc = "Messages"})
+#+end_src
+
+*** <M-s>
 #+begin_src lua
 vim.keymap.set('i','<m-s>.','<c-o>*') -- add c-s/c-r
 -- vim.keymap.set('i','<m-s>,','<c-o>#') -- add c-s/c-r ;; like xref./,
-#+end_src
 
-*** <c-h>
-#+begin_src lua
-   -- vim.keymap.set({'n','i'},'<f18>k',[[<c-\><c-n>:h ]]) -- add c-s/c-r
-   -- TODO: usa snacks
-   vim.keymap.set({'n','x','i','t','c'},'<f18>K',[["<c-\><c-n>:FloatingHelp "..(mode()=='n'?'':mode()->tolower()..'_')]], {expr=true})
-   -- how to escape single quote for fzf?
-   vim.keymap.set({'n','x','i','t','c'},'<f18>r',[[<c-\><c-n><cmd>FloatingHelp user-manual<cr>]] )
-   vim.keymap.set({'n','x','i','t','c'},'<f18><c-f>',[[<c-\><c-n><cmd>FloatingHelp faq<cr>]] )
-vim.keymap.set({"n","i"} , "<f18>e", "<cmd>Messages<cr><cmd>wincmd L<cr>" , {desc = "Messages"})
+-- vim.api.nvim_create_user_command('Occur','lvimgrep /<args>/%|bel vert lopen',{nargs = 1}) (not sure why all the way to the right)
+vim.api.nvim_create_user_command('Occur','lvimgrep /<args>/%|lopen|wincmd L',{nargs = 1})
+vim.keymap.set({"n","i"} , "<m-s>o", [[:Occur<space>]], {desc = "Occur"})
 #+end_src
 
 *** others
@@ -898,9 +846,6 @@ vim.keymap.set("i" , "<a-h>", [[<esc>norm! vipok<c-g>]], { desc = "readline: cha
 
 vim.keymap.set("x" , "<m-;>", [[gc]], { remap = true,desc = "Comment"})
 
--- vim.api.nvim_create_user_command('Occur','lvimgrep /<args>/%|bel vert lopen',{nargs = 1}) (not sure why all the way to the right)
-vim.api.nvim_create_user_command('Occur','lvimgrep /<args>/%|lopen|wincmd L',{nargs = 1})
-vim.keymap.set({"n","i"} , "<m-s>o", [[:Occur<space>]], {desc = "Occur"})
 vim.keymap.set({"n","i"} , "<m-g>n", [[<cmd>lnext<cr>]], {desc = "Next Occur"})
 vim.keymap.set({"n","i"} , "<m-g>p", [[<cmd>lprev<cr>]], {desc = "Prev Occur"})
 
@@ -916,15 +861,16 @@ vim.keymap.set('i', '<m-;>', '<end> <c-r>=&l:commentstring<cr><bs><bs>')
 vim.keymap.set('n', '<m-;>', 'A <c-r>=&l:commentstring<cr><bs><bs>')
 #+end_src
 
-
 ** Options
 :PROPERTIES:
 :header-args: :tangle  ~/.config/nvim/lua/config/options.lua
 :END:
-*** Task list
+*** TODO Task list
+- [ ] automatically refile those options?
 - [ ] find nice configs/categories
 - [ ] function keys also useful so u can use them in insert/visual mode whichkey mappings
 
+#+begin_src lua
 -- let mapleader = "\<Space>"
 -- vim.g.mapleader = " "
 vim.g.mapleader = vim.keycode"<space>"
@@ -945,16 +891,7 @@ vim.g.health = { style = 'float' }
 
 -- vim.o.winborder='border'
 
--- go to previous/next line with h,l,left arrow and right arrow when cursor reaches end/beginning of line
--- opt.whichwrap:append "<>[]hl"
-
--- vim.cmd[[let &stc='%=%{v:virtnum>0?"":printf("%X",v:lnum)} ']]
-
 -- hi Normal guibg=NONE ctermbg=NONE
-
--- https://github.com/search?q=%2Fwildignore.*color%2F+language%3Alua+&type=code
---https://github.com/qw457812/dotfiles/blob/5d2090a1897806983945ad3d56ffc9db6c6039cc/dot_config/nvim/lua/config/options.lua#L17
-vim.opt.wildignore:append(vim.api.nvim_get_runtime_file("colors/*.{vim,lua}", true))
 
 -- hi Cursor guifg=green guibg=green
 -- TODO: hide cursor after some time?
@@ -969,19 +906,15 @@ set guicursor=n-v-c:block-Cursor/lCursor,i-n:Cursor2/lCursor2
 -- set guicursor=n-c-v-i:block-nCursor
 -- set guicursor=i:blinkoff400-blinkon250
 
-
 -- set guifont=DroidSansMono\ Nerd\ Font\ 11
-
--- fallback to treesitter if no lsp capabilities?
-  -- vim.o.foldexpr = "v:lua.vim.lsp.foldexpr()"
--- vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 
 -- maybe create highlight.lua file?
 vim.cmd('hi Visual guibg=peru guifg=Black')
 -- hi Visual guibg=#000066 guifg=#00ff99
 
-
 vim.opt.inccommand="split"
+#+end_src
+-- vim: foldmethod=expr foldexpr=getline(v\:lnum)=~'^--\ ┣'?'>1'\:getline(v\:lnum)=~'^--\ ─'?'>2'\:'=':
 
 *** Important
 #+begin_src lua
@@ -993,6 +926,8 @@ vim.opt.smartcase = true        -- Ignore lowercase for the whole pattern
 vim.opt.path:append('**') -- make the search recursive
 vim.opt.startofline = false -- Keep same column when going visual-block column
 -- don't use included files and tag complete for better performances. Add this to your vimrc for these options :
+-- go to previous/next line with h,l,left arrow and right arrow when cursor reaches end/beginning of line
+-- opt.whichwrap:append "<>[]hl"
 #+end_src
 *** Tags
 #+begin_src lua
@@ -1049,6 +984,7 @@ vim.opt.splitright = true       -- Vertical split to the right
 vim.opt.splitbelow = true       -- Horizontal split to the bottom
 -- vim.opt.laststatus = 2
 vim.opt.laststatus=3            -- Set global statusline
+-- vim.cmd[[let &stc='%=%{v:virtnum>0?"":printf("%X",v:lnum)} ']]
 #+end_src
 *** Multiple tab pages
 #+begin_src lua
@@ -1116,9 +1052,10 @@ vim.opt.smartindent = true
 #+end_src
 *** Folding
 #+begin_src lua
--- vim: foldmethod=expr foldexpr=getline(v\:lnum)=~'^--\ ┣'?'>1'\:getline(v\:lnum)=~'^--\ ─'?'>2'\:'=':
 vim.wo.foldenable = false
 vim.wo.foldmethod = "expr"
+-- fallback to treesitter if no lsp capabilities?
+-- vim.o.foldexpr = "v:lua.vim.lsp.foldexpr()"
 vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
 -- vim.o.foldmethod = "expr"
 -- vim.o.foldenable= false
@@ -1161,6 +1098,8 @@ vim.opt.updatetime = 250        -- ms to wait for trigger an event
 vim.opt.history = 10000           -- Remember N lines in history
 vim.opt.wildmode = {list = "longest", "full"} -- When completing, show all options, insert common prefix, then iterate
 vim.opt.wildignore = 'deps,.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif,.DS_Store,*.aux,*.out,*.toc'
+-- ignore builtin colorschemes for Snacks.picker.colorschemes()
+vim.opt.wildignore:append(vim.api.nvim_get_runtime_file("colors/*.{vim,lua}", true))
 vim.opt.wildmenu = true
 #+end_src
 *** Executing external commands
