@@ -1,19 +1,19 @@
 #+STARTUP: overview
 #+OPTIONS: toc:2
 
-** Keymaps
+* Keymaps
 :PROPERTIES:
 :header-args: :tangle  ~/.config/nvim/lua/config/keymaps.lua
 :END:
 
-*** Conventions
+** Conventions
 - Never use literal spaces in a mapping, use <space> (formatting may take those away and it's more explicit):
   - be explicit with final space: ={ '<leader>gC', ':Git commit -v -q<space>' }=
 - Don't use leader(s) mappings for operators (ex: surround), use them for general plugin mappings that don't define an operator (or text object of course)
 - Capitalize desc field: rg 'desc\s*=\s*\W+[a-z]' --vimgrep |v -q-
 - Take inspiration from emacs/nano mappings 
 
-*** Task list
+** Task list
 
 - [ ] Translation: ~ -> synonym (Google):-nnoremap <leader>~ thesanosaurus :)) (google trans command line synonym)
 
@@ -90,7 +90,7 @@ vim.keymap.set("i", ";", ";<c-g>u")
 
 #+end_src
 
-*** File Operations
+** File Operations
 #+begin_src lua
 -- INFO: "<C-R>=expand("%:t")<CR>" -> expands the current filename in the command line
 
@@ -612,9 +612,9 @@ local all = vim.fn.split('nvsxoilct', [[.\zs]])
 vim.keymap.set(all,'<f16>',function() return[[<c-\><c-n>]]..vim.v.count..[[<c-w>]] end,{expr=true})
 #+end_src
 
-*** EMACS PARITY
+** EMACS PARITY
 mapcheck keys || emacs keys
-*** <C-x>
+** <C-x>
 #+begin_src lua
 -- pseudo keys like in emacs for function keys (kanata?)
 -- doesn't work?
@@ -683,7 +683,7 @@ vim.keymap.set({'n','x','i','t','c'},'<f12><c-c>',[[<c-\><c-n><cmd>qa!<cr>]]) --
 --
 #+end_src
 
-*** <C-h>
+** <C-h>
 #+begin_src lua
 -- vim.keymap.set({'n','i'},'<f18>k',[[<c-\><c-n>:h ]]) -- add c-s/c-r
 -- TODO: usa snacks
@@ -694,7 +694,7 @@ vim.keymap.set({'n','x','i','t','c'},'<f18><c-f>',[[<c-\><c-n><cmd>FloatingHelp 
 vim.keymap.set({"n","i"} , "<f18>e", "<cmd>Messages<cr><cmd>wincmd L<cr>" , {desc = "Messages"})
 #+end_src
 
-*** <M-s>
+** <M-s>
 #+begin_src lua
 vim.keymap.set('i','<m-s>.','<c-o>*') -- add c-s/c-r
 -- vim.keymap.set('i','<m-s>,','<c-o>#') -- add c-s/c-r ;; like xref./,
@@ -704,7 +704,7 @@ vim.api.nvim_create_user_command('Occur','lvimgrep /<args>/%|lopen|wincmd L',{na
 vim.keymap.set({"n","i"} , "<m-s>o", [[:Occur<space>]], {desc = "Occur"})
 #+end_src
 
-*** others
+** others
 #+begin_src lua
 -- org mode
 -- insert mode in visual mode like emacs?
@@ -787,7 +787,7 @@ vim.keymap.set({'x'},'<c-g>', [[<esc>]])
 
 -- K for man, <c-h>o for :help? what about lsp?
 #+end_src
-**** Center
+*** Center
 #+begin_src lua
 -- https://github.com/janpeterd/dotfiles/blob/a89868aa31a4d7ea66f325cda38d3522a5891dfe/dot_config/nvim/plugin/remap.lua#L16
 local last_press_time = 0
@@ -860,11 +860,11 @@ vim.keymap.set('i', '<m-;>', '<end> <c-r>=&l:commentstring<cr><bs><bs>')
 vim.keymap.set('n', '<m-;>', 'A <c-r>=&l:commentstring<cr><bs><bs>')
 #+end_src
 
-** Options
+* Options
 :PROPERTIES:
 :header-args: :tangle  ~/.config/nvim/lua/config/options.lua
 :END:
-*** TODO Task list
+** TODO Task list
 - [ ] automatically refile those options?
 - [ ] find nice configs/categories
 - [ ] function keys also useful so u can use them in insert/visual mode whichkey mappings
@@ -915,10 +915,10 @@ vim.opt.inccommand="split"
 #+end_src
 -- vim: foldmethod=expr foldexpr=getline(v\:lnum)=~'^--\ ┣'?'>1'\:getline(v\:lnum)=~'^--\ ─'?'>2'\:'=':
 
-*** Important
+** Important
 #+begin_src lua
 #+end_src
-*** Moving around, searching and patterns
+** Moving around, searching and patterns
 #+begin_src lua
 vim.opt.ignorecase = true       -- Ignore case letters when search
 vim.opt.smartcase = true        -- Ignore lowercase for the whole pattern
@@ -928,11 +928,11 @@ vim.opt.startofline = false -- Keep same column when going visual-block column
 -- go to previous/next line with h,l,left arrow and right arrow when cursor reaches end/beginning of line
 -- opt.whichwrap:append "<>[]hl"
 #+end_src
-*** Tags
+** Tags
 #+begin_src lua
 vim.opt.complete:remove('t')      -- Don't use tags for completion
 #+end_src
-*** Displaying text
+** Displaying text
 #+begin_src lua
 vim.opt.mousescroll  = 'ver:25,hor:6' -- Customize mouse scroll
 vim.opt.showbreak="↪"
@@ -959,7 +959,7 @@ vim.opt.wildmode = {list = "longest", "full"} -- When completing, show all optio
 -- autocmd InsertLeave * :setlocal relativenumber number
 -- display completion matches on your status line
 #+end_src
-*** Syntax, highlighting and spelling
+** Syntax, highlighting and spelling
 #+begin_src lua
 -- vim.wo.spell = true
 -- vim.o.spelllang    = 'en,uk,it,ru,ar'   -- Define spelling dictionaries
@@ -973,7 +973,7 @@ vim.opt.termguicolors = true    -- Enable 24-bit RGB colors
 -- https://github.com/dettonijr/spass-syntax-highlight
 -- au BufRead,BufNewFile *.dfg set filetype=dfg
 #+end_src
-*** Multiple windows
+** Multiple windows
 #+begin_src lua
 -- exclude hidden buffers when saving session {for possession.nvim}
 vim.o.switchbuf    = 'usetab'       -- Use already opened buffers when switching
@@ -985,31 +985,31 @@ vim.opt.splitbelow = true       -- Horizontal split to the bottom
 vim.opt.laststatus=3            -- Set global statusline
 -- vim.cmd[[let &stc='%=%{v:virtnum>0?"":printf("%X",v:lnum)} ']]
 #+end_src
-*** Multiple tab pages
+** Multiple tab pages
 #+begin_src lua
 -- vim.opt.showtabline = 1
 -- set showtabline=2
 #+end_src
-*** Terminal
+** Terminal
 #+begin_src lua
 vim.o.title = true
 #+end_src
-*** Using the mouse
+** Using the mouse
 #+begin_src lua
 vim.opt.mouse:remove('a') -- Not use mouse
 vim.opt.mousescroll  = 'ver:25,hor:6' -- Customize mouse scroll
 #+end_src
-*** Messages and info
+** Messages and info
 #+begin_src lua
 vim.opt.showmode = false -- Not show redundant mode line with airline
 -- vim.opt.more = false
 vim.opt.shortmess:append "sI" -- Disable nvim intro
 -- opt.shortmess:append('filmnrxoOtT') -- Show shorten messages in UI
 #+end_src
-*** Selecting text
+** Selecting text
 #+begin_src lua
 #+end_src
-*** Editing text
+** Editing text
 #+begin_src lua
 vim.opt.joinspaces = false
 vim.opt.complete:append('kspell') -- Add spellcheck options for autocomplete
@@ -1037,7 +1037,7 @@ vim.o.formatlistpat = [[^\s*[0-9\-\+\*]\+[\.\)]*\s\+]]
 -- set complete-=t
 -- set complete-=i
 #+end_src
-*** Tabs and indenting
+** Tabs and indenting
 #+begin_src lua
 vim.o.autoindent = true
 vim.opt.expandtab = true       -- When this option is enabled, vi will use spaces instead of tabs
@@ -1049,7 +1049,7 @@ vim.opt.softtabstop = 2 -- Fine tunes the amount of white space to be added
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 #+end_src
-*** Folding
+** Folding
 #+begin_src lua
 vim.wo.foldenable = false
 vim.wo.foldmethod = "expr"
@@ -1063,7 +1063,7 @@ vim.wo.foldnestmax = 3
 vim.wo.foldminlines = 1
 -- vim.opt.foldopen = 'block,hor,mark,percent,quickfix,tag,jump,search,undo' -- What movements open folds
 #+end_src
-*** Diff mode
+** Diff mode
 #+begin_src lua
 -- vim.opt.fillchars:append { diff = "╱" }
 -- vim.opt_global.fillchars:append { diff = "╱" }
@@ -1072,11 +1072,11 @@ vim.wo.foldminlines = 1
 vim.opt.diffopt="filler,internal,closeoff,algorithm:histogram,context:5,linematch:60"
 -- set diffopt=vertical,filler,internal,algorithm:histogram,indent-heuristic
 #+end_src
-*** Mapping
+** Mapping
 #+begin_src lua
 vim.opt.timeoutlen = 500 -- Mapping waiting time
 #+end_src
-*** Reading and writing files
+** Reading and writing files
 #+begin_src lua
 -- vim.opt.backup = false
 -- vim.opt.writebackup = false
@@ -1086,13 +1086,13 @@ vim.opt.modelineexpr = true -- no idea why I can make this local...
 vim.opt.modelines = 3 -- after eventual shebang and emacs...
 -- opt.fileformat = 'unix' -- End of file setting
 #+end_src
-*** The swap file
+** The swap file
 #+begin_src lua
 -- how to show full parent directory when the window is small?
 -- vim.opt.swapfile = false
 vim.opt.updatetime = 250        -- ms to wait for trigger an event
 #+end_src
-*** Command line editing
+** Command line editing
 #+begin_src lua
 vim.opt.history = 10000           -- Remember N lines in history
 vim.opt.wildmode = {list = "longest", "full"} -- When completing, show all options, insert common prefix, then iterate
@@ -1101,21 +1101,21 @@ vim.opt.wildignore = 'deps,.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.ob
 vim.opt.wildignore:append(vim.api.nvim_get_runtime_file("colors/*.{vim,lua}", true))
 vim.opt.wildmenu = true
 #+end_src
-*** Executing external commands
+** Executing external commands
 #+begin_src lua
 #+end_src
-*** Running make and jumping to errors (quickfix)
+** Running make and jumping to errors (quickfix)
 #+begin_src lua
 #+end_src
-*** Language specific
+** Language specific
 #+begin_src lua
 #+end_src
-*** Multi-byte characters
+** Multi-byte characters
 #+begin_src lua
 -- opt.fileencoding = 'utf-8'
 vim.opt.encoding = "utf-8"
 #+end_src
-*** Various
+** Various
 #+begin_src lua
 vim.g.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,terminal" -- removed blank
 vim.opt.sessionoptions:remove('buffers')
