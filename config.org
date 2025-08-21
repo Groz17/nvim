@@ -1122,3 +1122,6 @@ vim.opt.sessionoptions:remove('buffers')
 vim.wo.signcolumn = "yes:1"
 vim.o.exrc=true
 #+end_src
+
+* ftplugin
+	after?
