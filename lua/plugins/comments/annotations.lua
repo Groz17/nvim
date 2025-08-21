@@ -11,11 +11,11 @@ return{
       -- need the mapping in insert mode for java (combine with <a-o> to go to next line)
       -- { mode = { "n"--[[ , "i"]] },"<c-;>", function() require('neogen').generate() end, desc = "Generate annotation" },
       -- Mnemonic: [c]create [d]ocblocks (not used in visual mode, so I can use c)
-      { "cdf", function() require('neogen').generate({type = 'func'}) end, desc = "Generate function annotation" },
+      { "cdf", function() require('neogen').generate({type = 'func'}) end, desc = "Function" },
       -- y because gy is lsp mapping for type definition
-      { "cdc", function() require('neogen').generate({type = 'class'}) end, desc = "Generate class annotation" },
-      -- { "cdy", function() require('neogen').generate({type = 'type'}) end, desc = "Generate type annotation" },
-      { "cdt", function() require('neogen').generate({type = 'type'}) end, desc = "Generate type annotation" },
+      { "cdc", function() require('neogen').generate({type = 'class'}) end, desc = "Class" },
+      -- { "cdy", function() require('neogen').generate({type = 'type'}) end, desc = "Type" },
+      { "cdt", function() require('neogen').generate({type = 'type'}) end, desc = "Type" },
       -- v because av is the text object for the whole file
       {
         "cdd",
@@ -23,7 +23,7 @@ return{
           vim.ui.select( { "func", "class", "type", "file" }, { prompt = "Annotation type to generate", },
             function(choice) require('neogen').generate({ type = choice }) end)
         end,
-        desc = 'Generate desired annotation',
+        desc = 'Choice',
       },
     },
     opts = {
