@@ -7,6 +7,7 @@ return {
     'gpanders/nvim-parinfer',
     -- ft = vim.api.nvim_eval([[getcompletion('','filetype')->filter('v:val=~"lisp"')]]),
     ft = lisp_ft,
+    cond=false,
   },
 
   {
@@ -15,6 +16,7 @@ return {
     'tpope/vim-sexp-mappings-for-regular-people',
     dependencies = {
       'guns/vim-sexp',
+      cond=false,
       init = function()
         -- Toggle this for vim-sexp to not go into insert mode after wrapping something
         vim.g.sexp_insert_after_wrap = 0
