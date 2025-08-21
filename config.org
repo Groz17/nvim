@@ -654,8 +654,9 @@ vim.keymap.set('i','<f12><c-s>','<cmd>up<cr>')
 vim.keymap.set('n', '<f12><c-s>', '<CMD>up<CR>', {desc = "Save Current File" })
 -- vim.keymap.set('n','<f12>k<cr>','<cmd>bd<cr>')
 
+-- wrap?
 vim.keymap.set({'n','i','x','o'},'<f12>tm',[[<c-\><c-n><cmd>tabmove +]]..vim.v.count1..[[<cr>]])
-vim.keymap.set({'n','i','x','o'},'<f12>tM',[[<c-\><c-n><cmd>tabmove ]]..vim.v.count..[[<cr>]])
+vim.keymap.set({'n','i','x','o'},'<f12>tM',[[<c-\><c-n><cmd>tabmove ]]..(vim.v.count1-1)..[[<cr>]])
 vim.keymap.set({'n','i','x','o'},'<f12>t0',[[<c-\><c-n><cmd>tabclose<cr>]])
 vim.keymap.set({'n','i','x','o'},'<f12>t1',[[<c-\><c-n><cmd>tabonly<cr>]])
 vim.keymap.set({'n','i','x','o'},'<f12>t2',[[<c-\><c-n><cmd>tabnew<cr>]])
@@ -667,8 +668,6 @@ vim.keymap.set({'n','i','x','o','c'},'<f12>o',[[<c-\><c-n><cmd>wincmd w<cr>]])
 vim.keymap.set({'n','i','x','o'},'<f12>2',[[<c-\><c-n><cmd>exe "norm! ]]..vim.v.count..[[\<c-w>s\<c-w>\<c-p>"<cr>]])
 vim.keymap.set({'n','i','x','o'},'<f12>3',[[<c-\><c-n><cmd>exe "norm! ]]..vim.v.count..[[\<c-w>v\<c-w>\<c-p>"<cr>]])
 
--- vim.keymap.set('i','<f14><c-k>','<cmd>q!<cr>')
--- vim.keymap.set('i','<f12>k','<cmd>q!<cr>')
 -- more concise to use indicate modes? lua/viml function?
 -- not sure if this is correct...
 -- vim.keymap.set({'n','x','i','t','c'},'<f12>k',[[<c-\><c-n><cmd>q!<cr>]])
