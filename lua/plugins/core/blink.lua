@@ -253,10 +253,10 @@ return {
                   preset='none',
                   -- how to specify modes?
                   -- remember unix philosophy: one thing well
-                  -- ['<C-space>'] = { 'show' },
+                  ['<C-space>'] = { 'show' },
                   -- ['<C-space>'] = { function(cmp) cmp.show({ providers = { 'snippets' } }) end },
                   -- TODO: usa stessi mapping nativi di vim tipo ctrl-x ctrl-f per filenames
-                  ['<C-space>'] = { function(cmp) cmp.show({ providers = { 'copilot' } }) end },
+                  -- ['<C-space>'] = { function(cmp) cmp.show({ providers = { 'copilot' } }) end },
                   -- TODO: usa shortcuts di emacs per providers...
                   -- like dynamic abbrev in emacs? automatically expand but show completion that you can replace current word?
                   -- icon for buffer?
@@ -294,6 +294,7 @@ return {
                     cmdline = {
                       keymap=
                       {preset = 'none',
+                  ['<C-space>'] = { 'show' },
                       -- ['<C-k>'] = { 'select_prev', 'fallback_to_mappings' },
                       ['<C-k>'] = { 'select_prev', 'fallback' },
                       ['<C-j>'] = { 'select_next', 'fallback' },
