@@ -105,7 +105,13 @@ return {
       -- TODO: how to align center?
       plugins = {
         presets = {
+          operators = false,
           motions = false,
+          text_objects = false,
+          windows = false,
+          nav = false,
+          z = false,
+          g = false,
         }
       },
       layout = {
