@@ -6,23 +6,27 @@ return {
   cmd = 'Alias',
   event = 'CmdLineEnter',
   config = function()
-    vim.cmd([[
-    let g:cmdalias_cmdprefixes+=[ "help", "FloatingHelp" ]
-    let g:cmdalias_cmdprefixes+=[ "checkhealth" ]
-    "rule: uppercase for neovim command, lowercase for plugins
-  Alias -range C  checkhealth
- "for commands w/ subcommands, type letter and enter to execute
-  Alias -range g  Neogit
-  Alias -range o  Octo
-  Alias -range n  Neorg
-  Alias -range l  Lazy
-  Alias -range m  Mason
-  Alias -range f  Feed
-  "Alias -range <space>  lua
-" Auto escape / and ? in search command
-cnoremap <expr> / getcmdtype() ==# '/' ? "\/" : "/"
-"TODO:  do this for all other non-space characters like , (low priority)
-]])
+
+    -- vim.g.cmdalias_cmdprefixes+=[ "checkhealth" ]
+    -- rule: uppercase for neovim command, lowercase for plugins
+--   Alias -range C  checkhealth
+--  "for commands w/ subcommands, type letter and enter to execute
+vim.cmd[[
+ Alias -range g  Neogit
+ Alias -range o  Octo
+ Alias -range n  Neorg
+ Alias -range l  Lazy
+ Alias -range m  Mason
+ Alias -range f  Feed
+]]
+      -- "Alias -range <space>  lua
+    for char_code = 33, 126 do
+      local char = string.char(char_code)
+      if char:match("[%p]") then
+        vim.keymap.set('c', char, tostring([[getcmdtype()==#'/'?]] .. vim.fn.string(char) .. ":" .. vim.fn.string(char)), { expr = true })
+      end
+    end
+
   end,
 }
 
