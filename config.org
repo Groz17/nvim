@@ -702,6 +702,7 @@ vim.keymap.set('i','<m-s>.','<c-o>*') -- add c-s/c-r
 -- vim.api.nvim_create_user_command('Occur','lvimgrep /<args>/%|bel vert lopen',{nargs = 1}) (not sure why all the way to the right)
 vim.api.nvim_create_user_command('Occur','lvimgrep /<args>/%|lopen|wincmd L',{nargs = 1})
 vim.keymap.set({"n","i"} , "<m-s>o", [[:Occur<space>]], {desc = "Occur"})
+vim.keymap.set({"n","i"} , "<m-s>w", [[<c-\><c-n><cmd>call feedkeys("/\\<\\><left><left>",'nt')<cr>]], {desc = "Search words"})
 #+end_src
 
 ** others
