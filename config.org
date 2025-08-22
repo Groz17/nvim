@@ -595,7 +595,7 @@ vim.keymap.set(all,'<f16>',function() return[[<c-\><c-n>]]..vim.v.count..[[<c-w>
 
 ** EMACS PARITY
 mapcheck keys || emacs keys
-** <C-x>
+*** <C-x>
 #+begin_src lua
 -- pseudo keys like in emacs for function keys (kanata?)
 -- doesn't work?
@@ -664,7 +664,7 @@ vim.keymap.set({'n','x','i','t','c'},'<f12><c-c>',[[<c-\><c-n><cmd>qa!<cr>]]) --
 --
 #+end_src
 
-** <C-h>
+*** <C-h>
 #+begin_src lua
 -- vim.keymap.set({'n','i'},'<f18>k',[[<c-\><c-n>:h ]]) -- add c-s/c-r
 -- TODO: usa snacks
@@ -675,7 +675,7 @@ vim.keymap.set({'n','x','i','t','c'},'<f18><c-f>',[[<c-\><c-n><cmd>FloatingHelp 
 vim.keymap.set({"n","i"} , "<f18>e", "<cmd>Messages<cr><cmd>wincmd L<cr>" , {desc = "Messages"})
 #+end_src
 
-** <M-s>
+*** <M-s>
 #+begin_src lua
 vim.keymap.set('i','<m-s>.','<c-o>*') -- add c-s/c-r
 -- vim.keymap.set('i','<m-s>,','<c-o>#') -- add c-s/c-r ;; like xref./,
