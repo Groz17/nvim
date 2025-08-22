@@ -63,12 +63,6 @@ return {
         callback = function(buf) vim.cmd([[Rest run]]) end,
       })
 
-      -- TODO: doesn't work
-      require('which-key').add({
-        'r',
-        group = 'http ' .. MiniIcons.get('filetype', 'http'),
-        buffer = true,
-      })
     end,
     -- TODO: nvim-completion (setup con la source)
     -- TODO: crea autocommands to uppercase keywords like get, etc...
