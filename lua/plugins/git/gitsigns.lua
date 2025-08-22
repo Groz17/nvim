@@ -46,7 +46,6 @@ return {
       { '<leader>gu', gitsigns.reset_hunk, desc='Reset Hunk' },
       {mode='x', '<leader>gu', function() gitsigns.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') }) end,desc='Reset Hunk'},
 
-      -- TODO: magari usa <leader>gw come fugitive???
       { '<leader>gS', gitsigns.stage_buffer, desc='Stage Buffer' },
       { '<leader>gU', gitsigns.reset_buffer, desc='Reset Buffer' },
       -- gK for hover would have been nice as well

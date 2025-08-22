@@ -255,7 +255,6 @@ return {
                   -- remember unix philosophy: one thing well
                   ['<C-space>'] = { 'show' },
                   -- ['<C-space>'] = { function(cmp) cmp.show({ providers = { 'snippets' } }) end },
-                  -- TODO: usa stessi mapping nativi di vim tipo ctrl-x ctrl-f per filenames
                   -- ['<C-space>'] = { function(cmp) cmp.show({ providers = { 'copilot' } }) end },
                   -- TODO: usa shortcuts di emacs per providers...
                   -- like dynamic abbrev in emacs? automatically expand but show completion that you can replace current word?
@@ -295,12 +294,11 @@ return {
                       keymap=
                       {preset = 'none',
                   ['<C-space>'] = { 'show' },
+                  -- ['<space>'] = { 'show' }, -- useful for command aliases
                       -- ['<C-k>'] = { 'select_prev', 'fallback_to_mappings' },
                       ['<C-k>'] = { 'select_prev', 'fallback' },
                       ['<C-j>'] = { 'select_next', 'fallback' },
                       -- TODO: add keymap to execute as well (maybe <a-l>)
-                      -- ['<c-s-l>'] = { 'select_accept_and_enter' },
-                      -- ['<c-s-m>'] = { 'select_accept_and_enter' },
                       -- ['<cr>'] = { 'select_accept_and_enter' },
                       -- ['<C-l>'] = { 'select_and_accept' },
                       ['<m-i>'] = { 'accept','fallback' }, --ivy

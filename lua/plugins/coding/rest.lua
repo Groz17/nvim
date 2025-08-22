@@ -1,49 +1,8 @@
--- https://github.com/rest-nvim/rest.nvim/blob/e82dc524894b1b55bcc3296d3644f15c9e06d5ad/spec/examples/request_body/graphql.http#L4
-
--- https://www.reddit.com/r/neovim/comments/19ei6je/hurlnvim_is_a_neovim_plugin_designed_to_run_http/
-  -- https://hurl.dev/docs/capturing-response.html
-
--- rest.nvim-
--- Make this work with GraphQL? maybe convert to it? (https://github.com/search?q=repo%3Arest-nvim%2Frest.nvim%20graph&type=code) test it with GitHub API, IT WORKS
-
--- vim.keymap.set("n", "<leader>rs", ":RunScript<CR>", opts)
-
--- I could drop postman and use it.
--- stick with postman or insomnia (I think the latter is better),
-
--- rest.nvim follows the RFC 2616 request format so any other http file should work without problems.
 return {
   {
-    -- usalo con dolphin-mistral
     'rest-nvim/rest.nvim',
-    -- This is latest commit that works 91badd46c60df6bd9800c809056af2d80d33da4c
     ft = 'http',
-    -- cond = false,
-    -- init = function()
-    -- config = function()
-    -- vim.g.rest_nvim = {
-    -- formatters = {
-    --   json = 'jq',
-    --   html = function(body)
-    --     if vim.fn.executable('tidy') == 0 then
-    --       return body, { found = false, name = 'tidy' }
-    --     end
-    --     local fmt_body = vim.fn
-    --       .system({ 'tidy', '-i', '-q', '--tidy-mark', 'no', '--show-body-only', 'auto', '--show-errors', '0', '--show-warnings', '0', '-' }, body) :gsub('\n$', '')
-    --
-    --     return fmt_body, { found = true, name = 'tidy' }
-    --   end,
-    -- },
-    -- highlight = {
-    --   enable = true,
-    --   timeout = 750,
-    -- },
-    -- }
-    -- end,
     config = function()
-      -- require('rest-nvim').setup(vim.g.rest_nvim)
-      require('rest-nvim').setup(vim.g.rest_nvim)
-      -- https://github.com/search?q=%3CPlug%3ERestNvim&type=code
       -- using mappings without leader in filetype plugins is a genious idea
       -- TODO: consider using localledear
       vim.keymap.set('n', 'rr', '<cmd>Rest run<cr>', { buffer = true, desc = 'Run request under the cursor' })

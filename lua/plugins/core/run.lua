@@ -15,7 +15,6 @@ return {
     -- ╰─────────────────────────────────────────────────────────╯
     -- write pr to use <cmd> instead of : in mappings...
     -- Add preprocessor options, like using sass --scss and replace the buffer... (similar to vim-scriptease's g=)
-    -- TODO: does it work with Java?
     'michaelb/sniprun',
     cond=false,
     -- maybe use cond for filetypes like sql, etc... that have already an operator?

@@ -203,7 +203,6 @@ return {
       -- how to not show space key in which-key buffer?
       local groups = {
         -- {"a", group = "AI"},
-        {"p", group = "Auto-preview"},
         {"d", group = "Diagnostics"},
         -- TODO: add icons? with mini?
         {"e", group = "Edit config files"},
@@ -214,29 +213,19 @@ return {
         -- { 'g', group = 'git', icon = { icon = '󰊢', hl = 'WhichKeyColorOrange', color = 'orange' } },
         -- TODO: come scrivere mapping a cascata come nella versione precedente?
         { 'g', group = 'Git'},
-        {"i", group = "Images"},
         {"I", group = "Swap Nodes"},
         -- evaluate? just cause j is nice to type? (also ctrl-j is how you send commands in the terminal) XPATH/jq...
         -- j = {
         --
         -- },
         -- maybe use m for Miscellaneous? like snack's news, etc...
-        -- m = { name = "Mason" },
-        -- nm = { name = "Metadata" },
-        -- n = { name = "Neorg" },
-        -- {"n", group = "Notifications"},
         {"n", group = "Org-roam"},
-        -- no = { name = "ToC" },
-        {"pl", group = "Load"},
         {"r", group = "Refactor"},
         {"s", group = "Sessions"},
         {"S", group = "Screenshot"},
-        -- t = { name = "Toggle" },
-        -- t = { name = "Treesitter" },
         {"c", group = "Coverage"},
         {"t", group = "Testing"},
         -- {"t", group = "TODO"},
-        -- w = { name = "Windows" },
         {"x",
           group = ' Diagnostics [Trouble]',
           -- g = 'LSP',
@@ -245,16 +234,13 @@ return {
         -- to select with telescope
         -- v = { name = "VimWiki" },
         {"w", group = "Wiki"},
-        -- {"u", group = "UI"},
-        -- {"q", group = "Macros"},
+        -- {"q", group = "Macros"}, (C-x C-k)
         {'"', group = "Registers"},
 
         -- possible to negate character class?
         -- [!glt] = { name = "Miscellaneous" },
         {"<tab>" ,group= "Snippets"},
         {"w" ,group= "Wiki"},
-
-        -- {vim.g.hleader,group= "Hydra"}
       }
 
       local wk = require('which-key')

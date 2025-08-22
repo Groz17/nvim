@@ -23,7 +23,6 @@ local files = {
   -- },
   -- other_projects = {
   --   mapping = 'J',
-  --   -- TODO: come combinare git ls-files dei vari projects?
   --   path = vim.env.HOME .. '/Other_Projects',
   -- },
   -- -- usa uppercase version for others...

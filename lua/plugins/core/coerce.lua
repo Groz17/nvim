@@ -36,8 +36,6 @@ return {
     end,
     config = function(_,opts)
       require('coerce').setup(opts)
-      -- how to override which-key group
-      vim.keymap.set('n','cr?',function() require("which-key").show("cr") end )
       -- TODO: this run before the mapping runs right?
       vim.opt.iskeyword:append('-')
 

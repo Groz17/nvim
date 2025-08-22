@@ -525,24 +525,6 @@ vim.keymap.set('n', 'gcs', [[<Cmd>call append(line('.'), repeat(' ', indent('.')
 -- and then delete ignore lines?
 -- vim.keymap.set('x', 'gQ', [[:<C-u>call append(line("'>"), repeat(' ', indent('.')) .. '-- stylua: ignore end') | call append(line("'<")-1, repeat(' ', indent('.')) .. '-- stylua: ignore start')<CR>gggqG]])
 
--- vim.keymap.set('i', '<m-s-3>', '<esc>m`I<c-r>=&commentstring<cr><bs><bs><c-o>``')
--- FIX: doesnt work
--- vim.keymap.set('i', '<m-s-3>',
--- function()
--- local cmt_len = string.len(vim.bo.commentstring)-2
--- vim.cmd.norm('<esc>m`I<c-r>=&commentstring<cr><bs><bs><esc>``'..cmt_len..'l')
--- vim.cmd.norm('<esc>m`I<c-r>=&commentstring<cr>') -- doesn't work
--- '<esc>m`I<c-r>=&l:commentstring<cr><bs><bs><esc>``'
--- ..string.len(vim.bo.commentstring)-2 ..'l'
--- function()return
--- '<cr><esc>kgccgJa'end,{expr=true}
--- '<cr><esc>kgccgJa'
--- )
--- end)
--- delete comment
--- maybe `] at the end? doesn't work tho
-
-
 -- should check if &commentstring is empty (<expr> mapping)
 vim.keymap.set('n', 'gco', 'o<esc>V"_cx<esc><cmd>normal gcc<cr>fxa<bs>', { desc = 'Add Comment Below' })
 vim.keymap.set('n', 'gcO', 'O<esc>V"_cx<esc><cmd>normal gcc<cr>fxa<bs>', { desc = 'Add Comment Above' })
@@ -557,7 +539,6 @@ vim.keymap.set('n', 'gc<s-cr>', 'O<esc>V"_cx<esc><cmd>normal gcc<cr>fxa<bs><bs>-
 
 -- TODO: add block comment is newline, if it doesn't exist in the language strip newline
 -- sometimes i want to enter insert mode
--- TODO: don't duplicate &commentstring
 -- vim.keymap.set('n', 'gcp', 'o<esc>V"_cx<esc><cmd>normal gcc<cr>fx"_xp', { desc = 'Add Comment Below' })
 -- vim.keymap.set('n', 'gcp', [['<cmd>let @"=@"->split("\n")->map({_,v->'.&l:commentstring[:-4].'." ".v})->join("\n")<cr>p']], { expr = true,desc = 'Add Comment Below' })
 vim.keymap.set('n', 'gcp', function()
@@ -708,8 +689,6 @@ vim.keymap.set({"n","i"} , "<m-s>w", [[<c-\><c-n><cmd>call feedkeys("/\\<\\><lef
 ** others
 #+begin_src lua
 -- org mode
--- insert mode in visual mode like emacs?
-
 vim.keymap.set({'n',},'<tab>',[[za]])
 -- vim.keymap.set({'i',},'<c-o>',[[za]])
 

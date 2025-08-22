@@ -195,8 +195,6 @@ return {
     -- { "<leader>nx", function() require("noice").cmd("errors") end, desc = "Errors" },
     -- { "<leader>ne", function() require("noice").cmd("enable") end, desc = "Enable" },
     -- { "<leader>ns", function() require("noice").cmd("stats") end, desc = "Stats" },
-    -- -- should i do <leader>n .. vim.g.tleader or "<leader><leader>n"? probably the latter... (or maybe the first if there's only one mapping and the second if there are many (like for git mappings))
-    -- -- "<leader>n" .. vim.g.tleader
     -- { "<leader>nt", function() require("noice").cmd("telescope") end, desc = "History in telescope" },
     --
     -- { "<leader>na", function() require("noice").cmd("all") end, desc = "All" },

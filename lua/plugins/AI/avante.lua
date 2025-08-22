@@ -13,20 +13,13 @@
 -- for all these questions use llm git github issues/discussions as MCP
 -- use orgmode?
 return {
-    -- use demicolon for ]x, [x
-    -- does copilot have access to my whole buffer? how to disable and only let it know visual selection/other way specified by me?
-    -- hint???
-    -- history in chat with ^n, ^p???
     "yetone/avante.nvim",
     keys = { "<leader>a" },
-    -- commit = 'd5a4db8',
-    -- visual mode doesn't really matter to avante?
     init = function ()
       -- views can only be fully collapsed with the global statusline
       vim.opt.laststatus = 3
 
     end,
-    -- TODO: show in statusline how many tokens remain https://github.com/yetone/avante.nvim/issues/367
     version = false, -- set this if you want to always pull the latest change
     ---@class avante.Config
     opts = {
@@ -51,16 +44,12 @@ return {
       mappings = {
         -- use v:count to choose provider?
         submit = {
-          -- like comments in microsoft word 
-          -- insert = "<c-cr>",
           -- NOTE: emacs-like keybinding
           insert = "<cr>",
         },
       },
       windows = {
         ask = { floating=true },
-        -- TODO: use dynamic size (enlarge when multiple lines)
-        -- position = "top", -- the position of the sidebar
       },
       -- https://github.com/yetone/avante.nvim/?tab=readme-ov-file#blinkcmp-users
       file_selector = {

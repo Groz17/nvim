@@ -9,9 +9,7 @@ return {
     keys = {
       -- mapping for current buffer and for whole workspace?
       {
-        -- 'm<c-d>',
         'm<cr>',
-        -- 'gX',
         function()
           -- TODO: show message if there are no errors...
           require('lint').try_lint()

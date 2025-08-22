@@ -143,7 +143,6 @@ return {
             macro,
             session,
             debug,
-            -- TODO: non si vede
             db,
             profile,
           },
