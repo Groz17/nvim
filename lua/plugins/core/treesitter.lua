@@ -115,7 +115,6 @@ return
 
       },
 
-
           -- make this work w/ styler.nvim?
           {
             'nvim-treesitter/nvim-treesitter-context',
@@ -126,6 +125,7 @@ return
                 "[j",-- j di jump
                 function() require("treesitter-context").go_to_context() end,
                 desc = "Go to parent context",
+                mode = {"n","x","o"},
               }},
                 opts = {
                 enable = true,   -- Enable this plugin (Can be enabled/disabled later via commands)
