@@ -26,10 +26,10 @@ return {
       -- ╰─────────────────────────────────────────────────────────╯
       -- use demicolon.nvim
       -- TODO: go to next/previous file with unstaged changes with [G,]G???
-      { "]g", function()gitsigns.nav_hunk('next')end, desc="Next Hunk"},
-      { "]G", function()gitsigns.nav_hunk('last')end, desc="Last Hunk"},
-      { "[g", function()gitsigns.nav_hunk('prev') end,  desc="Prev Hunk"},
-      { "[G", function()gitsigns.nav_hunk('first')end,  desc="First Hunk"},
+      { "]g", function()gitsigns.nav_hunk('next')end, desc="Next Hunk", mode = {"n","x","o"}},
+      { "]G", function()gitsigns.nav_hunk('last')end, desc="Last Hunk", mode = {"n","x","o"}},
+      { "[g", function()gitsigns.nav_hunk('prev') end,  desc="Prev Hunk", mode = {"n","x","o"}},
+      { "[G", function()gitsigns.nav_hunk('first')end,  desc="First Hunk", mode = {"n","x","o"}},
 
       -- ╭─────────────────────────────────────────────────────────╮
       -- │ Actions                                                 │
