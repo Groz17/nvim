@@ -16,3 +16,7 @@ augroup END
 "-- Snacks.toggle.zen():toggle()
 "EOF
 
+lua <<
+vim.keymap.set({"n","o"},"gO",function() Snacks.picker.lines({ pattern = '^* ' }) end)
+vim.keymap.set({"n","o"},"<m-g>i",function() Snacks.picker.lines({ pattern = '^* ' }) end)
+.
