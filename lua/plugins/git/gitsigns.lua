@@ -43,8 +43,8 @@ return {
       -- { '<leader>gu', gitsigns.undo_stage_hunk, 'Undo Stage Hunk' } W Deprecated.(use |gitsigns.stage_hunk()| on staged signs)
       { '<leader>gs', gitsigns.stage_hunk, desc='Stage Hunk' },
       {mode='x', '<leader>gs', function() gitsigns.stage_hunk({ vim.fn.line('.'), vim.fn.line('v') }) end, desc='Stage Hunk'},
-      { '<leader>gu', gitsigns.reset_hunk, desc='Reset Hunk' },
-      {mode='x', '<leader>gu', function() gitsigns.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') }) end,desc='Reset Hunk'},
+      { '<leader>gu', gitsigns.reset_hunk, desc='Unstage Hunk' },
+      {mode='x', '<leader>gu', function() gitsigns.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') }) end,desc='Unstage Hunk'},
 
       { '<leader>gS', gitsigns.stage_buffer, desc='Stage Buffer' },
       { '<leader>gU', gitsigns.reset_buffer, desc='Reset Buffer' },
