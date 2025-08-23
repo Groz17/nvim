@@ -59,7 +59,7 @@ return {
 
         -- This may be unwanted, since they displace some of your code
         -- if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
-        -- vim.keymap.set('n','grh', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, { buffer = args.buf, desc = 'Toggle Inlay Hints' })
+        vim.keymap.set('n','grh', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, { buffer = args.buf, desc = 'Toggle Inlay Hints' })
         -- end
       end
 

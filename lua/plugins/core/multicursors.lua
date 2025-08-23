@@ -4,8 +4,8 @@ return {
     branch = "1.0",
     keys = {
         -- Add or skip cursor above/below the main cursor.
-        {mode={"n", "x"}, "<c-j>", function() require("multicursor-nvim").lineAddCursor(1) end},
-        {mode={"n", "x"}, "<c-k>", function() require("multicursor-nvim").lineAddCursor(-1) end},
+        -- {mode={"n", "x"}, "<c-j>", function() require("multicursor-nvim").lineAddCursor(1) end},
+        -- {mode={"n", "x"}, "<c-k>", function() require("multicursor-nvim").lineAddCursor(-1) end},
 
         {mode={"n", "x"}, "<c-n>", function() require("multicursor-nvim").matchAddCursor(1) end},
         {mode={"n", "x"}, "<c-s-n>", function() require("multicursor-nvim").matchAddCursor(-1) end},

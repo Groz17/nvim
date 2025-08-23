@@ -24,6 +24,8 @@ local set_root = function()
 
   -- Set current directory
   vim.fn.chdir(root)
+  -- make it work like autochdir?
+  -- vim.fn.chdir(root or path)
 end
 
 local root_augroup = vim.api.nvim_create_augroup('MyAutoRoot', {})

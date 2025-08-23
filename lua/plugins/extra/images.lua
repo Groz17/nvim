@@ -29,7 +29,7 @@ return {
     },
     cmd = 'YankMedia',
     config = function()
-      vim.api.nvim_create_user_command('YankMedia', function() require("img-clip").paste_image() end)
+      vim.api.nvim_create_user_command('YankMedia', 'PasteImage',{})
     end
   },
   {

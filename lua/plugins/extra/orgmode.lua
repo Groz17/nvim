@@ -1,4 +1,5 @@
 -- https://github.com/nvim-orgmode/orgmode/issues/48#issuecomment-884528170
+--     ◍ textlsp (keywords: text, latex, org)
 -- snacks integration?
 -- local ORG_HOME = vim.fn.expand('$XDG_DATA_HOME/org')
 -- orgmode.setup_ts_grammar()

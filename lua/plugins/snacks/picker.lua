@@ -50,7 +50,7 @@ return {
 
     -- win is winnr-1? or is it always -1?
     -- HACK (would be cool to show light version of current theme)
-    { '<f17>/', function() Snacks.picker.lines({ on_show = function() vim.fn.win_execute(vim.fn.win_getid(vim.fn.winnr()-1)--[[snacks_picker_list]],"Styler kanagawa-paper-canvas") end }) end, desc = 'Buffer Lines' ,mode={'n','i'}},
+    { '<f17>/', function() Snacks.picker.lines({ on_show = function() vim.fn.win_execute(vim.fn.win_getid(vim.fn.winnr()-1)--[[snacks_picker_list]],"Styler ef-tritanopia-light") end }) end, desc = 'Buffer Lines' ,mode={'n','i'}},
     -- TODO: fix (magari usa edgy.nvim)
     -- { '<f17>/', function() Snacks.picker.lines({ on_show = function() require("styler").set_theme(vim.fn.win_getid(vim.fn.winnr()-1), { background = Snacks.toggle.get('background'):toggle() }) end }) end, desc = 'Buffer Lines' },
     -- same as swiper-all
@@ -134,7 +134,8 @@ return {
     { "<f12>rl", function() Snacks.picker.marks() end, desc = 'Marks' ,mode={'n','i'}},
     -- also create insert mode mapping <f17>D
     -- { '<bs>', function() Snacks.picker.resume() end, desc = 'Resume' ,mode={'n','i'}},
-    { '<f15><c-r>', function() Snacks.picker.resume() end, desc = 'Resume' ,mode={'n','i'}},
+    -- v:count?
+    -- { '<f15><c-r>', function() Snacks.picker.resume() end, desc = 'Resume' ,mode={'n','i'}},
     -- <f17>C for all colorschemes, <space><space>c for plugin's colorschemes? use univeral argument
     -- how to preview the current buffer? 
     -- { '<f17>C', function() Snacks.picker.colorschemes() end, desc = 'Colorschemes' },
@@ -261,9 +262,10 @@ return {
                 formatters = {
                   file = {
                     filename_first = true, -- display filename before the file path
-                  },
                 },
-                
+                },
+
+                -- disable builtin keybindings?
                 win = {
                   preview = {
                     keys = {

@@ -42,7 +42,7 @@ return {
         -- Snacks.toggle.option("colorcolumn", { name = "Spelling" }):map("<f13>s", {mode={"n","i"}})
         -- Snacks.toggle.option("cursorcolumn", { name = "Spelling" }):map("<f13>s", {mode={"n","i"}})
         -- TODO:  Fixa
-        Snacks.toggle.option("virtualedit", { name = "Virtualedit" }):map("<f13>v", { mode = {"n","i"} })
+        -- Snacks.toggle.option("virtualedit", { name = "Virtualedit" }):map("<f13>v", { mode = {"n","i"} })
         Snacks.toggle.option("wrap", { name = "Wrap" }):map("<f13>w", { mode = {"n","i"} })
         Snacks.toggle.option("wrap", { name = "Wrap" }):map("<f12>xt", { mode = {"n","i"} }) -- toggle-truncate-lines
         Snacks.toggle.option("modifiable", { name = "Modifiable" }):map("<f13>m", { mode = {"n","i"} })

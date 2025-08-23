@@ -19,7 +19,6 @@ return {
     'cameron-wags/rainbow_csv.nvim',
     init = function()
       vim.g.disable_rainbow_key_mapings = 1
-      -- TODO: doesn't work
       vim.g.rbql_backend_language = 'js'
     end,
     ft = { 'csv', 'tsv', 'csv_semicolon', 'csv_whitespace', 'csv_pipe', 'rfc_csv', 'rfc_semicolon' },

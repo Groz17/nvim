@@ -1,3 +1,4 @@
+-- https://github.com/Erl-koenig/theme-hub.nvim
 return {
   {
     'oonamo/ef-themes.nvim',
@@ -47,75 +48,70 @@ return {
     -- make which-key use the colorscheme?
     'folke/styler.nvim',
     -- FIX: https://github.com/folke/styler.nvim/issues/7
-    opts =function()
-      local markup = "ef-summer" -- violetish
-      local system =  "ef-arbutus" -- brownish
-      local db = "ef-frost" -- whitish
-      local scripting =  "ef-dark" -- nocturnal
+    opts = function()
+      local markup = "ef-summer"         -- violetish
+      local system = "ef-arbutus"        -- brownish
+      local db = "ef-frost"              -- whitish
+      local scripting = "ef-dark"        -- nocturnal
       local shell = "ef-tritanopia-dark" -- reddish
-      local web = "ef-owl" -- synthwavy
-      local data = "ef-owl" -- ....
+      local web = "ef-owl"               -- synthwavy
+      local data = "ef-owl"              -- ....
       return
       {
-      -- interessante che se usi colo theme in uno di questi il colorscheme non cambia
-      themes = {
-        -- Divido i &ft by category così so all'istante di che si tratta quel buffer
-        -- maybe start letter of filetype->start letter of colorscheme? so you remember colorscheme's names
+        -- interessante che se usi colo theme in uno di questi il colorscheme non cambia
+        themes = {
+          -- la cmp window rimane del theme di startup (catppuccin ad esempio)
+          -- Make it accept glob/regex like in vim
+          -- ["*"] = { colorscheme = "shado" },
+          -- magari funge sul fisso
+          -- snacks_picker_list  = { colorscheme = 'kanagawa-lotus' },
 
-        -- ╭─────────────────────────────────────────────────────────╮
-        -- │ prose                                                   │
-        -- ╰─────────────────────────────────────────────────────────╯
-        -- la cmp window rimane del theme di startup (catppuccin ad esempio)
-        -- Make it accept glob/regex like in vim
-        -- ["*"] = { colorscheme = "shado" },
-        -- magari funge sul fisso
-        -- snacks_picker_list  = { colorscheme = 'kanagawa-lotus' },
+          -- Web: Bright, energetic themes reflecting the interactive nature of web development.
+          html       = { colorscheme = web },
+          css        = { colorscheme = web },
+          javascript = { colorscheme = web },
+          typescript = { colorscheme = web },
 
--- Web: Bright, energetic themes reflecting the interactive nature of web development.
-html        = { colorscheme = web },
-css         = { colorscheme = web },
-javascript  = { colorscheme = web },
-typescript  = { colorscheme = web },
+          -- Markup: Warm and pastel Ef themes for a friendly, readable documentation feel.
 
--- Markup: Warm and pastel Ef themes for a friendly, readable documentation feel.
+          markdown   = { colorscheme = markup },
+          rst        = { colorscheme = markup },
+          org        = { colorscheme = markup },
+          tex        = { colorscheme = markup },
+          xml        = { colorscheme = markup },
 
-markdown    = { colorscheme = markup },
-rst         = { colorscheme = markup },
-org         = { colorscheme = markup },
-tex         = { colorscheme = markup },
-xml         = { colorscheme = markup },
+          -- Data: Duo family (light/dark) for clean, distinct clarity typical of data formats.
+          json       = { colorscheme = data },
+          yaml       = { colorscheme = data },
+          toml       = { colorscheme = data },
 
--- Data: Duo family (light/dark) for clean, distinct clarity typical of data formats.
-json        = { colorscheme = data },
-yaml        = { colorscheme = data },
-toml        = { colorscheme = data },
+          -- Database: Cool, neutral color palette for formal, structured data environments.
+          sql        = { colorscheme = db },
+          dbui       = { colorscheme = db },
+          dbout      = { colorscheme = db },
 
--- Database: Cool, neutral color palette for formal, structured data environments.
-sql         = { colorscheme = db },
-dbui       = { colorscheme = db },
-dbout       = { colorscheme = db },
+          -- Build: Utilitarian, frosty/wintery themes for automation/task runners.
+          make       = { colorscheme = 'ef-winter' },
+          -- docker
 
--- Build: Utilitarian, frosty/wintery themes for automation/task runners.
-make        = { colorscheme = 'ef-winter' },
--- docker
+          -- Shell: Dark and frosty themes representing the streamlined, utilitarian nature of shells.
+          sh         = { colorscheme = shell },
+          bash       = { colorscheme = shell },
+          zsh        = { colorscheme = shell },
 
--- Shell: Dark and frosty themes representing the streamlined, utilitarian nature of shells.
-sh          = { colorscheme = shell },
-bash        = { colorscheme = shell },
-zsh         = { colorscheme = shell },
+          -- Scripting: Cool, nocturnal themes for interpreted, rapid scripting languages.
+          python     = { colorscheme = scripting },
+          ruby       = { colorscheme = scripting },
+          perl       = { colorscheme = scripting },
 
--- Scripting: Cool, nocturnal themes for interpreted, rapid scripting languages.
-python      = { colorscheme = scripting },
-ruby        = { colorscheme = scripting },
-perl        = { colorscheme = scripting },
-
--- System Languages: Robust, technical themes for low-level or performance-oriented languages.
-c           = { colorscheme = system },
-cpp         = { colorscheme = system },
-rust        = { colorscheme = system },
-zig         = { colorscheme = system },
-      },
-    }end,
+          -- System Languages: Robust, technical themes for low-level or performance-oriented languages.
+          c          = { colorscheme = system },
+          cpp        = { colorscheme = system },
+          rust       = { colorscheme = system },
+          zig        = { colorscheme = system },
+        },
+      }
+    end,
     -- To programmatically set the colorscheme for a certain window, you can use:
     --
     -- require("styler").set_theme(0, {

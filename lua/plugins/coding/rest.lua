@@ -12,9 +12,7 @@ return {
       vim.keymap.set('n', 'rL', '<cmd>Rest logs<cr>', { buffer = true, desc = 'Opens the rest.nvim logs file' })
       -- preview???
       -- vim.keymap.set("n", "rp", "<Plug>RestNvimPreview", { desc = "Preview the request cURL command", buffer = true})
-      --
-      -- require('telescope').load_extension('rest')
-      -- vim.keymap.set('n', 're', function() require('telescope').extensions.rest.select_env() end, { desc = 'Select/Edit Env file', buffer = true })
+
 
       vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
         group = vim.api.nvim_create_augroup('Rest', { clear = false }),

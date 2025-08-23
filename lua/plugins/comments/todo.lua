@@ -1,4 +1,5 @@
--- integrate w/ neorg?
+-- integrate w/ neorg/org?
+-- https://github.com/IstiCusi/docpair.nvim
 -- would be cool to define automatically expand snippet when typing todo it becomes TODO, or vim mapping
 -- https://github.com/search?q=repo%3Afolke%2Ftodo-comments.nvim+lualine&type=issues
 -- https://github.com/search?q=repo%3Afolke%2Ftodo-comments.nvim%20lualine&type=code

@@ -12,7 +12,6 @@ return {
 
   {
     -- cool that you can use shift to press ( and )
-    -- TODO: add next, last for these text-objects...
     'tpope/vim-sexp-mappings-for-regular-people',
     dependencies = {
       'guns/vim-sexp',

@@ -5,6 +5,7 @@
 -- https://www.semicolonandsons.com/email_subscribers/new
 -- https://github.com/neo451/feed.nvim/wiki/Recipes
 -- grep on contents as well?
+-- reuse emacs feeds?
 return {
   'neo451/feed.nvim',
   cmd = 'Feed',

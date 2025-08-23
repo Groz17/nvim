@@ -38,7 +38,6 @@ return {
     },
   },
   {
-    -- TODO: usa localleader instead of leader... (add PR)
     -- TODO: use a repo config in opts if you're working for a long time for a single repo? or just a octo.json or something local config?
     -- gist create???
     -- put all issues in quickfix/location list???
