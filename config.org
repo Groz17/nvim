@@ -587,6 +587,7 @@ vim.keymap.set("x", ".", "<cmd>norm! .<cr>")
 -- return to previous mode?
 
 -- https://gist.github.com/kawarimidoll/496cb16b40af33e8d84daff6dde8a16f
+-- maybe use 'a' like in :h 'mouse'
 local all = vim.fn.split('nvsxoilct', [[.\zs]])
 -- modes = { "n", "v", "x", "s", "o", "i", "c", "t" },
 -- how to go previos mode? like one shot norm command like ^o but for all modes?
@@ -611,6 +612,7 @@ vim.keymap.set({'n','i'},'<f12><c-o>','<cmd>norm! cip<cr>')
 
 vim.keymap.set({'n','i','x','o','t'},'<f12>1',[[<c-\><c-n><cmd>wincmd o<cr>]])
 vim.keymap.set({'n','i','x','o','t'},'<f12>0',[[<c-\><c-n><cmd>wincmd c<cr>]])
+vim.keymap.set({'n','i','x','o','t'},'<f12>+',[[<c-\><c-n><cmd>wincmd =<cr>]])
 
 -- to use for example in multicursors mode
 vim.keymap.set({'n','i','x','o'},'<f12>(',[[<c-\><c-n><cmd>norm! qqqqq<cr>]])
@@ -767,6 +769,7 @@ vim.keymap.set({'x'},'<c-g>', [[<esc>]])
 
 -- K for man, <c-h>o for :help? what about lsp?
 #+end_src
+
 *** Center
 #+begin_src lua
 -- https://github.com/janpeterd/dotfiles/blob/a89868aa31a4d7ea66f325cda38d3522a5891dfe/dot_config/nvim/plugin/remap.lua#L16
@@ -893,11 +896,13 @@ vim.cmd('hi Visual guibg=peru guifg=Black')
 
 vim.opt.inccommand="split"
 #+end_src
+
 -- vim: foldmethod=expr foldexpr=getline(v\:lnum)=~'^--\ ┣'?'>1'\:getline(v\:lnum)=~'^--\ ─'?'>2'\:'=':
 
 ** Important
 #+begin_src lua
 #+end_src
+
 ** Moving around, searching and patterns
 #+begin_src lua
 vim.opt.ignorecase = true       -- Ignore case letters when search
@@ -908,10 +913,12 @@ vim.opt.startofline = false -- Keep same column when going visual-block column
 -- go to previous/next line with h,l,left arrow and right arrow when cursor reaches end/beginning of line
 -- opt.whichwrap:append "<>[]hl"
 #+end_src
+
 ** Tags
 #+begin_src lua
 vim.opt.complete:remove('t')      -- Don't use tags for completion
 #+end_src
+
 ** Displaying text
 #+begin_src lua
 vim.opt.mousescroll  = 'ver:25,hor:6' -- Customize mouse scroll
@@ -939,6 +946,7 @@ vim.opt.wildmode = {list = "longest", "full"} -- When completing, show all optio
 -- autocmd InsertLeave * :setlocal relativenumber number
 -- display completion matches on your status line
 #+end_src
+
 ** Syntax, highlighting and spelling
 #+begin_src lua
 -- vim.wo.spell = true
@@ -953,6 +961,7 @@ vim.opt.termguicolors = true    -- Enable 24-bit RGB colors
 -- https://github.com/dettonijr/spass-syntax-highlight
 -- au BufRead,BufNewFile *.dfg set filetype=dfg
 #+end_src
+
 ** Multiple windows
 #+begin_src lua
 -- exclude hidden buffers when saving session {for possession.nvim}
@@ -965,20 +974,25 @@ vim.opt.splitbelow = true       -- Horizontal split to the bottom
 vim.opt.laststatus=3            -- Set global statusline
 -- vim.cmd[[let &stc='%=%{v:virtnum>0?"":printf("%X",v:lnum)} ']]
 #+end_src
+
 ** Multiple tab pages
 #+begin_src lua
 -- vim.opt.showtabline = 1
 -- set showtabline=2
 #+end_src
+
 ** Terminal
 #+begin_src lua
 vim.o.title = true
 #+end_src
+
 ** Using the mouse
 #+begin_src lua
-vim.opt.mouse:remove('a') -- Not use mouse
+-- doesn't work w/ noice command line
+vim.opt.mouse = 'a'
 vim.opt.mousescroll  = 'ver:25,hor:6' -- Customize mouse scroll
 #+end_src
+
 ** Messages and info
 #+begin_src lua
 vim.opt.showmode = false -- Not show redundant mode line with airline
@@ -986,9 +1000,11 @@ vim.opt.showmode = false -- Not show redundant mode line with airline
 vim.opt.shortmess:append "sI" -- Disable nvim intro
 -- opt.shortmess:append('filmnrxoOtT') -- Show shorten messages in UI
 #+end_src
+
 ** Selecting text
 #+begin_src lua
 #+end_src
+
 ** Editing text
 #+begin_src lua
 vim.opt.joinspaces = false
@@ -1017,6 +1033,7 @@ vim.o.formatlistpat = [[^\s*[0-9\-\+\*]\+[\.\)]*\s\+]]
 -- set complete-=t
 -- set complete-=i
 #+end_src
+
 ** Tabs and indenting
 #+begin_src lua
 vim.o.autoindent = true
@@ -1029,6 +1046,7 @@ vim.opt.softtabstop = 2 -- Fine tunes the amount of white space to be added
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 #+end_src
+
 ** Folding
 #+begin_src lua
 vim.wo.foldenable = false
@@ -1043,6 +1061,7 @@ vim.wo.foldnestmax = 3
 vim.wo.foldminlines = 1
 -- vim.opt.foldopen = 'block,hor,mark,percent,quickfix,tag,jump,search,undo' -- What movements open folds
 #+end_src
+
 ** Diff mode
 #+begin_src lua
 -- vim.opt.fillchars:append { diff = "╱" }
@@ -1052,10 +1071,12 @@ vim.wo.foldminlines = 1
 vim.opt.diffopt="filler,internal,closeoff,algorithm:histogram,context:5,linematch:60"
 -- set diffopt=vertical,filler,internal,algorithm:histogram,indent-heuristic
 #+end_src
+
 ** Mapping
 #+begin_src lua
 vim.opt.timeoutlen = 500 -- Mapping waiting time
 #+end_src
+
 ** Reading and writing files
 #+begin_src lua
 -- vim.opt.backup = false
@@ -1066,12 +1087,14 @@ vim.opt.modelineexpr = true -- no idea why I can make this local...
 vim.opt.modelines = 3 -- after eventual shebang and emacs...
 -- opt.fileformat = 'unix' -- End of file setting
 #+end_src
+
 ** The swap file
 #+begin_src lua
 -- how to show full parent directory when the window is small?
 -- vim.opt.swapfile = false
 vim.opt.updatetime = 250        -- ms to wait for trigger an event
 #+end_src
+
 ** Command line editing
 #+begin_src lua
 vim.opt.history = 10000           -- Remember N lines in history
@@ -1081,20 +1104,25 @@ vim.opt.wildignore = 'deps,.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.ob
 vim.opt.wildignore:append(vim.api.nvim_get_runtime_file("colors/*.{vim,lua}", true))
 vim.opt.wildmenu = true
 #+end_src
+
 ** Executing external commands
 #+begin_src lua
 #+end_src
+
 ** Running make and jumping to errors (quickfix)
 #+begin_src lua
 #+end_src
+
 ** Language specific
 #+begin_src lua
 #+end_src
+
 ** Multi-byte characters
 #+begin_src lua
 -- opt.fileencoding = 'utf-8'
 vim.opt.encoding = "utf-8"
 #+end_src
+
 ** Various
 #+begin_src lua
 vim.g.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,terminal" -- removed blank
@@ -1104,4 +1132,4 @@ vim.o.exrc=true
 #+end_src
 
 * ftplugin
-	after?
+after?
