@@ -695,6 +695,10 @@ vim.keymap.set({'n',},'<tab>',[[za]])
 vim.keymap.set('n', '<C-i>', '<C-i>') -- Distinguish <C-i> from <Tab>
 -- vim.keymap.set({'i',},'<c-o>',[[za]])
 
+vim.keymap.set('n', '<C-s>', '/')
+vim.keymap.set('i', '<C-s>', '<C-o>/')
+vim.keymap.set('i', '<C-r>', '<C-o>?')
+
 -- https://stackoverflow.com/questions/5312235/how-do-i-correct-vim-spelling-mistakes-quicker
 -- flyspell
 vim.keymap.set('i','<m-tab>','<c-g>u<Esc>[s1z=`]a<c-g>u')
