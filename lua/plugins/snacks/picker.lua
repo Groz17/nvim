@@ -230,6 +230,16 @@ return {
               pattern=""
 
             },
+            help = {
+              confirm = function(picker, item)
+                picker:close()
+                if item then
+                  vim.schedule(function()
+                    vim.cmd("FloatingHelp " .. item.text)
+                  end)
+                end
+              end,
+            },
             commands = commands,
             command_history = commands,
                   explorer = {
