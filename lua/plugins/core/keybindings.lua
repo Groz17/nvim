@@ -223,7 +223,6 @@ return {
         {"r", group = "Refactor"},
         {"s", group = "Sessions"},
         {"S", group = "Screenshot"},
-        {"c", group = "Coverage"},
         {"t", group = "Testing"},
         -- {"t", group = "TODO"},
         {"x",

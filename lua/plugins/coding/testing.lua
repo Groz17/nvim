@@ -33,18 +33,12 @@ return {{
 },
 
 {
-  -- for coverage use <leader>c?
     "andythigpen/nvim-coverage",
     --- @see https://github.com/mozilla/grcov#usage
     dependencies = { "nvim-lua/plenary.nvim", },
     -- maybe use <leader>T as prefix?
-    cond = false,
 		cmd = { "Coverage", "CoverageSummary", "CoverageLoad", "CoverageShow", "CoverageHide", "CoverageToggle", "CoverageClear" },
     keys = {
-      { '<leader>cl', function() require('coverage').load(true) end, desc = 'load' },
-      { '<leader>cc', function() require('coverage').clear() end, desc = 'clear' },
-      { '<leader>ct', function() require('coverage').toggle() end, desc = 'toggle' },
-      { '<leader>cs', function() require('coverage').summary() end, desc = 'summary' },
       { ']u', function() require('coverage').jump_next('uncovered') end, 'jump next uncovered' },
       { '[u', function() require('coverage').jump_prev('uncovered') end, 'jump prev uncovered' },
     },
