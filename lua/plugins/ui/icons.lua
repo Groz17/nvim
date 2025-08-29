@@ -48,7 +48,7 @@ return
     -- }
     {
         -- still don't understand what this plugins does (aren't they inside the font?)
-        { 'echasnovski/mini.icons',
+        { 'nvim-mini/mini.icons',
         version = false, opts = {},
         -- https://github.com/veiledshadow/dotfiles/blob/c6823a8a76ea87321c4b76e025c3b59132316331/nvim/lua/user/editor.lua#L36
         init = function()

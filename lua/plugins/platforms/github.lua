@@ -55,7 +55,7 @@ return {
     -- list of frequently visited repos???
     dependencies = {
       'nvim-lua/plenary.nvim',
-      'echasnovski/mini.icons',
+      'nvim-mini/mini.icons',
     },
     -- keys ={}, -- consider using <leader>go (o di octo)
     -- Add pr to add which-key bindings for every prefix like <localleader>{a,i}, etc...

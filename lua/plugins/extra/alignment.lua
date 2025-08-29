@@ -16,7 +16,7 @@ return {
     -- how to insert multiple split patterns without exiting interactive mode?
     -- not being able to use vim regex is a deal-breaker sadly (add PR...) (vim.regex module?)
     -- how to merge only left or right?
-    'echasnovski/mini.align',
+    'nvim-mini/mini.align',
     cond = false,
     -- enabled = true,
     version = '*',

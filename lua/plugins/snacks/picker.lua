@@ -269,6 +269,7 @@ return {
                 },
                 -- how to adapt size to max string length?
                 ui_select = true,
+                auto_close= false,
                 formatters = {
                   file = {
                     filename_first = true, -- display filename before the file path

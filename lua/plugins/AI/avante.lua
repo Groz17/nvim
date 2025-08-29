@@ -72,7 +72,7 @@ return {
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
       --- The below dependencies are optional,
-      "echasnovski/mini.icons",
+      "nvim-mini/mini.icons",
       "zbirenbaum/copilot.lua", -- for providers='copilot'
       -- 'ravitemer/mcphub.nvim',
     {

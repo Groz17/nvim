@@ -1,1 +1,1 @@
--- https://github.com/echasnovski/mini.nvim/issues/110#issuecomment-1212277863
+-- https://github.com/nvim-mini/mini.nvim/issues/110#issuecomment-1212277863

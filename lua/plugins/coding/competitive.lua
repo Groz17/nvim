@@ -19,7 +19,7 @@ return {{
 
     -- optional
     'nvim-treesitter/nvim-treesitter',
-    'echasnovski/mini.icons',
+    'nvim-mini/mini.icons',
   },
   config = function(_,opts)
     require'leetcode'.setup(opts)

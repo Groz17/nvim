@@ -13,6 +13,6 @@ return {
   end,
   dependencies = {
     'nvim-treesitter/nvim-treesitter',
-    'echasnovski/mini.icons',
+    'nvim-mini/mini.icons',
   },
 }

@@ -14,7 +14,7 @@ return {
   -- TODO: call also when argc=0???
   -- please add image preview (for CodeSnap screenshots)
   -- use some tool to convert a PDF to PNG.
-  'echasnovski/mini.files',
+  'nvim-mini/mini.files',
   cmd = 'Dired',
   opts = {
     content = {
@@ -25,7 +25,7 @@ return {
     mappings = {
       -- FIX: doesn't work...
       -- you can use macro here right?
-      -- https://github.com/echasnovski/mini.nvim/issues/1309
+      -- https://github.com/nvim-mini/mini.nvim/issues/1309
       -- close       = {'<esc>','q'},
       -- close       = '<esc>',
       close       = '<c-g>',
@@ -131,7 +131,7 @@ return {
         vim.keymap.set("n", "gs", files_grug_far_replace, { buffer = args.data.buf_id, desc = "Search in directory" })
       end,
     })
-    -- https://github.com/echasnovski/mini.nvim/blob/848c5e8f428faf843051768e0d56104cd02aea1f/doc/mini-files.txt#L522-L537
+    -- https://github.com/nvim-mini/mini.nvim/blob/848c5e8f428faf843051768e0d56104cd02aea1f/doc/mini-files.txt#L522-L537
     local set_mark = function(id, path, desc)
       MiniFiles.set_bookmark(id, path, { desc = desc })
     end

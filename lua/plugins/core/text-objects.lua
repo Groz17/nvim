@@ -3,7 +3,7 @@ return
   -- Better text-objects
   {
     -- use N and L to select last and first text object on line (buffer)
-    "echasnovski/mini.ai",
+    "nvim-mini/mini.ai",
     dependencies = { "nvim-treesitter/nvim-treesitter-textobjects", cmd = {'TSTextobjectGotoPreviousStart','TSTextobjectGotoNextEnd'}, },
     --    event = "ModeChanged",
     keys = {
@@ -43,7 +43,7 @@ return
           -----------------------------------------------------------
           -- if treesitter is not available in the current buffer use a vim-regexes-based fallback
 
-          -- https://github.com/echasnovski/mini.nvim/issues/192
+          -- https://github.com/nvim-mini/mini.nvim/issues/192
           -- how to get those mappings from treesitter spec? instead of rewriting them...
           -- You can use the capture groups defined in textobjects.scm
 
@@ -262,16 +262,16 @@ return
           [" "] = extra_ai.buffer(),
           -- y = extra_ai.buffer(),
 
-          -- https://github.com/echasnovski/mini.nvim/issues/6
+          -- https://github.com/nvim-mini/mini.nvim/issues/6
 
-          -- https://github.com/echasnovski/mini.nvim/issues/151
+          -- https://github.com/nvim-mini/mini.nvim/issues/151
           -- x = { '%f[%s]%s+[^%s<>=]+=[^%s<>]+', '^%s+().*()$' },
           -- slightly differente from iv and av in the sense that it jumps
           V = { { '%f[%w]()%w+()_', '%f[%u]()()%w*[%l%d]()()%u' } },
           -- ["s"] = { "%f[%w]%w+", "^().*()$" }, -- like `w`, except underbar
 
           -- define swap operator so you can swap words around and other textobjects
-          --https://github.com/echasnovski/mini.nvim/issues/387
+          --https://github.com/nvim-mini/mini.nvim/issues/387
           -- <Cmd>normal cxiacxila<CR> to move argument to the left.
           -- <Cmd>normal cxiacxina<CR> to move argument to the right.
 

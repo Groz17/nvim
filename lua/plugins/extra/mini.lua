@@ -1,5 +1,5 @@
 return {
-  'echasnovski/mini.extra',
+  'nvim-mini/mini.extra',
   version = false,
   lazy = true,
 }

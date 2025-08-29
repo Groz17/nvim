@@ -32,11 +32,11 @@ return {
       -- move_cursor = false, ??? like in surround.nvim
     -- is it possible to integrate with mini-ai text-objects? like using b to surrund with () (ib, ab), or c to surround with class
     -- when there are ambiguities pick the first element in the list of aliases, but what about block? what should we do?
-    -- rv echasnovski/mini.surround -g \*.lua
+    -- rv nvim-mini/mini.surround -g \*.lua
   -- provide all mappings of vim.surround (like surround line with string in its own line)
   -- How to make the cursor not move after surrounding?
   -- Would be nice to add print function: https://github.com/kylechui/nvim-surround/discussions/53#discussioncomment-3341113
-    'echasnovski/mini.surround',
+    'nvim-mini/mini.surround',
     -- it makes sense that q = ", since it's harder to press than ' (you gotta use shift)
     version = false,
   -- what about yS, cS, etc...?
@@ -65,7 +65,7 @@ return {
         replace = 'cs',
         update_n_lines = '',
       },
-      -- https://github.com/echasnovski/mini.nvim/issues/150
+      -- https://github.com/nvim-mini/mini.nvim/issues/150
       -- BUG: It shouldn't add a space after the brace if it's on its one line
       respect_selection_type = true,
       -- search_method = 'cover_or_nearest',
@@ -90,7 +90,7 @@ return {
       --   end,
       -- },
 
-        -- https://github.com/echasnovski/mini.nvim/issues/321
+        -- https://github.com/nvim-mini/mini.nvim/issues/321
         -- Use `<CR>` as surrounding identifier
         ['\r'] = { output = { left = '\n', right = '\n' } },
 

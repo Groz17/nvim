@@ -21,7 +21,7 @@
 -- find better way for comment string of multiple chars
 -- vim: foldmethod=expr foldexpr=getline(v\:lnum)=~'^--\ ┣'?'>1'\:getline(v\:lnum)=~'^--\ ─'?'>2'\:'=':
 
----see https://github.com/echasnovski/mini.nvim/blob/91f7a680fe5765b68456ab6e7b910d478da083b9/lua/mini/basics.lua#L548-L549
+---see https://github.com/nvim-mini/mini.nvim/blob/91f7a680fe5765b68456ab6e7b910d478da083b9/lua/mini/basics.lua#L548-L549
 
  -- scriptease mapping? fallback to that/syntax if no treesitter...
  -- works with right click too
@@ -513,7 +513,7 @@ vim.keymap.set('n', 'gcJ', 'o<esc>V"_cx<esc><cmd>normal gcc<cr>fxa<bs><bs> TODO:
 vim.keymap.set('n', 'gcK', 'O<esc>V"_cx<esc><cmd>normal gcc<cr>fxa<bs><bs> TODO: ', { desc = 'TODO Above' })
 -- vim.keymap.set('n', 'gcK', 'O<esc>V"_cx<esc><cmd>normal gcc<cr>fxa<bs><bs> '..labels[vim.v.count1]..': ', { desc = 'TODO Below' })
 
--- https://github.com/echasnovski/mini.nvim/issues/321#issuecomment-1539603757
+-- https://github.com/nvim-mini/mini.nvim/issues/321#issuecomment-1539603757
 -- vim.keymap.set('n', '<M-m>', [[<Cmd>call append(line('.'), '') | call append(line('.')-1, '')<CR>]])
 -- vim.keymap.set('x', '<M-m>', [[:<C-u>call append(line("'>"), '') | call append(line("'<")-1, '')<CR>]])
 -- TODO: find a way to do this w/ mini.surround (it outputs ^M)
@@ -551,7 +551,7 @@ vim.keymap.set('n', 'gcP', 'O<esc>V"_cx<esc><cmd>normal gcc<cr>fx"_xp', { desc =
 vim.keymap.set('n', 'gc>P', 'O<esc>V"_cx<esc><cmd>normal gcc<cr>fx"_xp>>', { desc = 'Add Comment Above' })
 vim.keymap.set('n', 'gc<P', 'O<esc>V"_cx<esc><cmd>normal gcc<cr>fx"_xp<<', { desc = 'Add Comment Above' })
 vim.keymap.set('x', 'gy', "ygvgc'>p", { remap= true,desc = 'Add Comment Above' })
----@see https://github.com/echasnovski/mini.nvim/issues/283#issuecomment-1565259857
+---@see https://github.com/nvim-mini/mini.nvim/issues/283#issuecomment-1565259857
 vim.keymap.set('x', 'gi', ':normal gcc<CR>') -- i la puoi vedere come invert TODO: fixa blank lines...
 
 -- ─ save after exiting insert mode
@@ -822,7 +822,7 @@ vim.keymap.set('x','<a-w>','<c-o>y')
 vim.keymap.set('x','<c-w>','d')
 vim.keymap.set('x','<a-w>','y')
 
----@see https://github.com/echasnovski/mini.nvim/discussions/1042
+---@see https://github.com/nvim-mini/mini.nvim/discussions/1042
 vim.keymap.set({"i", "n"}, "<A-Space>", "<Cmd>normal! ciw <CR>", { desc = "Just one space" })
 
 vim.keymap.set("i" , "<c-]>", "<c-o>f", { desc = "readline: character-search" })

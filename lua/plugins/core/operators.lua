@@ -3,7 +3,7 @@
 -- "christoomey/vim-sort-motion"
 -- use kanata symbol layer for non-conflicting keymaps...
 return { {
-  'echasnovski/mini.operators',
+  'nvim-mini/mini.operators',
   keys = function(_, keys)
     local opts = require("lazy.core.plugin").values(require("lazy.core.config").spec.plugins["mini.operators"], "opts",
       false)

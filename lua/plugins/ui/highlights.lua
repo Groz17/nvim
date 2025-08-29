@@ -1,8 +1,8 @@
 -- does it work with snacks preview as well, etc...?
--- https://github.com/echasnovski/mini.nvim/issues/878
+-- https://github.com/nvim-mini/mini.nvim/issues/878
 -- TODO: Tailwind: https://github.com/philosofonusus/nvim/blob/f45582c22a17f5ed7ee67fbae40c37e8e3694c13/lua/custom/plugins/colorizer.lua#L11
 return {
-  'echasnovski/mini.hipatterns',
+  'nvim-mini/mini.hipatterns',
   event = 'BufEnter',
   ---@see https://github.com/lassoColombo/macos.config/blob/52daa3c4c70b97570d9b840f997c1e9c3ca7d6de/nvim/lua/custom/UI/hipatterns.lua#L4
   opts = function()
