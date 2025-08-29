@@ -222,7 +222,7 @@ return {
         {"n", group = "Org-roam"},
         {"r", group = "Refactor"},
         {"s", group = "Sessions"},
-        {"S", group = "Screenshot"},
+        {"c", group = "Screenshot"},
         {"t", group = "Testing"},
         -- {"t", group = "TODO"},
         {"x",

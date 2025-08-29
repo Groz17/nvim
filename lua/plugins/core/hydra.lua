@@ -1,4 +1,5 @@
 -- You also have \\ at your disposal (maybe for mapping outside hydra? or most used hydra?)
+-- u can also implement hydra with kanata: on enter press prefix, on exit release it
 
 -- also use vim.g.hleader prefix for mappings that involve hydra-like experience like multi-cursors
 

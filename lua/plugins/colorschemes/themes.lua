@@ -5,7 +5,8 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd [[colorscheme ef-summer]]
+      -- vim.cmd [[colorscheme ef-summer]]
+      vim.cmd [[colorscheme ef-dark]]
     end,
   },
   --         ╭──────────────────────────────────────────────────────────╮
@@ -49,7 +50,7 @@ return {
     'folke/styler.nvim',
     -- FIX: https://github.com/folke/styler.nvim/issues/7
     opts = function()
-      local markup = "ef-summer"         -- violetish
+      -- local markup = "ef-summer"         -- violetish
       local system = "ef-arbutus"        -- brownish
       local db = "ef-frost"              -- whitish
       local scripting = "ef-dark"        -- nocturnal
@@ -74,11 +75,11 @@ return {
 
           -- Markup: Warm and pastel Ef themes for a friendly, readable documentation feel.
 
-          markdown   = { colorscheme = markup },
-          rst        = { colorscheme = markup },
-          org        = { colorscheme = markup },
-          tex        = { colorscheme = markup },
-          xml        = { colorscheme = markup },
+          -- markdown   = { colorscheme = markup },
+          -- rst        = { colorscheme = markup },
+          -- org        = { colorscheme = markup },
+          -- tex        = { colorscheme = markup },
+          -- xml        = { colorscheme = markup },
 
           -- Data: Duo family (light/dark) for clean, distinct clarity typical of data formats.
           json       = { colorscheme = data },

@@ -21,5 +21,10 @@ return {
   dependencies = {
     "folke/snacks.nvim",
   },
-  opts = { auto_reload = false }
+  opts = { auto_reload = true }, -- doesn't work
+  config = function(_, opts)
+    require'aider'.setup(opts)
+    -- same keymap as gptel
+    -- vim.keymap.set('i','<f15>s','. AI!', {desc ="Trigger Aider"} )
+  end
 }

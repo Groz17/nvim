@@ -18,6 +18,7 @@ return{
     -- provide save option as well? (magari in different dir...)
     { "<leader>ca", "<esc><cmd>CodeSnapASCII<CR>", mode = "x", desc = "ASCII - clipboard" },
     -- TODO: how to customize highlighting???
+    -- only works linewise 😥
     { "<leader>ch", "<esc><cmd>CodeSnapHighlight<CR>", mode = "x", desc = "Highlight - clipboard" },
     { "<leader>cH", "<esc><cmd>CodeSnapSaveHighlight<CR>", mode = "x", desc = "Highlight - disk" },
     {mode="x","<leader>cl",":CodeSnap<space>",desc='Language extension - clipboard '},

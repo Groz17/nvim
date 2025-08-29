@@ -657,7 +657,8 @@ vim.keymap.set({'n','i','x','o'},'<f12>3',[[<c-\><c-n><cmd>exe "norm! ]]..vim.v.
 -- vim.keymap.set({'n','x','i','t','c'},'<c-c>',[[<c-c>]])
 -- non funge?
 -- vim.keymap.set({'n','x','i','t','c'},'<f12><c-c>',[[<c-\><c-n><cmd>qa<cr>]])
-vim.keymap.set({'n','x','i','t','c'},'<f12><c-c>',[[<c-\><c-n><cmd>qa!<cr>]]) -- comfirmation b4?
+-- vim.keymap.set({'n','x','i','t','c'},'<f12><c-c>',[[<c-\><c-n><cmd>qa!<cr>]]) -- comfirmation b4?
+vim.keymap.set({'n','x','i','t','c'},'<f12><c-c>',[[<cmd>qa!<cr>]]) -- comfirmation b4?
 -- select statement w/ treesitter & execute?
 -- vim.keymap.set({'n','x','i','t','c'},'<f12><c-e>',[[viSg=]])
 

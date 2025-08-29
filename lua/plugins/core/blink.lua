@@ -265,6 +265,7 @@ return {
                       -- ['<Tab>'] = {'snippet_forward'},
                       -- ['<CR>'] = {'select_and_accept'},
                       -- kanata? to insert newline w/ c-j
+                      -- scroll up if not on first, otherwise kill-line
                       ['<C-k>'] = { 'select_prev', 'fallback' },
                       ["<C-v>"] = { function(cmp) cmp.select_next({ count = 5 }) end, "fallback" },
                       ["<A-v>"] = { function(cmp) cmp.select_prev({ count = 5 }) end, "fallback" },

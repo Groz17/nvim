@@ -1,5 +1,6 @@
 -- https://github.com/dgox16/dotfiles/blob/c46c715eb7d443f6cef15932ea5dbfb0abafed51/.config/nvim/lua/configs/lualine.lua
 -- ogni letter key for mode
+-- show ft plugins in statusline as a remainder
 return {
   {
     'nvim-lualine/lualine.nvim', dependencies = {
