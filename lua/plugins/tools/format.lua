@@ -61,7 +61,7 @@ return {
       -- bash = { 'shellcheck' },
       bash = { 'shfmt' },
       -- sql = { 'sql_formatter' },
-      toml = { 'taplo' },
+      -- toml = { 'taplo' },
       lua = { 'stylua' },
       -- BUG: formatexpr set by setlocal formatexpr=xmlformat#Format()
       -- xml = { 'xmlformatter' },
