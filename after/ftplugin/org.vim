@@ -2,6 +2,7 @@ augroup auto_tangle
 autocmd!
 " src block doesn't contain elisp code
 " usa emacsclient eval...
+" maybe async calls everytime except vimleave?
 autocmd BufWritePost <buffer> if
       \ expand("<afile>:p")=~'^'..$HOME..'/\%(dotfiles/\|\.config/\(emacs\|nvim\)/config\.org$\)' |
       \ echo system('emacsclient --eval "(org-babel-tangle-file \"'.expand('<afile>:p').'\")"') |
@@ -14,6 +15,8 @@ augroup END
 "EOF
 
 lua <<
-vim.keymap.set({"n","o"},"gO",function()Snacks.picker.lines({on_show = function()vim.cmd('1') vim.fn.feedkeys([[^* ]]) end, sort={fields={"idx",}}}) end)
-vim.keymap.set({"n","o"},"<m-g>i",function()Snacks.picker.lines({on_show = function()vim.cmd('1')  vim.fn.feedkeys([[^* ]])end, sort={fields={"idx",}}} )end)
+vim.keymap.set({"n","o"},"gO",function()Snacks.picker.lines({on_show = function()vim.cmd('1') vim.fn.feedkeys([[^* ]]) end, sort={fields={"idx",}}},{buffer=true}) end)
+vim.keymap.set({"n","o"},"<m-g>i",function()Snacks.picker.lines({on_show = function()vim.cmd('1')  vim.fn.feedkeys([[^* ]])end, sort={fields={"idx",}}},{buffer=true} )end)
 .
+
+nnoremap<buffer> <c-c><c-v><c-t> <cmd>echo system('emacsclient --eval "(org-babel-tangle-file \"'.expand('%:p').'\")"')<cr>
