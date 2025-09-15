@@ -135,7 +135,7 @@ return {
     -- also create insert mode mapping <f17>D
     -- { '<bs>', function() Snacks.picker.resume() end, desc = 'Resume' ,mode={'n','i'}},
     -- v:count?
-    -- { '<f15><c-r>', function() Snacks.picker.resume() end, desc = 'Resume' ,mode={'n','i'}},
+    { '<s-bs>', function() Snacks.picker.resume() end, desc = 'Resume' ,mode={'n','i'}},
     -- <f17>C for all colorschemes, <space><space>c for plugin's colorschemes? use univeral argument
     -- how to preview the current buffer? 
     -- { '<f17>C', function() Snacks.picker.colorschemes() end, desc = 'Colorschemes' },

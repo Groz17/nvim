@@ -11,15 +11,16 @@ return
     cmd = { 'DiffviewOpen', 'DiffviewFileHistory', 'DiffviewClose', 'DiffviewToggleFiles', 'DiffviewFocusFiles', 'DiffviewRefresh', 'DiffviewLog' },
 
     -- nnoremap <Leader>idd :<C-u>call feedkeys(':DiffviewOpen<Space><Tab>','t')<CR>
-    -- nnoremap <Leader>idf :DiffviewFileHistory %<CR>
     init = function() vim.opt.fillchars:append({ diff = '╱' }) end,
+    -- t stands for difftool
     keys = {
-      { '<f14>=', '<cmd>DiffviewOpen -- %<cr>', desc = 'Open Diffview' },
-      { '<f14>D', '<cmd>DiffviewOpen<cr>', desc = 'Open Diffview' },
+      -- { '<leader>gt', '<cmd>DiffviewOpen -- %<cr>', desc = 'Open Diffview' },
+      -- { '<leader>gT', '<cmd>DiffviewOpen<cr>', desc = 'Open Diffview' },
+      { '<leader>gD', '<cmd>DiffviewOpen<cr>', desc = 'Open Diffview' },
 
-      -- { '<f14>=', '<cmd>DiffviewFileHistory %<cr>', desc = 'Git log' },
-      -- { '<f14>D', '<cmd>DiffviewFileHistory<cr>', desc = 'Git log (args)' },
-      -- { '<leader>dl', ':DiffviewFileHistory<CR>', mode="x", desc = 'Git log' },
+      { '<leader>gh', '<cmd>DiffviewFileHistory %<cr>', desc = 'Git log' },
+      { '<leader>gH', '<cmd>DiffviewFileHistory<cr>', desc = 'Git log (args)' },
+      { '<leader>gh', ':DiffviewFileHistory<CR>', mode="x", desc = 'Git log' },
 
       { 'q', '<cmd>DiffviewClose<cr>', ft = {"DiffviewFiles", "DiffviewFileHistory"}, desc = 'Close Diffview' },
 
