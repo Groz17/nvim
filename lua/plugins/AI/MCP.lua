@@ -8,7 +8,7 @@ return {
     'nvim-lua/plenary.nvim',
   },
   init = function()
-    vim.keymap.set('n', '<leader>eM', [[<CMD>tab drop ]] .. vim.fn.expand('~/.config/mcphub/servers.json') .. '<CR>', { desc = 'MCP Servers' })
+    -- vim.keymap.set('n', '<leader>eM', [[<CMD>tab drop ]] .. vim.fn.expand('~/.config/mcphub/servers.json') .. '<CR>', { desc = 'MCP Servers' })
   end,
   cmd = 'MCPHub',
   build = 'bundled_build.lua', -- Bundles mcp-hub locally

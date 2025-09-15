@@ -61,7 +61,7 @@ return {
     init = function()
       vim.g.db_ui_disable_info_notifications= 1
       vim.g.db_ui_save_location = vim.fn.stdpath('data') .. '/db_ui'
-      vim.keymap.set('n', '<leader>eD', [[<CMD>tab drop ]] .. vim.g.db_ui_save_location .. [[/connections.json<cr>]], { desc = 'Database connections' })
+      -- vim.keymap.set('n', '<leader>eD', [[<CMD>tab drop ]] .. vim.g.db_ui_save_location .. [[/connections.json<cr>]], { desc = 'Database connections' })
       vim.g.Db_ui_table_name_sorter = function(tables) return vim.fn.sort(tables)  end
 
       vim.g.db_ui_tmp_query_location = vim.fn.stdpath('data') .. '/db_ui/queries'
