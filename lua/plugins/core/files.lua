@@ -15,8 +15,10 @@ return {
   -- please add image preview (for CodeSnap screenshots)
   -- use some tool to convert a PDF to PNG.
   'nvim-mini/mini.files',
+  lazy = false,
   cmd = 'Dired',
   opts = {
+    use_as_default_explorer = true,
     content = {
       -- filter = function(fs_entry)
       --   return not vim.startswith(fs_entry.name, ".")
@@ -58,9 +60,7 @@ return {
     },
     {
       '<f12>pD',
-      function ()
-                require('mini.files').open(Snacks.git.get_root(), false)
-      end,
+      function () require('mini.files').open(Snacks.git.get_root(), false) end,
       desc = 'mini.files (Root)',
     },
   },
