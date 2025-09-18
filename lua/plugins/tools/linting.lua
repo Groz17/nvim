@@ -26,6 +26,7 @@ return {
         -- ["*"] = { "codespell" },
         sh = { 'shellcheck' }, --shellharden?
         bash = { 'shellcheck' },
+        dockerfile = { 'hadolint' },
         lua = { 'luacheck' },
         html = { 'tidy' },
         swift = { 'swiftlint' },
