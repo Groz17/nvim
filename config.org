@@ -972,7 +972,7 @@ vim.keymap.set({"n","i"} , "<m-s>o", [[:Occur<space>]], {desc = "Occur"})
 vim.keymap.set({"n","i"} , "<m-s>w", [[<c-\><c-n><cmd>call feedkeys("/\\<\\><left><left>",'nt')<cr>]], {desc = "Search words"})
 #+end_src
 
-** others
+*** others
 #+begin_src lua
 -- org mode
 vim.keymap.set({'n',},'<tab>',[[za]])
@@ -982,6 +982,9 @@ vim.keymap.set('n', '<C-i>', '<C-i>') -- Distinguish <C-i> from <Tab>
 vim.keymap.set('n', '<C-s>', '/')
 vim.keymap.set('i', '<C-s>', '<C-o>/')
 vim.keymap.set('i', '<C-r>', '<C-o>?')
+
+vim.keymap.set('c', '<C-s>', '<c-g>')
+vim.keymap.set('c', '<C-r>', '<c-t>')
 
 -- https://stackoverflow.com/questions/5312235/how-do-i-correct-vim-spelling-mistakes-quicker
 -- flyspell
