@@ -47,7 +47,7 @@ return {
     },
     -- cr mapping that doesn't split paren/quotes? usa alt-o
     cr = {
-      enable = true,
+      enable = false, -- causes issues to docker ftplugin (and maybe orgmode?) autocmds
       autoclose = true,
     },
     -- https://github.com/abecodes/tabout.nvim/issues/19
