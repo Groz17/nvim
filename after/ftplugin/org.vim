@@ -5,7 +5,7 @@ autocmd!
 " maybe async calls everytime except vimleave?
 autocmd BufWritePost <buffer> if
       \ expand("<afile>:p")=~'^'..$HOME..'/\%(dotfiles/\|\.config/\(emacs\|nvim\)/config\.org$\)' |
-      \ echo system('emacsclient --eval "(org-babel-tangle-file \"'.expand('<afile>:p').'\")"') |
+      \ echo system('emacsclient -a "" --eval "(org-babel-tangle-file \"'.expand('<afile>:p').'\")"') |
       \ endif
 augroup END
 
@@ -19,4 +19,4 @@ vim.keymap.set({"n","o"},"gO",function()Snacks.picker.lines({on_show = function(
 vim.keymap.set({"n","o"},"<m-g>i",function()Snacks.picker.lines({on_show = function()vim.cmd('1')  vim.fn.feedkeys([[^* ]])end, sort={fields={"idx",}}},{buffer=true} )end)
 .
 
-nnoremap<buffer> <c-c><c-v><c-t> <cmd>echo system('emacsclient --eval "(org-babel-tangle-file \"'.expand('%:p').'\")"')<cr>
+nnoremap<buffer> <c-c><c-v><c-t> <cmd>echo system('emacsclient -a "" --eval "(org-babel-tangle-file \"'.expand('%:p').'\")"')<cr>
