@@ -5,6 +5,13 @@
 -- don't start lsp if inside skeletons dir?
 return {
   'cvigilv/esqueleto.nvim',
+  init = function()
+    vim.api.nvim_create_autocmd('BufEnter',{
+      group=vim.api.nvim_create_augroup('TemplateFileType',{clear=true}),
+      pattern = vim.fn.stdpath('config') .. '/skeletons/**',
+      command = 'set ft='
+    })
+  end,
   opts = {
     -- patterns = {'Main.java'}
   },
