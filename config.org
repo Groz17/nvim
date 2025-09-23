@@ -403,10 +403,10 @@ end)
 -- create one that instead insert the current block header (function, class, etc...) with its line number ofc (for context)
 -- vim.keymap.set('x','<leader>y',function()
 
-vim.keymap.set('n','<leader>gg','<cmd>w !gh gist create -<cr>')
-vim.keymap.set('x','<leader>gg',':w !gh gist create -<cr>')
-vim.keymap.set('n','<leader>gG','<cmd>w !gh gist create -p -<cr>')
-vim.keymap.set('x','<leader>gG',':w !gh gist create -p -<cr>')
+vim.keymap.set('n','<leader>gg','<cmd>w !gh gist create -<cr>',{desc="Create private gist"})
+vim.keymap.set('x','<leader>gg',':w !gh gist create -<cr>',{desc="Create private gist"})
+vim.keymap.set('n','<leader>gG','<cmd>w !gh gist create -p -<cr>',{desc="Create public gist"})
+vim.keymap.set('x','<leader>gG',':w !gh gist create -p -<cr>',{desc="Create public gist"})
 
 -- ┣ Insert and append inside text object
 -- https://gist.github.com/wellle/9289224
