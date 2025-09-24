@@ -652,45 +652,6 @@ omap ac <Plug>(coc-classobj-a)
 nmap <silent> <C-s> <Plug>(coc-range-select)
 xmap <silent> <C-s> <Plug>(coc-range-select)
 
-nnoremap Y y$
-
-set <A-s>=s
-set <A-S>=S
-
-" 2-character Sneak (default)
-nmap <A-s>   <Plug>Sneak_s
-nmap <A-S> <Plug>Sneak_S
-" visual-mode
-xmap <A-s>   <Plug>Sneak_s
-xmap <A-S> <Plug>Sneak_S
-" operator-pending-mode
-omap <A-s>   <Plug>Sneak_s
-omap <A-S> <Plug>Sneak_S
-
-" repeat motion
-map ; <Plug>Sneak_;
-map , <Plug>Sneak_,
-
-" 1-character enhanced 'f'
-nmap f <Plug>Sneak_f
-nmap F <Plug>Sneak_F
-" visual-mode
-xmap f <Plug>Sneak_f
-xmap F <Plug>Sneak_F
-" operator-pending-mode
-omap f <Plug>Sneak_f
-omap F <Plug>Sneak_F
-
-" 1-character enhanced 't'
-nmap t <Plug>Sneak_t
-nmap T <Plug>Sneak_T
-" visual-mode
-xmap t <Plug>Sneak_t
-xmap T <Plug>Sneak_T
-" operator-pending-mode
-omap t <Plug>Sneak_t
-omap T <Plug>Sneak_T
-
 " https://vimrcfu.com/snippet/250
 " https://vi.stackexchange.com/a/15785
 function! ToggleHML()
@@ -958,54 +919,6 @@ function! <SID>JumpToRegister()
   execute "normal! `" . c
 endfunction
 
-" This part needs to be viewed raw on GitHub
-set <M-1>=1
-set <M-2>=2
-set <M-3>=3
-set <M-4>=4
-set <M-5>=5
-set <M-6>=6
-set <M-7>=7
-set <M-8>=8
-set <M-9>=9
-set <M-0>=0
-set <M-a>=a
-set <M-b>=b
-set <M-c>=c
-set <M-d>=d
-set <M-e>=e
-set <M-f>=f
-set <M-g>=g
-set <M-h>=h
-set <M-i>=i
-set <M-j>=j
-set <M-k>=k
-set <M-l>=l
-set <M-m>=m
-set <M-n>=n
-set <M-o>=o
-set <M-p>=p
-set <M-q>=q
-set <M-r>=r
-set <M-s>=s
-set <M-t>=t
-set <M-u>=u
-set <M-v>=v
-set <M-w>=w
-set <M-x>=x
-set <M-y>=y
-set <M-z>=z
-set <M->=
-set <M-/>=/
-set <Char-190>=>
-set <Char-188>=<
-set <M-<>=<
-set <M-0>=0
-set <M-%>=%
-set <M-*>=*
-set <M-.>=.
-set <M-^>=^
-set <M-S-f>=F
 
 set sel=exclusive
 ]],{})

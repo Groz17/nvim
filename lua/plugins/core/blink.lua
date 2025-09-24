@@ -25,8 +25,6 @@ return {
     'Kaiser-Yang/blink-cmp-avante', -- make it lazy?
     'mikavilpas/blink-ripgrep.nvim',
     'xzbdmw/colorful-menu.nvim',
-    -- attiva copilot server solo quando usi mapping?
-    "fang2hou/blink-copilot",
     { 'Kaiser-Yang/blink-cmp-git', dependencies = { 'nvim-lua/plenary.nvim' } }
   },
 
@@ -40,7 +38,7 @@ return {
         -- how to show lowercase/uppercase versions of strings in buffer completions? (case-insensitive)
         -- TODO: luasnip?
         -- default = { 'lsp', 'path', 'snippets', 'buffer', 'ecolog', 'emoji', --[['copilot']] },
-        default = { 'lsp', 'path', 'snippets', 'buffer', --[['ecolog',]] --[['git',]] 'omni', 'avante'--[['env']] --[['copilot']] },
+        default = { 'lsp', 'path', 'snippets', 'buffer', --[['ecolog',]] --[['git',]] 'omni', 'avante'--[['env']] },
         -- default = { 'lsp', 'path', 'snippets', 'buffer', 'ecolog', 'emoji', 'copilot' },
         -- markup adn programming (languages) keys?
         per_filetype = {
