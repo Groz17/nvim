@@ -12,7 +12,8 @@ return {
         -- basically unbounded vim/emacs keymaps could become kanata's modifiers
         -- what about visual mode? just operate on that region
         -- Snacks.toggle.animate():map("<f13>a", { mode = {"n","i"} })
-        Snacks.toggle.line_number():map("<f13>n", { mode = {"n","i"} })
+        -- Snacks.toggle.line_number():map("<f13>n", { mode = {"n","i"} })
+        Snacks.toggle.option("number"):map("<f13>n", { mode = {"n","i"} })
         -- maybe use uppercase for lsp-related toggle mappings?
         -- Snacks.toggle.diagnostics():map([[\D]], { mode = {"n","i"} })
         Snacks.toggle.diagnostics():map("<f13>d", { mode = {"n","i"} })
