@@ -14,6 +14,7 @@
 -- use orgmode?
 return {
     "yetone/avante.nvim",
+    cond=false,
     keys = { "<leader>a" },
     init = function ()
       -- views can only be fully collapsed with the global statusline
