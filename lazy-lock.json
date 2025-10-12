@@ -18,8 +18,8 @@
   "conform.nvim": { "branch": "master", "commit": "c64cc754ace603e185ab30113aaef174187eacf8" },
   "conjure": { "branch": "main", "commit": "d450b6508fd63c9b0601a229e75225774228fd2b" },
   "coop.nvim": { "branch": "main", "commit": "85986a6f7390d1362864708dcba097ba0e6b8d39" },
-  "copilot-lsp": { "branch": "main", "commit": "a80e0c17e7366614d39506825f49a25d285fead9" },
-  "copilot.lua": { "branch": "master", "commit": "3cd5086c28c5769f5db147721f457a3e081de254" },
+  "copilot-lsp": { "branch": "main", "commit": "5030766af6dce2181d48b928537ebe1919ec8d22" },
+  "copilot.lua": { "branch": "master", "commit": "304fc5f2dadb5067ed26c60fa69fb7ba8a57eaf3" },
   "curl.nvim": { "branch": "main", "commit": "3ee14fbafc8169fc803e80562ce7ac5b4474bdff" },
   "dadbod-ui-yank": { "branch": "master", "commit": "b0fe1062485ce4fd44f4f41a1fe56090e7152843" },
   "decisive.nvim": { "branch": "main", "commit": "c401541b8429b787d7dcb441e43bee63fc94737c" },
@@ -127,8 +127,15 @@
   "rest.nvim": { "branch": "main", "commit": "de9726ab956e30202aafbcdea83c1d6bffe54227" },
   "schemastore.nvim": { "branch": "main", "commit": "c8af3f44c68757344b4dcb82e2ac48892b1be765" },
   "select-undo.nvim": { "branch": "main", "commit": "d5aa1f0dbef93b7ed4219ef8c7bfae9691264ef7" },
+<<<<<<< Updated upstream
   "sidekick.nvim": { "branch": "main", "commit": "4953ea0599e43687e187b6a8e9ab0ae6d27a9877" },
   "snacks.nvim": { "branch": "main", "commit": "5d9dacd09876eed33bde204d224fa7596ac850e8" },
+||||||| Stash base
+  "snacks.nvim": { "branch": "main", "commit": "7e3c655bec091e39d35ce950a41efd52c6341801" },
+=======
+  "sidekick.nvim": { "branch": "main", "commit": "77432d9e7907563103566ddcaa804683b4f18a1e" },
+  "snacks.nvim": { "branch": "main", "commit": "7e3c655bec091e39d35ce950a41efd52c6341801" },
+>>>>>>> Stashed changes
   "sniprun": { "branch": "master", "commit": "46f5a08df8b7b798d8c37d2b249af6b9ea8e75a3" },
   "stay-in-place.nvim": { "branch": "main", "commit": "0628b6db8970fc731abf9608d6f80659b58932c9" },
   "store.nvim": { "branch": "main", "commit": "1359fe210f619f8e54cb4bc5fdcc40c1edc18876" },
