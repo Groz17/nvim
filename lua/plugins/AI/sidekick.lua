@@ -1,9 +1,9 @@
 return {
   "folke/sidekick.nvim",
   opts = {
-    cli = {
-      win = { layout = "float" },
-    },
+    -- cli = {
+    --   win = { layout = "float" },
+    -- },
   },
   keys = {
     {
