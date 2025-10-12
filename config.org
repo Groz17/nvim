@@ -289,6 +289,13 @@ vim.wo.signcolumn = "yes:1"
 vim.o.exrc=true
 #+end_src
 
+** TODO Refile
+#+begin_src lua
+vim.o.pumborder = 'rounded'
+vim.api.nvim_set_hl(0, 'Pmenu', { bg = 'NONE' })
+vim.api.nvim_set_hl(0, 'PmenuBorder', { bg = 'NONE', fg = "#CC6600" })
+#+end_src
+
 * Keymaps
 :PROPERTIES:
 :header-args: :tangle  ~/.config/nvim/lua/config/keymaps.lua

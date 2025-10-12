@@ -3,3 +3,4 @@
 /snippets/
 lua/config/keymaps.lua
 lua/config/options.lua
+/lazy-lock.json
