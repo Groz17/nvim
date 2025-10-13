@@ -151,6 +151,8 @@ require("lazy").setup({
 -- Cfilter supports using // if you've search smth before
 vim.cmd('packadd cfilter')
 -- vim.cmd('source sortgrop.vim')
+vim.cmd('packadd nvim.difftool')
+vim.cmd('packadd nvim.undotree')
 
 vim.api.nvim_create_autocmd("User", {
   group = vim.api.nvim_create_augroup("LoadDiffview",{}),
