@@ -533,6 +533,7 @@ vim.keymap.set('c','<M-C-e>',[[<c-\>eexpandcmd(getcmdline())<CR>]])
 
 -- ┣ Edit
 
+-- <leader>e$ for starship?
 -- kanata k: also mnemonic for keyboard
 vim.api.nvim_exec2([[
 for f in readdir(expand('~/dotfiles'),{f->f=~'^[^_].\+.org$'})
