@@ -67,7 +67,7 @@ local actions = {
     -- would be cool to use without releasing keys...
     mapping = '<space>f',
     func = function(path)
-    Snacks.picker.--[[git]]files({ cwd = path, layout={preset = "select",preview=false }})
+    Snacks.picker.--[[git]]files({ hidden=true,cwd = path, layout={preset = "select",preview=false } })
     end,
   },
 }
