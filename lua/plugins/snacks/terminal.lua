@@ -20,6 +20,7 @@ return {
     -- like ansi escape codes
     -- { '<space><esc>', function() Snacks.terminal.colorize() end, desc = 'Colorize the current buffer' },
     -- { '<space><c-[>', function() Snacks.terminal.colorize() end, desc = 'Colorize the current buffer' },
+    { '<space>[', function() Snacks.terminal.colorize() end, desc = 'Colorize the current buffer' },
     -- { '<f15><c-[>', function() Snacks.terminal.colorize() end, desc = 'Colorize the current buffer' },
     {
       '<space>/',
