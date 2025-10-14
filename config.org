@@ -382,6 +382,7 @@ vim.keymap.set('n', '<bs>', '<cmd>restart<cr>', { desc =  "Restart" })
 vim.keymap.set("i", ",", ",<c-g>u")
 vim.keymap.set("i", ".", ".<c-g>u")
 vim.keymap.set("i", ";", ";<c-g>u")
+vim.keymap.set("t", "<s-esc>", [[<c-\><c-n>]])
 
 #+end_src
 
