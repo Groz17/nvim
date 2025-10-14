@@ -537,10 +537,10 @@ vim.keymap.set('c','<M-C-e>',[[<c-\>eexpandcmd(getcmdline())<CR>]])
 vim.api.nvim_exec2([[
 for f in readdir(expand('~/dotfiles'),{f->f=~'^[^_].\+\a.org$'})
     "exe "nnoremap <leader>e".f[0] "<cmd>tab drop ~/dotfiles/".f.."<cr>"
-    call v:lua.vim.keymap.set('n','<leader>e'.f[0],"<cmd>tab drop ~/dotfiles/".f.."<cr>",#{desc: f[:-5]})
+    call v:lua.vim.keymap.set('n','<leader>e'.f[0],"<cmd>drop ~/dotfiles/".f.."<cr>",#{desc: f[:-5]})
 endfor
 for f in readdir(expand('~/dotfiles'),{f->f=~'^[^_].\+\A.org$'})
-	call v:lua.vim.keymap.set('n','<leader>e'.f[-5:-5],"<cmd>tab drop ~/dotfiles/".f.."<cr>",#{desc: f[:-5]})
+	call v:lua.vim.keymap.set('n','<leader>e'.f[-5:-5],"<cmd>drop ~/dotfiles/".f.."<cr>",#{desc: f[:-5]})
 endfor
 ]],{})
 
