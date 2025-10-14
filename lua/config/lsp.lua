@@ -21,7 +21,9 @@ for _, package in ipairs(require("mason-registry").get_installed_packages()) do
     else
       name = name:gsub("%-", "_")
     end
-    table.insert(lsp_names, name)
+    if name ~= "copilot" then
+      table.insert(lsp_names, name)
+    end
   end
 end
 
