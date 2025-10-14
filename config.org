@@ -987,6 +987,7 @@ vim.keymap.set({"n","i"} , "<m-s>w", [[<c-\><c-n><cmd>call feedkeys("/\\<\\><lef
 #+begin_src lua
 -- org mode
 vim.keymap.set({'n',},'<tab>',[[za]])
+vim.keymap.set({'n',},'<s-tab>',[[zA]])
 vim.keymap.set('n', '<C-i>', '<C-i>') -- Distinguish <C-i> from <Tab>
 -- vim.keymap.set({'i',},'<c-o>',[[za]])
 
