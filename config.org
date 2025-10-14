@@ -548,10 +548,10 @@ endfor
 -- -- vim.keymap.set('n','<leader>eq',function() return [[<CMD>tab drop ~/.config/nvim/]] .. vim.bo.filetype .. [[/query.scm<cr>]] end,{expr = true, desc="Treesitter queries"})
 -- -- select one plugin file and then list all plugins inside (like for ex first select treesitter and then open telescope again and list textobjects, context, and jump to the corresponding spec) {lazy treesitter}
 -- -- magari append `` to end of mapping
-vim.keymap.set('n','<space>ev', [[<CMD>tab drop ~/.config/nvim/config.org<cr>]],{desc="Vim"})
+vim.keymap.set('n','<space>ev', [[<CMD>drop ~/.config/nvim/config.org<cr>]],{desc="Vim"})
 -- vim.keymap.set('n','<space>ez', [[<CMD>tab drop ~/.config/zellij/config.kdl<cr>]],{desc="Zellij"})
-vim.keymap.set('n','<space>ee', [[<CMD>tab drop ~/.config/emacs/config.org<cr>``]],{desc="Emacs"})
-vim.keymap.set('n','<space>e<cr>', [[<CMD>tab drop ~/dotfiles/_ghostty.org<cr>``]],{desc="Ghostty"})
+vim.keymap.set('n','<space>ee', [[<CMD>drop ~/.config/emacs/config.org<cr>``]],{desc="Emacs"})
+vim.keymap.set('n','<space>e<cr>', [[<CMD>drop ~/dotfiles/_ghostty.org<cr>``]],{desc="Ghostty"})
 -- -- vim.keymap.set('n','<space>eq', [[<CMD>tab drop ~/.config/qutebrowser/config.py<cr>]],{desc="Qutebrowser"})
 -- vim.keymap.set('n','<space>el', [[<CMD>tab drop ~/.config/lazygit/config.yml<cr>]],{desc="Lazygit"})
 
