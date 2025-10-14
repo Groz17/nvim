@@ -202,7 +202,7 @@ return {
       -- NOTE: magari mettigrouppi specifici nei singoli plugin (tipo todo, chatgpt)
       -- how to not show space key in which-key buffer?
       local groups = {
-        -- {"a", group = "AI"},
+        {"a", group = "AI"},
         {"d", group = "Diagnostics"},
         -- TODO: add icons? with mini?
         {"e", group = "Edit config files"},

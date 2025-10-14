@@ -373,8 +373,6 @@ vim.keymap.set('n', 'gV', function() vim.api.nvim_feedkeys("`[" .. vim.fn.strpar
 -- TODO: control
 vim.keymap.set('!',[[<M-\>]], [[<CMD>s/\(^.*\zs\(\s*\)\)\%#\s*/\=cursor(0,strlen(submatch(1))-strlen(submatch(2)))<CR>]])
 
-vim.keymap.set('n', '<bs>', '<cmd>restart<cr>', { desc =  "Restart" })
-
 -- vim.keymap.set('n', '<C-S-R>', "<CMD>exec 'undo' undotree()['seq_last']<CR>")
 
 -- https://github.com/LazyVim/LazyVim/blob/13a4a84e3485a36e64055365665a45dc82b6bf71/lua/lazyvim/config/keymaps.lua#L64
@@ -383,6 +381,7 @@ vim.keymap.set("i", ",", ",<c-g>u")
 vim.keymap.set("i", ".", ".<c-g>u")
 vim.keymap.set("i", ";", ";<c-g>u")
 vim.keymap.set("t", "<s-esc>", [[<c-\><c-n>]])
+-- vim.keymap.set("n", "<s-esc>", [[]])
 
 #+end_src
 
@@ -540,7 +539,7 @@ for f in readdir(expand('~/dotfiles'),{f->f=~'^[^_].\+\a.org$'})
     "exe "nnoremap <leader>e".f[0] "<cmd>tab drop ~/dotfiles/".f.."<cr>"
     call v:lua.vim.keymap.set('n','<leader>e'.f[0],"<cmd>drop ~/dotfiles/".f.."<cr>",#{desc: f[:-5]})
 endfor
-for f in readdir(expand('~/dotfiles'),{f->f=~'^[^_].\+\A.org$'})
+for f in readdir(expand('~/dotfiles'),{f->f=~'^[^_].\+[^[:alpha:]|].org$'})
 	call v:lua.vim.keymap.set('n','<leader>e'.f[-5:-5],"<cmd>drop ~/dotfiles/".f.."<cr>",#{desc: f[:-5]})
 endfor
 ]],{})
@@ -795,6 +794,7 @@ vim.keymap.set('n', 'z/', '/\\%><C-r>=line("w0")-1<CR>l\\%<<C-r>=line("w$")+1<CR
 
 -- similar to hyprland mapping
 vim.keymap.set('n', '<space><bs>', '<cmd>restart<cr>', { desc = 'Restart Neovim' })
+-- vim.keymap.set('n', '<bs>', '<cmd>restart<cr>', { desc =  "Restart" })
 
 -- ─ comments
 --local labels=vim.json.decode(vim.fn.system([[ast-grep run --pattern 'local defaults = { $$$B }' ]] .. vim.fn.stdpath('data') .. [['/lazy/todo-comments.nvim/lua/todo-comments/config.lua']] .. [[| sed 's/^[^:]\+:[0-9]\+://' | sed '1s/local defaults =/return/' | yq -pl -oj | jq '[.keywords|to_entries[]|[.key,((.value.alt) // empty)]|flatten]|map(first)']]))
@@ -1043,11 +1043,11 @@ vim.keymap.set('n','<space>&', function()
 		  local column_nr = tostring(vim.fn.col('.'))
 
 		  Snacks.terminal.open({"emacsclient","-a",'',"-t","+"..line_nr..":"..column_nr,path})
-end
+end, { desc = "Open file in Terminal Emacs" }
 )
 
 -- argument prefix for GUI
-vim.keymap.set('n','<space>u<space>&',function() vim.fn.system('emacsclient -a "" -c +'..vim.fn.line('.')..':'..vim.fn.col('.')..' '..vim.fn.expand('%:p'))end)
+vim.keymap.set('n','<space>u<space>&',function() vim.fn.system('emacsclient -a "" -c +'..vim.fn.line('.')..':'..vim.fn.col('.')..' '..vim.fn.expand('%:p'))end, { desc = "Open file in GUI Emacs" })
 
 -- how TO map in all modes?
 vim.keymap.set({'n','i','x','o'},'<c-m-a>',function() vim.cmd("TSTextobjectGotoPreviousStart @function.outer")end)
