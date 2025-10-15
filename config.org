@@ -734,7 +734,7 @@ vim.cmd[[
 ]]
 
 -- basically C- for vimscript, M- for lua
-vim.keymap.set({'i','n'}, '<M-S-;>',[[<c-\><c-n>:lua<space>]]) -- like M-: for elisp in emacs
+vim.keymap.set(all, '<M-S-;>',[[<c-\><c-n>:lua<space>]]) -- like M-: for elisp in emacs
 vim.keymap.set({'c'}, '<M-p>',[[<c-u>lua <c-p>]])
 vim.keymap.set({'c'}, '<M-n>',[[<c-u>lua <c-n>]])
 
@@ -880,7 +880,8 @@ vim.keymap.set("x", ".", "<cmd>norm! .<cr>")
 
 -- https://gist.github.com/kawarimidoll/496cb16b40af33e8d84daff6dde8a16f
 -- maybe use 'a' like in :h 'mouse'
-local all = vim.fn.split('nvsxoilct', [[.\zs]])
+-- local all = vim.fn.split('nvsxoilct', [[.\zs]])
+local all = vim.fn.split('nvsxoilt', [[.\zs]])
 -- modes = { "n", "v", "x", "s", "o", "i", "c", "t" },
 -- how to go previos mode? like one shot norm command like ^o but for all modes?
 vim.keymap.set(all,'<f16>',function() return[[<c-\><c-n>]]..vim.v.count..[[<c-w>]] end,{expr=true})
@@ -904,18 +905,18 @@ vim.keymap.set({'n','i'},'<f12><c-o>','<cmd>norm! cip<cr>')
 
 vim.keymap.set({'n','i','x','o','t'},'<M-v>','<c-u>')
 
-vim.keymap.set({'n','i','x','o','t'},'<f12>1',[[<c-\><c-n><cmd>wincmd o<cr>]])
-vim.keymap.set({'n','i','x','o','t'},'<f12>0',[[<c-\><c-n><cmd>wincmd c<cr>]])
-vim.keymap.set({'n','i','x','o','t'},'<f12>+',[[<c-\><c-n><cmd>wincmd =<cr>]])
+vim.keymap.set(all,'<f12>1',[[<c-\><c-n><cmd>wincmd o<cr>]])
+vim.keymap.set(all,'<f12>0',[[<c-\><c-n><cmd>wincmd c<cr>]])
+vim.keymap.set(all,'<f12>+',[[<c-\><c-n><cmd>wincmd =<cr>]])
 
 -- to use for example in multicursors mode
-vim.keymap.set({'n','i','x','o'},'<f12>(',[[<c-\><c-n><cmd>norm! qqqqq<cr>]])
-vim.keymap.set({'n','i','x','o'},'<f12>)',[[<c-\><c-n><cmd>norm! q<cr>]])
-vim.keymap.set({'n','i','x','o'},'<f12>e',[[<c-\><c-n><cmd>norm! Q<cr>]])
+vim.keymap.set(all,'<f12>(',[[<c-\><c-n><cmd>norm! qqqqq<cr>]])
+vim.keymap.set(all,'<f12>)',[[<c-\><c-n><cmd>norm! q<cr>]])
+vim.keymap.set(all,'<f12>e',[[<c-\><c-n><cmd>norm! Q<cr>]])
 
-vim.keymap.set({'n','i'},'<f12>(','<cmd>norm! qq<cr>')
-vim.keymap.set({'n','i'},'<f12>)','<cmd>norm! q<cr>')
-vim.keymap.set({'n','i'},'<f12>e','<cmd>norm! Q<cr>')
+-- vim.keymap.set({'n','i'},'<f12>(','<cmd>norm! qq<cr>')
+-- vim.keymap.set({'n','i'},'<f12>)','<cmd>norm! q<cr>')
+-- vim.keymap.set({'n','i'},'<f12>e','<cmd>norm! Q<cr>')
 
 vim.keymap.set("i" , "<f12><C-;>", [[<cmd>norm gccj<cr><cmd>startinsert<cr>]], {desc = "Comment"})
 vim.keymap.set({"n"} , "<f12><C-;>", [[<cmd>norm gccj<cr>]], {desc = "Comment"})
@@ -932,18 +933,18 @@ vim.keymap.set('n', '<f12><c-s>', '<CMD>up<CR>', {desc = "Save Current File" })
 -- vim.keymap.set('n','<f12>k<cr>','<cmd>bd<cr>')
 
 -- wrap?
-vim.keymap.set({'n','i','x','o'},'<f12>tm',[[<c-\><c-n><cmd>tabmove +]]..vim.v.count1..[[<cr>]])
-vim.keymap.set({'n','i','x','o'},'<f12>tM',[[<c-\><c-n><cmd>tabmove ]]..(vim.v.count1-1)..[[<cr>]])
-vim.keymap.set({'n','i','x','o'},'<f12>t0',[[<c-\><c-n><cmd>tabclose<cr>]])
-vim.keymap.set({'n','i','x','o'},'<f12>t1',[[<c-\><c-n><cmd>tabonly<cr>]])
-vim.keymap.set({'n','i','x','o'},'<f12>t2',[[<c-\><c-n><cmd>tabnew<cr>]])
-vim.keymap.set({'n','i','x','o'},'<f12>to',[[<c-\><c-n><cmd>tabnext<cr>]])
-vim.keymap.set({'n','i','x','o'},'<f12>tO',[[<c-\><c-n><cmd>tabprevious<cr>]])
+vim.keymap.set(all,'<f12>tm',[[<c-\><c-n><cmd>tabmove +]]..vim.v.count1..[[<cr>]])
+vim.keymap.set(all,'<f12>tM',[[<c-\><c-n><cmd>tabmove ]]..(vim.v.count1-1)..[[<cr>]])
+vim.keymap.set(all,'<f12>t0',[[<c-\><c-n><cmd>tabclose<cr>]])
+vim.keymap.set(all,'<f12>t1',[[<c-\><c-n><cmd>tabonly<cr>]])
+vim.keymap.set(all,'<f12>t2',[[<c-\><c-n><cmd>tabnew<cr>]])
+vim.keymap.set(all,'<f12>to',[[<c-\><c-n><cmd>tabnext<cr>]])
+vim.keymap.set(all,'<f12>tO',[[<c-\><c-n><cmd>tabprevious<cr>]])
 -- noremap <silent> <c-x>5 <cmd>echo "Frames are only in Emacs/GNU Emacs"<cr>
 
-vim.keymap.set({'n','i','x','o','c'},'<f12>o',[[<c-\><c-n><cmd>wincmd w<cr>]])
-vim.keymap.set({'n','i','x','o'},'<f12>2',[[<c-\><c-n><cmd>exe "norm! ]]..vim.v.count..[[\<c-w>s\<c-w>\<c-p>"<cr>]])
-vim.keymap.set({'n','i','x','o'},'<f12>3',[[<c-\><c-n><cmd>exe "norm! ]]..vim.v.count..[[\<c-w>v\<c-w>\<c-p>"<cr>]])
+vim.keymap.set(all,'<f12>o',[[<c-\><c-n><cmd>wincmd w<cr>]])
+vim.keymap.set(all,'<f12>2',[[<c-\><c-n><cmd>exe "norm! ]]..vim.v.count..[[\<c-w>s\<c-w>\<c-p>"<cr>]])
+vim.keymap.set(all,'<f12>3',[[<c-\><c-n><cmd>exe "norm! ]]..vim.v.count..[[\<c-w>v\<c-w>\<c-p>"<cr>]])
 
 -- more concise to use indicate modes? lua/viml function?
 -- not sure if this is correct...
@@ -952,7 +953,7 @@ vim.keymap.set({'n','i','x','o'},'<f12>3',[[<c-\><c-n><cmd>exe "norm! ]]..vim.v.
 -- non funge?
 -- vim.keymap.set({'n','x','i','t','c'},'<f12><c-c>',[[<c-\><c-n><cmd>qa<cr>]])
 -- vim.keymap.set({'n','x','i','t','c'},'<f12><c-c>',[[<c-\><c-n><cmd>qa!<cr>]]) -- comfirmation b4?
-vim.keymap.set({'n','x','i','t','c'},'<f12><c-c>',[[<cmd>qa!<cr>]]) -- comfirmation b4?
+vim.keymap.set(all,'<f12><c-c>',[[<cmd>qa!<cr>]]) -- comfirmation b4?
 -- select statement w/ treesitter & execute?
 -- vim.keymap.set({'n','x','i','t','c'},'<f12><c-e>',[[viSg=]])
 
@@ -965,10 +966,10 @@ vim.keymap.set({'n','x','i','t','c'},'<f12><c-c>',[[<cmd>qa!<cr>]]) -- comfirmat
 #+begin_src lua
 -- vim.keymap.set({'n','i'},'<f18>k',[[<c-\><c-n>:h ]]) -- add c-s/c-r
 -- TODO: usa snacks
-vim.keymap.set({'n','x','i','t','c'},'<f18>K',[["<c-\><c-n>:FloatingHelp "..(mode()=='n'?'':mode()->tolower()..'_')]], {expr=true})
+vim.keymap.set(all,'<f18>K',[["<c-\><c-n>:FloatingHelp "..(mode()=='n'?'':mode()->tolower()..'_')]], {expr=true})
 -- how to escape single quote for fzf?
-vim.keymap.set({'n','x','i','t','c'},'<f18>r',[[<c-\><c-n><cmd>FloatingHelp user-manual<cr>]] )
-vim.keymap.set({'n','x','i','t','c'},'<f18><c-f>',[[<c-\><c-n><cmd>FloatingHelp faq<cr>]] )
+vim.keymap.set(all,'<f18>r',[[<c-\><c-n><cmd>FloatingHelp user-manual<cr>]] )
+vim.keymap.set(all,'<f18><c-f>',[[<c-\><c-n><cmd>FloatingHelp faq<cr>]] )
 vim.keymap.set({"n","i"} , "<f18>e", "<cmd>Messages<cr><cmd>wincmd L<cr>" , {desc = "Messages"})
 #+end_src
 
@@ -1112,10 +1113,10 @@ vim.keymap.set({"n","i"}, "<C-l>", function()
 end)
 
 -- TODO: not really previous, just alternate
-vim.keymap.set({'n','i','x','o'},'<c-m-v>',[[<cmd>call win_execute(bufwinid(bufname(0)),'noautocmd exe "norm! '..v:count..'\<c-d>"')<cr>]])
-vim.keymap.set({'n','i','x','o'},'<c-m-s-v>',[[<cmd>call win_execute(bufwinid(bufname(0)),'noautocmd exe "norm! '..v:count..'\<c-u>"')<cr>]])
+vim.keymap.set(all,'<c-m-v>',[[<cmd>call win_execute(bufwinid(bufname(0)),'noautocmd exe "norm! '..v:count..'\<c-d>"')<cr>]])
+vim.keymap.set(all,'<c-m-s-v>',[[<cmd>call win_execute(bufwinid(bufname(0)),'noautocmd exe "norm! '..v:count..'\<c-u>"')<cr>]])
 
-vim.keymap.set({'n','i','x','o'},'<m-r>',[[<c-\><c-n><cmd>norm! M<cr>i]])
+vim.keymap.set(all,'<m-r>',[[<c-\><c-n><cmd>norm! M<cr>i]])
 
 -- distinguish visual mode coming from and insert? select mode!
 vim.keymap.set('s','<c-w>','<bs>')
