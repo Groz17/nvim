@@ -1,5 +1,6 @@
 augroup auto_tangle
 autocmd!
+" also should tangle files that reference just saved file...
 " src block doesn't contain elisp code
 " usa emacsclient eval...
 " maybe async calls everytime except vimleave?
