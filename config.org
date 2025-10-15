@@ -318,6 +318,12 @@ vim.api.nvim_set_hl(0, 'PmenuBorder', { bg = 'NONE', fg = "#CC6600" })
 
 ---see https://github.com/nvim-mini/mini.nvim/blob/91f7a680fe5765b68456ab6e7b910d478da083b9/lua/mini/basics.lua#L548-L549
 
+-- https://gist.github.com/kawarimidoll/496cb16b40af33e8d84daff6dde8a16f
+-- maybe use 'a' like in :h 'mouse'
+-- local all = vim.fn.split('nvsxoilct', [[.\zs]])
+local all = vim.fn.split('nvsxoilt', [[.\zs]])
+-- modes = { "n", "v", "x", "s", "o", "i", "c", "t" },
+
  -- scriptease mapping? fallback to that/syntax if no treesitter...
  -- works with right click too
 vim.keymap.set('n', 'zS', '<cmd>Inspect<CR>')
@@ -534,15 +540,14 @@ vim.keymap.set('c','<M-C-e>',[[<c-\>eexpandcmd(getcmdline())<CR>]])
 -- ┣ Edit
 
 -- kanata k: also mnemonic for keyboard
-vim.api.nvim_exec2([[
-for f in readdir(expand('~/dotfiles'),{f->f=~'^[^_].\+\a.org$'})
-    "exe "nnoremap <leader>e".f[0] "<cmd>tab drop ~/dotfiles/".f.."<cr>"
-    call v:lua.vim.keymap.set('n','<leader>e'.f[0],"<cmd>drop ~/dotfiles/".f.."<cr>",#{desc: f[:-5]})
+vim.api.nvim_exec2([=[
+for f in readdir(expand('~/dotfiles'),{f->f=~'^[^_].\+[[:alpha:]|].org$'})
+		call v:lua.vim.keymap.set('n','<leader>e'.f[0],"<cmd>drop ~/dotfiles/".fnameescape(f).."<cr>",#{desc: f[:-6]..(f[-5:-5]=~'\a'?f[-5:-5]:'')})
 endfor
 for f in readdir(expand('~/dotfiles'),{f->f=~'^[^_].\+[^[:alpha:]|].org$'})
-	call v:lua.vim.keymap.set('n','<leader>e'.f[-5:-5],"<cmd>drop ~/dotfiles/".f.."<cr>",#{desc: f[:-5]})
+	call v:lua.vim.keymap.set('n','<leader>e'.f[-5:-5],"<cmd>drop ~/dotfiles/".fnameescape(f).."<cr>",#{desc: f[:-6]})
 endfor
-]],{})
+]=],{})
 
 -- -- magari versione uppercase per scripts?
 -- -- vim.keymap.set('n','<leader>eq',function() return [[<CMD>tab drop ~/.config/nvim/]] .. vim.bo.filetype .. [[/query.scm<cr>]] end,{expr = true, desc="Treesitter queries"})
@@ -878,11 +883,6 @@ vim.keymap.set("x", ".", "<cmd>norm! .<cr>")
 -- ┣ Kanata
 -- return to previous mode?
 
--- https://gist.github.com/kawarimidoll/496cb16b40af33e8d84daff6dde8a16f
--- maybe use 'a' like in :h 'mouse'
--- local all = vim.fn.split('nvsxoilct', [[.\zs]])
-local all = vim.fn.split('nvsxoilt', [[.\zs]])
--- modes = { "n", "v", "x", "s", "o", "i", "c", "t" },
 -- how to go previos mode? like one shot norm command like ^o but for all modes?
 vim.keymap.set(all,'<f16>',function() return[[<c-\><c-n>]]..vim.v.count..[[<c-w>]] end,{expr=true})
 #+end_src
