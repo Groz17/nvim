@@ -10,3 +10,5 @@ vim.keymap.set('n', 'o', function()
     return 'o'
   end
 end, { buffer = true, expr = true })
+
+if vim.fn.executable('vscode-json-language-server') then vim.lsp.enable('jsonls') end
