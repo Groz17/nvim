@@ -986,6 +986,8 @@ vim.keymap.set({"n","i"} , "<m-s>w", [[<c-\><c-n><cmd>call feedkeys("/\\<\\><lef
 *** others
 #+begin_src lua
 -- org mode
+vim.keymap.set({'n',},'<M-u>',[[gUeel]])
+vim.keymap.set({'n',},'<M-l>',[[gueel]])
 vim.keymap.set({'n',},'<tab>',[[za]])
 vim.keymap.set({'n',},'<s-tab>',[[zA]])
 vim.keymap.set('n', '<C-i>', '<C-i>') -- Distinguish <C-i> from <Tab>
@@ -1074,7 +1076,7 @@ vim.keymap.set({'x'},'<c-g>', [[<esc>]])
 -- K for man, <c-h>o for :help? what about lsp?
 #+end_src
 
-*** Center
+**** Center
 #+begin_src lua
 -- https://github.com/janpeterd/dotfiles/blob/a89868aa31a4d7ea66f325cda38d3522a5891dfe/dot_config/nvim/plugin/remap.lua#L16
 local last_press_time = 0
