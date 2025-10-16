@@ -857,12 +857,10 @@ vim.keymap.set('x', 'gi', ':normal gcc<CR>') -- i la puoi vedere come invert TOD
 -- nice nice just for notetaking?
 -- magari crea autocmd da insert mode? cosi quando ad esempio usi <a-p> in insert mode lo
 -- combina con git tracking
-vim.keymap.set('i','<esc>','<esc><cmd>up<cr>')
+-- vim.keymap.set('i','<esc>',[[&modifiable&&!empty(bufname())?"<esc><cmd>up<cr>":"<esc>"]],{expr=true})
+vim.cmd[[inoremap<expr> <esc> &modifiable&&!empty(bufname())?'<esc><cmd>up<cr>':'<esc>']]
 -- one saves, the other doesn't :d
-vim.keymap.set('i','<c-[>','<esc>')
--- don't work?
--- vim.keymap.set('i','<esc>',"&buftype==''?'<esc><cmd>up<cr>':'<esc>'", {expr=true})
--- vim.cmd[[inoremap<expr><esc> &buftype==''?'<esc><cmd>up<cr>':'<esc>']]
+-- vim.keymap.set('i','<c-[>','<esc>')
 -- vim.keymap.set({'i','n'},'<f16>',function()
 -- local char = vim.fn.getchar()
 -- vim.cmd(char)
