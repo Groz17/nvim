@@ -257,19 +257,20 @@ return {
                   -- TODO: usa shortcuts di emacs per providers...
                   -- like dynamic abbrev in emacs? automatically expand but show completion that you can replace current word?
                   -- icon for buffer?
+                  -- use v:count with hex trick for different sources?
                   ['<m-/>'] = { function(cmp) cmp.show({ providers = { 'buffer' } }) end },
                   ['<C-l>'] = { 'select_and_accept','fallback' }, -- or maybe <c-l>? (create table?)
                   -- ['<C-i>'] = { 'snippet_forward' }, -- or maybe <c-l>? (create table?)
-["<Tab>"] = {
-        "snippet_forward",
-        function() -- sidekick next edit suggestion
-          return require("sidekick").nes_jump_or_apply()
-        end,
-        function() -- if you are using Neovim's native inline completions
-          return vim.lsp.inline_completion.get()
-        end,
-        "fallback",
-      },
+                  ["<Tab>"] = {
+                    "snippet_forward",
+                    function() -- sidekick next edit suggestion
+                      return require("sidekick").nes_jump_or_apply()
+                    end,
+                    function() -- if you are using Neovim's native inline completions
+                      return vim.lsp.inline_completion.get()
+                    end,
+                    "fallback",
+                  },
                       -- ['<CR>'] = {'select_and_accept'},
                       -- kanata? to insert newline w/ c-j
                       -- scroll up if not on first, otherwise kill-line
