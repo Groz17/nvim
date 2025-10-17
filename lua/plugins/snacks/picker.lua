@@ -218,6 +218,7 @@ return {
             -- use <c-space> instead and <c-g> for ignore like fzf-lua? or maybe <c-s-g>?
             grep = {
               need_search = false,
+              hidden = true,
             },
             projects = {
               recent = false,
