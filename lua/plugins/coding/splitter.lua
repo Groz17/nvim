@@ -1,6 +1,7 @@
 -- splitter: https://www.reddit.com/r/neovim/comments/1gv1jfs/comment/ly2bzcq/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
 
 -- would be nice to toggle every element inside an array/list/dict
+-- Works w/ YAML!
 return {{
   -- should support comments turning them in block comments no?
   -- TODO: add Perl support
