@@ -1,4 +1,3 @@
--- https://github.com/sudo-tee/opencode.nvim
 return {
   "folke/sidekick.nvim",
   opts = {

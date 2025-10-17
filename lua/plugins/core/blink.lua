@@ -283,7 +283,7 @@ return {
                       ['<C-j>'] = { 'select_next', 'fallback' },
                       ['<C-n>'] = { 'fallback' },
 
-                      ["<C-g>"] = { "cancel", "fallback" },
+                      ["<C-g>"] = { "cancel", "fallback_to_mappings" },
 
                       -- [] = {'show_documentation'},
                       -- [] = {'hide_documentation'},
