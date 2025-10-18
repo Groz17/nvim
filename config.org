@@ -1163,5 +1163,5 @@ after?
 #+begin_src bash :results raw :tangle no :stdin ~/dotfiles/mcp|.org:MCP
 jq 'map_values(.command as $command |
   if .type == "local" then . + { command: $command[0] } + { args: $command[1:] }
-  else .type = "http" end | . + { "tools": ["*"] })'
+  else .type = "http" end | . + { "tools": ["*"] }|del(.type))'
 #+end_src
