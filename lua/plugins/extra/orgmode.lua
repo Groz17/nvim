@@ -36,7 +36,7 @@ return{
       -- NOTE: This isn't using the prefix, but instead <Leader>, so we change it explicitly
       -- in insert mode though?
       org = {
-        -- org_meta_return = '<m-cr>',
+        org_meta_return = '<m-cr>',
         org_next_visible_heading = false,
         org_previous_visible_heading = false,
       },
