@@ -95,7 +95,7 @@ return {
     { '<f17>A', function() Snacks.picker.autocmds() end, desc = 'Autocmds' ,mode={'n','i'}},
     -- { '<f17>#', function() Snacks.picker.autocmds() end, desc = 'Autocmds' },
     -- like for exists() function
-    -- { '<f17><c-s-;>', function() Snacks.picker.command_history() end, desc = 'Command History' },
+    { '<f17>:', function() Snacks.picker.command_history() end, desc = 'Command History' },
     -- { '<f17>/', function() Snacks.picker.search_history() end, desc = 'Search History' },
     -- doesn't work...
     -- { '<f17><cr>', function() Snacks.picker.commands() end, desc = 'Commands' },
