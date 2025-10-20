@@ -5,6 +5,7 @@
 :PROPERTIES:
 :header-args: :tangle  ~/.config/nvim/lua/config/options.lua
 :END:
+
 ** TODO Task list
 - [ ] automatically refile those options?
 - [ ] find nice configs/categories
@@ -23,9 +24,6 @@ vim.g.maplocalleader = vim.keycode[[\]]
 -- Tip: per tradurre più parole usa visual mode
 -- autocmd Filetype markdown,vimwiki set keywordprg=trans\ :it
 -- autocmd Filetype markdown,vimwiki set keywordprg=trans\ en:it
-
--- aumenta fzf history
-vim.opt.shada={"!","'500","<50","s10","h"}
 
 vim.g.health = { style = 'float' }
 
@@ -56,6 +54,8 @@ vim.opt.inccommand="split"
 #+end_src
 
 -- vim: foldmethod=expr foldexpr=getline(v\:lnum)=~'^--\ ┣'?'>1'\:getline(v\:lnum)=~'^--\ ─'?'>2'\:'=':
+
+Categories from =:options=:
 
 ** Important
 #+begin_src lua
@@ -265,6 +265,7 @@ vim.opt.wildmenu = true
 
 ** Executing external commands
 #+begin_src lua
+vim.o.sh='/usr/bin/env bash'
 #+end_src
 
 ** Running make and jumping to errors (quickfix)
@@ -287,6 +288,8 @@ vim.g.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,terminal" -- 
 vim.opt.sessionoptions:remove('buffers')
 vim.wo.signcolumn = "yes:1"
 vim.o.exrc=true
+-- aumenta fzf history
+vim.opt.shada={"!","'500","<50","s10","h"}
 #+end_src
 
 ** TODO Refile
