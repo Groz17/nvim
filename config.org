@@ -46,10 +46,6 @@ set guicursor=n-v-c:block-Cursor/lCursor,i-n:Cursor2/lCursor2
 
 -- set guifont=DroidSansMono\ Nerd\ Font\ 11
 
--- maybe create highlight.lua file?
-vim.cmd('hi Visual guibg=peru guifg=Black')
--- hi Visual guibg=#000066 guifg=#00ff99
-
 vim.opt.inccommand="split"
 #+end_src
 
@@ -118,6 +114,11 @@ vim.opt.cursorline = true -- Highlight current line
 vim.opt.termguicolors = true    -- Enable 24-bit RGB colors
 -- https://github.com/dettonijr/spass-syntax-highlight
 -- au BufRead,BufNewFile *.dfg set filetype=dfg
+
+vim.cmd('hi Visual guibg=peru guifg=Black')
+-- hi Visual guibg=#000066 guifg=#00ff99
+vim.api.nvim_set_hl(0, 'Pmenu', { bg = 'NONE' })
+vim.api.nvim_set_hl(0, 'PmenuBorder', { bg = 'NONE', fg = "#CC6600" })
 #+end_src
 
 ** Multiple windows
@@ -190,6 +191,8 @@ vim.o.formatlistpat = [[^\s*[0-9\-\+\*]\+[\.\)]*\s\+]]
 -- don't use included files and tag complete for better performances. Add this to your vimrc for these options :
 -- set complete-=t
 -- set complete-=i
+
+vim.o.pumborder = 'rounded'
 #+end_src
 
 ** Tabs and indenting
@@ -290,13 +293,6 @@ vim.wo.signcolumn = "yes:1"
 vim.o.exrc=true
 -- aumenta fzf history
 vim.opt.shada={"!","'500","<50","s10","h"}
-#+end_src
-
-** TODO Refile
-#+begin_src lua
-vim.o.pumborder = 'rounded'
-vim.api.nvim_set_hl(0, 'Pmenu', { bg = 'NONE' })
-vim.api.nvim_set_hl(0, 'PmenuBorder', { bg = 'NONE', fg = "#CC6600" })
 #+end_src
 
 * Keymaps
