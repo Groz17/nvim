@@ -7,26 +7,10 @@
 --
 -- find inspiration for mappings
 -- https://github.com/search?q=SubversiveSubstitute&type=code
-
--- local sub_prefix = 'g<space>'
-
--- usa S per questi plugin di sostituzione...
 return {
 
   {
--- grug project?
     'MagicDuck/grug-far.nvim',
-    -- keys = {
-    --   {
-    --     mode = { 'n', 'x' }, '<c-s-/>',
-    --     function()
-    --       local search = vim.fn.getreg('/')
-    --       if search and vim.startswith(search, '\\<') and vim.endswith(search, '\\>') then search = '\\b' .. search:sub(3, -3) .. '\\b' end
-    --       require('grug-far').open({ prefills = { search = search } })
-    --     end,
-    --       { desc = 'grug-far: Search using @/ register value or visual selection' },
-    --     }
-    -- },
     -- TODO: turn quickfix into grug-far buffer?
     opts = {
       headerMaxWidth = 80,

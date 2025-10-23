@@ -56,12 +56,12 @@ return {
           require('mini.files').open(vim.fn.expand('%:p:h'), false)
         end
       end,
-      desc = 'mini.files (directory of current file)',
+      desc = "Current file's directory",
     },
     {
       '<f12>pD',
       function () require('mini.files').open(Snacks.git.get_root(), false) end,
-      desc = 'mini.files (Root)',
+      desc = "Root's directory",
     },
   },
   config = function(_, opts)

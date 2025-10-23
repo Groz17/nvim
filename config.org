@@ -304,7 +304,7 @@ vim.opt.shada={"!","'500","<50","s10","h"}
 - Never use literal spaces in a mapping, use <space> (formatting may take those away and it's more explicit):
   - be explicit with final space: ={ '<leader>gC', ':Git commit -v -q<space>' }=
 - Don't use leader(s) mappings for operators (ex: surround), use them for general plugin mappings that don't define an operator (or text object of course)
-- Capitalize desc field: rg 'desc\s*=\s*\W+[a-z]' --vimgrep |v -q-
+	- Capitalize desc field: rg 'desc\s*=\s*[[:punct:]]+[a-z]' --vimgrep |v -q-
 - Take inspiration from emacs/nano mappings 
 - Use <f19> or whatever for universal argument (hold u)
 
