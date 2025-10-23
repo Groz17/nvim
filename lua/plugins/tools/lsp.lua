@@ -44,10 +44,10 @@ return {
 
         -- vim.keymap.set('n', '[I', vim.lsp.buf.references, { buffer = bufnr, desc = 'Goto references' })
 
-        vim.keymap.set('n', 'grO', vim.lsp.buf.workspace_symbol, { buffer = args.buf, desc = 'Workspace symbol' })
+        vim.keymap.set('n', '<f19>gO', vim.lsp.buf.workspace_symbol, { buffer = args.buf, desc = 'Workspace symbol' })
         -- used in mini.ai
-        vim.keymap.set("n", "grc", vim.lsp.buf.incoming_calls, { buffer = args.buf, desc = "Incoming calls" })
-        vim.keymap.set("n", "grC", vim.lsp.buf.outgoing_calls, { buffer = args.buf, desc = "Outgoing calls" })
+        -- vim.keymap.set("n", "grc", vim.lsp.buf.incoming_calls, { buffer = args.buf, desc = "Incoming calls" })
+        -- vim.keymap.set("n", "grC", vim.lsp.buf.outgoing_calls, { buffer = args.buf, desc = "Outgoing calls" })
 
         -- grl? toggle?
         vim.keymap.set('n', 'grl', vim.lsp.codelens.run, { buffer = args.buf, desc = 'Run code lens actions' })

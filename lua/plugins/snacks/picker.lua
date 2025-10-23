@@ -148,6 +148,8 @@ return {
     -- │ LSP                                                     │
     -- ╰─────────────────────────────────────────────────────────╯
     { '<f17>L', function() Snacks.picker.lsp_config() end, desc = 'LSP' ,mode={'n','i'}},
+    { 'grc', function() Snacks.picker.lsp_incoming_calls() end, desc = 'Incoming calls' ,mode={'n','i'}},
+    { 'grC', function() Snacks.picker.lsp_outgoing_calls() end, desc = 'Outgoing calls' ,mode={'n','i'}},
     -- quickfix is just one keypress away (<c-q>)
     -- create kanata/vim leader layer for lsp mappings?
     -- { [[gD]], function() Snacks.picker.lsp_declarations() end, desc = 'Goto Declaration' ,mode={'n','i'}},
@@ -320,6 +322,7 @@ return {
                       -- stessi mapping del picker
                       -- emacs
                       ["<f12>h"] = { "select_all", mode = { "i", "n" } },
+                      ["<f13>r"] = { "toggle_regex", mode = { "i", "n" } },
                       ["<f13>i"] = { "toggle_ignored", mode = { "i", "n" } },
                       ["<f13>h"] = { "toggle_hidden", mode = { "i", "n" } },
                       ["<f13>f"] = { "toggle_follow", mode = { "i", "n" } },
