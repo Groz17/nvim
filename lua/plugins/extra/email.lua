@@ -50,9 +50,9 @@ return {
     cmd = {
       'HimalayaUI',
     },
-    keys = {
-      { '<f12>m', '<cmd>HimalayaUI<cr>', desc = 'Himalaya UI', },
-    },
+    -- keys = {
+    --   { '<f12>m', '<cmd>HimalayaUI<cr>', desc = 'Himalaya UI', },
+    -- },
     config = function()
       vim.cmd([[
         augroup lasCR
