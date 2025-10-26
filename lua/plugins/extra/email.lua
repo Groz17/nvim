@@ -6,10 +6,9 @@ return {
   {
     -- TODO: support visual mode commands?
     'yousefakbar/notmuch.nvim',
-    cond = false,
     cmd = { 'Notmuch', 'NmSearch' },
     opts = {
-      -- notmuch_db_path = os.getenv('HOME') .. '/mail/outlook',
+      notmuch_db_path = os.getenv('HOME') .. '/mail/',
       -- notmuch_db_path = os.getenv('BACKUP_DIR') .. '/mail/outlook',
       -- maildir_sync_cmd = "mbsync personal",
       keymaps = {
