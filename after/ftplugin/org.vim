@@ -6,7 +6,7 @@ autocmd!
 " maybe async calls everytime except vimleave?
 " don't tangle files w/ pattern |.org (| looks like a barrier)
 autocmd BufWritePost <buffer> if
-      \ expand("<afile>:p")=~'^'..$HOME..'/\%(dotfiles/.*[^|].org\|\.config/\(emacs\|nvim\)/config\.org$\)' |
+      \ expand("<afile>:p")=~'^'..$HOME..'/\%(dots/.*[^|].org\|\.config/\(emacs\|nvim\)/config\.org$\)' |
       \ echo system('emacsclient -a "" --eval "(org-babel-tangle-file \"'.expand('<afile>:p').'\")"') |
       \ endif
 augroup END

@@ -542,11 +542,11 @@ vim.keymap.set('c','<M-C-e>',[[<c-\>eexpandcmd(getcmdline())<CR>]])
 -- kanata k: also mnemonic for keyboard
 -- add uppercase version for (main) tangled file?
 vim.api.nvim_exec2([=[
-for f in readdir(expand('~/dotfiles'),{f->f=~'^[^_].\+[[:alpha:]|].org$'})
-		call v:lua.vim.keymap.set('n','<leader>e'.f[0],"<cmd>drop ~/dotfiles/".fnameescape(f).."<cr>",#{desc: f[:-6]..(f[-5:-5]=~'\a'?f[-5:-5]:'')})
+for f in readdir(expand('~/dots'),{f->f=~'^[^_].\+[[:alpha:]|].org$'})
+		call v:lua.vim.keymap.set('n','<leader>e'.f[0],"<cmd>drop ~/dots/".fnameescape(f).."<cr>",#{desc: f[:-6]..(f[-5:-5]=~'\a'?f[-5:-5]:'')})
 endfor
-for f in readdir(expand('~/dotfiles'),{f->f=~'^[^_].\+[^[:alpha:]|].org$'})
-	call v:lua.vim.keymap.set('n','<leader>e'.f[-5:-5],"<cmd>drop ~/dotfiles/".fnameescape(f).."<cr>",#{desc: f[:-6]})
+for f in readdir(expand('~/dots'),{f->f=~'^[^_].\+[^[:alpha:]|].org$'})
+	call v:lua.vim.keymap.set('n','<leader>e'.f[-5:-5],"<cmd>drop ~/dots/".fnameescape(f).."<cr>",#{desc: f[:-6]})
 endfor
 ]=],{})
 
@@ -557,7 +557,7 @@ endfor
 vim.keymap.set('n','<space>ev', [[<CMD>drop ~/.config/nvim/config.org<cr>]],{desc="Vim"})
 -- vim.keymap.set('n','<space>ez', [[<CMD>tab drop ~/.config/zellij/config.kdl<cr>]],{desc="Zellij"})
 vim.keymap.set('n','<space>ee', [[<CMD>drop ~/.config/emacs/config.org<cr>``]],{desc="Emacs"})
-vim.keymap.set('n','<space>e<cr>', [[<CMD>drop ~/dotfiles/_ghostty.org<cr>``]],{desc="Ghostty"})
+vim.keymap.set('n','<space>e<cr>', [[<CMD>drop ~/dots/_ghostty.org<cr>``]],{desc="Ghostty"})
 -- -- vim.keymap.set('n','<space>eq', [[<CMD>tab drop ~/.config/qutebrowser/config.py<cr>]],{desc="Qutebrowser"})
 -- vim.keymap.set('n','<space>el', [[<CMD>tab drop ~/.config/lazygit/config.yml<cr>]],{desc="Lazygit"})
 
@@ -1161,7 +1161,7 @@ after?
 #+end_src
 
 #+name: adapter
-#+begin_src bash :results raw :tangle no :stdin ~/dotfiles/mcp|.org:MCP
+#+begin_src bash :results raw :tangle no :stdin ~/dots/mcp|.org:MCP
 jq 'map_values(.command as $command |
   if .type == "local" then . + { command: $command[0] } + { args: $command[1:] }
   else .type = "http" end | . + { "tools": ["*"] }|del(.type))'
