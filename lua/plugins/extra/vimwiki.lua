@@ -385,7 +385,7 @@ return {
         confirm = function(picker, item)
             local path = wikipath .. item.file
             vim.fn.writefile(vim.list_extend({ '' }, clipboard), path, 'a')
-            vim.fn.system('dunstify -a neovim "Sent clipboard to "' .. vim.fn.shellescape(vim.fn.fnamemodify(path,[[:~:s?\~/vimwiki/??]])) .. ' ' .. vim.fn.shellescape(vim.trim(clipboard[1])))
+            vim.fn.system('dunstify -a neovim "Sent clipboard to "' .. vim.fn.shellescape(vim.fn.fnamemodify(path,[[:~:s?\~/vimwiki/??]])) .. ' ' .. vim.fn.shellescape(vim.trim(vim.fn.join(clipboard,"\n"))))
             picker:close()
           end,
           -- 
