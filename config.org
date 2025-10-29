@@ -421,6 +421,22 @@ vim.keymap.set('x','<leader>gg',':w !gh gist create -<cr>',{desc="Create private
 vim.keymap.set('n','<leader>gG','<cmd>w !gh gist create -p -<cr>',{desc="Create public gist"})
 vim.keymap.set('x','<leader>gG',':w !gh gist create -p -<cr>',{desc="Create public gist"})
 
+--- vim.keymap.set('n','<c-s-k>','<CMD>exe "abo " ..  (v:count ?? "") .. "split"<cr>')
+--- vim.keymap.set('n','<c-s-h>','<CMD>exe "abo " ..  (v:count ?? "") .. "vsplit"<cr>')
+--- vim.keymap.set('n','<c-s-j>','<CMD>exe "rightbelow " ..  (v:count ?? "") .. "split"<cr>')
+--- vim.keymap.set('n','<c-s-l>','<CMD>exe "rightbelow " ..  (v:count ?? "") .. "vsplit"<cr>')
+
+-- vim.keymap.set('n','<c-w>k','<CMD>exe "abo " ..  (v:count ?? "") .. "new|startinsert"<cr>')
+-- vim.keymap.set('n','<c-w>h','<CMD>exe "abo " ..  (v:count ?? "") .. "vnew|startinsert"<cr>')
+-- vim.keymap.set('n','<c-w>j','<CMD>exe "rightbelow " ..  (v:count ?? "") .. "new|startinsert"<cr>')
+-- vim.keymap.set('n','<c-w>l','<CMD>exe "rightbelow " ..  (v:count ?? "") .. "vnew|startinsert"<cr>')
+-- vim.keymap.set('n','<c-w><c-k>','<CMD>exe "abo " ..  (v:count ?? "") .. "new|startinsert"<cr>')
+-- vim.keymap.set('n','<c-w><c-h>','<CMD>exe "abo " ..  (v:count ?? "") .. "vnew|startinsert"<cr>')
+-- vim.keymap.set('n','<c-w><c-j>','<CMD>exe "rightbelow " ..  (v:count ?? "") .. "new|startinsert"<cr>')
+-- vim.keymap.set('n','<c-w><c-l>','<CMD>exe "rightbelow " ..  (v:count ?? "") .. "vnew|startinsert"<cr>')
+-- :[count]winc[md] {arg} solution???
+
+
 -- ┣ Insert and append inside text object
 -- https://gist.github.com/wellle/9289224
 
