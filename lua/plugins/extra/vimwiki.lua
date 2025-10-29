@@ -42,7 +42,6 @@ return {
     local mappings = {}
     table.insert(mappings, '<leader>w')
     -- table.insert(mappings, '<leader>V')
-    table.insert(mappings, '<space><space>')
     table.insert(mappings, '<space>?')
     table.insert(mappings, '<leader>Qd')
     table.insert(mappings, '<leader>Qy')
@@ -455,7 +454,6 @@ return {
       end
     end
 
-    vim.keymap.set('n', '<space><space>', function() send_clipboard('todo') end, { desc = "Go to Wiki file" })
     vim.keymap.set('n', '<leader>Qd', function() send_outside('todo') end, { desc = "Go to Wiki file" })
     vim.keymap.set('n', '<leader>Qy', function() send_outside('data') end, { desc = "Go to Wiki file" })
     vim.keymap.set('n', '<leader>?', function()vim.fn.setreg(vim.v.register,vim.fn.input('String to send' )) send_clipboard('todo') end, { desc = "Go to Wiki file" })
