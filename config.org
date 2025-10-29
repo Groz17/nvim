@@ -962,14 +962,8 @@ vim.keymap.set(all,'<f12>o',[[<c-\><c-n><cmd>wincmd w<cr>]])
 vim.keymap.set(all,'<f12>2',[[<c-\><c-n><cmd>exe "norm! ]]..vim.v.count..[[\<c-w>s\<c-w>\<c-p>"<cr>]])
 vim.keymap.set(all,'<f12>3',[[<c-\><c-n><cmd>exe "norm! ]]..vim.v.count..[[\<c-w>v\<c-w>\<c-p>"<cr>]])
 
--- more concise to use indicate modes? lua/viml function?
--- not sure if this is correct...
--- vim.keymap.set({'n','x','i','t','c'},'<f12>k',[[<c-\><c-n><cmd>q!<cr>]])
--- vim.keymap.set({'n','x','i','t','c'},'<c-c>',[[<c-c>]])
--- non funge?
--- vim.keymap.set({'n','x','i','t','c'},'<f12><c-c>',[[<c-\><c-n><cmd>qa<cr>]])
--- vim.keymap.set({'n','x','i','t','c'},'<f12><c-c>',[[<c-\><c-n><cmd>qa!<cr>]]) -- comfirmation b4?
-vim.keymap.set(all,'<f12><c-c>',[[<cmd>qa!<cr>]]) -- comfirmation b4?
+vim.keymap.set(all,'<f12>k<cr>',[[<c-\><c-n><cmd>bd<cr>]])
+vim.keymap.set(all,'<f12><c-c>',[[<c-\><c-n><cmd>qa<cr>]])
 -- select statement w/ treesitter & execute?
 -- vim.keymap.set({'n','x','i','t','c'},'<f12><c-e>',[[viSg=]])
 
