@@ -35,15 +35,6 @@ return {
       { 'h', '<CMD>bwipeout<CR>', ft = 'mail' },
       -- {"h","q", ft = "mail", remap = true}
     },
-    config = function(_, opts)
-      require('notmuch').setup(opts)
-      vim.cmd([[
-        augroup UnmapMacro
-        au!
-        au Filetype notmuch-threads unmap<buffer> q
-        augroup END
-        ]])
-    end,
   },
   {
     'aliyss/vim-himalaya-ui',
