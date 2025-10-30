@@ -1,5 +1,10 @@
 return {
   'sudo-tee/opencode.nvim',
+  keys = {
+    {'<leader>og'},
+    {'<leader>oi'},
+    {'<leader>oI'},
+  },
   opts = {
     keymap = {
       input_window = {

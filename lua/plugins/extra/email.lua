@@ -9,7 +9,6 @@ return {
     cmd = { 'Notmuch', 'NmSearch' },
     opts = {
       notmuch_db_path = os.getenv('XDG_DATA_HOME') .. '/mail/',
-      -- notmuch_db_path = os.getenv('BACKUP_DIR') .. '/mail/outlook',
       -- maildir_sync_cmd = "mbsync personal",
       keymaps = {
         sendmail = '<C-g><C-g>',
@@ -31,8 +30,10 @@ return {
       { 'l', '<CR>', ft = 'notmuch-hello', remap = true },
       { 'l', '<CR>', ft = 'notmuch-threads', remap = true },
       -- {"h","q", ft = "notmuch-threads", remap = true},
-      { 'h', '<CMD>bwipeout<CR>', ft = 'notmuch-threads' },
-      { 'h', '<CMD>bwipeout<CR>', ft = 'mail' },
+      { 'h', '<c-^>', ft = 'notmuch-threads' },
+      { 'h', '<c-^>', ft = 'mail' },
+      -- { 'h', '<CMD>bwipeout<CR>', ft = 'notmuch-threads' },
+      -- { 'h', '<CMD>bwipeout<CR>', ft = 'mail' },
       -- {"h","q", ft = "mail", remap = true}
     },
   },
