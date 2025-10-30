@@ -1019,8 +1019,6 @@ vim.keymap.set('i','<m-tab>','<c-g>u<Esc>[s1z=`]a<c-g>u')
 -- f for fix
 -- vim.keymap.set('i','jf','<c-g>u<Esc>[s1z=`]a<c-g>u')
 
-vim.keymap.set('i','<m-tab>','<c-g>u<Esc>[s1z=`]a<c-g>u')
-
 vim.keymap.set({'n','i'},'<c-s-/>',[[<cmd>exe "norm! \<c-r>"<cr>]]) --redo?
 vim.keymap.set({'n','i'},'<c-/>',"<cmd>norm! u<cr>")
 vim.keymap.set({'n','i'},'<m-s-,>',"<cmd>norm! gg0<cr>")
@@ -1039,8 +1037,8 @@ vim.keymap.set({'n','i'},'<m-s-.>',"<cmd>norm! G$<cr>")
 -- like ^x^l? maybe blink source?
 -- vim.keymap.set('i', '<c-l>',function()Snacks.picker.lines()end)
 -- like emacs
--- vim.keymap.set('i', '<c-l>',[[<C-o>zz]])
 -- vim.keymap.set('i', '<m-t>',[[<Esc>hxpa]])
+-- vim.keymap.set('n', '<m-t>',[[hxp]])
 
 -- open current file/line in emacs (terminal and GUI) and viceversa?
 -- vim.keymap.set('n','<space>oe',function() vim.fn.system('emacsclient -c -nw +'..vim.fn.line('.') .. ' '..vim.fn.expand('%:p'))end)
