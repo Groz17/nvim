@@ -8,7 +8,8 @@ return {
   -- you could use a mapping like m-( like in emacs?
   -- make it so that when you press , or ; or punctuation at the start of parenthesis it goes outside... (,) -> (),
   'altermo/ultimate-autopair.nvim',
-  event = { 'InsertEnter', 'CmdlineEnter', 'TermEnter', 'CursorMoved' },
+  -- event = { 'InsertEnter', 'CmdlineEnter', 'TermEnter', 'CursorMoved' },
+  event = { 'InsertEnter', 'CmdlineEnter', 'TermEnter'  },
   -- branch = 'v0.6',
   opts = {
     { '{', '},', p = 11, multiline = false, cond = function(fn) return fn.in_node({ 'table_constructor' }) end, },
