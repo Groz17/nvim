@@ -5,8 +5,9 @@
 return {
   {
     -- TODO: support visual mode commands?
+    -- tree view w/ tags on the side?
     'yousefakbar/notmuch.nvim',
-    cmd = { 'Notmuch', 'NmSearch' },
+    cmd = { 'Notmuch', 'NmSearch', 'Inbox','NmNew','NmSync' },
     opts = {
       notmuch_db_path = os.getenv('XDG_DATA_HOME') .. '/mail/',
       -- maildir_sync_cmd = "mbsync personal",
@@ -15,10 +16,7 @@ return {
       },
     },
     keys = {
-      -- Lists available tags in your Notmuch database in a buffer.
-      -- for plugins with jut a mapping, use symbols
       { '<f12>m', '<CMD>Notmuch<CR>', desc = 'Launch notmuch landing page' },
-      -- { "<leader>n", ":NmSearch<space>", desc = "Notmuch query"},
       {
         '<space><space>',
         ':NmSearch<space>',
@@ -29,19 +27,13 @@ return {
       -- show these mappings in navbar
       { 'l', '<CR>', ft = 'notmuch-hello', remap = true },
       { 'l', '<CR>', ft = 'notmuch-threads', remap = true },
-      -- {"h","q", ft = "notmuch-threads", remap = true},
-      { 'h', '<c-^>', ft = 'notmuch-threads' },
+      { 'h', '<cmd>Notmuch<cr>', ft = 'notmuch-threads' },
       { 'h', '<c-^>', ft = 'mail' },
-      -- { 'h', '<CMD>bwipeout<CR>', ft = 'notmuch-threads' },
-      -- { 'h', '<CMD>bwipeout<CR>', ft = 'mail' },
-      -- {"h","q", ft = "mail", remap = true}
     },
   },
   {
     'aliyss/vim-himalaya-ui',
-    cmd = {
-      'HimalayaUI',
-    },
+    cmd = { 'HimalayaUI', },
     -- keys = {
     --   { '<f12>m', '<cmd>HimalayaUI<cr>', desc = 'Himalaya UI', },
     -- },

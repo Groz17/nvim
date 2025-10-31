@@ -15,7 +15,6 @@ return {
     dependencies = {
       {
         'tpope/vim-dadbod',
-        -- pin = true,
         cmd = { 'DB' },
         dependencies = 'tpope/vim-dispatch' -- for interactive session... really shouldn't need this
       },
@@ -43,15 +42,11 @@ return {
         -- ft = vim.fn.getcompletion('sql', 'filetype'),
         -- FIXA
         cmd = 'DBCompletionClearCache',
-        -- dependencies = { 'hrsh7th/nvim-cmp' },
         -- how use regex like /sql$/
         -- echo getcompletion('','filetype')->filter('v:val=~"sql"')
         -- ft = { 'sql', 'mysql', 'plsql' },
         -- TODO: https://github.com/kristijanhusak/vim-dadbod-completion/issues/75#issuecomment-2408694229 finche non c'e blink.buffer usa autocmd...
       },
-
-        -- unkown other sources??? se uso init funge though
-        -- init = function()
   },
 
     cmd = {
@@ -97,9 +92,6 @@ return {
           vim.api.nvim_buf_set_keymap(ev.buf, 'n', 'gS', vim.fn['db#op_exec']() .. '$', { noremap = true, desc = 'Run SQL (EOL)' })
           vim.api.nvim_buf_set_keymap(ev.buf, 'n', 'gss', vim.fn['db#op_exec']() .. '_', { noremap = true, desc = 'Run SQL (linewise)' })
 
-          -- vim.keymap.set('n', '<c-c><c-c>', '<Plug>(DBUI_ExecuteQuery)', { noremap = false, desc = 'Run SQL', buffer = ev.buf  })
-          -- vim.keymap.set('i', '<c-c><c-c>', [[<c-\><c-n><Plug>(DBUI_ExecuteQuery)<cmd>lua vim.defer_fn(function()vim.cmd.startinsert({bang=true})  end,200)<cr>]], { noremap = false, desc = 'Run SQL', buffer = ev.buf  })
-
           -- vim.api.nvim_buf_set_keymap(ev.buf, 'n', 'K', '<CMD>DB SELECT*FROM ' .. vim.fn.expand('<CWORD>') .. ' LIMIT 20', { noremap = true, desc = 'Show table from cursor' })
           -- it would be better to just hover? first: scheme, second: first 3 rows or smth
           vim.keymap.set('n', 'K', function() return vim.list_contains(vim.treesitter.get_captures_at_cursor(),'keyword') and
@@ -113,30 +105,8 @@ return {
             vim.keymap.set('n', '<localleader>q', '<cmd>DBUILastQueryInfo<cr>',{ buffer = ev.buf, desc = 'Last Query Info' })
 
         end,
-        -- group = vim.api.nvim_create_augroup("DBExe", {})
         group = vim.api.nvim_create_augroup('DBUISetup', {}),
       })
-      vim.api.nvim_create_autocmd('Filetype', {
-        pattern = 'dbui',
-        group = vim.api.nvim_create_augroup('DisableQuitMapping', {}), -- usa <C-x>(
-        callback = function()
-          -- vim.keymap.set('n', 'o', '<Plug>(DBUI_SelectLine)', { buffer = true })
-          -- NOTE: you may want to use l for motion purposes
-          vim.keymap.set('n', 'l', '<Plug>(DBUI_SelectLine)', { buffer = true })
-          -- basically collapse
-          vim.keymap.set('n', 'h', '<Plug>(DBUI_GotoFirstSibling)k<Plug>(DBUI_SelectLine)', { buffer = true })
-          vim.keymap.set('n', 'L', '<Plug>(DBUI_GotoLastSibling)', { buffer = true })
-          vim.keymap.set('n', 'H', '<Plug>(DBUI_GotoFirstSibling)', { buffer = true })
-          vim.keymap.set('n', 'i', '<Plug>(DBUI_ToggleDetails)', { buffer = true })
-          vim.keymap.set('n', 'g?', '?', {remap=true}) --how to make this work?
-          -- vim.keymap.del('n', '?', { buffer = true })
-          vim.defer_fn(function() vim.keymap.del('n', '?', { buffer = true }) end,1000)
-          vim.keymap.del('n', 'q', { buffer = true })
-          vim.keymap.del('n', '<c-j>', { buffer = true })
-          vim.keymap.del('n', '<c-k>', { buffer = true })
-        end,
-      })
-
     end,
 },
 {
