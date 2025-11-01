@@ -82,6 +82,13 @@ return {
     -- file:lua qua equivalent? for mapping
     { '<f17>gg', function() Snacks.picker.git_grep() end, desc = 'Grep' ,mode={'n','i'}},
     -- ╭─────────────────────────────────────────────────────────╮
+    -- │ GITHUB                                                  │
+    -- ╰─────────────────────────────────────────────────────────╯
+    { "<leader>gi", function() Snacks.picker.gh_issue() end, desc = "GitHub Issues (open)" },
+    { "<leader>gI", function() Snacks.picker.gh_issue({ state = "all" }) end, desc = "GitHub Issues (all)" },
+    { "<leader>gp", function() Snacks.picker.gh_pr() end, desc = "GitHub Pull Requests (open)" },
+    { "<leader>gP", function() Snacks.picker.gh_pr({ state = "all" }) end, desc = "GitHub Pull Requests (all)" },
+    -- ╭─────────────────────────────────────────────────────────╮
     -- │ NEOVIM                                                  │
     -- ╰─────────────────────────────────────────────────────────╯
     -- { mode = { 'c' }, '<a-r>', function() if cmdmode="/"Snacks.picker.search_history() end, desc = 'Command History' },

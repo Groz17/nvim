@@ -18,9 +18,9 @@ return
       -- { '<leader>gT', '<cmd>DiffviewOpen<cr>', desc = 'Open Diffview' },
       { '<leader>gD', '<cmd>DiffviewOpen<cr>', desc = 'Open Diffview' },
 
-      { '<leader>gh', '<cmd>DiffviewFileHistory %<cr>', desc = 'Git log' },
-      { '<leader>gH', '<cmd>DiffviewFileHistory<cr>', desc = 'Git log (args)' },
-      { '<leader>gh', ':DiffviewFileHistory<CR>', mode="x", desc = 'Git log' },
+      -- { '<leader>gh', '<cmd>DiffviewFileHistory %<cr>', desc = 'Git log' },
+      -- { '<leader>gH', '<cmd>DiffviewFileHistory<cr>', desc = 'Git log (args)' },
+      -- { '<leader>gh', ':DiffviewFileHistory<CR>', mode="x", desc = 'Git log' },
 
       { 'q', '<cmd>DiffviewClose<cr>', ft = {"DiffviewFiles", "DiffviewFileHistory"}, desc = 'Close Diffview' },
 

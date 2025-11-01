@@ -49,9 +49,9 @@ return {
       { '<leader>gS', gitsigns.stage_buffer, desc='Stage Buffer' },
       { '<leader>gU', gitsigns.reset_buffer, desc='Reset Buffer' },
       -- gK for hover would have been nice as well
-      { '<leader>gp', gitsigns.preview_hunk, desc='Preview Hunk' },
+      { '<leader>gh', gitsigns.preview_hunk, desc='Preview Hunk' },
       -- { '<leader>gi',  function() require("gitsigns").preview_hunk_inline({ inline = true }) end }
-      { '<leader>gP', function() gitsigns.preview_hunk_inline() end, desc='Preview Hunk Inline' },
+      { '<leader>gH', function() gitsigns.preview_hunk_inline() end, desc='Preview Hunk Inline' },
 
       -- If already open, calling this will cause the window to get focus.
       { '<leader>gb', function() gitsigns.blame_line() end, desc='Blame Hunk' },
