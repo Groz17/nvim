@@ -131,6 +131,9 @@ return {
               'ministarter',
               'snacks_dashboard',
             },
+            winbar = {
+              'opencode_output',
+            },
           },
           ignore_focus = {},
           always_divide_middle = true,
