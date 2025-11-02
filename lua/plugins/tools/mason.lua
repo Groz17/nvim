@@ -27,6 +27,7 @@ return
       'tinymist',
       'html-lsp',
       'docker',
+      'systemd-language-server'
       -- 'harper'
       -- "html-lsp", "basedpyright", "bash-debug-adapter", "bash-language-server", "biome", "clangd", "css-lsp", "harper-ls", "java-debug-adapter", "java-test", "jdtls", "lua-language-server", "perlnavigator", "rust-analyzer", "shfmt", "sqlls", "taplo", "vim-language-server",
     },
