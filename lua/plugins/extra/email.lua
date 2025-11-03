@@ -29,6 +29,8 @@ return {
       { 'l', '<CR>', ft = 'notmuch-hello', remap = true },
       { 'l', '<CR>', ft = 'notmuch-threads', remap = true },
       { 'h', '<cmd>Notmuch<cr>', ft = 'notmuch-threads' },
+      -- show diff/git-like tracking for emails?
+      { 'd', '<cmd>TagAdd deleted<cr>', ft = 'notmuch-threads', desc = "Delete thread" },
       { 'h', '<c-^>', ft = 'mail' },
     },
   },
