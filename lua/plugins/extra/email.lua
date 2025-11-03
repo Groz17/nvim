@@ -5,6 +5,7 @@
 return {
   {
     -- TODO: support visual mode commands?
+    -- show "last synced ... on top?"
     -- tree view w/ tags on the side?
     'yousefakbar/notmuch.nvim',
     cmd = { 'Notmuch', 'NmSearch', 'Inbox','NmNew','NmSync' },
