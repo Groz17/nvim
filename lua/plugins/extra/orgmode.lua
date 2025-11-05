@@ -26,6 +26,7 @@ return{
       -- Change everything (but globals) to use local leader for org files
       -- prefix = '<LocalLeader>o',
       prefix = '<LocalLeader>',
+      org_toggle_checkbox = false,
 
       -- NOTE: Have to manually re-specify the globals as they were using the prefix
       global = {
