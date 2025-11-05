@@ -2,14 +2,11 @@
 -- orgmode w/ tangled sed could substitute this?
 return {
   'nhu/patchr.nvim',
-  cond=false,
-  ---@type patchr.config
   opts = {
     plugins = {
-      -- ['generic_plugin.nvim'] = {
-      --   '/path/to/you/git.patch',
-      --   '/path/to/you/other/git.patch',
-      -- },
+      ['ef-themes.nvim'] = {
+        vim.fn.stdpath('config') .. '/lua/plugins/patches/ef-themes-bg-autodetect.patch',
+      },
     },
   },
 }

@@ -1,0 +1,5 @@
+--- /dev/fd/63	2025-11-05 14:51:27.912238881 +0100
++++ /dev/fd/62	2025-11-05 14:51:27.913238857 +0100
+@@ -1 +1 @@
+-vim.o.background = theme_opts.bg
++-- vim.o.background = theme_opts.bg  -- Let terminal auto-detect background

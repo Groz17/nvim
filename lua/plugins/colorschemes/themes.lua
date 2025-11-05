@@ -1,4 +1,5 @@
 -- https://github.com/Erl-koenig/theme-hub.nvim
+-- https://github.com/miikanissi/modus-themes.nvim
 return {
   {
     'oonamo/ef-themes.nvim',
@@ -6,7 +7,7 @@ return {
     priority = 1000,
     config = function()
       -- vim.cmd [[colorscheme ef-summer]]
-      vim.cmd [[colorscheme ef-dream]]
+      vim.cmd [[colorscheme ef-theme]]
     end,
   },
   --         ╭──────────────────────────────────────────────────────────╮

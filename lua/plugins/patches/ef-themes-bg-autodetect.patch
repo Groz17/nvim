@@ -1,0 +1,26 @@
+diff --git a/lua/ef-themes/init.lua b/lua/ef-themes/init.lua
+index 1234567..abcdefg 100644
+--- a/lua/ef-themes/init.lua
++++ b/lua/ef-themes/init.lua
+@@ -214,7 +214,7 @@ function EfThemes.load(theme_opts, opts)
+       theme_opts.name = opts[vim.o.bg]
+       theme_opts.bg = vim.o.bg
+     else
+-      vim.o.background = theme_opts.bg
++      -- vim.o.background = theme_opts.bg  -- Let terminal auto-detect background
+     end
+   end
+ 
+diff --git a/lua/ef-themes/lib/compiler.lua b/lua/ef-themes/lib/compiler.lua
+index 1234567..abcdefg 100644
+--- a/lua/ef-themes/lib/compiler.lua
++++ b/lua/ef-themes/lib/compiler.lua
+@@ -23,7 +23,7 @@ M.compile = function(opts, highlights, theme_opts)
+ if vim.g.colors_name then vim.cmd("hi clear") end
+ vim.o.termguicolors = true
+ vim.g.colors_name = "%s"
+-vim.o.background = "%s"
++-- vim.o.background = "%s"  -- Let terminal auto-detect background
+   ]],
+       theme_opts.name,
+       theme_opts.bg
