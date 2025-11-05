@@ -5,8 +5,13 @@ return {
     'oonamo/ef-themes.nvim',
     lazy = false,
     priority = 1000,
-    config = function()
-      -- vim.cmd [[colorscheme ef-summer]]
+    opts = {
+      -- would be cool w/ transition
+      light = "ef-summer",
+      dark = "ef-cherie"
+    },
+    config = function(_, opts)
+      require("ef-themes").setup(opts)
       vim.cmd [[colorscheme ef-theme]]
     end,
   },
