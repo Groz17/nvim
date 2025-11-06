@@ -356,7 +356,7 @@ return {
 
 
                       -- center like in emacs
-                      ['<m-r>'] = { '<esc>/M/', expr = true, mode = 'i', remap=true },
+                      ['<m-r>'] = { '<esc>/M2k/', expr = true, mode = 'i', remap=true },
 
                       ["<f17>H"] = "layout_left",
                       ["<f17>J"] = "layout_bottom",
