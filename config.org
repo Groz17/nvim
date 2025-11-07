@@ -1022,8 +1022,8 @@ vim.keymap.set('i','<m-tab>','<c-g>u<Esc>[s1z=`]a<c-g>u')
 vim.keymap.set({'n','i'},'<c-s-/>',[[<cmd>exe "norm! \<c-r>"<cr>]]) --redo?
 vim.keymap.set({'n','i'},'<c-/>',"<cmd>norm! u<cr>")
 vim.keymap.set({'n','i'},'<c-space>',"<cmd>norm! v<cr>")
-vim.keymap.set({'n','i'},'<m-s-,>',"<cmd>norm! gg0<cr>")
-vim.keymap.set({'n','i'},'<m-s-.>',"<cmd>norm! G$<cr>")
+vim.keymap.set({'n','i','x'},'<m-s-,>',"<cmd>norm! gg0<cr>")
+vim.keymap.set({'n','i','x'},'<m-s-.>',"<cmd>norm! G$<cr>")
 
 -- vim.keymap.set('i','<tab>',"<c-f>")
 -- vim.keymap.set('i','<c-l>',"<c-o>zz")
