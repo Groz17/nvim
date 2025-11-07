@@ -283,7 +283,10 @@ return {
         -- cmd = 'fd -tf --strip-cwd-prefix ^' .. f .. [[\(\\.md\|\\.txt\)$]],
         -- cmd = 'fd -tf --strip-cwd-prefix ^' .. f .. [[(\.md|\.txt)$]],
         cmd = 'fd',
-        args = { "--type", "f", "--strip-cwd-prefix", '^' .. f .. [[(\.md|\.txt)$]], }
+        args = { "--type", "f", "--strip-cwd-prefix", '^' .. f .. [[(\.md|\.txt)$]], },
+        layout = { 
+          preset = "select",
+        },
         -- file_icons = false,
       })
       -- vim.schedule(function() vim.cmd([[exe "norm Gzz"]])end)
