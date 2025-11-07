@@ -385,3 +385,25 @@ vim.api.nvim_create_autocmd('ColorScheme', {
             vim.api.nvim_win_set_width(0, 40)
         end,
     })
+
+vim.api.nvim_create_autocmd("CursorMoved",{
+    desc = "Highlight references under cursor",
+    callback = function(ev)
+   if vim.fn.mode == "i" then
+      return
+   end
+
+   local current_word = vim.fn.expand("<cword>")
+   if vim.b.current_word and vim.b.current_word == current_word then
+      return
+   end
+   vim.b.current_word = current_word
+
+   local clients = vim.lsp.get_clients({ buffer = ev.buf, method = "textDocument/documentHighlight" })
+   if #clients == 0 then
+      return
+   end
+
+   vim.lsp.buf.clear_references()
+   vim.lsp.buf.document_highlight()
+end})
