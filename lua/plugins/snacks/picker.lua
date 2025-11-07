@@ -290,6 +290,10 @@ return {
                 -- disable builtin keybindings?
                 win = {
                   preview = {
+                    wo = {
+                      signcolumn = "no",
+                      statuscolumn = "%l ",
+                    },
                     keys = {
                       ["<f12>o"] = "cycle_win",
                     },
