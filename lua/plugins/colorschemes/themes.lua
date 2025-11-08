@@ -6,6 +6,7 @@ return {
     lazy = false,
     priority = 1000,
     opts = {
+    transparent = true,
       -- would be cool w/ transition
       light = "ef-summer",
       dark = "ef-cherie"
