@@ -132,6 +132,7 @@ return {
               'snacks_dashboard',
             },
             winbar = {
+              'opencode',
               'opencode_output',
             },
           },
