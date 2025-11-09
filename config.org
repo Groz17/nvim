@@ -398,10 +398,11 @@ vim.keymap.set("t", "<s-esc>", [[<c-\><c-n>]])
 -- from https://yazi-rs.github.io/docs/quick-start
 -- what about g<c-y>? y and then modifier?
 vim.keymap.set('n', [[<space>yy]], [[<cmd>let @" = expand("%:p")->fnamemodify(':~')   | echo 'cb> ' . @"<CR>]])
+vim.keymap.set('n', [[<space>y.]], [[<cmd>let @" = expand("%:.")  | echo 'cb> ' . @"<CR>]])
 vim.keymap.set('n', [[<space>yd]], [[<cmd>let @" = expand("%:p:h")->fnamemodify(':~') | echo 'cb> ' . @"<CR>]])
-vim.keymap.set('n', [[<space>yf]], [[<cmd>let @" = expand("%:p:t")->fnamemodify(':~') | echo 'cb> ' . @"<CR>]])
+vim.keymap.set('n', [[<space>yf]], [[<cmd>let @" = expand("%:t") | echo 'cb> ' . @"<CR>]])
 -- n stands for name? good if so
-vim.keymap.set('n', [[<space>yn]], [[<cmd>let @" = expand("%:p:r")->fnamemodify(':~') | echo 'cb> ' . @"<CR>]])
+vim.keymap.set('n', [[<space>yn]], [[<cmd>let @" = expand("%:t:r") | echo 'cb> ' . @"<CR>]])
 -- yank filename + line [souce :))]
 vim.keymap.set('n', [[<space>yl]], [[<cmd>let @" = expand("%:p")->fnamemodify(':~') .. ":" .. line(".")   | echo 'cb> ' . @"<CR>]])
 
