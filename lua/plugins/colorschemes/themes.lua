@@ -9,7 +9,7 @@ return {
     transparent = true,
       -- would be cool w/ transition
       light = "ef-summer",
-      dark = "ef-cherie"
+      dark = "ef-owl"
     },
     config = function(_, opts)
       require("ef-themes").setup(opts)
