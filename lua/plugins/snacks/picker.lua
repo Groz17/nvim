@@ -296,6 +296,7 @@ return {
                     },
                     keys = {
                       ["<f12>o"] = "cycle_win",
+                      ["<c-g>"] = { "close", mode = { "n", "i" } },
                     },
                   },
                   -- input window
@@ -418,6 +419,7 @@ return {
                   list = {
                     -- use d to delete entries?
                     keys = {
+                      ["<c-g>"] = { "close", mode = { "n", "i" } },
                       ['<f12>o'] = { 'cycle_win', mode = { 'i', 'n' } }, -- like ^w^w
                       ['l'] = { 'confirm', mode = { 'n' } },
                       -- todo: visual mode + :global command confirm? or mulitcursors
