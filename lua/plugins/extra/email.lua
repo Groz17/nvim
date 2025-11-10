@@ -31,6 +31,7 @@ return {
       { 'h', '<cmd>Notmuch<cr>', ft = 'notmuch-threads' },
       -- show diff/git-like tracking for emails?
       { 'd', '<cmd>TagAdd deleted<cr>', ft = 'notmuch-threads', desc = "Delete thread" },
+      { 'd', ':<c-u>norm d<cr>', ft = 'notmuch-threads', mode = "x", remap = true,desc = "Delete thread" },
       { 'h', '<c-^>', ft = 'mail' },
     },
   },
