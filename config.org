@@ -1623,3 +1623,26 @@ vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
 	end,
 })
 #+end_src
+
+* Theme
+#+begin_src lua :tangle ~/.config/nvim/lua/plugins/colorschemes/themes.lua :noweb yes
+-- https://github.com/Erl-koenig/theme-hub.nvim
+-- https://github.com/miikanissi/modus-themes.nvim
+return {
+  {
+    'oonamo/ef-themes.nvim',
+    lazy = false,
+    priority = 1000,
+    opts = {
+    transparent = true,
+      -- would be cool w/ transition
+			light = "<<~/dots/_lib|.org:theme(color_scheme="light")>>",
+			dark = "<<~/dots/_lib|.org:theme(color_scheme="dark")>>",
+    },
+    config = function(_, opts)
+      require("ef-themes").setup(opts)
+      vim.cmd [[colorscheme ef-theme]]
+    end,
+  },
+}
+#+end_src

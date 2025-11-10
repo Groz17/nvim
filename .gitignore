@@ -1,7 +1,8 @@
+/lazy-lock.json
 /sessions/
 /spell/
 /snippets/
-lua/config/keymaps.lua
-lua/config/options.lua
-lua/config/autocmds.lua
-/lazy-lock.json
+/lua/config/keymaps.lua
+/lua/config/options.lua
+/lua/config/autocmds.lua
+/lua/plugins/colorschemes/themes.lua
