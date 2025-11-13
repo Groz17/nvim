@@ -8,7 +8,9 @@ return {
   -- https://github.com/chrisbra/changesPlugin
   -- :Git -> Gitsigns (:echo fullcommand('Git'))
 
-  -- Integration with fugitive: When viewing revisions of a file (via :0Gclog for example), Gitsigns will attach to the fugitive buffer with the base set to the commit immediately before the commit of that revision. This means the signs placed in the buffer reflect the changes introduced by that revision of the file.
+  -- Integration with fugitive:
+  -- When viewing revisions of a file (via :0Gclog for example), Gitsigns will attach to the fugitive buffer with the base set to the commit immediately before the commit of that revision.
+  -- This means the signs placed in the buffer reflect the changes introduced by that revision of the file.
   -- Usa <leader>gs come mapping per gitsigns.nvim?
   -- TODO: fold like git gutter???
   -- make it work with diffview...

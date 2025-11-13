@@ -88,12 +88,14 @@ vim.cmd 'command -nargs=1 -complete=filetype NRMM' ..
 -- vim.api.nvim_create_user_command('DeleteColumn', function(opts)
 
 -- -- vim.fn.system("xidel -e 'x:replace-nodes(//*[self::td|self::th][(position()-N) mod 8 eq 0],())' --html")
--- -- vim.fn.system([[xidel -se --variable="num_columns=$(xidel -e 'count(//tr[1]/th)')"  --variable"=chosen_column="]]..opts.args..[[ 'x:replace-nodes(//*[self::td|self::th][(position()-N) mod 8 eq 0],())' --html ]])
+-- -- vim.fn.system([[xidel -se --variable="num_columns=$(xidel -e 'count(//tr[1]/th)')"  --variable"=chosen_column="]]..opts.args..
+-- [[ 'x:replace-nodes(//*[self::td|self::th][(position()-N) mod 8 eq 0],())' --html ]])
 
 --   local stdin = vim.api.nvim_buf_get_lines(0,0,-1,0)
 -- -- local num_columns = vim.fn.system("xidel -e 'count(//tr[1]/th)'",stdin)
 -- local num_columns = vim.fn.system("xidel -e 'count(//table[1]/tr[1]/th)'",stdin)
--- vim.api.nvim_buf_set_lines(0,0,-1,0, vim.fn.split(vim.fn.system("xidel -s --variable=num_columns="..num_columns.." --variable=chosen_column="..opts.args.." -e 'x:replace-nodes(//*[self::td|self::th][(position()-$chosen_column) mod $num_columns eq 0],())' --html",stdin),"\n"))
+-- vim.api.nvim_buf_set_lines(0,0,-1,0, vim.fn.split(vim.fn.system("xidel -s --variable=num_columns="..num_columns..
+-- " --variable=chosen_column="..opts.args.." -e 'x:replace-nodes(//*[self::td|self::th][(position()-$chosen_column) mod $num_columns eq 0],())' --html",stdin),"\n"))
 -- end ,
 --   {nargs = 1, range= true}
 

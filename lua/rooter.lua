@@ -1,5 +1,5 @@
 -- Set up smart autochange of current directory 
----@see https://www.reddit.com/r/neovim/comments/zy5s0l/you_dont_need_vimrooter_usually_or_how_to_set_up/?share_id=VEW2D-u22bHafQa7v7W7c&utm_content=1&utm_medium=android_app&utm_name=androidcss&utm_source=share&utm_term=1
+-- https://www.reddit.com/r/neovim/comments/zy5s0l/you_dont_need_vimrooter_usually_or_how_to_set_up/?share_id=VEW2D-u22bHafQa7v7W7c
 
 -- Array of file names indicating root directory. Modify to your liking.
 local root_names = { '.git', 'Makefile' }

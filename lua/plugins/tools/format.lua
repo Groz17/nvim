@@ -3,7 +3,8 @@
 -- https://github.com/skywind3000/vim-rt-format/blob/master/plugin/rtformat.vim
 
 -- how to modify formatting to adjust to current indentation?
--- would be nice if with for ex <leader>f, (, for vim.g.tleader) or <leader>fF (more standard) it showed a telescope window with all formatting actions you can take, like trim whitespace, collapse, etc...
+-- would be nice if with for ex <leader>f, (, for vim.g.tleader) or <leader>fF (more standard) it showed a
+-- telescope window with all formatting actions you can take, like trim whitespace, collapse, etc...
 -- would be nice if it didn't change contents, the file won't be shown modified
 
 -- when you've got multiple formatters, open telescope dialog to choose, or allow vim.v.count to automatically select the one you want
@@ -45,7 +46,7 @@ return {
       json = { 'jq' },
       jsonc = { 'biome' },
       -- javascript = { { 'prettierd', 'prettier' } },
-      --  Also biome is far superior to prettier.  (https://www.reddit.com/r/neovim/comments/1hbst6x/comment/m1ki7dd/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button)
+      --  Also biome is far superior to prettier.  (https://www.reddit.com/r/neovim/comments/1hbst6x/comment/m1ki7dd/)
       -- javascript = { 'prettier' },
       javascript = { 'biome' },
       -- adds newline at the end

@@ -18,7 +18,8 @@
 --  using csf in table.insert(vimwiki_dirs, path) only changes insert, maybe csF can change the whole function? also use count to target the depth (how many periods/dots)
 --
 --  " *cS* changes surroundings, placing the surrounded text on its own line(s) like |yS|.
---  "insert" key, denoted by `i`. It queries the user for what should go on the left and right hand sides of a selection, and adds the delimiter pair to the buffer. Currently, deletions and changes are not supported.
+--  "insert" key, denoted by `i`. It queries the user for what should go on the left and right hand sides of a selection, and adds the delimiter pair to the buffer.
+--  Currently, deletions and changes are not supported.
 --
 --  ds, cs don't work in visual mode (find alternative/newer/more modern mappings)
 --

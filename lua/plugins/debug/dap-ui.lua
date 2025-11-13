@@ -172,7 +172,8 @@ out _h_   _l_ into
     --  │                Breakpoints and Exceptions                │
     --  ╰──────────────────────────────────────────────────────────╯
     -- per stare nella home row
-    -- would be nice to toggle breakpoint with global command, even nicer would be to have a function that give the rhs from the lhs, like g/.../func(a) to execute dap.toggle_breakpoint (maparg() doesn't work with lua I guess)
+    -- would be nice to toggle breakpoint with global command, even nicer would be to have a function that give the rhs from the lhs,
+    -- like g/.../func(a) to execute dap.toggle_breakpoint (maparg() doesn't work with lua I guess)
     -- would be cool to use these in visual mode
     -- can you execute code character-wise so you can use dv0, D (for reverse execution), etc... for breakpoints?
     -- for the love of god, make this support dot-repeat (dmacro.nvim is fine actually)
@@ -254,7 +255,8 @@ out _h_   _l_ into
 
     { "j", function()
       return not vim.startswith(vim.bo.filetype,'dapui_') and dap.status() ~= '' and
-      -- vim.v.count == 1 and dap.step_into({ steppingGranularity='statement' }) or vim.v.count == 2 and dap.step_into({ steppingGranularity='line' }) or dap.step_into({ steppingGranularity='instruction' })
+      -- vim.v.count == 1 and dap.step_into({ steppingGranularity='statement' }) or vim.v.count == 2 and
+      -- dap.step_into({ steppingGranularity='line' }) or dap.step_into({ steppingGranularity='instruction' })
       dap.step_into()
       or vim.cmd.norm { "j", bang = true }
     end, desc = " Step into", expr=true },
@@ -272,7 +274,8 @@ out _h_   _l_ into
 
     { "k", function() return not vim.startswith(vim.bo.filetype,'dapui_') and  dap.status() ~= '' and dap.step_out() or vim.cmd.norm { "k", bang = true } end, desc = " Step out", expr=true },
     { "l", function() return not vim.startswith(vim.bo.filetype,'dapui_') and  dap.status() ~= '' and dap.step_over() or vim.cmd.norm { "l", bang = true } end, desc = " Step over", expr=true },
-    -- { "l", function() vim.notify(tostring(not vim.startswith(vim.bo.filetype,'dapui_') and  dap.status() ~= ''))return not vim.startswith(vim.bo.filetype,'dapui_') and  dap.status() ~= '' and dap.step_over() or vim.cmd.norm { "l", bang = true } end, desc = " Step over", expr=true },
+    -- { "l", function() vim.notify(tostring(not vim.startswith(vim.bo.filetype,'dapui_') and  dap.status() ~= ''))
+      -- return not vim.startswith(vim.bo.filetype,'dapui_') and  dap.status() ~= '' and dap.step_over() or vim.cmd.norm { "l", bang = true } end, desc = " Step over", expr=true },
 
     { "H", function() dap.reverse_continue() end, desc = 'Reverse Continue' },
     -- u come undo

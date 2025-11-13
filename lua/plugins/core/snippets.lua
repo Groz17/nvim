@@ -23,7 +23,8 @@ return {
   },
     build = 'make install_jsregexp',
     init = function()
-      -- vim.keymap.set( 'n', '<leader><tab>l',function() return '<CMD>e ' .. vim.fn.stdpath('config') .. '/snippets/LuaSnip/' .. vim.bo.filetype .. '.lua<CR>'end, { desc = "(LuaSnip) Edit &ft", expr = true })
+      -- vim.keymap.set( 'n', '<leader><tab>l',function() return '<CMD>e ' .. vim.fn.stdpath('config') .. '/snippets/LuaSnip/' .. vim.bo.filetype ..
+        -- '.lua<CR>'end, { desc = "(LuaSnip) Edit &ft", expr = true })
       -- vim.keymap.set( 'n', '<leader><tab>L', '<CMD>e ' .. vim.fn.stdpath('config') .. '/snippets/LuaSnip/all.lua<CR>', { desc = "(LuaSnip) Edit All" })
     end,
     opts = function()
@@ -166,7 +167,8 @@ return {
     'chrisgrieser/nvim-scissors',
     init = function()
       vim.keymap.set('n', '<leader><tab>p', '<CMD>e ' .. vim.fn.stdpath('config') .. '/snippets/vscode/package.json<CR>', { desc = "(VS Code) Project" })
-      vim.keymap.set( 'n', '<leader><tab><tab>',function() return '<CMD>e ' .. vim.fn.stdpath('config') .. '/snippets/vscode/' .. vim.bo.filetype .. '.json<CR>'end, { desc = "(VS Code) Edit &ft", expr = true })
+      vim.keymap.set( 'n', '<leader><tab><tab>',function() return '<CMD>e ' .. vim.fn.stdpath('config') .. '/snippets/vscode/' ..
+        vim.bo.filetype .. '.json<CR>'end, { desc = "(VS Code) Edit &ft", expr = true })
       -- add icon/text to blink for personal snippets...
       vim.keymap.set( 'n', '<leader><tab><s-tab>', '<CMD>e ' .. vim.fn.stdpath('config') .. '/snippets/vscode/all.json<CR>', { desc = "(VS Code) Edit All" })
     end,

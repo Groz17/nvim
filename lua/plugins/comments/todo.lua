@@ -34,7 +34,8 @@ return {
     -- NOTICE: ??? PgADMIN errors
     -- you could map these with conventionalcommits/semver???
     keys = function()
-      -- maybe order using major system? like 1=todo, 2=note, 3=warn (W~~M), 4=perf, others?  ( usa -> (?:(?:T(?:EST(?:ING)?|ODO)|PERF(?:ORMANCE)?|FIX(?:IT|ME)?|HACK|NOTE) [1-7]|[1-7] (?:T(?:EST(?:ING)?|ODO)|PERF(?:ORMANCE)?|FIX(?:IT|ME)?|HACK|NOTE)   )
+      -- maybe order using major system? like 1=todo, 2=note, 3=warn (W~~M), 4=perf, others?
+      -- ( usa -> (?:(?:T(?:EST(?:ING)?|ODO)|PERF(?:ORMANCE)?|FIX(?:IT|ME)?|HACK|NOTE) [1-7]|[1-7] (?:T(?:EST(?:ING)?|ODO)|PERF(?:ORMANCE)?|FIX(?:IT|ME)?|HACK|NOTE)   )
       -- maybe open which-key window to remember them? (desc key must contain vim.v.count)
       -- [
       -- FIX:
@@ -66,7 +67,9 @@ return {
       local _keywords = {}
       -- TODO:  syntax highlight the command with bash
       local extracted_keywords = vim.json.decode(
-        vim.fn.system([[ast-grep run --pattern 'local defaults = { $$$B }' ]] .. vim.fn.stdpath('data') .. [['/lazy/todo-comments.nvim/lua/todo-comments/config.lua']] .. [[| sed 's/^[^:]\+:[0-9]\+://' | sed '1s/local defaults =/return/' | yq -pl -oj | jq '[.keywords|to_entries[]|[.key,((.value.alt) // empty)]|flatten]']])
+        vim.fn.system([[
+        ast-grep run --pattern 'local defaults = { $$$B }' ]] .. vim.fn.stdpath('data') .. [['/lazy/todo-comments.nvim/lua/todo-comments/config.lua']] ..
+        [[| sed 's/^[^:]\+:[0-9]\+://' | sed '1s/local defaults =/return/' | yq -pl -oj | jq '[.keywords|to_entries[]|[.key,((.value.alt) // empty)]|flatten]']])
       )
       for _, k in ipairs(extracted_keywords) do
         table.insert(_keywords, k)
@@ -120,9 +123,11 @@ return {
           -- { "<leader>tp", function () Snacks.picker.todo_comments({keywords = vcount2keywords() and vim.split(vcount2keywords(), ',') or nil}) end, desc = "Todo/Fix/Fixme" },
           -- doesn't actually search in comments though, in everything...
           { "<space>:", function () Snacks.picker.todo_comments({keywords = vcount2keywords() and vim.split(vcount2keywords(), ',') or nil}) end, desc = "Todo/Fix/Fixme" },
-          -- { "<space>Tb", function () Snacks.picker.todo_comments({cwd=vim.fn.expand("%:h"), search=vim.fn.expand("%:t"),keywords = vcount2keywords() and vim.split(vcount2keywords(), ',') or nil}) end, desc = "Todo/Fix/Fixme" },
+          -- { "<space>Tb", function () Snacks.picker.todo_comments({cwd=vim.fn.expand("%:h"),
+            -- search=vim.fn.expand("%:t"),keywords = vcount2keywords() and vim.split(vcount2keywords(), ',') or nil}) end, desc = "Todo/Fix/Fixme" },
           -- find better solution
-          { "<space>;", function () Snacks.picker.todo_comments({cwd=vim.fn.expand("%:h"),pattern=vim.fn.expand("%:t"), keywords = vcount2keywords() and vim.split(vcount2keywords(), ',') or nil}) end, desc = "Todo/Fix/Fixme" },
+          { "<space>;", function () Snacks.picker.todo_comments({cwd=vim.fn.expand("%:h"),pattern=vim.fn.expand("%:t"),
+            keywords = vcount2keywords() and vim.split(vcount2keywords(), ',') or nil}) end, desc = "Todo/Fix/Fixme" },
       }
     end,
     opts = {

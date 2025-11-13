@@ -8,7 +8,8 @@ return {
       vim.g.nrrw_rgn_vert = 1
       vim.g.nrrw_rgn_wdth = 107
       vim.g.nrrw_topbot_leftright = 'botright'
-      -- Use several independent narrowed regions of the same buffer that you want to write at the same time. This can be useful if you diff different regions of the same file, and want to be able to put back the changes at different positions.
+      -- Use several independent narrowed regions of the same buffer that you want to write at the same time.
+      -- This can be useful if you diff different regions of the same file, and want to be able to put back the changes at different positions.
       vim.g.nrrw_rgn_protect = 'n'
       -- FIX: Doesn't work in Neovim :(
       vim.g.nrrw_rgn_update_orig_win = 1

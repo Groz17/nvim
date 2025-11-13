@@ -157,9 +157,11 @@ return
             },
             {
               'windwp/nvim-ts-autotag',
-              ft = { "astro", "glimmer", "handlebars", "html", "javascript", "jsx", "markdown", "php", "rescript", "svelte", "tsx", "twig", "typescript", "vue", "xml", "eruby", "htmlangular", "htmldjango", "elixir", "blade", "javascriptreact", "javascript.jsx", "typescript.tsx", "hbs", "rust" },
-              opts =
-              { opts = {
+              ft = { "astro", "glimmer", "handlebars", "html", "javascript", "jsx", "markdown", "php", "rescript",
+                 "svelte", "tsx", "twig", "typescript", "vue", "xml", "eruby", "htmlangular", "htmldjango", "elixir",
+                 "blade", "javascriptreact", "javascript.jsx", "typescript.tsx", "hbs", "rust" },
+              opts = {
+                opts = {
                 per_filetype = {
                   vimwiki = {
                     enable_close = false, -- Auto close tags

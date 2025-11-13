@@ -187,7 +187,8 @@ return {
       -- don't use uppercase letters, too uncomfortable
       -- local leaders = {
       --   {"`",
-      --     -- maybe Miscellaneous is better? for telescope mappings like co for colorschemes, etc... also could be useful for plugins that have very few mappings for a topic like template (pity to waste an entire prefix)
+      --     -- maybe Miscellaneous is better? for telescope mappings like co for colorschemes, etc...
+      --     also could be useful for plugins that have very few mappings for a topic like template (pity to waste an entire prefix)
       --     group = 'UNIX',
       --     q = 'quickfix list',
       --     l = 'location list',
@@ -229,7 +230,8 @@ return {
           group = ' Diagnostics [Trouble]',
           -- g = 'LSP',
         },
-        -- to send to most common files for ex <leader>{w|v}n to send to neovim todo (actually using <s-space>n seems nicer) (interessante l'utlizzo di <s-space> (o anche <c-space> o anche <a-space>) come ulteriore leader)
+        -- to send to most common files for ex <leader>{w|v}n to send to neovim todo (actually using <s-space>n seems nicer)
+        -- (interessante l'utlizzo di <s-space> (o anche <c-space> o anche <a-space>) come ulteriore leader)
         -- to select with telescope
         -- v = { name = "VimWiki" },
         {"w", group = "Wiki"},

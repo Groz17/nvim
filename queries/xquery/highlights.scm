@@ -7,7 +7,11 @@
 ; (atomic_or_union_type .
 ;   (identifier) @namespace.builtin (#eq? @namespace.builtin  "xs") . ":" .
 ;   (identifier) @type.builtin.atomic (#any-of? @type.builtin.atomic 
-;   "anyAtomicType" "untypedAtomic" "dateTime" "dateTimeStamp" "time" "date" "duration" "yearMonthDuration" "dayTimeDuration" "float" "double" "decimal" "integer" "nonPositiveInteger" "negativeInteger" "long" "int" "short" "byte" "nonNegativeInteger" "unsignedLong" "unsignedInt" "unsignedShort" "unsignedByte" "positiveInteger" "gYearMonth" "gYear" "gMonthDay" "gDay" "gMonth" "string" "normalizedString" "token" "language" "NMTOKEN" "Name" "NCName" "ID" "IDREF" "ENTITY" "boolean" "base64Binary" "hexBinary" "anyURI" "QName" "NOTATION"
+;   "anyAtomicType" "untypedAtomic" "dateTime" "dateTimeStamp" "time" "date" "duration" "yearMonthDuration"
+;   "dayTimeDuration" "float" "double" "decimal" "integer" "nonPositiveInteger" "negativeInteger" "long"
+;   "int" "short" "byte" "nonNegativeInteger" "unsignedLong" "unsignedInt" "unsignedShort" "unsignedByte"
+;   "positiveInteger" "gYearMonth" "gYear" "gMonthDay" "gDay" "gMonth" "string" "normalizedString" "token"
+;   "language" "NMTOKEN" "Name" "NCName" "ID" "IDREF" "ENTITY" "boolean" "base64Binary" "hexBinary" "anyURI" "QName" "NOTATION"
 ;   ))
 ; 2.5.4 SequenceType Syntax
 (type_declaration  "as" @keyword) @type.declaration
@@ -37,7 +41,9 @@
 ; A.3 Reserved Function Names
 (function_call .
   [
-  ncname: (identifier) @function.call (#not-any-of? @function.call  "array" "attribute" "comment" "document-node" "element" "empty-sequence" "function" "if" "item" "map" "namespace-node" "node" "processing-instruction" "schema-attribute" "schema-element" "switch" "text" "typeswitch")
+  ncname: (identifier) @function.call (#not-any-of? @function.call  "array" "attribute" "comment" "document-node"
+                                       "element" "empty-sequence" "function" "if" "item" "map" "namespace-node" "node" "processing-instruction"
+                                       "schema-attribute" "schema-element" "switch" "text" "typeswitch")
   prefixed: (identifier)
   (uri_qualified_name) @function.call.URIQualifiedName
   ]

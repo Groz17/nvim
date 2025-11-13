@@ -18,7 +18,8 @@ return{
       --  ╭──────────────────────────────────────────────────────────╮
       --  │                          Boxes                           │
       --  ╰──────────────────────────────────────────────────────────╯
-      -- non sono sicuro di <leader>C? magari usa whichkey api per sostitutire il valore di which key per comment-box così modifichi il prefisso solo una volta (fallo per tutti i prefissi che non sei sicuro, non LSP e Git)
+      -- non sono sicuro di <leader>C?
+      -- magari usa whichkey api per sostitutire il valore di which key per comment-box così modifichi il prefisso solo una volta (fallo per tutti i prefissi che non sei sicuro, non LSP e Git)
       -- usa stesso prefix di comment textobject
 
       -- let dict = { 'll':'J','cc':'K','rr':'L','l':'j','c':'k','r':'l'} (easier to type)

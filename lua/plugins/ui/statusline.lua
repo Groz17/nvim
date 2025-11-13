@@ -113,7 +113,11 @@ return {
         function() return "[+]: ".. vim.api.nvim_eval[[getbufinfo()->filter({_,v->v.changed==1})->filter({_,v->v.bufnr->getbufvar('&modifiable')})->len()]] end,
         -- how to activate only if you switch from a modified buffer?
         -- cond = function() return vim.api.nvim_eval[[getbufinfo()->filter({_,v->v.changed==1})->len()]] ~= 0 and vim.fn.mode() ~= 'i' end,
-        cond = function() return vim.api.nvim_eval[[getbufinfo()->filter({_,v->v.changed==1})->filter({_,v->v.bufnr->getbufvar('&modifiable')})->len()]] ~= 0 and vim.fn.mode() ~= 'i' and not vim.tbl_contains(vim.api.nvim_eval[[getbufinfo()->filter({_,v->v.changed==1})->map({ _,v->v.bufnr })]],vim.api.nvim_get_current_buf())end,
+        cond = function() return vim.api.nvim_eval[[
+          getbufinfo()->filter({_,v->v.changed==1})->filter({_,v->v.bufnr->getbufvar('&modifiable')})->len()]] ~= 0 and
+          vim.fn.mode() ~= 'i' and
+          not vim.tbl_contains(vim.api.nvim_eval[[getbufinfo()->filter({_,v->v.changed==1})->map({ _,v->v.bufnr })]],vim.api.nvim_get_current_buf())
+        end,
         color = { bg = 'ff0000' },
       }
 

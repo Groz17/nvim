@@ -83,7 +83,8 @@ return {
   -- how to use have cwd as workspace (or .git???)
 
   -- autocmd BufWinEnter,BufEnter * lua require("trouble").action("on_win_enter")
-  -- gitsigns: If installed and enabled (via config.trouble; defaults to true if installed), :Gitsigns setqflist or :Gitsigns seqloclist will open Trouble instead of Neovim's built-in quickfix or location list windows.
+  -- gitsigns: If installed and enabled (via config.trouble; defaults to true if installed),
+  -- :Gitsigns setqflist or :Gitsigns seqloclist will open Trouble instead of Neovim's built-in quickfix or location list windows.
 }
 --   use {'tpope/vim-dispatch', opt = true, cmd = {'Dispatch', 'Make', 'Focus', 'Start'}}
 -- dispatch-like mappings

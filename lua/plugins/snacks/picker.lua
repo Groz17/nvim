@@ -50,10 +50,7 @@ return {
 
     -- win is winnr-1? or is it always -1?
     -- HACK (would be cool to show light version of current theme)
-    -- { '<f17>/', function() Snacks.picker.lines({ on_show = function() vim.fn.win_execute(vim.fn.win_getid(vim.fn.winnr()-1)--[[snacks_picker_list]],"Styler ef-tritanopia-light") end }) end, desc = 'Buffer Lines' ,mode={'n','i'}},
     { '<f17>/', function() Snacks.picker.lines({}) end, desc = 'Buffer Lines' ,mode={'n','i'}},
-    -- TODO: fix (magari usa edgy.nvim)
-    -- { '<f17>/', function() Snacks.picker.lines({ on_show = function() require("styler").set_theme(vim.fn.win_getid(vim.fn.winnr()-1), { background = Snacks.toggle.get('background'):toggle() }) end }) end, desc = 'Buffer Lines' },
     -- same as swiper-all
     -- make it work for special buffers like man pages
     -- { [[<f17>/]], function() Snacks.picker.grep_buffers() end, desc = 'Grep Open Buffers' ,mode={'n','i'}}, -- same mapping as Snacks.picker.buffers()

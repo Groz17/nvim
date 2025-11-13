@@ -153,9 +153,11 @@ return {
         for file, mnemonic in pairs(files) do
           -- go to non interactively ...
           vim.keymap.set('n', 'g' .. mnemonic, function() jump(vim.fn.fnameescape(vim.fn.expand('%:p:h')) .. '/' .. file) end, { buffer = ev.buf, desc = 'Go to ' .. file})
-          vim.keymap.set('n', 'g' .. vim.fn.toupper(mnemonic), function() jump(vim.fn.expand('%:p:h' .. vim.fn['repeat'](':h', vim.api.nvim_get_vvar('count1'))) .. '/' .. file) end, { buffer = ev.buf, desc = 'Go to .../' .. file})
+          vim.keymap.set('n', 'g' .. vim.fn.toupper(mnemonic), function() jump(vim.fn.expand('%:p:h' .. vim.fn['repeat'](':h', vim.api.nvim_get_vvar('count1'))) .. '/' .. file) end,
+          { buffer = ev.buf, desc = 'Go to .../' .. file})
           -- altri mappings...
-          -- "\ exe 'nnoremap <buffer><silent> go :<c-u>if filereadable(expand("%:s/_.*//:r")."_old".(v:count1).".md") <bar> e <c-r>=fnameescape(expand("%:s/_.*//:r"))."_old".(v:count1).".md"<cr> <bar> else <bar> echoerr "File doesn''t exists" <bar> endif<cr>' |
+          -- "\ exe 'nnoremap <buffer><silent> go :<c-u>if filereadable(expand("%:s/_.*//:r")."_old".(v:count1).".md") <bar> e
+          -- <c-r>=fnameescape(expand("%:s/_.*//:r"))."_old".(v:count1).".md"<cr> <bar> else <bar> echoerr "File doesn''t exists" <bar> endif<cr>' |
         end
 
         -- d sta per directory
@@ -387,7 +389,8 @@ return {
         confirm = function(picker, item)
             local path = wikipath .. item.file
             vim.fn.writefile(vim.list_extend({ '' }, clipboard), path, 'a')
-            vim.fn.system('dunstify -a neovim "Sent clipboard to "' .. vim.fn.shellescape(vim.fn.fnamemodify(path,[[:~:s?\~/vimwiki/??]])) .. ' ' .. vim.fn.shellescape(vim.trim(vim.fn.join(clipboard,"\n"))))
+            vim.fn.system('dunstify -a neovim "Sent clipboard to "' .. vim.fn.shellescape(vim.fn.fnamemodify(path,[[:~:s?\~/vimwiki/??]])) .. ' ' ..
+            vim.fn.shellescape(vim.trim(vim.fn.join(clipboard,"\n"))))
             picker:close()
           end,
           -- 
