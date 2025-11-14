@@ -1,3 +1,4 @@
+-- @ mapping like systemd templates
 -- lsp for these template files?
 -- how to automatically start insert?
 -- issue: use java/default (no extension) and java/Main.java (put extension for filename)
