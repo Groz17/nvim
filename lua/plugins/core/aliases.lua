@@ -14,6 +14,7 @@ return {
     -- automatically autocomplete for these?
     vim.cmd [[
  Alias -range g  Neogit
+ Alias -range gs  Gitsigns
  Alias -range o  Octo
  Alias -range l  Lazy
  Alias -range m  Mason

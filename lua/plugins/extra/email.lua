@@ -19,7 +19,7 @@ return {
     keys = {
       { '<f12>m', '<CMD>Notmuch<CR>', desc = 'Launch notmuch landing page' },
       {
-        '<space><space>',
+        '<c-s>', -- Can't be in insert mode when viewing emails (treat <c-s> as "alternative search" mapping)
         ':NmSearch<space>',
         desc = 'Notmuch query',
         ft = { 'notmuch-hello', 'notmuch-threads', 'mail' },
