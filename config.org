@@ -997,7 +997,7 @@ vim.keymap.set({"n","i"} , "<m-s>w", [[<c-\><c-n><cmd>call feedkeys("/\\<\\><lef
 
 *** others
 #+begin_src lua
--- org mode
+-- add M-c
 vim.keymap.set({'n',},'<M-u>',[[gUeel]])
 vim.keymap.set({'i',},'<M-u>',[[<esc>gUeea]])
 vim.keymap.set({'n',},'<M-l>',[[gueel]])
@@ -1386,15 +1386,15 @@ endfun
 nnoremap g! <CMD>call ToggleRot13()<CR>
 ]=])
 
----@see https://www.reddit.com/r/neovim/comments/1ct2w2h/lua_adaptation_of_vimcool_auto_nohlsearch/
-vim.api.nvim_create_autocmd('CursorMoved', {
-  group = vim.api.nvim_create_augroup('auto-hlsearch', { clear = true }),
-  callback = function ()
-    if vim.v.hlsearch == 1 and vim.fn.searchcount().exact_match == 0 then
-      vim.schedule(function () vim.cmd.nohlsearch() end)
-    end
-  end
-})
+-- ---@see https://www.reddit.com/r/neovim/comments/1ct2w2h/lua_adaptation_of_vimcool_auto_nohlsearch/
+-- vim.api.nvim_create_autocmd('CursorMoved', {
+--   group = vim.api.nvim_create_augroup('auto-hlsearch', { clear = true }),
+--   callback = function ()
+--     if vim.v.hlsearch == 1 and vim.fn.searchcount().exact_match == 0 then
+--       vim.schedule(function () vim.cmd.nohlsearch() end)
+--     end
+--   end
+-- })
 
 -- fai in modo che edit/read/etc... usino directory del current buffer come cwd, se vuoi usare file di progetto usa Gedit
 ---@see https://stackoverflow.com/a/3847823
