@@ -14,6 +14,7 @@ return {
   {
     -- := require'luasnip'.get_snippets()
     "L3MON4D3/LuaSnip",
+    commit = '458560534a73f7f8d7a11a146c801db00b081df0',
     lazy = true,
     -- event = { 'InsertEnter' },
     version = 'v2.*', -- Replace <CurrentMajor> by the latest released major (first number of latest release)
