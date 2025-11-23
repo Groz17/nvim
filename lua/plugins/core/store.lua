@@ -5,7 +5,7 @@ return{
   },
   cmd = "Store",
   keys = {
-    { "<f15>p", "<cmd>Store<cr>", desc = "Open Plugin Store" },
+    { "<C-c>p", "<cmd>Store<cr>", desc = "Open Plugin Store" },
   },
   opts = {
     -- optional configuration here

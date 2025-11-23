@@ -36,9 +36,8 @@ return {
   ---@see https://www.reddit.com/r/neovim/comments/1gkac88/comment/lvko4tq/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
   -- keys = {{ "dd", function() require'dap'.set_breakpoint() end, desc = "ﴫ Set Breakpoint", }},
   keys = {
-    -- {'<f15>d', desc = "Debug"},
     -- like for macro debugging in emacs
-    {'<f15>>', desc = "Debug"},
+    {'<C-c>>', desc = "Debug"},
     -- { 'dU', ':RunScriptWithArgs ', desc = "Debug (args)" }
  },
   dependencies = { 'mfussenegger/nvim-dap' },
@@ -136,7 +135,7 @@ out _h_   _l_ into
 
       mode = 'n',
       -- TODO: usa lazy's keys spec
-      body = '<f15>>',
+      body = '<C-c>>',
       -- body = '<space>d',
   -- stylua: ignore
   -- maybe make this buffer = true mappings? so you can use default mappings in the elements

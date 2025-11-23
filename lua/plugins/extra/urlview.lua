@@ -12,7 +12,7 @@ return {
     { "]U", desc = "Next URL" },
     -- slash perché fa parte di un url (ed anche mapping comodo)
     -- Here it should open multiple links in multiple tabs right? set browser = qutebrowser/lynx/w3m? that opens in vertical split? nxwm
-    { "<f15>/", [[<Cmd>UrlView buffer sorted=false<CR>]],  desc = "Buffers"  },
+    { "<C-c>U", [[<Cmd>UrlView buffer sorted=false<CR>]],  desc = "Buffers"  },
     -- { "<f18>P", [[<Cmd>UrlView lazy<CR>]], desc = "Plugins" },
     -- Doesn't support multiple selection... FIX:
     -- Here you can use %<, etc...

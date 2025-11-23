@@ -30,8 +30,8 @@ return{
 
       -- NOTE: Have to manually re-specify the globals as they were using the prefix
       global = {
-        org_agenda  = '<f15>a',
-        org_capture = '<f15>c',
+        org_agenda  = '<C-c>a',
+        org_capture = '<C-c>c',
       },
 
       -- NOTE: This isn't using the prefix, but instead <Leader>, so we change it explicitly
@@ -50,7 +50,7 @@ return{
   },
   config = function(_, opts)
     require'orgmode'.setup(opts)
-    vim.keymap.set({"n","o"},"<f15>@",'<cmd>lua require("orgmode.org.text_objects").around_subtree()<cr>')
+    vim.keymap.set({"n","o"},"<C-c>@",'<cmd>lua require("orgmode.org.text_objects").around_subtree()<cr>')
   end
 },
 {

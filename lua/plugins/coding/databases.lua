@@ -74,7 +74,7 @@ return {
 
     keys = {
       -- use s/l (f12) for emacs-inspired mappings and use c/m (f15) for one shot mappings (no groups)
-      { '<f15>d', '<cmd>tabnew|DBUIToggle<cr>', desc = 'Toggle DBUI' },
+      { '<C-c>d', '<cmd>tabnew|DBUIToggle<cr>', desc = 'Toggle DBUI' },
       -- TODO: use vim.ui.select
       { '<localleader>f', '<cmd>DBUIFindBuffer<cr>', buffer = true, ft = 'sql',desc = 'Find Buffer' },
     },

@@ -35,9 +35,8 @@ return {
        vim.api.nvim_set_var('rbql_backend_language', vim.api.nvim_get_var('rbql_backend_language') == 'python' and 'js' or 'python')
       end,{buffer = true, desc = "Toggle backend language"})
 
-      vim.keymap.set('n', "<c-c>'", [[<c-\><c-n><cmd>exe "norm \<f5>"<cr>]], { buffer = true })
       -- repl-like?
-      vim.keymap.set('n', "<f15>'", [[<c-\><c-n><cmd>exe "norm \<f5>"<cr>]], { buffer = true })
+      vim.keymap.set('n', "<C-c>'", [[<c-\><c-n><cmd>exe "norm \<f5>"<cr>]], { buffer = true })
       vim.keymap.set('n', '<cr>', function() require'rainbow_csv.fns'.select_from_file() end, { buffer = true })
       -- filetype should be rbql
       -- vim.keymap.set('n', '<cr>', function() require'rainbow_csv.fns'.finish_query_editing() end--[[, { buffer = true }]])

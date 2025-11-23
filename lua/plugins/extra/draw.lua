@@ -3,7 +3,7 @@ return {
   -- how to insert down arrow on first line when there are no more lines?
   'jbyuki/venn.nvim',
   -- keys = [[\a]],
-  keys = {{ [[<f15>v]], desc="Ascii drawing" }}, -- a di ascii
+  keys = {{ [[<C-c>v]], desc="Ascii drawing" }}, -- a di ascii
   -- FIX: code duplication...
   -- keys = { vim.g.hleader .. 'a' },
   config = function()
@@ -25,7 +25,7 @@ return {
         on_enter = function() vim.wo.virtualedit = 'all' end,
       },
       mode = 'n',
-      body = '<f15>v',
+      body = '<C-c>v',
       heads = {
         { 'H', '<C-v>h<esc><cmd>VBox<CR>' },
         { 'J', '<C-v>j<esc><cmd>VBox<CR>' },

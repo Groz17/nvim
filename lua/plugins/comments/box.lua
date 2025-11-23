@@ -32,18 +32,18 @@ return{
       -- You can imagine o as a circular box
       -- sk -> surround with bo[k]s
       -- Would be nice to intergrate with surround plugin (surround with box/line) and which-key that shows the name of the styles like inn the catalog...
-      { mode = { "n", "x" }, "<f15>;jj", function() require("comment-box").llbox(vim.v.count1) end, desc = "Left aligned box of fixed size with Left aligned text" },
-      { mode = { "n", "x" }, "<f15>;jk", function() require("comment-box").lcbox(vim.v.count1) end, desc = "Left aligned box of fixed size with Centered text" },
-      { mode = { "n", "x" }, "<f15>;jl", function() require("comment-box").lrbox(vim.v.count1) end, desc = "Left aligned box of fixed size with Right aligned text" },
-      { mode = { "n", "x" }, "<f15>;kj", function() require("comment-box").clbox(vim.v.count1) end, desc = "Centered box of fixed size with Left aligned text" },
-      { mode = { "n", "x" }, "<f15>;kk", function() require("comment-box").ccbox(vim.v.count1) end, desc = "Centered box of fixed size with Centered text" },
-      { mode = { "n", "x" }, "<f15>;kl", function() require("comment-box").crbox(vim.v.count1) end, desc = "Centered box of fixed size with Right aligned text" },
-      { mode = { "n", "x" }, "<f15>;lj", function() require("comment-box").rlbox(vim.v.count1) end, desc = "Right aligned box of fixed size with Left aligned text" },
-      { mode = { "n", "x" }, "<f15>;lk", function() require("comment-box").rcbox(vim.v.count1) end, desc = "Right aligned box of fixed size with Centered text" },
-      { mode = { "n", "x" }, "<f15>;ll", function() require("comment-box").rrbox(vim.v.count1) end, desc = "Right aligned box of fixed size with Right aligned text" },
-      { mode = { "n", "x" }, "<f15>;ja", function() require("comment-box").labox(vim.v.count1) end, desc = "Left aligned adapted box" },
-      { mode = { "n", "x" }, "<f15>;ka", function() require("comment-box").cabox(vim.v.count1) end, desc = "Centered adapted box" },
-      { mode = { "n", "x" }, "<f15>;la", function() require("comment-box").rabox(vim.v.count1) end, desc = "Right aligned adapted box" },
+      { mode = { "n", "x" }, "<space>;jj", function() require("comment-box").llbox(vim.v.count1) end, desc = "Left aligned box of fixed size with Left aligned text" },
+      { mode = { "n", "x" }, "<space>;jk", function() require("comment-box").lcbox(vim.v.count1) end, desc = "Left aligned box of fixed size with Centered text" },
+      { mode = { "n", "x" }, "<space>;jl", function() require("comment-box").lrbox(vim.v.count1) end, desc = "Left aligned box of fixed size with Right aligned text" },
+      { mode = { "n", "x" }, "<space>;kj", function() require("comment-box").clbox(vim.v.count1) end, desc = "Centered box of fixed size with Left aligned text" },
+      { mode = { "n", "x" }, "<space>;kk", function() require("comment-box").ccbox(vim.v.count1) end, desc = "Centered box of fixed size with Centered text" },
+      { mode = { "n", "x" }, "<space>;kl", function() require("comment-box").crbox(vim.v.count1) end, desc = "Centered box of fixed size with Right aligned text" },
+      { mode = { "n", "x" }, "<space>;lj", function() require("comment-box").rlbox(vim.v.count1) end, desc = "Right aligned box of fixed size with Left aligned text" },
+      { mode = { "n", "x" }, "<space>;lk", function() require("comment-box").rcbox(vim.v.count1) end, desc = "Right aligned box of fixed size with Centered text" },
+      { mode = { "n", "x" }, "<space>;ll", function() require("comment-box").rrbox(vim.v.count1) end, desc = "Right aligned box of fixed size with Right aligned text" },
+      { mode = { "n", "x" }, "<space>;ja", function() require("comment-box").labox(vim.v.count1) end, desc = "Left aligned adapted box" },
+      { mode = { "n", "x" }, "<space>;ka", function() require("comment-box").cabox(vim.v.count1) end, desc = "Centered adapted box" },
+      { mode = { "n", "x" }, "<space>;la", function() require("comment-box").rabox(vim.v.count1) end, desc = "Right aligned adapted box" },
 
       -- Titled lines
       -- l in <c-l> sta per line

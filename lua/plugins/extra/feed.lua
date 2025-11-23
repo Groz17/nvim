@@ -9,7 +9,7 @@
 return {
   'neo451/feed.nvim',
   cmd = 'Feed',
-  keys = { { '<f15>e', '<cmd>Feed index<cr>' }, },
+  keys = { { '<C-c>e', '<cmd>Feed index<cr>' }, },
   opts = {
     feeds = {
       -- These two styles both work
