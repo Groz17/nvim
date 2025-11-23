@@ -6,7 +6,16 @@ return {
     -- in cache tieni repo a cui tieni tipo kernel e neovim (per imparare un po' dai pro)
     -- make it clone private repositories as well
     'moyiz/git-dev.nvim',
-    cmd = {'GitDevOpen', 'GitDevRecents', 'GitDevCleanAll' },
+    cmd = {
+      "GitDevClean",
+      "GitDevCleanAll",
+      "GitDevCloseBuffers",
+      "GitDevHistory",
+      "GitDevOpen",
+      "GitDevPersist",
+      "GitDevToggleUI",
+      "GitDevXDGHandle",
+    },
     opts = {
       -- maybe delete after 10 repos? config option?
       ephemeral = false,
@@ -19,6 +28,9 @@ return {
         require('mini.files').open(vim.fn.fnameescape(dir))
         -- require('oil').open_float()
       end,
+      pickers = {
+        type = 'snacks'
+      },
     },
     config = function(_, opts)
       require('git-dev').setup(opts)
@@ -34,7 +46,7 @@ return {
         desc = '[O]pen a remote git repository',
       },
       -- BUG: lazy should take the command's description, this is redundancy...
-      { '<leader>gO', '<CMD>GitDevRecents<CR>', desc = 'Revisit previously opened repositories.' },
+      { '<leader>gO', '<CMD>GitDevHistory<CR>', desc = 'Revisit previously opened repositories.' },
     },
   },
   {
@@ -70,10 +82,10 @@ return {
       -- { "<leader>gO", ":Octo<space>", desc = "Github Open" },
       -- { "<leader>gO", function() require("octo.commands").octo("repo="..vim.fn.input("Repo: >")) end , desc = "Github Open" },
       -- { "<leader>gopl", "<cmd>Octo pr list<cr>", desc = "Github Pull-request List" },
-        -- maps.n[prefix .. "x"] = { "<Cmd>Octo actions<CR>", desc = "Run an action" }
+      -- maps.n[prefix .. "x"] = { "<Cmd>Octo actions<CR>", desc = "Run an action" }
 
-    -- TODO: find better mappings...
-    { "<a-s-x>", "<cmd>Octo<CR>", desc = "Open Octo", ft = 'octo' },
+      -- TODO: find better mappings...
+      { "<a-s-x>", "<cmd>Octo<CR>", desc = "Open Octo", ft = 'octo' },
     },
     opts = {
       enable_builtin = true,
