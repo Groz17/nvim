@@ -21,4 +21,7 @@ vim.keymap.set({"n","o"},"gO",function()Snacks.picker.lines({on_show = function(
 vim.keymap.set({"n","o"},"<m-g>i",function()Snacks.picker.lines({on_show = function()vim.cmd('1')  vim.fn.feedkeys([[^* ]])end, sort={fields={"idx",}}},{buffer=true} )end)
 .
 
+" localleader := <c-c><c-> if followed by letters, <c-c> otherwise
+nnoremap<buffer> <localleader>vt <cmd>echo system('emacsclient -a "" --eval "(org-babel-tangle-file \"'.expand('%:p').'\")"')<cr>
 nnoremap<buffer> <c-c><c-v><c-t> <cmd>echo system('emacsclient -a "" --eval "(org-babel-tangle-file \"'.expand('%:p').'\")"')<cr>
+inoremap<buffer> <c-c><c-v><c-t> <cmd>echo system('emacsclient -a "" --eval "(org-babel-tangle-file \"'.expand('%:p').'\")"')<cr>
