@@ -35,21 +35,4 @@ return {
       { 'h', '<c-^>', ft = 'mail' },
     },
   },
-  {
-    'aliyss/vim-himalaya-ui',
-    cmd = { 'HimalayaUI', },
-    -- keys = {
-    --   { '<f12>m', '<cmd>HimalayaUI<cr>', desc = 'Himalaya UI', },
-    -- },
-    config = function()
-      vim.cmd([[
-        augroup lasCR
-        au!
-        au Filetype himalayaui nmap<buffer>l <cr>
-        au Filetype himalayaui nmap<buffer><tab> <cr>
-        au Filetype himalaya-email-listing nmap<buffer>l <cr>
-        augroup END
-        ]])
-    end,
-  },
 }

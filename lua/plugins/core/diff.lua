@@ -4,6 +4,10 @@
 
 return {
   {
+    "esmuellert/vscode-diff.nvim",
+    dependencies = { "MunifTanjim/nui.nvim" },
+  },
+  {
     -- use in combination with diff -r or git diff --no-index
     'junkblocker/patchreview-vim',
     -- cond = false,
