@@ -144,7 +144,7 @@ return {
     -- <f17>C for all colorschemes, <space><space>c for plugin's colorschemes? use univeral argument
     -- how to preview the current buffer? 
     -- { '<f17>C', function() Snacks.picker.colorschemes() end, desc = 'Colorschemes' },
-    -- avoid jumpscare by sorting based on similar colors?
+    -- avoid jumpscare by sorting based on similar colors? use lowercase for same bg and uppercase for all?
     { '<f17>c', function() Snacks.picker.colorschemes() end, desc = 'Colorschemes' ,mode={'n','i'}},
     -- go back w/ C-h if first char?
     -- define your dirs?
