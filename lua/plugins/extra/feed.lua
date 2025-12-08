@@ -44,7 +44,7 @@ return {
     vim.api.nvim_create_autocmd("FileType", {
       pattern = 'feed',
       callback = function()
-        vim.keymap.set('n', 'l', '<m-cr>', { remap = true })
+        vim.keymap.set('n', 'l', '<m-cr>', { remap = true, buffer = true })
       end
     })
   end
