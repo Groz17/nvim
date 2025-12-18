@@ -6,6 +6,7 @@
 -- come usare questo in readline?
 -- you could maybe use <c-x> as a prefix in command line mode? but what about insert
 -- TODO: add ^[ to go to next character and M-C-[
+-- also add in select mode for snippets? check if emacs does the same
 return {
   -- "linty-org/readline.nvim",
   'assistcontrol/readline.nvim',

@@ -306,6 +306,7 @@ vim.opt.shada={"!","'500","<50","s10","h"}
 - Don't use leader(s) mappings for operators (ex: surround), use them for general plugin mappings that don't define an operator (or text object of course)
 	- Capitalize desc field: rg 'desc\s*=\s*[[:punct:]]+[a-z]' --vimgrep |v -q-
 - Take inspiration from emacs/nano mappings 
+- Use Emacs mapping notation (<C-c> and not <c-c> and use <M- instead of <A-)
 - Use <f19> or whatever for universal argument (hold u)
 
 ** Task list
