@@ -8,7 +8,7 @@ return {
     -- show "last synced ... on top?"
     -- tree view w/ tags on the side?
     'yousefakbar/notmuch.nvim',
-    cmd = { 'Notmuch', 'NmSearch', 'Inbox','NmNew','NmSync' },
+    cmd = { 'Notmuch', 'NmSearch', 'Inbox','NmSync', 'ComposeMail' },
     opts = {
       notmuch_db_path = os.getenv('XDG_DATA_HOME') .. '/mail/',
       -- maildir_sync_cmd = "mbsync personal",
@@ -17,7 +17,8 @@ return {
       },
     },
     keys = {
-      { '<f12>m', '<CMD>Notmuch<CR>', desc = 'Launch notmuch landing page' },
+      { '<c-c>m', '<CMD>Notmuch<CR>', desc = 'Launch notmuch landing page' },
+      { '<f12>m', '<CMD>ComposeMail<CR>', desc = 'Compose Mail' },
       {
         '<c-s>', -- Can't be in insert mode when viewing emails (treat <c-s> as "alternative search" mapping)
         ':NmSearch<space>',
@@ -30,8 +31,6 @@ return {
       { 'l', '<CR>', ft = 'notmuch-threads', remap = true },
       { 'h', '<cmd>Notmuch<cr>', ft = 'notmuch-threads' },
       -- show diff/git-like tracking for emails?
-      { 'd', '<cmd>TagAdd deleted<cr>', ft = 'notmuch-threads', desc = "Delete thread" },
-      { 'd', ':<c-u>norm d<cr>', ft = 'notmuch-threads', mode = "x", remap = true,desc = "Delete thread" },
       { 'h', '<c-^>', ft = 'mail' },
     },
   },
