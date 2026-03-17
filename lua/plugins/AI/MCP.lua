@@ -2,7 +2,7 @@
 -- usalo per vimwiki/wiki
 -- awesome-mcp-servers
 -- can u connect to multiple servers at the same time? multiple ports?
-return {
+return {{
   'ravitemer/mcphub.nvim',
   dependencies = {
     'nvim-lua/plenary.nvim',
@@ -19,4 +19,17 @@ return {
       },
     },
   },
+},
+-- {
+--   "arismoko/buddy.nvim",
+--   dependencies = {
+--     "nvim-mini/mini.nvim",
+--     "nvim-neotest/nvim-nio",
+--   },
+--   lazy = false,
+--   opts = {
+--     auto_start = true,
+--     port = 7234,
+--   }
+-- }
 }

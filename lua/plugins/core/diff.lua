@@ -3,10 +3,11 @@
 -- http://www.vim.org/scripts/script.php?script_id=2361
 
 return {
-  {
-    "esmuellert/vscode-diff.nvim",
-    dependencies = { "MunifTanjim/nui.nvim" },
-  },
+{
+  "esmuellert/codediff.nvim",
+  dependencies = { "MunifTanjim/nui.nvim" },
+  cmd = "CodeDiff",
+},
   {
     -- use in combination with diff -r or git diff --no-index
     'junkblocker/patchreview-vim',
