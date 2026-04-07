@@ -5,7 +5,7 @@ return
   {
     -- use N and L to select last and first text object on line (buffer)
     "nvim-mini/mini.ai",
-    dependencies = { "nvim-treesitter/nvim-treesitter-textobjects", cmd = {'TSTextobjectGotoPreviousStart','TSTextobjectGotoNextEnd'}, },
+    dependencies = { "nvim-treesitter/nvim-treesitter-textobjects", branch = 'main', cmd = {'TSTextobjectGotoPreviousStart','TSTextobjectGotoNextEnd'}, },
     --    event = "ModeChanged",
     keys = {
       { "a", mode = { "x", "o" } },

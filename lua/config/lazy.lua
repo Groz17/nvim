@@ -153,6 +153,7 @@ vim.cmd('packadd cfilter')
 -- vim.cmd('source sortgrop.vim')
 vim.cmd('packadd nvim.difftool')
 vim.cmd('packadd nvim.undotree')
+vim.cmd('packadd nvim.tohtml')
 
 vim.api.nvim_create_autocmd("User", {
   group = vim.api.nvim_create_augroup("LoadDiffview",{}),
