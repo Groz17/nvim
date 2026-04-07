@@ -211,11 +211,7 @@ vim.opt.smartindent = true
 ** Folding
 #+begin_src lua
 vim.wo.foldenable = false
-vim.wo.foldmethod = "expr"
 -- fallback to treesitter if no lsp capabilities?
--- vim.o.foldexpr = "v:lua.vim.lsp.foldexpr()"
-vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
--- vim.o.foldmethod = "expr"
 -- vim.o.foldenable= false
 -- vim.wo.foldtext = [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) ]]
 vim.wo.foldnestmax = 3
