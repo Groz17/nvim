@@ -948,6 +948,7 @@ vim.keymap.set({"n","i"} , "<f12>44", [[<cmd>vnew<cr>]], { desc = "Open in other
 vim.keymap.set('i','<f12><c-s>','<cmd>up<cr>')
 -- magari c-x c-s-s for sudowrite?
 vim.keymap.set('n', '<f12><c-s>', '<CMD>up<CR>', {desc = "Save Current File" })
+vim.keymap.set('n', '<f12><c-w>', ':saveas<space>', {desc = "Save File As" })
 -- vim.keymap.set('n','<f12>k<cr>','<cmd>bd<cr>')
 
 -- wrap?
@@ -1052,6 +1053,7 @@ vim.keymap.set({'n','i','x'},'<m-s-.>',"<cmd>norm! G$<cr>")
 
 -- would be cool to return to cursor left by emacs (maybe went to another buffer as well) (also would be nice if it worked in visual mode as well)
 -- f15 to move between neovim windows, ^w for emacs
+-- TODO: recreate entire state w/ windows, tabs, etc...
 vim.keymap.set('n','<space>&', function()
 		  if vim.bo.filetype == '' then return end
 		  local line_nr = tostring(vim.fn.line('.'))
