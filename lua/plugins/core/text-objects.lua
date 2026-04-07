@@ -1,4 +1,5 @@
 -- u don't need buffer (u can use <c-x>h)
+-- include smart quotes in q text object
 return
   -- Better text-objects
   {
