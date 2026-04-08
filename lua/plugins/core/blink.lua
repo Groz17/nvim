@@ -40,14 +40,12 @@ return {
         -- default = { 'lsp', 'path', 'snippets', 'buffer', 'ecolog', 'emoji', --[['copilot']] },
         default = { 'lsp', 'path', 'snippets', 'buffer', --[['ecolog',]] --[['git',]] 'omni', 'avante'--[['env']] },
         -- default = { 'lsp', 'path', 'snippets', 'buffer', 'ecolog', 'emoji', 'copilot' },
-        -- markup adn programming (languages) keys?
+        -- markup and programming (languages) keys?
         per_filetype = {
           AvanteInput = { 'avante', 'buffer' },
           sql = { 'dadbod', 'lsp', 'snippets', 'buffer' },
           lua = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
-          -- org = { 'orgmode', 'buffer' },
           -- add in prog language's comments
-          -- org = { 'orgmode' },
         },
 
         -- sposta in vim_dadbod_completion spec (when blink has buffer completions...)

@@ -2,7 +2,7 @@
       -- indent = { enable = false },
       -- TODO: it should support alt-o as well...
       -- endwise = { enable = true },
--- matchup = {
+    -- matchup = {
       --   enable = true, -- mandatory, false will disable the whole extension
       -- },
 
@@ -11,14 +11,6 @@
 
 
 
-      -- ignore_install = { 'org' },
-      -- highlight = {
-      --   -- vimtex ftw
-      --   -- disable = { "latex" },  -- list of language that will be disabled
-      --   disable = {'csv'},
-      --   additional_vim_regex_highlighting = {'org'},
-      --   -- use_languagetree = true,
-      -- },
       -- injection = { query = os.getenv("HOME") .. '/.config/nvim/queries'  -- Path to your injection query file },
       -- query_dir = os.getenv("HOME") .. '/.config/nvim/queries', -- Specify your custom queries directory
       -- incremental_selection = {
@@ -240,3 +232,11 @@ return
           --     }}
           --   },
           --
+
+      -- highlight = {
+      --   -- vimtex ftw
+      --   -- disable = { "latex" },  -- list of language that will be disabled
+      --   disable = {'csv'},
+      --   additional_vim_regex_highlighting = {'org'},
+      --   -- use_languagetree = true,
+      -- },
