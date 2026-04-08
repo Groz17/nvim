@@ -122,7 +122,7 @@ require("lazy").setup({
         },
     },
     -- how to make this work with lazy-loading the plugin?
-    diff = { cmd = "diffview.nvim" },
+    -- diff = { cmd = "diffview.nvim" },
 
       checker = {
         -- automatically check for plugin updates
@@ -155,17 +155,17 @@ vim.cmd('packadd nvim.difftool')
 vim.cmd('packadd nvim.undotree')
 vim.cmd('packadd nvim.tohtml')
 
-vim.api.nvim_create_autocmd("User", {
-  group = vim.api.nvim_create_augroup("LoadDiffview",{}),
-  pattern = "LazyUpdate",
-  callback = function()
-      if not package.loaded["diffview.nvim"] then
-          require("lazy").load({
-              plugins = { "diffview.nvim" }
-          })
-      end
-  end
-})
+-- vim.api.nvim_create_autocmd("User", {
+--   group = vim.api.nvim_create_augroup("LoadDiffview",{}),
+--   pattern = "LazyUpdate",
+--   callback = function()
+--       if not package.loaded["diffview.nvim"] then
+--           require("lazy").load({
+--               plugins = { "diffview.nvim" }
+--           })
+--       end
+--   end
+-- })
 
 -- from nvchad
 -- local default_providers = {
