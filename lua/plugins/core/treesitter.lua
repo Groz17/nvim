@@ -1,36 +1,8 @@
-    -- dependencies = {
     --   --        {"nvim-treesitter/nvim-tree-docs"},
-    --   -- { 'romgrk/nvim-treesitter-context' },
-    --   -- lento in file markdown...
-    --   -- { 'JoosepAlviste/nvim-ts-context-commentstring' },
-    --   -- funge anche per html tags ;D
-    --   { "HiPhish/rainbow-delimiters.nvim",
-    --   main = 'rainbow-delimiters.setup',
-    --   opts = {},
-    -- },
-      -- Usage: <div></div>    ciwspan<esc>   <span></span>
-      -- these two should be part of autopairs tbh
-      -- { 'brianhuster/nvim-treesitter-endwise',lazy=false,},
-      -- { 'brianhuster/nvim-treesitter-endwise'},
-      -- { 'RRethy/nvim-treesitter-endwise'},
-    -- },
-    -- opts = {
-      -- tree_docs = {
-      --   enable = true,
-      --   spec_config = {
-      --     jsdoc = {
-      --       slots = {
-      --         class = { author = true }
-      --       }
-      --     }
-      --   }
-      -- },
-
-        -- BUG: messes with o, O, etc...
       -- indent = { enable = false },
       -- TODO: it should support alt-o as well...
       -- endwise = { enable = true },
-      -- matchup = {
+-- matchup = {
       --   enable = true, -- mandatory, false will disable the whole extension
       -- },
 
@@ -83,6 +55,36 @@
 return
 {
     "nvim-treesitter/nvim-treesitter",
+        dependencies = {
+
+    --   -- funge anche per html tags ;D
+      -- Usage: <div></div>    ciwspan<esc>   <span></span>
+      -- these two should be part of autopairs tbh
+      { 'RRethy/nvim-treesitter-endwise',lazy=false, config = function () vim.keymap.set('i','<M-o>','<end><cr>') end},
+    --   -- lento in file markdown...
+          { 'JoosepAlviste/nvim-ts-context-commentstring', lazy = false, },
+
+      { "HiPhish/rainbow-delimiters.nvim",
+      -- main = 'rainbow-delimiters.setup',
+      -- opts = {},
+    },
+
+          {
+            'nvim-treesitter/nvim-treesitter-context',
+            lazy = false,
+            keys =
+            {
+              {
+                "[j",-- j di jump
+                function() require("treesitter-context").go_to_context() end,
+                desc = "Go to parent context",
+                mode = {"n","x","o"},
+              }},
+                opts = {
+  multiwindow = false, -- Enable multiwindow support.
+            },
+        },
+      },
     -- build = ":TSUpdate",
     event = { "BufReadPost", "BufNewFile" },
     init = function()
@@ -170,6 +172,7 @@ return
         'csv',
         'diff',
         'dockerfile',
+        'gitcommit',
         'gitignore',
         'go',
         'html',
@@ -237,42 +240,3 @@ return
           --     }}
           --   },
           --
-          -- {
-          --   'nvim-treesitter/nvim-treesitter-context',
-          --   lazy = false,
-          --   keys =
-          --   {
-          --     {
-          --       "[j",-- j di jump
-          --       function() require("treesitter-context").go_to_context() end,
-          --       desc = "Go to parent context",
-          --       mode = {"n","x","o"},
-          --     }},
-          --       opts = {
-          --       enable = true,   -- Enable this plugin (Can be enabled/disabled later via commands)
-          --       throttle = true, -- Throttles plugin updates (may improve performance)
-          --       max_lines = 0,   -- How many lines the window should span. Values <= 0 mean no limit.
-          --       patterns = {
-          --         -- Match patterns for TS nodes. These get wrapped to match at word boundaries.
-          --         -- For all filetypes
-          --         -- Note that setting an entry here replaces all other patterns for this entry.
-          --         -- By setting the 'default' entry below, you can control which nodes you want to
-          --         -- appear in the context window.
-          --         default = {
-          --           'class',
-          --           'function',
-          --           'method',
-          --           -- 'for', -- These won't appear in the context
-          --           -- 'while',
-          --           -- 'if',
-          --           -- 'switch',
-          --           -- 'case',
-          --         },
-          --         -- Example for a specific filetype.
-          --         -- If a pattern is missing, *open a PR* so everyone can benefit.
-          --         --   rust = {
-          --           --       'impl_item',
-          --           --   },
-          --         },
-          --       }
-          --   },
