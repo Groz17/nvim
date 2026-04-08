@@ -300,6 +300,9 @@ return {
                   input = {
                     keys = {
 
+            -- Use <localleader>o or any preferred key to send files to opencode
+            -- ["<localleader>o"] = { "opencode_send", mode = { "n", "i" } },
+            ["<M-o>"] = { "opencode_send", mode = { "n", "i" } },
                       ["<f17>t"] = { "trouble_open", mode = { "n", "i" }, },
                       -- ["<f17>s"] = { "flash", mode = { "n", "i" } },
                       -- avy-goto-line (maybe better built-in functions/keymaps?)
@@ -426,9 +429,6 @@ return {
                 },
 
                 actions =
-                --           table.concat(
-                  -- require("trouble.sources.snacks").actions,
-                  -- does emacs have flash like keymaps/plugin?
                   {
                     flash = function(picker)
                       require("flash").jump({
@@ -447,7 +447,32 @@ return {
                           picker.list:_move(idx, true, true)
                         end,
                       })
-                    end}
+                    end,
+
+        opencode_send = function(picker)
+          local selected = picker:selected({ fallback = true })
+          if selected and #selected > 0 then
+            local files = {}
+            for _, item in ipairs(selected) do
+              if item.file then
+                table.insert(files, item.file)
+              end
+            end
+            picker:close()
+
+            require("opencode.core").open({
+              new_session = false,
+              focus = "input",
+              start_insert = true,
+            })
+
+            local context = require("opencode.context")
+            for _, file in ipairs(files) do
+              context.add_file(file)
+            end
+          end
+        end,
+          }
                     -- )
                   },
                 }end,
