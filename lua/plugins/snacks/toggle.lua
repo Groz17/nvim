@@ -25,7 +25,7 @@ return {
         Snacks.toggle.indent():map("<f13>i", { mode = {"n","i"} })
         Snacks.toggle.dim():map("<f13>D", { mode = {"n","i"} })
         -- Snacks.toggle.zoom():map("<f13>o", { mode = {"n","i"} }) -- like ^wo vim mapping
-        Snacks.toggle.zoom():map("<f13>f", { mode = {"n","i"} }) -- like win+f WM fullscreen mapping
+        Snacks.toggle.zoom():map("<f12>1", { mode = {"n","i"} }) -- like win+f WM fullscreen mapping
         Snacks.toggle.zen():map("<f13>z", { mode = {"n","i"} })
 
         Snacks.toggle.words():map("<f13>R", { mode = {"n","i"} })

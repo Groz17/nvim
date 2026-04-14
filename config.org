@@ -919,7 +919,6 @@ vim.keymap.set({'n','i'},'<f12><c-o>','<cmd>norm! cip<cr>')
 
 vim.keymap.set({'n','i','x','o','t'},'<M-v>','<c-u>')
 
-vim.keymap.set(all,'<f12>1',[[<c-\><c-n><cmd>wincmd o<cr>]])
 vim.keymap.set(all,'<f12>0',[[<c-\><c-n><cmd>wincmd c<cr>]])
 vim.keymap.set(all,'<f12>+',[[<c-\><c-n><cmd>wincmd =<cr>]])
 
