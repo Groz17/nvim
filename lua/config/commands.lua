@@ -141,3 +141,36 @@ vim.api.nvim_create_user_command('DirDiff', function(opts)
     ignore = { '.git' },
   })
 end, { complete = 'dir', nargs = '*' })
+
+-- https://www.reddit.com/r/neovim/comments/1smxwu1/lexynvim_my_first_neovim_plugin/
+vim.api.nvim_create_user_command("Lexy", function(args)
+  if args.args == "" then
+    local content =
+      vim.system({ "curl", "-s", "https://api.github.com/repos/adambard/learnxinyminutes-docs/contents/" }):wait()
+    local data = vim.json.decode(content.stdout)
+    local files = vim
+      .iter(data)
+      :filter(function(item)
+        return vim.endswith(item.name, ".md")
+      end)
+      :map(function(item)
+        return item.name:sub(0, -4)
+      end)
+      :totable()
+
+    vim.ui.select(files, { prompt = "Select a topic:" }, function(choice)
+      if choice then
+        vim.cmd("Lexy " .. choice)
+      end
+    end)
+    return
+  end
+  local query = args.args
+  vim.cmd("belowright vsplit")
+  local buf = vim.api.nvim_create_buf(false, true)
+  vim.api.nvim_win_set_buf(0, buf)
+  vim.cmd("r !curl -s https://raw.githubusercontent.com/adambard/learnxinyminutes-docs/master/" .. query .. ".md")
+  vim.bo[buf].filetype = "markdown"
+  vim.fn.cursor(1, 1)
+  vim.keymap.set("n", "q", "<cmd>bd<CR>", { buffer = buf, silent = true })
+end, { nargs = "*" })
