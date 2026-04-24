@@ -10,13 +10,13 @@ return {
     },
     config = function()
 
-      vim.keymap.set('n', 'gr0', '<cmd>LspStart<cr>', { desc = 'Start' })
+      vim.keymap.set('n', 'gr0', '<cmd>lsp enable<cr>', { desc = 'Start' })
       -- dot -> full stop (like a sentence)
-      vim.keymap.set('n', 'gr_', '<cmd>LspStop<cr>', { desc = 'Stop' })
+      vim.keymap.set('n', 'gr_', '<cmd>lsp disable<cr>', { desc = 'Stop' })
       -- restart mapping in emacs? also for :restart command
-      vim.keymap.set('n', 'gr?', '<cmd>LspInfo<cr>', { desc = 'Info' })
+      vim.keymap.set('n', 'gr?', '<cmd>checkhealth vim.lsp<cr>', { desc = 'Info' })
 
-      vim.keymap.set('n', 'grl', '<CMD>LspLog<CR>', { desc = "Client's logfile " })
+      vim.keymap.set('n', 'grL', '<CMD>tabnew ' .. vim.lsp.log.get_filename() .. '<CR>', { desc = "Client's logfile " })
 
       vim.api.nvim_create_autocmd('LspAttach', {
         callback = function(args)
