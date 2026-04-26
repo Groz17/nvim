@@ -312,6 +312,10 @@ return {
                       -- like emacs
                       ["<c-g>"] = { "close", mode = { "n", "i" } },
 
+              -- similar to ^w{HJKL} (write opposite side code too)
+              ["<c-s-l>"] = { "edit_vsplit", mode = { "i", "n" } },
+              ["<c-s-j>"] = { "edit_split", mode = { "i", "n" } },
+
                       -- ivy-restrict-to-matches
                       ["<s-space>"] = { "toggle_live", mode = { "i" } },
 

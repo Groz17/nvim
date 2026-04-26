@@ -70,12 +70,10 @@ vim.opt.startofline = false -- Keep same column when going visual-block column
 
 ** Tags
 #+begin_src lua
-vim.opt.complete:remove('t')      -- Don't use tags for completion
 #+end_src
 
 ** Displaying text
 #+begin_src lua
-vim.opt.mousescroll  = 'ver:25,hor:6' -- Customize mouse scroll
 vim.opt.showbreak="↪"
 -- how to show full parent directory when the window is small?
 -- vim.opt.undoreload = 10000        -- number of lines to save for undo
@@ -86,14 +84,12 @@ vim.opt.listchars = { trail = "-", tab = [[▸ ]], nbsp = "␣", eol = "$", exte
 -- vim.opt.fillchars:append { diff = "╱" }
 -- vim.opt_global.fillchars:append { diff = "╱" }
 -- opt.fillchars = { eob = " " }
-vim.opt.history = 10000           -- Remember N lines in history
 -- vim.opt.lazyredraw = true       -- Faster scrolling
 vim.opt.number = true           -- Show line number
 -- vim.opt.colorcolumn = '80'      -- Line lenght marker at 80 columns
 vim.opt.linebreak = true        -- Wrap on word boundary
 vim.wo.foldminlines = 1
 vim.o.formatlistpat = [[^\s*[0-9\-\+\*]\+[\.\)]*\s\+]]
-vim.opt.wildmode = {list = "longest", "full"} -- When completing, show all options, insert common prefix, then iterate
 -- Enable relative numbers only in Normal mode, and absolute numbers only in Insert mode
 -- augroup toggle_relative_number
 -- autocmd InsertEnter * :setlocal norelativenumber nonumber
@@ -106,8 +102,6 @@ vim.opt.wildmode = {list = "longest", "full"} -- When completing, show all optio
 -- vim.wo.spell = true
 -- vim.o.spelllang    = 'en,uk,it,ru,ar'   -- Define spelling dictionaries
 vim.o.spelloptions = 'camel'      -- Treat parts of camelCase words as seprate words
-vim.opt.complete:append('kspell') -- Add spellcheck options for autocomplete
-vim.opt.hidden = true           -- Enable background buffers
 vim.opt.synmaxcol = 240         -- Max column for syntax highlight
 vim.opt.cursorline = true -- Highlight current line
 -- vim.opt.colorcolumn = '80'      -- Line lenght marker at 80 columns
@@ -167,8 +161,8 @@ vim.opt.shortmess:append "sI" -- Disable nvim intro
 ** Editing text
 #+begin_src lua
 vim.opt.joinspaces = false
-vim.opt.complete:append('kspell') -- Add spellcheck options for autocomplete
 vim.opt.complete:remove('t')      -- Don't use tags for completion
+vim.opt.complete:append('kspell') -- Add spellcheck options for autocomplete
 vim.opt.dictionary = '/usr/share/dict/words'
 vim.opt.undolevels = 10000         -- use many levels of undo
 --   set undodir=$HOME/.vim/undo
@@ -204,8 +198,6 @@ vim.opt.smartindent = true
 vim.opt.tabstop     = 2 -- Width of tab character
 vim.opt.softtabstop = 2 -- Fine tunes the amount of white space to be added
 -- vim.wo.foldtext = [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) ]]
-vim.opt.autoindent = true
-vim.opt.smartindent = true
 #+end_src
 
 ** Folding
