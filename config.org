@@ -77,7 +77,6 @@ vim.opt.startofline = false -- Keep same column when going visual-block column
 vim.opt.showbreak="↪"
 -- how to show full parent directory when the window is small?
 -- vim.opt.undoreload = 10000        -- number of lines to save for undo
-vim.opt.modelines = 3 -- after eventual shebang and emacs...
 vim.opt.wrap = false
 vim.opt.list = false
 vim.opt.listchars = { trail = "-", tab = [[▸ ]], nbsp = "␣", eol = "$", extends = "❯", precedes ="❮" }
@@ -88,8 +87,6 @@ vim.opt.listchars = { trail = "-", tab = [[▸ ]], nbsp = "␣", eol = "$", exte
 vim.opt.number = true           -- Show line number
 -- vim.opt.colorcolumn = '80'      -- Line lenght marker at 80 columns
 vim.opt.linebreak = true        -- Wrap on word boundary
-vim.wo.foldminlines = 1
-vim.o.formatlistpat = [[^\s*[0-9\-\+\*]\+[\.\)]*\s\+]]
 -- Enable relative numbers only in Normal mode, and absolute numbers only in Insert mode
 -- augroup toggle_relative_number
 -- autocmd InsertEnter * :setlocal norelativenumber nonumber
@@ -276,7 +273,7 @@ vim.opt.encoding = "utf-8"
 ** Various
 #+begin_src lua
 vim.g.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,terminal" -- removed blank
-vim.opt.sessionoptions:remove('buffers')
+-- vim.opt.sessionoptions:remove('buffers')
 vim.wo.signcolumn = "yes:1"
 vim.o.exrc=true
 -- aumenta fzf history
@@ -720,8 +717,8 @@ end)
 
 -- /tmp/.mount_nvimXBe5JS/usr/share/nvim/runtime/doc/spell.txt:123
 vim.cmd([[
-nnoremap z?  exe 'spellrare'  expand('<cWORD>')<CR>
-nnoremap z/  exe 'spellrare!' expand('<cWORD>')<CR>
+"nnoremap z?  exe 'spellrare'  expand('<cWORD>')<CR>
+"nnoremap z/  exe 'spellrare!' expand('<cWORD>')<CR>
 ]])
 
 ---@see https://github.com/mwgkgk/dotfiles/blob/48c6344109aba79edd7e30d644fd33f49a1f945d/vim/plugin/mappings.vim#L454
@@ -1122,7 +1119,7 @@ vim.keymap.set(all,'<m-r>',[[<c-\><c-n><cmd>norm! M<cr>i]])
 
 -- distinguish visual mode coming from and insert? select mode!
 vim.keymap.set('s','<c-w>','<bs>')
-vim.keymap.set('x','<a-w>','<c-o>y')
+-- vim.keymap.set('x','<a-w>','<c-o>y')
 vim.keymap.set('x','<c-w>','d')
 vim.keymap.set('x','<a-w>','y')
 
