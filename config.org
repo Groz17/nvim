@@ -1361,6 +1361,7 @@ if !exists('#Rot13#InsertCharPre')
     "\ s/\a\%#/\=submatch(0) =~ '[a-mA-M]' ?  (char2nr(submatch(0))+13)->nr2char() : (char2nr(submatch(0))-13)->nr2char()/e |
     "\ call setpos('.', save_cursor)
     "augroup END
+" o il corrispettivo di a-m in altri sistemi di scrittura?
     au InsertCharPre * let v:char = v:char =~ '[[:alpha:]]' ? (v:char =~ '[a-mA-M]' ?  (char2nr(v:char)+13)->nr2char() : (char2nr(v:char)-13)->nr2char()) : v:char
 else
     augroup Rot13

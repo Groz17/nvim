@@ -24,6 +24,7 @@ return {
     { "<f12>b", function() Snacks.picker.buffers() end, desc = "Buffers" ,mode={'n','i'}},
     { "<f12>pb", function() Snacks.picker.buffers({ filter = { paths = { [Snacks.git.get_root()] = true } } }) end, desc = "Buffers (root)" ,mode={'n','i'}},
 
+    -- maybe use single mapping for smart function(recent,buffers,files) and longer emacs-like mappings for the respective specific actions.
     -- show which-key when ctrl (d/k) held
     { '<c-p>', function() Snacks.picker.files({ cwd = vim.fn.expand('%:p:h') }) end, desc = 'Find Files relative to open buffer' ,mode={'n','i'}},
     { '<f12><c-f>', function() Snacks.picker.files({ cwd = vim.fn.expand('%:p:h'), args = {"-d1"}, }) end, desc = 'find-files' ,mode={'n','i'}},
