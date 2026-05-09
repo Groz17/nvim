@@ -49,8 +49,6 @@ return {
         -- vim.keymap.set("n", "grc", vim.lsp.buf.incoming_calls, { buffer = args.buf, desc = "Incoming calls" })
         -- vim.keymap.set("n", "grC", vim.lsp.buf.outgoing_calls, { buffer = args.buf, desc = "Outgoing calls" })
 
-        -- grl? toggle?
-        vim.keymap.set('n', 'grl', vim.lsp.codelens.run, { buffer = args.buf, desc = 'Run code lens actions' })
         vim.keymap.set('n', 'grl', function() vim.lsp.codelens.enable(true) end, { buffer = args.buf, desc = 'Refresh code lenses' })
 
         vim.keymap.set('n', 'grw', vim.lsp.buf.add_workspace_folder, { buffer = args.buf, desc = 'Add folder' })
