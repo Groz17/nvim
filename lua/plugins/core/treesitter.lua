@@ -68,12 +68,19 @@ return
             {
               {
                 "[j",-- j di jump
-                function() require("treesitter-context").go_to_context() end,
+                function() require("treesitter-context").go_to_context(vim.v.count1) end,
                 desc = "Go to parent context",
                 mode = {"n","x","o"},
-              }},
+              },
+              {
+                "<C-c>j",-- j di jump
+                function() require("treesitter-context").go_to_context() end,
+                desc = "Go to parent context",
+                mode = {"i"},
+              }
+              },
                 opts = {
-  multiwindow = false, -- Enable multiwindow support.
+              multiwindow = false, -- Enable multiwindow support.
             },
         },
       },
