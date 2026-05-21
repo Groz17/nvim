@@ -313,6 +313,7 @@ local all = vim.fn.split('nvsxoilt', [[.\zs]])
  -- scriptease mapping? fallback to that/syntax if no treesitter...
  -- works with right click too
 vim.keymap.set('n', 'zS', '<cmd>Inspect<CR>')
+vim.keymap.set('n', '<space>[', '<cmd>TermHl<CR>', { desc = 'Colorize the current buffer' })
 
 ---see [How to insert newline without entering insert mode? : r/neovim](https://www.reddit.com/r/neovim/comments/10kah18/how_to_insert_newline_without_entering_insert_mode/)
 -- Add empty lines before and after cursor line

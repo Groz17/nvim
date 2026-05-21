@@ -17,10 +17,6 @@ return {
     -- TODO: usa nlua (neovim repl?)
     { "<f12>pe",      function() Snacks.terminal({ cmd = "lua" }, { cwd = Snacks.git.get_root(), win = { position = 'right' } }) end, desc = 'Terminal (Root)' }, -- lua=elisp (concettualmente)
 
-    -- like ansi escape codes
-    -- { '<space><esc>', function() Snacks.terminal.colorize() end, desc = 'Colorize the current buffer' },
-    -- { '<space><c-[>', function() Snacks.terminal.colorize() end, desc = 'Colorize the current buffer' },
-    { '<space>[', function() Snacks.terminal.colorize() end, desc = 'Colorize the current buffer' },
     {
       '<space>/',
       function()
