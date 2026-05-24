@@ -5,10 +5,8 @@ return {
     --https://github.com/gregorias/coerce.nvim/issues/5
     -- LSP and fallback to this?
     'gregorias/coerce.nvim',
-    dependencies = 
-    {
-      "gregorias/coop.nvim",
-    },
+    dependencies =
+    { "gregorias/coop.nvim", },
     keys = { { 'cr' }, { mode = 'x', 'R' }, },
     opts = function()
       return {
