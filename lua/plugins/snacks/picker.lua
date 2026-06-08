@@ -317,6 +317,10 @@ return {
               ["<c-s-l>"] = { "edit_vsplit", mode = { "i", "n" } },
               ["<c-s-j>"] = { "edit_split", mode = { "i", "n" } },
 
+              -- repeat-mode in Vim?
+              -- ["j"] = { "list_down", mode = { "i"  } },
+              -- ["k"] = { "list_up", mode = { "i"  } },
+
                       -- ivy-restrict-to-matches
                       ["<s-space>"] = { "toggle_live", mode = { "i" } },
 
