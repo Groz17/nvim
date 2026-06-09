@@ -110,6 +110,7 @@ return {
       -- TODO: put in tabline or statusline according to distance line number you're on and tabline/statusline
       local modified_count = {
         -- TODO: code duplication...
+        -- also don't active if file associated get deleted
         function() return "[+]: ".. vim.api.nvim_eval[[getbufinfo()->filter({_,v->v.changed==1})->filter({_,v->v.bufnr->getbufvar('&modifiable')})->len()]] end,
         -- how to activate only if you switch from a modified buffer?
         -- cond = function() return vim.api.nvim_eval[[getbufinfo()->filter({_,v->v.changed==1})->len()]] ~= 0 and vim.fn.mode() ~= 'i' end,

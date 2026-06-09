@@ -1,5 +1,6 @@
 return {
   {
+    -- would be cool also when saving the narrowed file and modifying it later without the original file
     -- " usa VMRegionsToBuffer (vim-visual-multi) al posto di questo plugin
     -- Implementa comando linediff (https://github.com/AndrewRadev/linediff.vim)
     -- Puoi usare folke/zen-mode.nvim dopo aver scelto la regione
