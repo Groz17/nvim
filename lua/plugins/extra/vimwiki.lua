@@ -5,7 +5,7 @@
 -- cream mapping p per non pastare newline se ce gia in file todo.txt
 -- crea mapping che passi da Vim/Neovim/plugins a Vim/plugins (generico ovviamente)
 -- TODO: make order of words irrelevant when searching: MediaWiki and WikiMedia should return the same dataset (make it work with all naming cases like snake_case, etc...)
-local wikipath = vim.fn.expand'~/vimwiki/'
+local wikipath = vim.fn.expand'~/org/wiki/'
 -- magari crea kanata layer with v...
 
 local files = {
@@ -36,7 +36,7 @@ local actions = {
 return {
   'vimwiki/vimwiki',
   -- event = 'BufEnter ' .. vim.fn.expand('~') .. '/vimwiki/**',
-  event = 'BufRead ' .. vim.fn.expand('~') .. '/vimwiki/**',
+  event = 'BufRead ' .. vim.fn.expand('~') .. '/org/wiki/**',
   keys = function()
     -- make these priority frequency + recency (frecency) of selected files
     local mappings = {}
@@ -63,9 +63,9 @@ return {
     vim.g.vimwiki_folding = 'custom'
     vim.g.vimwiki_list = {
       -- how to set filetype markdown?
-      { path = '~/vimwiki/Personal/', syntax = 'markdown', ext = '.md', links_space_char = '-' },
-      { path = '~/vimwiki/Work/', syntax = 'markdown', ext = '.md', links_space_char = '-' },
-      { path = '~/vimwiki/Education/', syntax = 'markdown', ext = '.md', links_space_char = '-' },
+      { path = '~/org/wiki/Personal/', syntax = 'media', ext = '.org', links_space_char = '-' },
+      -- { path = '~/vimwiki/Work/', syntax = 'org', ext = '.org', links_space_char = '-' },
+      -- { path = '~/vimwiki/Education/', syntax = 'org', ext = '.org', links_space_char = '-' },
     }
     vim.g.vimwiki_key_mappings = { --[[headers = 0,]] lists = 0 }
     -- vim.keymap.set('n', '<F13>', '<Plug>VimwikiNextLink')
@@ -108,7 +108,7 @@ return {
     end
 
     local function jump(path)
-      if path:match('/todo$') or path:match('/resources$') then path = path .. '.txt' else path = path .. '.md' end
+      if path:match('/todo$') or path:match('/resources$') then path = path .. '.txt' else path = path .. '.org' end
       -- if path == vim.fn.expand('%:p') then return end
       if path == vim.fn.expand('%:p') then vim.cmd('$') return end
       if check_inside_vimwiki(path) then
@@ -147,7 +147,7 @@ return {
     -- vim.api.nvim_create_autocmd("FileType", { pattern = "vimwiki", group = vim.api.nvim_create_augroup("Vimwiki_Mappings", { clear = true }),
     -- TODO: add newline and center view?
     vim.api.nvim_create_autocmd('BufEnter', {
-      pattern = vim.fn.expand('~') .. '/vimwiki/**/*.{md,txt}',
+      pattern = vim.fn.expand('~') .. '/org/wiki/**/*.{md,txt}',
       group = vim.api.nvim_create_augroup('Vimwiki_Mappings', { clear = true }),
       callback = function(ev)
         for file, mnemonic in pairs(files) do
@@ -285,7 +285,7 @@ return {
         -- cmd = 'fd -tf --strip-cwd-prefix ^' .. f .. [[\(\\.md\|\\.txt\)$]],
         -- cmd = 'fd -tf --strip-cwd-prefix ^' .. f .. [[(\.md|\.txt)$]],
         cmd = 'fd',
-        args = { "--type", "f", "--strip-cwd-prefix", '^' .. f .. [[(\.md|\.txt)$]], },
+        args = { "--type", "f", "--strip-cwd-prefix", '^' .. f .. [[(\.org|\.txt)$]], },
         layout = { 
           preset = "select",
         },
@@ -300,7 +300,7 @@ return {
         cwd = wikipath,
         -- cmd = [[rg -g ]] .. f .. '.md' .. ' -g ' .. f .. '.txt --',
         cmd = 'rg',
-        args = {"-g", f .. '.md' , '-g' ,f .. '.txt'},
+        args = {"-g", f .. '.org' , '-g' ,f .. '.txt'},
       })
     end
 
@@ -329,7 +329,7 @@ return {
           cwd = wikipath,
           title = "Send clipboard to "..f,
         cmd = 'fd',
-        args = { "--type", "f", '-E', 'resources.md',"--strip-cwd-prefix", '^' .. f .. [[(\.md|\.txt)$]], },
+        args = { "--type", "f", '-E', 'resources.md',"--strip-cwd-prefix", '^' .. f .. [[(\.org|\.txt)$]], },
         -- file_icons = false,
         confirm = function(picker, item)
             picker:close()
@@ -345,7 +345,7 @@ return {
             vim.notify(
               -- TODO: don't send first empty lines
               -- TODO: use highlighting?
-              'Sent clipboard to ' .. vim.fn.fnamemodify(path,[[:~:s?\~/vimwiki/??]]) .. '\n' .. vim.trim(clipboard[1]),
+              'Sent clipboard to ' .. vim.fn.fnamemodify(path,[[:~:s?\~/org/wiki/??]]) .. '\n' .. vim.trim(clipboard[1]),
               vim.log.levels.INFO
             )
           end,
@@ -366,6 +366,11 @@ return {
         vim.notify('Empty clipboard, aborting...', vim.log.levels.ERROR)
         return
       end
+
+      if vim.fn.empty(vim.fn.system({ "rg", "-F", clipboard[1], vim.fn.expand('~').. "/org" })) == 0 then
+        vim.notify('Clipboard already in wiki...', vim.log.levels.ERROR)
+        return
+      end
       -- local importance = vim.v.count
       -- if vim.fn.assert_inrange(0, 5, importance) == 0 and importance ~= 0 then
       --   for k,v in ipairs(clipboard) do
@@ -378,7 +383,7 @@ return {
           -- preview = function()return false end,
           title = "Send clipboard to "..f,
         cmd = 'fd',
-        args = { "--type", "f", '-E', 'resources.md',"--strip-cwd-prefix", '^' .. f .. [[(\.md|\.txt)$]], },
+        args = { "--type", "f", '-E', 'resources.md',"--strip-cwd-prefix", '^' .. f .. [[(\.org|\.txt)$]], },
         on_close = function() vim.schedule(function()
             -- vim.fn.system('dunstify "Sent clipboard to "' .. wikipath ..  '"\n"' .. vim.trim(clipboard[1]))
           vim.cmd'q'
@@ -389,9 +394,22 @@ return {
         confirm = function(picker, item)
             local path = wikipath .. item.file
             vim.fn.writefile(vim.list_extend({ '' }, clipboard), path, 'a')
-            vim.fn.system('dunstify -a neovim "Sent clipboard to "' .. vim.fn.shellescape(vim.fn.fnamemodify(path,[[:~:s?\~/vimwiki/??]])) .. ' ' ..
-            vim.fn.shellescape(vim.trim(vim.fn.join(clipboard,"\n"))))
+            -- local result = vim.fn.system('dunstify -A open,Open -a neovim "Sent clipboard to "' .. vim.fn.shellescape(vim.fn.fnamemodify(path,[[:~:s?\~/org/wiki/??]])) .. ' ' ..
+            -- vim.fn.shellescape(vim.trim(vim.fn.join(clipboard,"\n"))))
+
+vim.fn.jobstart({
+  "sh",
+  "-c",
+  [[
+    dunstify -A open,Open -a neovim "Sent clipboard to $1 " ]] .. vim.trim(vim.fn.join(clipboard,"\n")) ..[[ >/dev/null
+    emacsclient -c -a '' "~/org/wiki/$1"
+  ]],
+  "sh",
+vim.fn.fnamemodify(path,[[:~:s?\~/org/wiki/??]]),
+}, { detach = true })
+
             picker:close()
+	    -- if result == 2 then vim.fn.system('emacsclient -c -a "" ' .. path) end
           end,
           -- 
        })
@@ -463,7 +481,7 @@ return {
     vim.keymap.set('n', '<leader>Qd', function() send_outside('todo') end, { desc = "Go to Wiki file" })
     vim.keymap.set('n', '<leader>Qy', function() send_outside('data') end, { desc = "Go to Wiki file" })
     vim.keymap.set('n', '<leader>?', function()vim.fn.setreg(vim.v.register,vim.fn.input('String to send' )) send_clipboard('todo') end, { desc = "Go to Wiki file" })
-    vim.keymap.set('n', 'vv', function() Snacks.picker.files { cwd = "~/vimwiki"} end, { desc = "Go to Wiki file" })
+    vim.keymap.set('n', 'vv', function() Snacks.picker.files { cwd = "~/org/wiki"} end, { desc = "Go to Wiki file" })
     -- vim.keymap.set('n', ',ww', function() send_clipboard(true, vim.v.count, static_telescope_options_global) end)
     -- vim.keymap.set('n', ',wW', function() send_clipboard(false, vim.v.count, static_telescope_options_global) end)
 
@@ -471,10 +489,10 @@ return {
     -- how to toggle -F?
     -- vim.keymap.set('n', 'vss', function() require("telescope.builtin").live_grep { cwd = "~/vimwiki", additional_args = { '-F' } } end, { desc = "Search in Wiki" })
     -- Snacks native(max perf?)
-    vim.keymap.set('n', 'vss', function() Snacks.picker.grep{ cwd = "~/vimwiki"} end, { desc = "Search in Wiki" })
-    vim.keymap.set({'n'--[[,'x']]}, 'vsw', function() Snacks.picker.grep_word { cwd = "~/vimwiki", regex = false } end, { desc = "Search word in Wiki" })
+    vim.keymap.set('n', 'vss', function() Snacks.picker.grep{ cwd = "~/org/wiki"} end, { desc = "Search in Wiki" })
+    vim.keymap.set({'n'--[[,'x']]}, 'vsw', function() Snacks.picker.grep_word { cwd = "~/org/wiki", regex = false } end, { desc = "Search word in Wiki" })
     -- only_sort_text
-    vim.keymap.set('n', 'vsu', function() Snacks.picker.grep { cwd = "~/vimwiki", search = vim.fn.getline('.'):match( 'http%S+'),regex = false } end, { desc = "Search URL in Wiki" })
+    vim.keymap.set('n', 'vsu', function() Snacks.picker.grep { cwd = "~/org/wiki", search = vim.fn.getline('.'):match( 'http%S+'),regex = false } end, { desc = "Search URL in Wiki" })
     -- maybe go directly to first match or send them all to quickfix bypassing telescope buffer? is it possible?
     -- what about visual selection?
     -- usa vim.v.register?
@@ -483,11 +501,11 @@ return {
     -- BUG: when searching '-S, --show-error' no search is done (what if clipboard contains $(rm tilde))
     -- should you escape???
     -- vim.keymap.set('n', 'vsc', function()Snacks.picker.grep {cwd = "~/vimwiki", search = vim.fn.trim(vim.fn.getreg('"')), args = {'-F'}} end, { desc = "Search clipboard in Wiki" })
-    vim.keymap.set('n', 'vsc', function()Snacks.picker.grep {cwd = "~/vimwiki", search = vim.fn.trim(vim.fn.getreg('"')), regex = false} end, { desc = "Search clipboard in Wiki" })
+    vim.keymap.set('n', 'vsc', function()Snacks.picker.grep {cwd = "~/org/wiki", search = vim.fn.trim(vim.fn.getreg('"')), regex = false} end, { desc = "Search clipboard in Wiki" })
     -- vim.keymap.set('n', 'vsy', function() require("telescope.builtin").live_grep { cwd = "~/vimwiki", default_text = '^# .*', glob_pattern = { 'data*.md' } } end, { desc = "Search in Data" })
-    vim.keymap.set('n', 'vsh', function() Snacks.picker.grep { cwd = "~/vimwiki", search = '^# .*', glob = { 'data*.md' } } end, { desc = "Search Headers in Data" })
+    vim.keymap.set('n', 'vsh', function() Snacks.picker.grep { cwd = "~/org/wiki", search = '^# .*', glob = { 'data*.org' } } end, { desc = "Search Headers in Data" })
     -- TODO: cerca solo in file todo? bad idea
-    vim.keymap.set('n', 'vst', function() Snacks.picker.grep { cwd = "~/vimwiki", search = string.rep("THIS ->>> ", vim.v.count1)} end, { desc = "Search TODO in Wiki" })
+    vim.keymap.set('n', 'vst', function() Snacks.picker.grep { cwd = "~/org/wiki", search = string.rep("THIS ->>> ", vim.v.count1)} end, { desc = "Search TODO in Wiki" })
     -- TODO: doesn't work
     -- vim.keymap.set('n', 'vst', function() require("fzf-lua").grep { cwd = "~/vimwiki", search = "THIS ->>> " .. "{"..vim.v.count1.."}"} end, { desc = "Search clipboard in Wiki" })
   end,

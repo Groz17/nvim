@@ -49,8 +49,6 @@ set guicursor=n-v-c:block-Cursor/lCursor,i-n:Cursor2/lCursor2
 vim.opt.inccommand="split"
 #+end_src
 
--- vim: foldmethod=expr foldexpr=getline(v\:lnum)=~'^--\ ┣'?'>1'\:getline(v\:lnum)=~'^--\ ─'?'>2'\:'=':
-
 Categories from =:options=:
 
 ** Important
@@ -102,7 +100,7 @@ vim.o.spelloptions = 'camel'      -- Treat parts of camelCase words as seprate w
 vim.opt.synmaxcol = 240         -- Max column for syntax highlight
 vim.opt.cursorline = true -- Highlight current line
 -- vim.opt.colorcolumn = '80'      -- Line lenght marker at 80 columns
-vim.opt.termguicolors = true    -- Enable 24-bit RGB colors
+vim.opt.termguicolors = false    -- Enable 24-bit RGB colors
 -- https://github.com/dettonijr/spass-syntax-highlight
 -- au BufRead,BufNewFile *.dfg set filetype=dfg
 
@@ -170,8 +168,6 @@ vim.opt.undolevels = 10000         -- use many levels of undo
 -- vim.opt.undoreload = 10000        -- number of lines to save for undo
 vim.opt.showmatch = true        -- Highlight matching parenthesis
 vim.opt.matchtime = 1
--- Sexy Folds (https://www.reddit.com/r/neovim/comments/psl8rq/sexy_folds/)
--- https://www.reddit.com/r/neovim/comments/1h34lr4/neovim_now_has_the_builtin_lsp_folding_support/
 vim.opt.infercase = true                       -- Adjust completions to match case
 -- silent! setglobal dictionary+=/usr/share/dict/words
 vim.opt.matchpairs:append('<:>')
@@ -194,12 +190,16 @@ vim.opt.shiftwidth  = 2 -- Determines the amount of whitespace to add in normal 
 vim.opt.smartindent = true
 vim.opt.tabstop     = 2 -- Width of tab character
 vim.opt.softtabstop = 2 -- Fine tunes the amount of white space to be added
--- vim.wo.foldtext = [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) ]]
 #+end_src
 
 ** Folding
 #+begin_src lua
+-- vim.wo.foldtext = [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) ]]
+-- Sexy Folds (https://www.reddit.com/r/neovim/comments/psl8rq/sexy_folds/)
+-- https://www.reddit.com/r/neovim/comments/1h34lr4/neovim_now_has_the_builtin_lsp_folding_support/
 vim.wo.foldenable = false
+vim.wo.foldlevel = 99
+vim.opt.foldlevelstart = 99
 -- fallback to treesitter if no lsp capabilities?
 -- vim.o.foldenable= false
 -- vim.wo.foldtext = [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) ]]
@@ -386,6 +386,7 @@ vim.keymap.set("t", "<s-esc>", [[<c-\><c-n>]])
 -- what about g<c-y>? y and then modifier?
 vim.keymap.set('n', [[<space>yy]], [[<cmd>let @" = expand("%:p")->fnamemodify(':~')   | echo 'cb> ' . @"<CR>]])
 vim.keymap.set('n', [[<space>y.]], [[<cmd>let @" = expand("%:.")  | echo 'cb> ' . @"<CR>]])
+-- d immediate dir and D complete?
 vim.keymap.set('n', [[<space>yd]], [[<cmd>let @" = expand("%:p:h")->fnamemodify(':~') | echo 'cb> ' . @"<CR>]])
 vim.keymap.set('n', [[<space>yf]], [[<cmd>let @" = expand("%:t") | echo 'cb> ' . @"<CR>]])
 -- n stands for name? good if so
@@ -1568,7 +1569,7 @@ vim.api.nvim_create_autocmd("CursorMoved",{
    end
 
    vim.lsp.buf.clear_references()
-   vim.lsp.buf.document_highlight()
+   pcall(vim.lsp.buf.document_highlight)
 end})
 
 vim.api.nvim_create_autocmd("VimResized", {
@@ -1625,6 +1626,7 @@ return {
 			vim.cmd [[colorscheme tempus_dawn]]
 		end,
 	},
+-- { "typicode/bg.nvim", lazy = false }
 }
 #+end_src
 * PLUGINS
@@ -1641,4 +1643,3 @@ jq 'map_values(.command as $command |
   if .type == "local" then . + { command: $command[0] } + { args: $command[1:] }
   else .type = "http" end | . + { "tools": ["*"] }|del(.type))'
 #+end_src
-

@@ -24,7 +24,9 @@ return {
     end,
     opts = {
       --   org_agenda_files = {'~/Dropbox/org/*', '~/my-orgs/**/*'},
-      org_agenda_files = '~/org/**/*',
+      -- org_agenda_files = '~/org/**/*',
+org_agenda_files = '~/org/*.org',
+org_startup_folded = 'showeverything',
       -- org_default_notes_file = '~/notes/Task.org',
       org_default_notes_file = '~/org/inbox.org',
       ---@see https://github.com/nvim-orgmode/orgmode/discussions/643
