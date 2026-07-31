@@ -63,7 +63,7 @@ return {
     vim.g.vimwiki_folding = 'custom'
     vim.g.vimwiki_list = {
       -- how to set filetype markdown?
-      { path = '~/org/wiki/Personal/', syntax = 'media', ext = '.org', links_space_char = '-' },
+      { path = '~/org/wiki/', syntax = 'media', ext = '.org', links_space_char = '-' },
       -- { path = '~/vimwiki/Work/', syntax = 'org', ext = '.org', links_space_char = '-' },
       -- { path = '~/vimwiki/Education/', syntax = 'org', ext = '.org', links_space_char = '-' },
     }
@@ -211,63 +211,6 @@ return {
           )
           -- vim.cmd.e(vim.fn.systemlist({'git','ls-files', vim.fn.shellescape(':/*/' .. dir .. '/' .. file)}))
         end, { buffer = ev.buf })
-
-
-       -- TODO: usa importance string come variable e preserva cursore...
-        vim.keymap.set('n','<localleader>h',[[<CMD>call setline('.', substitute(getline('.'),repeat("THIS ->>> ",v:count1),'',''))<CR>]], {desc = "Remove importance", buffer = ev.buf})
-        -- change to better mapping, maybe startin with v.
-        vim.keymap.set('n', '<localleader>l', function()
-          -- make these variable global
-          local importance_string = 'THIS ->>> '
-          local importance_value = vim.v.count1
-          -- magari solo se la linea non è vuota?
-          local space, notspace = vim.fn.getline('.'):match('^(%s*)(%S.*)')
-          -- if !notspace return 0
-
-          -- local _,count = string.gsub(vim.fn.substitute(notspace,string.format([[^\(%s\%%(%s\)*\).*$]],importance_string,importance_string),[[\1]],''),importance_string,"")
-
-          local _, count = vim.fn
-            .substitute(notspace, string.format([[^\(%s\%%(%s\)*\).*$]], importance_string, importance_string), [[\1]], '')
-            :gsub(importance_string:gsub('([^%w])', '%%%1'), '')
-
-          -- maybe convert to 5 if >=5
-          -- fai anche controllo se ci saranno piü di 5 THIS ->>> se ci sono già (fai somma <=5)
-          -- if vim.fn.assert_inrange(1, 5, importance_value) == 1 then vim.notify('You can only specify importance from 1 to 5', vim.log.levels.ERROR) return end
-          -- if vim.fn.assert_inrange(0, 5-count, importance_value) == 1 then vim.notify('You can only specify importance from 1 to 5', vim.log.levels.ERROR) return end
-          if vim.fn.assert_inrange(1, 5 - count, importance_value) == 1 then
-            vim.notify(
-              'You can only specify importance from 1 to 5',
-              vim.log.levels.ERROR
-            )
-            return
-          end
-
-          -- vim.fn.setline(vim.fn.line('.'), string.rep(importance_string, importance_value) .. vim.fn.getline('.'))
-          vim.fn.setline(
-            vim.fn.line('.'),
-            space .. string.rep(importance_string, importance_value) .. notspace
-          )
-        end, { desc = 'Add importance', buffer = ev.buf })
-        -- check if clibpoard is multiline and if yes enclose in this ->>>↓
-        -- v:count1 deve essere compresa tra 1 e 5 inclusi
-        -- come fare il mapping in lua per curiosità?
-
-        -- usa norm g> in visual mode if you don't want to group todo lines...
-        -- autocmd BufEnter ~/vimwiki/**/*.md xnoremap <buffer> g> :<c-u>call <SID>Importance()<CR>
-
-        -- come fare il mapping in lua (per curiosità)?
-        vim.cmd([[
-                    xnoremap <buffer> <localleader>l :<c-u>call Importance()<CR>
-                    fun! Importance() abort
-                    let l:count=v:count1
-                    '<
-                    " norm O=repeat("THIS ->>↓ ",s:count)<bs>
-                    exe "norm O\<c-r>=repeat('THIS ->>↓ ',l:count)\<cr>\<bs>"
-                    '>
-                    " norm o=repeat("THIS ->>↑ ",s:count)<bs>
-                    exe "norm o\<c-r>=repeat('THIS ->>↑ ',l:count)\<cr>\<bs>"
-                    endfun
-                    ]])
       end,
     })
   end,
