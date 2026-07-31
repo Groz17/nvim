@@ -367,9 +367,11 @@ return {
         return
       end
 
-      if vim.fn.empty(vim.fn.system({ "rg", "-F", clipboard[1], vim.fn.expand('~').. "/org" })) == 0 then
-        vim.notify('Clipboard already in wiki...', vim.log.levels.ERROR)
-        return
+      if vim.startswith(clipboard[1], "http") then
+        if vim.fn.empty(vim.fn.system({ "rg", "-F", clipboard[1], vim.fn.expand('~').. "/org" })) == 0 then
+          vim.notify('Clipboard already in wiki...', vim.log.levels.ERROR)
+          return
+        end
       end
       -- local importance = vim.v.count
       -- if vim.fn.assert_inrange(0, 5, importance) == 0 and importance ~= 0 then
@@ -393,6 +395,11 @@ return {
         -- on_close = function() vim.defer_fn(function()vim.cmd'q' end,100) end,
         confirm = function(picker, item)
             local path = wikipath .. item.file
+
+	    if f == "todo" then
+	       clipboard[1] = "* TODO " .. clipboard[1]
+	    end
+
             vim.fn.writefile(vim.list_extend({ '' }, clipboard), path, 'a')
             -- local result = vim.fn.system('dunstify -A open,Open -a neovim "Sent clipboard to "' .. vim.fn.shellescape(vim.fn.fnamemodify(path,[[:~:s?\~/org/wiki/??]])) .. ' ' ..
             -- vim.fn.shellescape(vim.trim(vim.fn.join(clipboard,"\n"))))
@@ -401,11 +408,12 @@ vim.fn.jobstart({
   "sh",
   "-c",
   [[
-    dunstify -A open,Open -a neovim "Sent clipboard to $1 " ]] .. vim.trim(vim.fn.join(clipboard,"\n")) ..[[ >/dev/null
-    emacsclient -c -a '' "~/org/wiki/$1"
+    dunstify -A "open,Open" -a neovim "Sent clipboard to $1" "$2" | grep -q 2 &&
+    emacsclient -c -a '' --eval "(progn (find-file (expand-file-name \"~/org/wiki/$1\")) (goto-char (point-max)))"
   ]],
   "sh",
-vim.fn.fnamemodify(path,[[:~:s?\~/org/wiki/??]]),
+  vim.fn.fnamemodify(path, [[:~:s?\~/org/wiki/??]]),
+  vim.trim(vim.fn.join(clipboard, "\n")),
 }, { detach = true })
 
             picker:close()
