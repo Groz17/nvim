@@ -302,6 +302,23 @@ vim.opt.shada={"!","'500","<50","s10","h"}
 -- find better way for comment string of multiple chars
 -- vim: foldmethod=expr foldexpr=getline(v\:lnum)=~'^--\ ┣'?'>1'\:getline(v\:lnum)=~'^--\ ─'?'>2'\:'=':
 
+-- make these work with dot repeat (repeatable)
+-- vim.keymap.set({ 'x', 'n' }, '<localleader>j', "o<esc>p", { buffer = ev.buf, silent = true })
+-- vim.keymap.set({ 'x', 'n' }, '<localleader>k', "O<esc>p", { buffer = ev.buf, silent = true })
+-- vim.keymap.set('n', '<leader>o', 'o<esc>o', { buffer = ev.buf, desc = 'Add newline below and start insert', nowait=true })
+-- maybe make these mappings global?
+vim.keymap.set('n', '<leader>o', function() if vim.fn.getline('.'):match('^$') then return '<esc>o' else return
+'o<esc>o'end end, { buffer = ev.buf, desc = 'Add newline below and start insert', nowait=true, expr = true })
+-- vim.keymap.set('n', '<leader>O', 'O<esc>O', { buffer = ev.buf, desc = 'Add newline above and start insert', nowait=true })
+vim.keymap.set('n', '<leader>O', function() if vim.fn.getline('.'):match('^$') then return '<esc>O' else return
+'O<esc>O'end end, { buffer = ev.buf, desc = 'Add newline above and start insert', nowait=true, expr = true })
+vim.keymap.set('n', '<leader>k', 'O<esc>Vp', { buffer = ev.buf, desc = 'Paste above', nowait=true })
+vim.keymap.set('n', '<leader>j', 'o<esc>Vp', { buffer = ev.buf, desc = 'Paste below', nowait=true })
+vim.keymap.set('n', '<leader>K', '2O<esc>Vp', { buffer = ev.buf, desc = 'Paste above', nowait=true })
+vim.keymap.set('n', '<leader>J', '2o<esc>Vp', { buffer = ev.buf, desc = 'Paste below', nowait=true })
+
+
+
 ---see https://github.com/nvim-mini/mini.nvim/blob/91f7a680fe5765b68456ab6e7b910d478da083b9/lua/mini/basics.lua#L548-L549
 
 -- https://gist.github.com/kawarimidoll/496cb16b40af33e8d84daff6dde8a16f

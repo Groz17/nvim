@@ -8,7 +8,7 @@
 --
 local config = {
   on_attach = function(client, bufnr)
-    vim.lsp.codelens.refresh()
+		vim.lsp.codelens.enable(true)
     require('jdtls').setup_dap({ hotcodereplace = 'auto' })
     local status_ok, jdtls_dap = pcall(require, 'jdtls.dap')
     if status_ok then
@@ -38,6 +38,6 @@ require('jdtls').start_or_attach(config)
 vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
   pattern = { '*.java' },
   callback = function()
-    local _, _ = pcall(vim.lsp.codelens.refresh)
+    local _, _ = pcall(vim.lsp.codelens.enable(true))
   end,
 })
