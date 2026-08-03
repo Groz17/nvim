@@ -65,7 +65,7 @@ org_startup_folded = 'showeverything',
       )
 
 
-      local wikipath = vim.fn.expand'~/org/wiki/'
+      local wikipath = vim.fn.expand'~/org/'
     local send_outside = function(--[[space, importanceopts]]f)
       local clipboard = vim.fn.getreg("+", 1, true)
       if vim.tbl_isempty(clipboard) then
@@ -73,8 +73,12 @@ org_startup_folded = 'showeverything',
         return
       end
 
-      if vim.startswith(clipboard[1], "http") then
-        if vim.fn.empty(vim.fn.system({ "rg", "-F", clipboard[1], vim.fn.expand('~').. "/org" })) == 0 then
+      if string.find(clipboard[1], "http") or string.find(clipboard[1], "%[%[http")then
+        if vim.fn.empty(vim.fn.system({ "rg", "-F", (clipboard[1]
+            :gsub("^%[%[([^%]]+)%]%[[^%]]*%]%]$", "%1") -- Org link with description
+            :gsub("^%[%[([^%]]+)%]%]$", "%1")             -- Org link without description
+            :gsub("#.*$", "")),                             -- Remove fragment
+            vim.fn.expand('~').. "/org" })) == 0 then
           vim.notify('Clipboard already in wiki...', vim.log.levels.ERROR)
           return
         end
@@ -84,7 +88,7 @@ org_startup_folded = 'showeverything',
           layout = { fullscreen = true,preview=false },
           title = "Send clipboard to "..f,
         cmd = 'fd',
-        args = { "--type", "f", '-E', 'resources.md',"--strip-cwd-prefix", '^' .. f .. [[(\.org|\.txt)$]], },
+        args = { "--type", "f", "--strip-cwd-prefix", '^(' .. f .. [[(\.org|\.txt)$|tasks|bookmarks\.org)]], },
         on_close = function() vim.schedule(function()
           vim.cmd'q'
         end) end,
@@ -102,10 +106,10 @@ org_startup_folded = 'showeverything',
             "-c",
             [[
     dunstify -A "open,Open" -a neovim "Sent clipboard to $1" "$2" | grep -q 2 &&
-    emacsclient -c -a '' --eval "(progn (find-file (expand-file-name \"~/org/wiki/$1\")) (goto-char (point-max)))"
+    emacsclient -c -a '' --eval "(progn (find-file (expand-file-name \"~/org/$1\")) (goto-char (point-max)))"
   ]],
             "sh",
-            vim.fn.fnamemodify(path, [[:~:s?\~/org/wiki/??]]),
+            vim.fn.fnamemodify(path, [[:~:s?\~/org/??]]),
             vim.trim(vim.fn.join(clipboard, "\n")),
           }, { detach = true })
           picker:close()
@@ -117,9 +121,9 @@ org_startup_folded = 'showeverything',
     vim.keymap.set('n', '<leader>Qd', function() send_outside('todo') end, { desc = "Go to Wiki file" })
     vim.keymap.set('n', '<leader>Qy', function() send_outside('data') end, { desc = "Go to Wiki file" })
     vim.keymap.set({'n'--[[,'x']]}, 'vsw', function() Snacks.picker.grep_word { cwd = "~/org/wiki", regex = false } end, { desc = "Search word in Wiki" })
-    vim.keymap.set('n', 'vsu', function() Snacks.picker.grep { cwd = "~/org/wiki", search = vim.fn.getline('.'):match( 'http%S+'),regex = false } end, { desc = "Search URL in Wiki" })
-    vim.keymap.set('n', 'vsc', function()Snacks.picker.grep {cwd = "~/org/wiki", search = vim.fn.trim(vim.fn.getreg('"')), regex = false} end, { desc = "Search clipboard in Wiki" })
-    vim.keymap.set('n', 'vsh', function() Snacks.picker.grep { cwd = "~/org/wiki", search = '^# .*', glob = { 'data*.org' } } end, { desc = "Search Headers in Data" })
+    vim.keymap.set('n', 'vsu', function() Snacks.picker.grep { cwd = "~/org", search = vim.fn.getline('.'):match( 'http%S+'),regex = false } end, { desc = "Search URL in Wiki" })
+    vim.keymap.set('n', 'vsc', function()Snacks.picker.grep {cwd = "~/org", search = vim.fn.trim(vim.fn.getreg('"')), regex = false} end, { desc = "Search clipboard in Wiki" })
+    vim.keymap.set('n', 'vsh', function() Snacks.picker.grep { cwd = "~/org", search = '^# .*', glob = { 'data*.org' } } end, { desc = "Search Headers in Data" })
 
     end,
     -- vim.lsp.enable('org')
