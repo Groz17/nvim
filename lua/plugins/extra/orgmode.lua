@@ -33,7 +33,7 @@ org_startup_folded = 'showeverything',
       mappings = {
         -- Change everything (but globals) to use local leader for org files
         -- prefix = '<LocalLeader>o',
-        prefix = '<LocalLeader>',
+        prefix = '<C-c>',
         org_toggle_checkbox = false,
 
         -- NOTE: Have to manually re-specify the globals as they were using the prefix
@@ -96,8 +96,10 @@ org_startup_folded = 'showeverything',
         confirm = function(picker, item)
             local path = wikipath .. item.file
 
+            -- what if clipboard contains starting * in subsequent lines?
 	    if f == "todo" then
-	       clipboard[1] = "* TODO " .. clipboard[1]
+	       -- clipboard[1] = "* TODO " .. clipboard[1]
+	       clipboard[1] = "* " .. clipboard[1]
 	    end
             vim.fn.writefile(vim.list_extend({ '' }, clipboard), path, 'a')
 
