@@ -307,15 +307,15 @@ vim.opt.shada={"!","'500","<50","s10","h"}
 -- vim.keymap.set({ 'x', 'n' }, '<localleader>k', "O<esc>p", { buffer = ev.buf, silent = true })
 -- vim.keymap.set('n', '<leader>o', 'o<esc>o', { buffer = ev.buf, desc = 'Add newline below and start insert', nowait=true })
 -- maybe make these mappings global?
-vim.keymap.set('n', '<leader>o', function() if vim.fn.getline('.'):match('^$') then return '<esc>o' else return
-'o<esc>o'end end, { buffer = ev.buf, desc = 'Add newline below and start insert', nowait=true, expr = true })
+-- vim.keymap.set('n', '<leader>o', function() if vim.fn.getline('.'):match('^$') then return '<esc>o' else return
+-- 'o<esc>o'end end, { buffer = ev.buf, desc = 'Add newline below and start insert', nowait=true, expr = true })
 -- vim.keymap.set('n', '<leader>O', 'O<esc>O', { buffer = ev.buf, desc = 'Add newline above and start insert', nowait=true })
-vim.keymap.set('n', '<leader>O', function() if vim.fn.getline('.'):match('^$') then return '<esc>O' else return
-'O<esc>O'end end, { buffer = ev.buf, desc = 'Add newline above and start insert', nowait=true, expr = true })
-vim.keymap.set('n', '<leader>k', 'O<esc>Vp', { buffer = ev.buf, desc = 'Paste above', nowait=true })
-vim.keymap.set('n', '<leader>j', 'o<esc>Vp', { buffer = ev.buf, desc = 'Paste below', nowait=true })
-vim.keymap.set('n', '<leader>K', '2O<esc>Vp', { buffer = ev.buf, desc = 'Paste above', nowait=true })
-vim.keymap.set('n', '<leader>J', '2o<esc>Vp', { buffer = ev.buf, desc = 'Paste below', nowait=true })
+-- vim.keymap.set('n', '<leader>O', function() if vim.fn.getline('.'):match('^$') then return '<esc>O' else return
+-- 'O<esc>O'end end, { buffer = ev.buf, desc = 'Add newline above and start insert', nowait=true, expr = true })
+-- vim.keymap.set('n', '<leader>k', 'O<esc>Vp', { buffer = ev.buf, desc = 'Paste above', nowait=true })
+-- vim.keymap.set('n', '<leader>j', 'o<esc>Vp', { buffer = ev.buf, desc = 'Paste below', nowait=true })
+-- vim.keymap.set('n', '<leader>K', '2O<esc>Vp', { buffer = ev.buf, desc = 'Paste above', nowait=true })
+-- vim.keymap.set('n', '<leader>J', '2o<esc>Vp', { buffer = ev.buf, desc = 'Paste below', nowait=true })
 
 
 
