@@ -97,7 +97,7 @@ org_startup_folded = 'showeverything',
             local path = wikipath .. item.file
 
             -- what if clipboard contains starting * in subsequent lines?
-	    if f == "todo" then
+	    if f == "todo" and not vim.startswith(clipboard[1],"* ") then
 	       -- clipboard[1] = "* TODO " .. clipboard[1]
 	       clipboard[1] = "* " .. clipboard[1]
 	    end
@@ -124,7 +124,7 @@ org_startup_folded = 'showeverything',
     vim.keymap.set('n', '<leader>Qy', function() send_outside('data') end, { desc = "Go to Wiki file" })
     vim.keymap.set({'n'--[[,'x']]}, 'vsw', function() Snacks.picker.grep_word { cwd = "~/org/wiki", regex = false } end, { desc = "Search word in Wiki" })
     vim.keymap.set('n', 'vsu', function() Snacks.picker.grep { cwd = "~/org", search = vim.fn.getline('.'):match( 'http%S+'),regex = false } end, { desc = "Search URL in Wiki" })
-    vim.keymap.set('n', 'vsc', function()Snacks.picker.grep {cwd = "~/org", search = vim.fn.trim(vim.fn.getreg('"')), regex = false} end, { desc = "Search clipboard in Wiki" })
+    vim.keymap.set('n', 'vsc', function()Snacks.picker.grep {cwd = "~/org", search = vim.fn.trim(vim.split(vim.fn.getreg('"'),"\n")[1]), regex = false} end, { desc = "Search clipboard in Wiki" })
     vim.keymap.set('n', 'vsh', function() Snacks.picker.grep { cwd = "~/org", search = '^# .*', glob = { 'data*.org' } } end, { desc = "Search Headers in Data" })
 
     end,
