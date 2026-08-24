@@ -244,7 +244,7 @@ vim.opt.updatetime = 250        -- ms to wait for trigger an event
 ** Command line editing
 #+begin_src lua
 vim.opt.history = 10000           -- Remember N lines in history
-vim.opt.wildmode = {list = "longest", "full"} -- When completing, show all options, insert common prefix, then iterate
+-- vim.opt.wildmode = {list = "longest", "full"} -- When completing, show all options, insert common prefix, then iterate
 vim.opt.wildignore = 'deps,.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif,.DS_Store,*.aux,*.out,*.toc'
 -- ignore builtin colorschemes for Snacks.picker.colorschemes()
 vim.opt.wildignore:append(vim.api.nvim_get_runtime_file("colors/*.{vim,lua}", true))
