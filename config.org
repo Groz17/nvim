@@ -1101,7 +1101,7 @@ vim.keymap.set({'x'},'<c-g>', [[<esc>]])
 local last_press_time = 0
 local press_count = 0
 
-vim.keymap.set({"n","i"}, "<C-l>", function()
+vim.keymap.set({--[["n",]]"i"}, "<C-l>", function()
       -- function that does the following:
       -- keymap is pressed once: center current line in the view
       -- keymap is pressed twice: set currentl line at the top of the view
