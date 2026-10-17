@@ -1,7 +1,13 @@
  -- efficient exploration and analysis of functions within IDA Pro
  -- idascope.lua
 
- return {}
+
+ return {
+	"0xdeadf1sh/AssemblyForNeovim",
+	config = function()
+		require("asm").setup()
+	end,
+}
  -- return {
  --   "dead-null/idascope", url = "https://github.com/dead-null/idascope",
  --

@@ -38,6 +38,7 @@ return {
       {"iy", function() require("yanky.textobj").last_put() end, mode={ "o", "x" }, },
       {"ay", function() require("yanky.textobj").last_put() end, mode={ "o", "x" }, },
       {
+        -- M-y?
         "<leader>p",
         function()
           Snacks.picker.yanky()
