@@ -1,3 +1,4 @@
+-- https://www.reddit.com/r/neovim/comments/1x1lxsg/tunanvim_neovim_plugin_for_competitive_programming/?share_id=8Lh7eRxUa0flnia_2z17b
 local leet_arg = 'lc.nvim'
 return {{
 -- https://github.com/p00f/cphelper.nvim?tab=readme-ov-file
